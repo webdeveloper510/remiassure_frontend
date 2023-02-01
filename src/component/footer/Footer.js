@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
 
-                <div className="col-lg-3 col-md-6 footer-links">
+                <div className="col-lg-3 col-md-6 footer-links links">
                     <h4>Useful Links</h4>
                     <ul>
                     <li><i className="bx bx-chevron-right"></i> <a href="#">Home</a></li>

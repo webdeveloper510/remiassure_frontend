@@ -1,5 +1,5 @@
 import React from "react";
-
+import {links, NavLink} from 'react-router-dom';
 
 const Header =() => {
     return(
@@ -13,15 +13,19 @@ const Header =() => {
         <h1 className="text-light">
           <img src="assets/img/home/logo.png" alt="logo"  />
         </h1>
-        {/* <!-- Uncomment below if you prefer to use an image logo --> */}
-        {/* <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" className="img-fluid"></a>--> */}
       </div>
 
       <nav id="navbar" className="navbar">
         <ul>
-          <li><a className="active " href="index.html">Home</a></li>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="services.html">Services</a></li>
+          <li>
+            <NavLink className="active " to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/aboutus"> About us</NavLink>
+            </li>
+          <li>
+            <NavLink to="/help">Help</NavLink>
+          </li>
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="blog.html">Blog</a></li>

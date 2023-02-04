@@ -1,6 +1,78 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+
+const Card = (props) => {
+  return (
+    <li className="card li_card ">
+      <div className="row">
+        <div className="col-lg-4">
+        <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
+        <p className="boy_icons_text">Worldtraveler</p>
+        </div>
+        <div className="col-8">
+        <span className="material-icons">{props.heading}</span>
+         <p className="material-heading">{props.paragraph}</p>
+         <img src="assets/img/help/star.png"/>
+
+        </div>
+      </div>
+      
+    </li>
+  )
+}
 
 const Home = () => {
+  const items = [
+    {
+        heading:"Best on the market.",
+        paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    },{
+        heading:"Best on the market.",
+        paragraph:'B.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    },{
+        heading:"Best on the market.",
+        paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    },{
+        heading:"Best on the market.",
+        paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    },{
+        heading:"Best on the market.",
+        paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    },{
+        heading:"Best on the market.",
+        paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+    }
+  ];
+  const [moveClass, setMoveClass] = useState('');
+  const [carouselItems, setCarouselItems] = useState(items);
+  //console.log(items, "carouselItemscarouselItemscarouselItemscarouselItemscarouselItems")
+  
+  useEffect(() => {
+    document.documentElement.style.setProperty('--num', carouselItems.length);
+  }, [carouselItems])
+  
+  const handleAnimationEnd = () => {
+    if(moveClass === 'prev'){
+      shiftNext([...carouselItems]);
+    }else if(moveClass === 'next'){
+      shiftPrev([...carouselItems]);
+    }
+    setMoveClass('')
+  }
+  
+  const shiftPrev = (paragraph) => {
+    let lastcard = paragraph.pop();
+    paragraph.splice(0, 0, lastcard);
+    setCarouselItems(paragraph);
+  }
+  
+  const shiftNext = (paragraph) => {
+    let firstcard = paragraph.shift();
+    paragraph.splice(paragraph.length, 0, firstcard);
+    setCarouselItems(paragraph);
+  }
+
+
     return(
         <>
          
@@ -50,9 +122,20 @@ const Home = () => {
                       <div className="row">
                         <div className="col-4">
                           <p className="send-text">You Send</p>
-                           <div className="bg-text">
-                             <p add-text>ADD </p>
-                           </div>  
+                           {/* <div className="bg-text"> */}
+                           <Dropdown>
+                            <Dropdown.Toggle  id="dropdown-basic" className="bg-text">
+                              ADD
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                              {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                            </Dropdown.Menu>
+                          </Dropdown>
+                                                  
+                           {/* </div>   */}
                         </div>
                         <div className="col-4">
                           <p className="get-text">They get</p>
@@ -101,6 +184,7 @@ const Home = () => {
                        <h1 className="vl-heading02">Why</h1>
                        <h1 className="vl-heading03"> RemitAssure ?</h1>
                     </div>
+                    
                     <ul className="list-">
                     <li className="">
                         <div className="circle-image">
@@ -278,25 +362,61 @@ const Home = () => {
         </div>
           {/* main row  End*/}
 
-
-          <div className="row">
+          <div className="row" id="testimonial-section">
             <div className="col-lg-12">
               <h3 className="customers-heading">What customers say about us</h3>
+              <div className="button_icons">
+                <button className="btn btn prev left_icon" onClick={() => setMoveClass('next')}>
+                  <i className="bx bx-chevron-left prev_button"></i>
+                </button>
+
+                <button className="btn btn next right_icon" onClick={() => setMoveClass('prev')}>
+                  <i className="bx bx-chevron-right "></i>
+                </button>
+
+              </div>
+              
               <p className="customers-paragraph">We do our best to provide you the best experience ever</p>
             </div>
           </div>
 
+
+          {/* start carousel cards */}
+
           <div className="row">
             <div className="col-lg-12">
-              <div className="view-button">
-                   <button className="btn btn call_button">Call Now</button>
-               </div>
+            <div className="carouselwrapper module-wrapper">
+              
+       {/* <div className="ui">
+         <button onClick={() => setMoveClass('next')} className="prev">
+           <span className="material-icons prev_button">chevron_left</span>
+         </button>
+         <button onClick={() => setMoveClass('prev')} className="next">
+           <span className="material-icons">chevron_right</span>
+         </button>
+       </div> */}
+       <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
+         {carouselItems.map((t, index) => 
+           <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
+           
+         )}
+       </ul>
+     </div>
+
+
+
+            
             </div>
           </div>
+
+        {/* start carousel cards */}
+
 
       </div>
     </section>
     {/* <!-- ======= Home Wide-Choice-Section End ======= --> */}
+
+
 
     {/* <!-- ======= Home Call-us section start======= --> */}
     <section className="why-us section-bgba banner_section01" data-aos="fade-up" date-aos-delay="200">

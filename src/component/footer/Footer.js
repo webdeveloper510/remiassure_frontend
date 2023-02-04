@@ -9,7 +9,12 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
 
-                <div className="col-lg-3 col-md-6 footer-links links">
+                <div className="col-lg-1 col-md-6 footer-links">
+                   <img src="assets/img/home/footer_icon.png"  alt="imge_footer_icons" className="footer_icon" />
+                </div>
+
+
+                <div className="col-lg-2 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
                     <li><i className="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -44,7 +49,7 @@ const Footer = () => {
                 </div>
 
                 <div className="col-lg-3 col-md-6 footer-info">
-                    <h3>About Moderna</h3>
+                    <h3>About RemitAssure</h3>
                     <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                     <div className="social-links mt-3">
                     <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>

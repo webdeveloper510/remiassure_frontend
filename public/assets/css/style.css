@@ -1415,6 +1415,96 @@ h1.vl-support {
 .accordion-content {
   padding: 1em 1.5em;
 }
+.answer-heading{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 50px;
+align-items: center;
+text-align: center;
+text-transform: capitalize;
+margin-top: 60px;
+color: #5287E0;
+}
+.answer-paragraph{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 30px;
+text-align: center;
+color: #000000;
+}
+.answer_button{
+width: 140px;
+height: 48px;
+background: #191970;
+border-radius: 10px;
+text-align: center;
+color: #fff;
+margin-left: 490px;
+margin-top: 30px;
+}
+.card-signup{
+  width: 450px;
+  height: 530px;
+  background: #FCFCFC;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+  top: 60px;
+  margin-left: 100px;
+}
+.Sign-heading{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 25px;
+text-align: center;
+color: #6414E9;
+}
+.signup_button{
+width: 140px;
+height: 56px;
+background: #191970;
+border-radius: 10px;
+text-align: center;
+color: #fff;
+margin-left: 150px;
+margin-top: 20px;
+}
+.form_signup{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 15px;
+color: #191970;
+padding-top: 30px;
+}
+.form_label{
+  padding-top: 15px;
+}
+.form_switch{
+padding-top: 10px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 15px;
+color: #191970;
+}
+.form_checkbox{
+  padding-top: 10px;
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: #191970;
+
+}
 
 
 

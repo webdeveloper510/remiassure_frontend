@@ -7,7 +7,6 @@ const Help = () => {
 
 
   // start objects RenderingArrayOfObjects
-
     function RenderingArrayOfObjects() {
       const data = [
         {
@@ -22,7 +21,7 @@ const Help = () => {
           src: "assets/img/help/Shape.png"
         },
         {
-          id: 2,
+          id: 3,
           name: "My Account",
           src: "assets/img/help/contact01.png"
         }
@@ -52,11 +51,10 @@ const Help = () => {
     </div>
       )
     }
-
  // start objects RenderingArrayOfObjects
 
 
-
+// start Accordion section 
  const Accordion = ({ title, children }) => {
   const [isOpen, setOpen] = React.useState(false);
   return (
@@ -74,6 +72,95 @@ const Help = () => {
     </div>
   );
 };
+// End Accordion section 
+
+// start Accordion functionality section 
+function AccordionArrayOfObjects() {
+  const dataarray = [
+    {
+      id: 1,
+      title:"Common Problems",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 2,
+      title:"Cancellations & Refunds",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 3,
+      title:"Where's my money?",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 4,
+      title:"Send money to over 130 countries with remitassure",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 5,
+      title:"Getting started with remitassure ",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 6,
+      title:"How to stay safe online - our security guide ",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 7,
+      title:"Refer a friend ",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 8,
+      title:"Money Not Received ",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 9,
+      title:"Payments",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 10,
+      title:"Troubleshooting",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+ 
+    {
+      id: 11,
+      title:"Identity Verification",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      id: 12,
+      title:"New Remitassure mobile app",
+      content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+ 
+  ];
+  const accordionItems = dataarray.map((value) => {
+    return(
+      <div className="accordion_content" key={value.id}>
+        <div className="wrapper">
+          <Accordion title={value.title}>
+            {value.content}
+          </Accordion>
+          
+        </div>    
+      </div>
+
+    )
+  })
+  return(
+    <div>
+      {accordionItems}
+    </div>
+  )
+}
+// End Accordion functionality section 
+
 
   return (
     <>
@@ -101,11 +188,9 @@ const Help = () => {
                                </div>
 
                                 <div className="row">
-                                
-                                <div className="col-md-12" id="align_list">
-                                <RenderingArrayOfObjects />
-                                </div>
-
+                                    <div className="col-md-12" id="align_list">
+                                     <RenderingArrayOfObjects />
+                                    </div>
                               </div>
 
                             </div>
@@ -130,40 +215,36 @@ const Help = () => {
           <div className="support-vl02">
               <h1 className="vl-support">Frequently asked questions FAQs</h1>
           </div>
-
-          <div className="accordion_content">
-            <div className="wrapper">
-              <Accordion title="Why is the sky blue?">
-                Sunlight reaches Earth's atmosphere and is scattered in all directions by
-                all the gases and particles in the air. Blue light is scattered more than
-                the other colors because it travels as shorter, smaller waves. This is why
-                we see a blue sky most of the time.
-              </Accordion>
-              <Accordion title="What's It Like Inside Jupiter?">
-                It's really hot inside Jupiter! No one knows exactly how hot, but
-                scientists think it could be about 43,000°F (24,000°C) near Jupiter's
-                center, or core.
-              </Accordion>
-              <Accordion title="What Is a Black Hole?">
-                A black hole is an area of such immense gravity that nothing -- not even
-                light -- can escape from it.
-              </Accordion>
-            </div>
-                  
-            </div>
-          
+          <div className="accrodion_contents">
+            <AccordionArrayOfObjects />
+          </div>
         </div>
+
         <div className="col-lg-6">
-          <p>lefmosdfmofmoe</p>
+         <div className="help_image">
+          <img src="assets/img/help/help_img01.png" alt="help_img01" />
+         </div>
         </div>
-
-    
       </div>
+
+      <div className="row">
+            <div className="col-lg-12">
+              <h3 className="answer-heading">Can't find your answers?</h3>
+              <p className="answer-paragraph">We're here for (day) -(day) 9:00-12:00 (country time).</p>
+              <p className="answer-paragraph">We speak english (languages)</p>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="view-button">
+                   <button className="btn btn answer_button">Contact Us</button>
+               </div>
+            </div>
+          </div>
     </div>
     
     </section>
-
-
  {/* <!-- ======= Help Frequently asked questions FAQs End-Section ======= --> */}
 
   

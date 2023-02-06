@@ -4,6 +4,7 @@ import Header from '../component/header/Header';
 import Footer from '../component/footer/Footer';
 import Aboutus from '../component/aboutus/Aboutus';
 import Help from '../component/help/Help';
+import Signup from '../component/signup/Signup';
 
 
 
@@ -19,6 +20,7 @@ const Routerpage =()=>{
     <Route exact path="/"  element={ <Home/>} /> 
     <Route exact path='/aboutus' element={ < Aboutus />} />
     <Route exact path='/help' element={ < Help />} />
+    <Route exact path='/signup' element={ <Signup />} />
     
     </Routes>
      

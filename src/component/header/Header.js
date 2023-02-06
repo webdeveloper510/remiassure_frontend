@@ -26,8 +26,12 @@ const Header =() => {
           <li>
             <NavLink to="/help">Help</NavLink>
           </li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="team.html">Team</a></li>
+          <li>
+            <NavLink to="/signup">Signup</NavLink>
+          </li>
+
+          <li><a href="team.html">Login</a></li>
+          
           <li><a href="blog.html">Blog</a></li>
           <li className="dropdown"><a href="#"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
             <ul>

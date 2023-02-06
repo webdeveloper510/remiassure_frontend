@@ -1,6 +1,179 @@
 import React,{useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 
+
+// start -----Why RemitAssure circle function
+function WhyRenderingArrayOfObjects(){
+  const dataItems = [
+    {
+      id:1,
+      src: "assets/img/home/Vector01.png",
+      circle_heading: "We're Safe",
+      circle_content: "We use industry-leading technology to protect your money.",
+    },
+    {
+      id:2,
+      src: "assets/img/home/Vector02.png",
+      circle_heading: "We're Safe",
+      circle_content: "We use industry-leading technology to protect your money.",
+    },
+    {
+      id:3,
+      src: "assets/img/home/Vector03.png",
+      circle_heading: "We're Low-Cost",
+      circle_content: " conventional banks and money transfer services.",
+    }
+  ];
+
+  const circlItems = dataItems.map((value) =>{
+    return(
+      <li className="">
+        <div className="circle-image">
+              <img src={value.src} alt="circle-image" />
+            </div>
+            <div className="circle-content">
+            <p className="fast_text">{value.circle_heading}</p>
+            <p className="fast_texto1">{value.circle_content}</p>
+        </div>
+     </li> 
+    )
+    
+  }) 
+  return(
+    <div>
+      {circlItems}
+    </div>
+  )
+}
+// End -----Why RemitAssure circle function
+
+// Start--- home Bank Transfer funstion 
+function BankTransferArrayOfObjects() {
+  const  bankItems = [
+    {
+      id: 1,
+      home_src: "assets/img/home/home.png",
+      bank_title: "Bank Transfer",
+      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+    },
+    {
+      id: 2,
+      home_src: "assets/img/home/home.png",
+      bank_title: "Bank Transfer",
+      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+    },
+    {
+      id: 3,
+      home_src: "assets/img/home/home.png",
+      bank_title: "Bank Transfer",
+      bank_contents: "Send a secure bank transfer <br /> Send a secure bank transfer <br />major banks worldwide.",  
+    },
+    {
+      id: 4,
+      home_src: "assets/img/home/home.png",
+      bank_title: "Bank Transfer",
+      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+    },
+  ];
+
+  const Tranferdata = bankItems.map((bankdata)=>{
+    return(
+      <ul class="bank_transfer">
+          <li>
+            <div className="bank_contents">
+                <img src={bankdata.home_src} alt="home_icons" className="home_icons" />
+                <h3 className="bank_transfer">{bankdata.bank_title}</h3>
+                  <p className="bank_paragraph">{bankdata.bank_contents}</p>
+            </div>
+        </li>
+      </ul>
+    )
+  })
+  return(
+    <div>
+      {Tranferdata}
+    </div>
+  )
+}
+// End--- home Bank Transfer funstion 
+
+
+// Start----- Flag home function 
+function FlagHomeArrayofoObjects() {
+  const flagData = [
+    {
+      id: 1,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+    {
+      id: 2,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+    {
+      id: 3,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+    {
+      id: 4,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+    {
+      id: 5,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+    {
+      id: 6,
+      flag_src: "assets/img/home/Mask group.png",
+      flag_title: "india",
+      flag_arrow_scr: "assets/img/home/arrow01.png",  
+    },
+  ];
+
+  const flagdataItems = flagData.map((flagvalue)=>{
+    return(
+      <div className="col-lg-6">
+        <div className="card card-flag01">
+
+          <div className="row">
+            <div className="col-4">
+                <div className="card-body">
+                  <img src={flagvalue.flag_src} alt="flag_icons" className="flag_icons" />
+                </div>
+            </div>
+
+            <div className="col-4">
+              <p className="india-text">{flagvalue.flag_title}</p>
+            </div>
+            
+            <div className="col-4">
+              <img src={flagvalue.flag_arrow_scr} alt="arrow_icons" className="arrow_icons" />
+            </div>
+          </div>
+          
+        </div>
+    </div>
+
+    )
+  })
+  return(
+    <div>
+      {flagdataItems}
+    </div>
+  )
+}
+// End----Flag home function 
+
+// card carousel start
 const Card = (props) => {
   return (
     <li className="card li_card ">
@@ -72,11 +245,11 @@ const Home = () => {
     setCarouselItems(paragraph);
   }
 
+  // End carousel End
+
 
     return(
         <>
-         
-
 
     {/* <!-- ======= Home Better-Way-Section  start======= --> */}
     <section className="why-us section-bgba banner_section" data-aos="fade-up" date-aos-delay="200">
@@ -167,7 +340,6 @@ const Home = () => {
     {/* <!-- ======= Home Better-Way-Section End-Section ======= --> */}
 
 
-
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
     <section className="why-us section-bg second_sec" data-aos="fade-up" date-aos-delay="200">
       <div className="container">
@@ -186,39 +358,8 @@ const Home = () => {
                     </div>
                     
                     <ul className="list-">
-                    <li className="">
-                        <div className="circle-image">
-                             <img src="assets/img/home/Vector01.png" alt="circle-image" />
-                          </div>
-                          <div className="circle-content">
-                          <p className="fast_text">We're Fast</p>
-                          <p className="fast_texto1">95% of our transfers are ready in<br />
-                           minutes.
-                           </p>
-                        </div>
-                    </li>
-                    <li className="">
-                        <div className="circle-image">
-                             <img src="assets/img/home/Vector02.png" alt="circle-image" />
-                          </div>
-                          <div className="circle-content">
-                          <p className="fast_text">We're Safe</p>
-                          <p className="fast_texto1">We use industry-leading technology to protect your money. </p>
-                        </div>
-                    </li> 
-                    <li className="">
-                        <div className="circle-image">
-                             <img src="assets/img/home/Vector03.png" alt="circle-image" />
-                          </div>
-                          <div className="circle-content">
-                          <p className="fast_text">We're Low-Cost</p>
-                          <p className="fast_texto1">We offer better exchange rates and lower fees than most    
-                           </p>
-                           <p className="fast_texto1"> conventional banks and money transfer services.   
-                           </p>
-                        </div>
-                    </li>                                                              
-                  </ul>
+                      < WhyRenderingArrayOfObjects />
+                    </ul>
 
                   </div>
 
@@ -230,7 +371,7 @@ const Home = () => {
 
 
                </div>
-                 {/* -----======= first row End ====--- */}
+           {/* -----======= first row End ====--- */}
 
 
              {/* -----======= second row start ====--- */}
@@ -253,17 +394,9 @@ const Home = () => {
                                 </div>
                                 </div>
                     
-                    
                     </div>
                  </div>
-                  {/* -----======= second row End ====--- */}
-
-
-
-
-                
-             
-            
+                  {/* -----======= second row End ====--- */}                         
             </div>
           </div>
         </div>
@@ -272,16 +405,13 @@ const Home = () => {
     </section>
     {/* <!-- ======= Home Why RemitAssure-Section End ======= --> */}
 
-
-
  {/* <!-- ======= Home Wide-Choice-Section  start======= --> */}
  <section className="why-us section-bgba banner_section05" data-aos="fade-up" date-aos-delay="200">
       <div className="container">
-       
+ 
        {/* main row  start*/}
         <div className="row">
           <div className="col-lg-12"> 
-        
 
                <div className="row">
                   <div className="col-lg-7">
@@ -312,45 +442,7 @@ const Home = () => {
                    
                    {/* bank first row start */}
                     <div className="row">
-                      <div className="col-lg-6">
-                          <div className="bank_contents">
-                            <img src="assets/img/home/home.png" alt="home_icons" className="home_icons" />
-                            <h3 className="bank_transfer">Bank Transfer</h3>
-                            <p className="bank_paragraph">Send a secure bank transfer<br />
-                            Send a secure bank transfer <br />major banks worldwide.</p>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="bank_contents">
-                              <img src="assets/img/home/home.png" alt="home_icons" className="home_icons" />
-                              <h3 className="bank_transfer">Bank Transfer</h3>
-                              <p className="bank_paragraph">Send a secure bank transfer<br />
-                              Send a secure bank transfer <br />major banks worldwide.</p>
-                          </div>
-                        </div>
-                    </div>
-                    {/* Bank first row  End */}
-
-                     {/* bank first row start */}
-                     <div className="row">
-                      <div className="col-lg-6">
-                          <div className="bank_contents">
-                            <img src="assets/img/home/home.png" alt="home_icons" className="home_icons" />
-                            <h3 className="bank_transfer">Bank Transfer</h3>
-                            <p className="bank_paragraph">Send a secure bank transfer<br />
-                            Send a secure bank transfer <br />major banks worldwide.</p>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="bank_contents">
-                              <img src="assets/img/home/home.png" alt="home_icons" className="home_icons" />
-                              <h3 className="bank_transfer">Bank Transfer</h3>
-                              <p className="bank_paragraph">Send a secure bank transfer<br />
-                              Send a secure bank transfer <br />major banks worldwide.</p>
-                          </div>
-                        </div>
+                      < BankTransferArrayOfObjects />
                     </div>
                     {/* Bank first row  End */}
 
@@ -380,7 +472,6 @@ const Home = () => {
             </div>
           </div>
 
-
           {/* start carousel cards */}
 
           <div className="row">
@@ -401,11 +492,7 @@ const Home = () => {
            
          )}
        </ul>
-     </div>
-
-
-
-            
+     </div>     
             </div>
           </div>
 
@@ -417,7 +504,6 @@ const Home = () => {
     {/* <!-- ======= Home Wide-Choice-Section End ======= --> */}
 
 
-
     {/* <!-- ======= Home Call-us section start======= --> */}
     <section className="why-us section-bgba banner_section01" data-aos="fade-up" date-aos-delay="200">
       <div className="container">
@@ -425,7 +511,6 @@ const Home = () => {
        {/* main row  start*/}
         <div className="row">
           <div className="col-lg-12"> 
-        
 
                <div className="row">
                   <div className="col-lg-6">
@@ -449,153 +534,15 @@ const Home = () => {
                   
                    {/* second section row  start */}
                   <div className="col-lg-6">
-
-                 {/* flag first row */}
+                  
+                   {/* first row flag */}
                     <div className="row">
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
-
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
-
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
+                     < FlagHomeArrayofoObjects/>
 
                     </div>
-                      {/* first row flag */}
-                   
-                   {/* second row flag */}
-                    <div className="row">
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
+                    {/* first row flag */}
 
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
-
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
-
-                    </div>
-                    {/* second row flag */}
-
-                     {/* second row flag */}
-                     <div className="row">
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
-
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                          <div className="card card-flag01">
-
-                            <div className="row">
-                              <div className="col-4">
-                                  <div className="card-body">
-                                    <img src="assets/img/home/Mask group.png" alt="flag_icons" className="flag_icons" />
-                                  </div>
-                              </div>
-
-                              <div className="col-4">
-                                <p className="india-text">india</p>
-                              </div>
-                              
-                              <div className="col-4">
-                                <img src="assets/img/home/arrow01.png" alt="arrow_icons" className="arrow_icons" />
-                              </div>
-                            </div>
-                            
-                          </div>
-                      </div>
-                    </div>
-                    {/* second row flag */}
-
+          
                     <div className="view-button">
                       <button className="btn btn view_button">View all</button>
                     </div>
@@ -605,7 +552,7 @@ const Home = () => {
                   {/* second section row  end */}
 
                </div>
-
+               
           </div>
         </div>
           {/* main row  End*/}

@@ -5,6 +5,7 @@ import Footer from '../component/footer/Footer';
 import Aboutus from '../component/aboutus/Aboutus';
 import Help from '../component/help/Help';
 import Signup from '../component/signup/Signup';
+import Referral from '../component/referral/Referral';
 
 
 
@@ -21,6 +22,7 @@ const Routerpage =()=>{
     <Route exact path='/aboutus' element={ < Aboutus />} />
     <Route exact path='/help' element={ < Help />} />
     <Route exact path='/signup' element={ <Signup />} />
+    <Route exact path='/referral' element = {< Referral />} />
     
     </Routes>
      

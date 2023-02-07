@@ -6,6 +6,7 @@ import Aboutus from '../component/aboutus/Aboutus';
 import Help from '../component/help/Help';
 import Signup from '../component/signup/Signup';
 import Referral from '../component/referral/Referral';
+import Login from '../component/login/Login';
 
 
 
@@ -23,7 +24,8 @@ const Routerpage =()=>{
     <Route exact path='/help' element={ < Help />} />
     <Route exact path='/signup' element={ <Signup />} />
     <Route exact path='/referral' element = {< Referral />} />
-    
+    <Route exact path='/login' element = {< Login /> }  />
+  
     </Routes>
      
     <Footer /> 

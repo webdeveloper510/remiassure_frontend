@@ -33,11 +33,9 @@ const Header =() => {
                       <NavLink to="/signup">Signup</NavLink>
                     </li>
 
-                    <li><a href="team.html">Login</a></li>
-
-                    <li><a href="blog.html">Blog</a></li>
-                  
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                      <NavLink to="/Login">Login</NavLink>
+                      </li>
                   </ul>
                   <i className="bi bi-list mobile-nav-toggle"></i>
                 </nav> 

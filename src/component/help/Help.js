@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from "react";
 import Img from "react-image";
+import Accordion from 'react-bootstrap/Accordion';
 
 const Help = () => {
 
@@ -52,27 +53,6 @@ const Help = () => {
       )
     }
  // start objects RenderingArrayOfObjects
-
-
-// start Accordion section 
- const Accordion = ({ title, children }) => {
-  const [isOpen, setOpen] = React.useState(false);
-  return (
-    <div className="accordion-wrapper">
-      
-      <div
-        className={`accordion-title ${isOpen ? "open" : ""}`}
-        onClick={() => setOpen(!isOpen)}
-        >
-        {title}
-      </div>
-      <div className={`accordion-item ${!isOpen ? "collapsed" : ""}`}>
-        <div className="accordion-content">{children}</div>
-      </div>
-    </div>
-  );
-};
-// End Accordion section 
 
 // start Accordion functionality section 
 function AccordionArrayOfObjects() {
@@ -142,14 +122,14 @@ function AccordionArrayOfObjects() {
   ];
   const accordionItems = dataarray.map((value) => {
     return(
-      <div className="accordion_content" key={value.id}>
-        <div className="wrapper">
-          <Accordion title={value.title}>
-            {value.content}
-          </Accordion>
-          
-        </div>    
-      </div>
+    <Accordion>
+    <Accordion.Item eventKey="0">
+      <Accordion.Header>{value.title}</Accordion.Header>
+      <Accordion.Body>
+      {value.content}
+      </Accordion.Body>
+    </Accordion.Item>
+    </Accordion>
 
     )
   })
@@ -164,7 +144,7 @@ function AccordionArrayOfObjects() {
 
   return (
     <>
- 
+    
     {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
     <section className="why-us section-bgba help_banner" data-aos="fade-up" date-aos-delay="200">
       <div className="container">
@@ -206,7 +186,6 @@ function AccordionArrayOfObjects() {
     </section>
     {/* <!-- ======= Help Better-Way-Section End-Section ======= --> */}
 
-
   {/* <!-- ======= Frequently asked questions FAQs  start======= --> */}
   <section className="why-us section-bgba" data-aos="fade-up" date-aos-delay="200">
     <div className="container">
@@ -246,12 +225,6 @@ function AccordionArrayOfObjects() {
     
     </section>
  {/* <!-- ======= Help Frequently asked questions FAQs End-Section ======= --> */}
-
-  
-
-
-
-
 
 
     </>

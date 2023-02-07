@@ -78,15 +78,15 @@ function BankTransferArrayOfObjects() {
 
   const Tranferdata = bankItems.map((bankdata)=>{
     return(
-      <ul class="bank_transfer">
+
           <li>
             <div className="bank_contents">
-                <img src={bankdata.home_src} alt="home_icons" className="home_icons" />
+                <img src={bankdata.home_src} alt="home_icons" className="bank_icons" />
                 <h3 className="bank_transfer">{bankdata.bank_title}</h3>
                   <p className="bank_paragraph">{bankdata.bank_contents}</p>
             </div>
         </li>
-      </ul>
+
     )
   })
   return(
@@ -141,6 +141,8 @@ function FlagHomeArrayofoObjects() {
 
   const flagdataItems = flagData.map((flagvalue)=>{
     return(
+
+      <li>
       <div className="col-lg-6">
         <div className="card card-flag01">
 
@@ -162,6 +164,7 @@ function FlagHomeArrayofoObjects() {
           
         </div>
     </div>
+    </li>
 
     )
   })
@@ -253,157 +256,146 @@ const Home = () => {
 
     {/* <!-- ======= Home Better-Way-Section  start======= --> */}
     <section className="why-us section-bgba banner_section" data-aos="fade-up" date-aos-delay="200">
-      <div className="container">
-
+    <div className="container">
         <div className="row">
-          <div className="col-lg-12"> 
-            <div className="backgound-img" >
+            <div className="col-lg-12">
+                <div className="backgound-img">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="vl">
+                                <h1 className="vl-heading">A Better Way</h1>
+                                <h1 className="vl-heading01">To Send Money</h1>
+                            </div>
 
-               <div className="row">
-                  <div className="col-lg-6">
-
-                    <div className="vl">
-                       <h1 className="vl-heading">A Better Way</h1>
-                       <h1 className="vl-heading01">To Send Money</h1>
+                            <div className="vl-content">
+                                <p className="vl-paragraph">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                                </p>
+                                <p className="vl-paragraph">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                                </p>
+                                <p className="vl-paragraph">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="vl-content">
-                      <p className="vl-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br/>
-                      malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                      </p>
-                      <p className="vl-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br/>
-                      malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                      </p>
-                      <p className="vl-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br/>
-                      malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                      </p>
+                    {/* start-- card */}
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="card card-flag">
+                                <div className="card-body">
+                                    <h6 className="exchange-heading">EXCHANGE RATE</h6>
+                                    <p className="calculation">1 AUD = 0.59476 USD</p>
+
+                                    <div className="row">
+                                        <div className="col-4">
+                                            <p className="send-text">You Send</p>
+                                            {/*
+                                            <div className="bg-text">
+                                                */}
+                                                <Dropdown>
+                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
+                                                        ADD
+                                                    </Dropdown.Toggle>
+
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                        {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
+
+                                                {/*
+                                            </div>
+                                            */}
+                                        </div>
+                                        <div className="col-4">
+                                            <p className="get-text">They get</p>
+                                            <div className="bg-text01">
+                                                <p add-text>ADD</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-4">
+                                            <p className="recived-text">Receive method</p>
+                                            <div className="bg-text02">
+                                                <p add-text>ADD</p>
+                                            </div>
+                                            <button className="btn btn continue-button">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                  </div>
-
-          
-               </div>
-
-               {/* start-- card */}
-               <div className="row">
-                  <div className="col-lg-12">
-                  <div className="card card-flag">
-                    <div className="card-body">
-                      <h6 className="exchange-heading">EXCHANGE RATE</h6>
-                      <p className="calculation">1 AUD = 0.59476 USD</p>
-
-                      <div className="row">
-                        <div className="col-4">
-                          <p className="send-text">You Send</p>
-                           {/* <div className="bg-text"> */}
-                           <Dropdown>
-                            <Dropdown.Toggle  id="dropdown-basic" className="bg-text">
-                              ADD
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                              {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
-                            </Dropdown.Menu>
-                          </Dropdown>
-                                                  
-                           {/* </div>   */}
-                        </div>
-                        <div className="col-4">
-                          <p className="get-text">They get</p>
-                          <div className="bg-text01">
-                             <p add-text>ADD </p>
-                           </div> 
-                        </div>
-                        <div className="col-4">
-                          <p className="recived-text">Receive method</p>
-                          <div className="bg-text02">
-                             <p add-text>ADD </p>
-                           </div> 
-                           <button className="btn btn continue-button">Continue</button>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-               </div>
-              {/* End-- card */}
-            
+                    {/* End-- card */}
+                </div>
             </div>
-          </div>
         </div>
+    </div>
+</section>
 
-      </div>
-    </section>
     {/* <!-- ======= Home Better-Way-Section End-Section ======= --> */}
-
 
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
     <section className="why-us section-bg second_sec" data-aos="fade-up" date-aos-delay="200">
-      <div className="container">
-
+    <div className="container">
         <div className="row">
-          <div className="col-lg-12"> 
-            <div className="bg_sec" >
+            <div className="col-lg-12">
+                <div className="bg_sec">
+                    {/* -----======= first row start ====--- */}
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="vl01">
+                                <h1 className="vl-heading02">Why</h1>
+                                <h1 className="vl-heading03">RemitAssure ?</h1>
+                            </div>
 
-               {/* -----======= first row start ====--- */}
-               <div className="row">
-                  <div className="col-lg-6">
+                            <ul className="list-">
+                                < WhyRenderingArrayOfObjects />
+                            </ul>
+                        </div>
 
-                    <div className="vl01">
-                       <h1 className="vl-heading02">Why</h1>
-                       <h1 className="vl-heading03"> RemitAssure ?</h1>
+                        <div className="col-lg-6">
+                            <div className="background-images01">
+                                <img src="assets/img/home/img02.png" alt="background-images" />
+                            </div>
+                        </div>
                     </div>
-                    
-                    <ul className="list-">
-                      < WhyRenderingArrayOfObjects />
-                    </ul>
-
-                  </div>
-
-                  <div className="col-lg-6">
-                    <div className="background-images01">
-                        <img src="assets/img/home/img02.png" alt="background-images" />
-                     </div>
-                  </div>
-
-
-               </div>
-           {/* -----======= first row End ====--- */}
-
-
-             {/* -----======= second row start ====--- */}
-                 <div className="row">
-                 <div className="col-lg-6">
-                      <div className="imge01">
-                        <img src="assets/img/home/img03.png" alt="background-images" />
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                         <div class="vl same_vl">
-                            <h1 class="vl-heading">A Better Way</h1><h1 class="vl-heading01">To Send Money</h1></div>
+                    {/* -----======= first row End ====--- */} {/* -----======= second row start ====--- */}
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="imge01">
+                                <img src="assets/img/home/img03.png" alt="background-images" />
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div class="vl same_vl">
+                                <h1 class="vl-heading">A Better Way</h1>
+                                <h1 class="vl-heading01">To Send Money</h1>
+                            </div>
                             <p class="vl-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis</p>
                             <div className="link">
-                                 <div className="left_link">
-                                 <img src="assets/img/home/Group 01.png" alt="home_icons" className="home_icons" />
-                                  </div>                 
+                                <div className="left_link">
+                                    <img src="assets/img/home/Group 01.png" alt="home_icons" className="home_icons" />
+                                </div>
                                 <div className="rihjt_link">
-                                <img src="assets/img/home/Group 02.png" alt="home_icons" className="home_icons" />
+                                    <img src="assets/img/home/Group 02.png" alt="home_icons" className="home_icons" />
                                 </div>
-                                </div>
-                    
+                            </div>
+                        </div>
                     </div>
-                 </div>
-                  {/* -----======= second row End ====--- */}                         
+                    {/* -----======= second row End ====--- */}
+                </div>
             </div>
-          </div>
         </div>
+    </div>
+</section>
 
-      </div>
-    </section>
-    {/* <!-- ======= Home Why RemitAssure-Section End ======= --> */}
+  {/* <!-- ======= Home Why RemitAssure-Section End ======= --> */}
 
  {/* <!-- ======= Home Wide-Choice-Section  start======= --> */}
  <section className="why-us section-bgba banner_section05" data-aos="fade-up" date-aos-delay="200">
@@ -442,7 +434,9 @@ const Home = () => {
                    
                    {/* bank first row start */}
                     <div className="row">
-                      < BankTransferArrayOfObjects />
+                      <ul class="bank_transfer">
+                        < BankTransferArrayOfObjects />
+                        </ul>
                     </div>
                     {/* Bank first row  End */}
 
@@ -537,7 +531,9 @@ const Home = () => {
                   
                    {/* first row flag */}
                     <div className="row">
+                    <ul class="bank_transfer">
                      < FlagHomeArrayofoObjects/>
+                     </ul>
 
                     </div>
                     {/* first row flag */}
@@ -556,7 +552,6 @@ const Home = () => {
           </div>
         </div>
           {/* main row  End*/}
-
           <div className="row">
             <div className="col-lg-12">
               <h3 className="cal-heading">Call to us</h3>
@@ -564,7 +559,6 @@ const Home = () => {
                 incididunt ut labore et dolore magna aliqua. Facilisi morbi tempus iaculis urna.</p>
             </div>
           </div>
-
           <div className="row">
             <div className="col-lg-12">
               <div className="view-button">
@@ -572,7 +566,6 @@ const Home = () => {
                </div>
             </div>
           </div>
-
       </div>
     </section>
      {/* <!-- ======= Home Call-us section End======= --> */}

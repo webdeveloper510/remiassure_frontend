@@ -7,6 +7,7 @@ import Help from '../component/help/Help';
 import Signup from '../component/signup/Signup';
 import Referral from '../component/referral/Referral';
 import Login from '../component/login/Login';
+import ForgotPassword from '../component/forgotpassword/ForgotPassword';
 
 
 
@@ -25,6 +26,7 @@ const Routerpage =()=>{
     <Route exact path='/signup' element={ <Signup />} />
     <Route exact path='/referral' element = {< Referral />} />
     <Route exact path='/login' element = {< Login /> }  />
+    <Route exact path='/forgotpassword' element= {< ForgotPassword /> } />
   
     </Routes>
      

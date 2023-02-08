@@ -8,6 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 const Card = (props) => {
     return (
       <li className="card li_card ">
+         <img src="assets/img/referral/Group.png" alt="quote-up" className="Group_icons" />
         <div className="row">      
           <div className="col-md-12">
             <div class="testimonial-text">
@@ -24,7 +25,8 @@ const Card = (props) => {
                 <p className="testimonial_icons_text">Lorem Ipsum is simply</p>
             </div>
           </div> 
-        </div>      
+        </div>   
+        {/* <img src="assets/img/home/quote-down.png" alt="quote-up" className="quotdown_icons" />    */}
       </li>
     )
   }
@@ -149,6 +151,8 @@ const Referral = () => {
             </div>
         )
     }
+
+    
     //    Why Function Start 
 
     const items = [

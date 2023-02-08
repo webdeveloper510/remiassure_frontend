@@ -123,12 +123,12 @@ function AccordionArrayOfObjects() {
   const accordionItems = dataarray.map((value) => {
     return(
     <Accordion>
-    <Accordion.Item eventKey="0">
-      <Accordion.Header>{value.title}</Accordion.Header>
-      <Accordion.Body>
-      {value.content}
-      </Accordion.Body>
-    </Accordion.Item>
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>{value.title}</Accordion.Header>
+          <Accordion.Body>
+          {value.content}
+          </Accordion.Body>
+      </Accordion.Item> 
     </Accordion>
 
     )

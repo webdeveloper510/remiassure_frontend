@@ -1,6 +1,127 @@
-import React from "react";
+import React, { Component } from "react";
+
 
 const Footer = () => {
+
+// Navigator Footer Content Start 
+    function NavigationFooterArrayObjects() {
+        const navigationData = [
+        {
+            id: 1,
+            content: "Home",
+        },
+        {
+            id: 2,
+            content: "About Us",
+        },
+        {
+            id: 3,
+            content: "What We Do",
+        },
+        {
+            id: 4,
+            content: "To The Power of 10",
+        },
+        {
+            id: 5,
+            content: "Donate",
+        },
+
+        ];
+
+        const NavigationItems = navigationData.map((value) => {
+            return(
+                <li>
+                 <a href="#">{value.content}</a>
+                </li>
+            )
+        })
+
+        return(
+            <div>
+                {NavigationItems}
+            </div>
+        )
+    }
+// Navigator Footer Content End 
+
+//What We Do Footer content Start
+function WeDoArrayObjects(){
+    const data = [
+        {
+          id:'1',
+          title: "Encouraging Testing",
+        },
+        {
+          id:'2',
+          title: "Strengthening Advocacy",
+        },
+        {
+          id:'3',
+          title: "Sharing Information",
+        },
+        {
+          id:'4',
+          title: "Building Leadership",
+        },
+        {
+          id:'5',
+          title: "Engaging With Global Fund",
+        },
+         {
+          id:'6',
+          title: "Shining a Light",
+        },
+    ];
+
+    const wedoItems = data.map((element)=>{
+        return(
+             <li>
+                 <a href="#">{element.title}</a>
+             </li>
+        )
+    })
+    return(
+        <div>
+            {wedoItems}
+        </div>
+    )
+}
+//What We Do Footer content End
+
+//Legal Footer content Start
+function LegalArrayObjects(){
+    const legalData = [
+        {
+            id:1,
+            content: "General Info",
+        },
+         {
+            id:2,
+            content: "Privacy Policy",
+        },
+        {
+            id:3,
+            content: "Terms of Service",
+        },
+    ];
+
+    const lagalItems = legalData.map((legal)=>{
+        return(
+            <li>
+            <a href="#">{legal.content}</a>
+        </li>
+            
+        )
+    })
+    return(
+        <div>
+            {lagalItems}
+        </div>
+    )
+}
+//Legal Footer content End
+
     return(
         <>
          {/* <!-- ======= Footer ======= --> */}
@@ -15,42 +136,34 @@ const Footer = () => {
 
 
                 <div className="col-lg-2 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Navigation</h4>
                     <ul>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                     <NavigationFooterArrayObjects />
                     </ul>
                 </div>
 
                 <div className="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>What We Do</h4>
                     <ul>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                    <li><i className="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                      < WeDoArrayObjects/>
                     </ul>
                 </div>
 
-                <div className="col-lg-3 col-md-6 footer-contact">
-                    <h4>Contact Us</h4>
-                    <p>
-                    A108 Adam Street <br />
-                    New York, NY 535022<br />
-                    United States <br/>
-                    <strong>Phone:</strong> +1 5589 55488 55<br/>
-                    <strong>Email:</strong> info@example.com<br/>
-                    </p>
+                <div className="col-lg-3 col-md-6 footer-links">
+                    <h4>Legal</h4>
+                     <ul>
+                       < LegalArrayObjects />
+                     </ul>
 
                 </div>
 
                 <div className="col-lg-3 col-md-6 footer-info">
-                    <h3>About RemitAssure</h3>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <h3>Contact Us</h3>
+                        <img src="assets/img/footer/email.png" alt="emai_icons" className="email_icons" />                  
+                        <p> support@ercom.com </p>
+
+                        <img src="assets/img/footer/phone.png" alt="phone_icons" className="phone_icons" />                  
+                        <p> +66 2399 1145</p>
                     <div className="social-links mt-3">
                     <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
                     <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
@@ -64,9 +177,22 @@ const Footer = () => {
             </div>
 
             <div className="container">
-            <div className="copyright">
-                &copy; Copyright <strong><span>Remit-Assure</span></strong>. All Rights Reserved
+            <div className="row">
+                <div className="col-lg-2">
+                    <div className="Smartitude_content">
+                    Smartitude
+                    </div>
+                </div>
+
+                <div className="col-lg-10">
+                   
+                    <div className="copyright">
+                        &copy; Copyright <strong><span>Remit-Assure</span></strong>. All Rights Reserved
+                    </div>
+                </div>
             </div>
+           
+
             <div className="credits">
             
             </div>

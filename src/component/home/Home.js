@@ -145,7 +145,6 @@ function FlagHomeArrayofoObjects() {
       <li>
       <div className="col-lg-6">
         <div className="card card-flag01">
-
           <div className="row">
             <div className="col-4">
                 <div className="card-body">
@@ -178,21 +177,22 @@ function FlagHomeArrayofoObjects() {
 
 // card carousel start
 const Card = (props) => {
+  console.log(props,"propspropspropsprops")
   return (
     <li className="card li_card ">
+         <img src="assets/img/home/quote-up.png" alt="quote-up" className="quotup_icons" />
       <div className="row">
-        <div className="col-lg-4">
-        <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
-        <p className="boy_icons_text">Worldtraveler</p>
-        </div>
-        <div className="col-8">
-        <span className="material-icons">{props.heading}</span>
-         <p className="material-heading">{props.paragraph}</p>
-         <img src="assets/img/help/star.png"/>
-
-        </div>
+          <div className="col-lg-4">
+              <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
+              <p className="boy_icons_text">Worldtraveler</p>
+            </div>
+            <div className="col-8">
+              <span className="material-icons">{props.heading}</span>
+              <p className="material-heading">{props.paragraph}</p>
+              <img src="assets/img/help/star.png"/>
+           </div>
       </div>
-      
+      <img src="assets/img/home/quote-down.png" alt="quote-up" className="quotdown_icons" />
     </li>
   )
 }
@@ -295,9 +295,6 @@ const Home = () => {
                                     <div className="row">
                                         <div className="col-4">
                                             <p className="send-text">You Send</p>
-                                            {/*
-                                            <div className="bg-text">
-                                                */}
                                                 <Dropdown>
                                                     <Dropdown.Toggle id="dropdown-basic" className="bg-text">
                                                         ADD
@@ -305,25 +302,35 @@ const Home = () => {
 
                                                     <Dropdown.Menu>
                                                         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                                        {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+
                                                     </Dropdown.Menu>
                                                 </Dropdown>
-
-                                                {/*
-                                            </div>
-                                            */}
                                         </div>
                                         <div className="col-4">
                                             <p className="get-text">They get</p>
-                                            <div className="bg-text01">
-                                                <p add-text>ADD</p>
-                                            </div>
+                                            <Dropdown>
+                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
+                                                        ADD
+                                                    </Dropdown.Toggle>
+
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
                                         </div>
                                         <div className="col-4">
                                             <p className="recived-text">Receive method</p>
-                                            <div className="bg-text02">
-                                                <p add-text>ADD</p>
-                                            </div>
+                                            <Dropdown>
+                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
+                                                        ADD
+                                                    </Dropdown.Toggle>
+
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
                                             <button className="btn btn continue-button">Continue</button>
                                         </div>
                                     </div>
@@ -471,22 +478,15 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-12">
             <div className="carouselwrapper module-wrapper">
-              
-       {/* <div className="ui">
-         <button onClick={() => setMoveClass('next')} className="prev">
-           <span className="material-icons prev_button">chevron_left</span>
-         </button>
-         <button onClick={() => setMoveClass('prev')} className="next">
-           <span className="material-icons">chevron_right</span>
-         </button>
-       </div> */}
-       <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
-         {carouselItems.map((t, index) => 
-           <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
-           
-         )}
-       </ul>
-     </div>     
+
+              <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
+                {carouselItems.map((t, index) => 
+                  <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
+                  
+                )}
+              </ul>
+
+            </div>     
             </div>
           </div>
 

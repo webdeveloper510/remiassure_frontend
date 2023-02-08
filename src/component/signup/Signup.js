@@ -1,13 +1,14 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { NavLink, Link } from "react-router-dom";
 
 
 const Signup = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba help_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba signup_banner" data-aos="fade-up" date-aos-delay="200">
     <div className="container">
         <div className="row">
             <div className="col-lg-6">
@@ -61,6 +62,9 @@ const Signup = () => {
                                         <button variant="primary" type="submit" className="signup_button">
                                             Sign Up
                                         </button>
+                                        <p className="already_content">Already have an account? 
+                                          <NavLink to="/login"> Sign in</NavLink>
+                                        </p>
                                     </form>
                                 </div>
                             </div>

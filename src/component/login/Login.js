@@ -1,6 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {Links, NavLink} from 'react-router-dom';
 
 
 const Login = () => {
@@ -35,14 +36,24 @@ const Login = () => {
                                             <Form.Label> Your Password</Form.Label>
                                             <Form.Control type="password" placeholder="Password" />
                                         </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                            <Form.Check type="checkbox" label="Check me out" />
-                                        </Form.Group>
+                                      
+                                        <div className="row">
+                                            <div className="col-lg-6">
+                                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                                    <Form.Check type="checkbox" label="Check me out" />
+                                                </Form.Group>
+                                            </div>
+                                            <div className="col-lg-6">
+                                               <NavLink className="forgot_pass" to="/forgotpassword"> Forgot password?</NavLink>
+                                            </div>
+                                        </div>
 
                                         <button variant="primary" type="submit" className="login_button">
                                             Login
                                         </button>
+                                        <p className="already_content">Don't have account? 
+                                          <NavLink to="/signup"> Sign-up</NavLink>
+                                        </p>
                                     </form>
                                 </div>
                             </div>

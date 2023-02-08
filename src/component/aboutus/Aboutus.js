@@ -1,96 +1,324 @@
-import React,{useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 
+
+// card carousel start
 const Card = (props) => {
-  return (
-    <li className="card">
-      <span className="material-icons">{props.icon}</span>
-      <p>{props.copy}</p>
-    </li>
-  )
-}
+   return (
+     <li className="card li_card ">
+        <img src="assets/img/home/quote-up.png" alt="quote-up" className="quotup_icons" />
+       <div className="row">
+         <div className="col-lg-4">
+         <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
+         <p className="boy_icons_text">Worldtraveler</p>
+         </div>
+         <div className="col-8">
+         <span className="material-icons">{props.heading}</span>
+          <p className="material-heading">{props.paragraph}</p>
+          <img src="assets/img/help/star.png"/>
+ 
+         </div>
+       </div>
+       <img src="assets/img/home/quote-down.png" alt="quote-up" className="quotdown_icons" />
+     </li>
+   )
+ }
 
 const Aboutus = () => {
-  const items = [
-    {
-        icon:"face",
-        copy:'01. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },{
-        icon:"pets",
-        copy:'02. Sed do eiusmod tempor incididunt ut labore.'
-    },{
-        icon:"stars",
-        copy:'03. Consectetur adipiscing elit.'
-    },{
-        icon:"invert_colors",
-        copy:'04. Ut enim ad minim veniam, quis nostrud exercitation.'
-    },{
-        icon:"psychology",
-        copy:'05. Llamco nisi ut aliquip ex ea commodo consequat.'
-    },{
-        icon:"brightness_7",
-        copy:'06. Misi ut aliquip ex ea commodo consequat.'
-    }
-  ];
-  const [moveClass, setMoveClass] = useState('');
-  const [carouselItems, setCarouselItems] = useState(items);
-  
-  useEffect(() => {
-    document.documentElement.style.setProperty('--num', carouselItems.length);
-  }, [carouselItems])
-  
-  const handleAnimationEnd = () => {
-    if(moveClass === 'prev'){
-      shiftNext([...carouselItems]);
-    }else if(moveClass === 'next'){
-      shiftPrev([...carouselItems]);
-    }
-    setMoveClass('')
-  }
-  
-  const shiftPrev = (copy) => {
-    let lastcard = copy.pop();
-    copy.splice(0, 0, lastcard);
-    setCarouselItems(copy);
-  }
-  
-  const shiftNext = (copy) => {
-    let firstcard = copy.shift();
-    copy.splice(copy.length, 0, firstcard);
-    setCarouselItems(copy);
-  }
+   
+   // Aboutus-Our-Vission-Icons function Start
+   function OurVissionArrayObjects(){
+      const vissionData = [
+         {
+            id: 1,
+            vission_src:"assets/img/about/1st_icons.png",
+            vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
+         },
+         {
+            id: 2,
+            vission_src:"assets/img/about/02nd_icons.png",
+            vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
+         },
+         {
+            id: 3,
+            vission_src:"assets/img/about/03thired_icons.png",
+            vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
+         },
+         {
+            id: 4,
+            vission_src:"assets/img/about/04four_icons.png",
+            vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
+         },
+         
+      ];
+      
+      const VissionItems = vissionData.map((vission) =>{
+         return(
+            <li>
+               <img src={vission.vission_src} alt="alt_image"/>
+               <p>{vission.vission_content}</p>
+           </li>
+         )
+      })
+      return(
+         <div>
+            {VissionItems}
+         </div>
+      )
+   }
+   
+  // Aboutus-Our-Vission-Icons function End
 
-  return (
-    <>
-      {/* <!-- ======= Home Better-Way-Section  start======= --> */}
-      <section className="why-us section-bgba banner_section" data-aos="fade-up" date-aos-delay="200">
-        <div className="container">
-          <div className="row">
-          <div className="carouselwrapper module-wrapper">
-       <div className="ui">
-         <button onClick={() => setMoveClass('next')} className="prev">
-           <span className="material-icons prev_button">chevron_left</span>
-         </button>
-         <button onClick={() => setMoveClass('prev')} className="next">
-           <span className="material-icons">chevron_right</span>
-         </button>
-       </div>
-       <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
-         {carouselItems.map((t, index) => 
-           <Card key={t.copy + index} icon={t.icon} copy={t.copy} />
-           
-         )}
-       </ul>
-     </div>
+    //    Why Function Start 
+    function WhyIconsRenderingArrayOfObjects(){
+      const whydata=[
+          {
+              id: "1",
+              icon_src: "assets/img/referral/Vector01.png",
+              icon_title:"We’re Secure",
+              icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+
+          },
+          {
+              id: "2",
+              icon_src: "assets/img/referral/Vector02.png",
+              icon_title:"We're Fast",
+              icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+
+          },
+          {
+              id: "3",
+              icon_src: "assets/img/referral/Vector02.png",
+              icon_title:"We’re Cost-effective",
+              icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+
+          }, 
+          {
+              id: "4",
+              icon_src: "assets/img/referral/Vector03.png",
+              icon_title:"We’re Innovative",
+              icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+
+          },
+      ];
+      const ArrayIconsIttems = whydata.map((icon)=>{
+          return(
+              
+                  <li>
+                  <div className="circle-icons">
+                      <img src={icon.icon_src} alt="circle-image" />
+                      </div>
+                      <div className="circle-content">
+                      <p className="why_text">{icon.icon_title}</p>
+                      <p className="why_texto1">{icon.icon_content}</p>
+                  </div>
+
+                  </li>
+             
+          )
+      })
+      return(
+          <div>
+              {ArrayIconsIttems}
           </div>
-        </div>
-      </section>
-      {/* <!-- ======= Home Better-Way-Section End-Section ======= --> */}
+      )
+  }
+  //    Why Function End 
+
+
+  //    Carousel  Function Start 
+
+  const items = [
+   {
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   },{
+       heading:"Best on the market.",
+       paragraph:'B.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   },{
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   },{
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   },{
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   },{
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+   }
+ ];
+ const [moveClass, setMoveClass] = useState('');
+ const [carouselItems, setCarouselItems] = useState(items);
+ //console.log(items, "carouselItemscarouselItemscarouselItemscarouselItemscarouselItems")
+ 
+ useEffect(() => {
+   document.documentElement.style.setProperty('--num', carouselItems.length);
+ }, [carouselItems])
+ 
+ const handleAnimationEnd = () => {
+   if(moveClass === 'prev'){
+     shiftNext([...carouselItems]);
+   }else if(moveClass === 'next'){
+     shiftPrev([...carouselItems]);
+   }
+   setMoveClass('')
+ }
+ 
+ const shiftPrev = (paragraph) => {
+   let lastcard = paragraph.pop();
+   paragraph.splice(0, 0, lastcard);
+   setCarouselItems(paragraph);
+ }
+ 
+ const shiftNext = (paragraph) => {
+   let firstcard = paragraph.shift();
+   paragraph.splice(paragraph.length, 0, firstcard);
+   setCarouselItems(paragraph);
+ }
+
+ // End carousel End
+
+
+
+    return(
+        <>
+         
+ {/* <!-- ======= AboutUs Our vission and mission-Section  start======= --> */}
+    <section className="why-us section-bgba banner_section about_banner" data-aos="fade-up" date-aos-delay="200">
+   <div id="about">
+      <div className="container">
+         <div className="row">
+            <div className="col-sm-8">
+               <div className="vl about_v1">
+                  <h1 className="vl-heading">About Us</h1>
+                  <div className="vl-content about_content">
+                     <p>Our vission and mission statement will go here</p>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam erat velit scelerisque in dictum. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id. Ornare suspendisse sed nisi lacus sed viverra tellus in. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Convallis convallis tellus id interdum velit laoreet id. Nunc non blandit massa enim nec dui nunc mattis enim. Consequat id porta nibh venenatis cras. Faucibus et molestie ac feugiat sed lectus vestibulum. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Nulla facilisi etiam dignissim diam quis. Ultrices dui sapien eget mi proin sed. Fermentum et sollicitudin ac orci. Faucibus scelerisque eleifend donec pretium. Sed sed risus pretium quam. Lectus quam id leo in vitae. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci.</p>
+                  </div>
+               </div>
+            </div>
+            <div className="col-sm-4 right_side">
+               <img src="assets/img/about/right_about.png" /> 
+            </div>
+         </div>
+         <div className="bottpm_banner">
+            <div className="row">
+               <ul className="About_why-ramit-assure">
+                  <OurVissionArrayObjects />
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+    {/* <!-- ======= AboutUs Our vission and mission-Section  End======= --> */}
+
+
+
+ {/* <!-- ======= AboUs Why RemitAssure-Section  start======= --> */}
+ <section  className="why-us section-bgba aos-init aos-animate" data-aos="fade-up" date-aos-delay="200">
+      <div className="container">
+
+         <div className="row">
+            <div className="col-sm-12">
+               <div className="vl about_v1">
+                  <h1 className="vl-heading">Why RemitAssure ?</h1>
+                  <div className="about_why_heading">
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div className="row">
+            <div className="col-md-12 col-lg-12">
+               <ul className="about_why-ramit-assure">
+                 < WhyIconsRenderingArrayOfObjects />
+               </ul>
+            </div>                  
+         </div> 
+       
+      </div>
+</section>
+  {/* <!-- ======= AboUs Why RemitAssure-Section  End======= --> */}
+
+   {/* <!-- ======= Testimonial-Section  start======= --> */}
+   <section className="why-us section-bgba why_banner aos-init aos-animate" data-aos="fade-up" date-aos-delay="200">
+            <div className="container">
+        
+            {/* main row  start*/}
+             <div className="row">
+                <div className="col-lg-10"> 
+                    <div className="testimonial_vl">
+                        <h1 className="chose-heading">What customers say about us</h1>                
+                    </div>
+                </div>
+                <div className="col-lg-2">
+                    <div className="button_icons">
+                        <button className="btn btn prev left_icon" onClick={() => setMoveClass('next')}>
+                        <i className="bx bx-chevron-left prev_button"></i>
+                        </button>
+
+                        <button className="btn btn next right_icon" onClick={() => setMoveClass('prev')}>
+                        <i className="bx bx-chevron-right "></i>
+                        </button>
+
+                    </div>
+                </div>
+             </div>
+
+                <div className="row">
+                    <div className="col-lg-12">
+                        <p className="review_content">We do our best to provide you the best experience ever
+                        </p>
+                    </div>
+                </div>
+
+                {/* carousel start  */}
+                <div className="row">
+                    <div className="col-col-lg-12">
+                    <div className="carouselwrapper module-wrapper">
+              
+                        {/* <div className="ui">
+                            <button onClick={() => setMoveClass('next')} className="prev">
+                            <span className="material-icons prev_button">chevron_left</span>
+                            </button>
+                            <button onClick={() => setMoveClass('prev')} className="next">
+                            <span className="material-icons">chevron_right</span>
+                            </button>
+                        </div> */}
+                        <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
+                            {carouselItems.map((t, index) => 
+                            <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
+                            
+                            
+                            )}
+                        </ul>
+                        </div>     
+                       </div>
+                    
+                </div>
+                    {/* carousel End  */}
+
+
+            {/* main row  End*/}
+
+            </div>
+            </section>
+    {/* <!-- ======= Home Testimonial-Section End ======= --> */}     
+
+
+
+
+
+
+
 
     </>
-  )
+    )
 }
 
 export default Aboutus; 
-

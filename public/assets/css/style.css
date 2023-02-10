@@ -499,7 +499,7 @@ section {
 --------------------------------------------------------------*/
 .banner_section {
   background-image: url(/assets/img/home/bg03.jpg);
-  height: 730px;
+  height: 830px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -556,15 +556,18 @@ padding-left: 10px;
 
   .card-flag{
     position: absolute;
-    width: 1180px;
     height: 134px;
-    left: 50px;
-    top: 527px;;
+    top: 627px;;
     background: #FCFCFC;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.16);
     border-radius: 12px;
-    margin-left: 60px;
+
   }
+  input.form-control {
+    border: 1px solid #EAEAEA;
+    border: 1px solid #EAEAEA;
+    border-radius: 13px;
+}
   .exchange-heading{
     font-family: 'Montserrat';
     font-style: normal;
@@ -613,7 +616,6 @@ padding-left: 10px;
     line-height: 15px;
     text-align: center;
     color: #191970;
-    margin-left: -235px;
   }
   .bg-text p{
     font-family: 'Montserrat';
@@ -629,24 +631,34 @@ padding-left: 10px;
   }
   .bg-text{
     width: 52.75px;
-    height: 29.81px;
+    height: 34.81px;
     background: #0AEDC7;
     border-radius: 0px 13px 13px 0px;
     margin-left: 357px;
     color: #000000;
     font-size: 12px;
+    background: #0AEDC7;
+    border-radius: 0px 13px 13px 0px;
+    border: 1px solid #0AEDC7;
   }
   .bg-text04{
     width: 52.75px;
-    height: 29.81px;
+    height: 34.81px;
     background: #0AEDC7;
     border-radius: 0px 13px 13px 0px;
     margin-left: 128px;
     color: #000000;
     font-size: 12px;
+    border: 1px solid #0AEDC7;
   }
 
-
+  button#input-group-dropdown-2 {
+    width: 73.75px;
+    height: 44.81px;
+    background: #0AEDC7;
+    border-radius: 0px 13px 13px 0px;
+    COLOR: #000;
+}
 
 
 
@@ -693,14 +705,11 @@ padding-left: 10px;
     margin-top: 13px;
   }
   .continue-button{
-    width: 131px;
-    height: 42px;
     background: #190079;
     border-radius: 10px;
     color: #fff;
-    margin-left: 210px;
-    margin-top: -58px;
-  
+    margin-top: 13px;
+    height: 44.81px;
    
   }
   .continue-button:hover{
@@ -1102,7 +1111,7 @@ img.testimonial-icons {
 .banner_section05 {
   width: 100%;
   background-color: #dcc8fc;
-  height: 766px;
+  height: 870px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover
@@ -1486,17 +1495,18 @@ margin-top: 30px;
 }
 .card-signup{
   width: 450px;
-  height: 650px;;;
+  height: 715px;;;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
   top: 60px;
   margin-left: 100px;
+  padding: 38px 36px;
 }
 
 .signup_banner {
   width: 100%;
-  height: 795px;
+  height: 850px;
   background-color: #dcc8fc;
 }
 .Sign-heading{
@@ -1510,7 +1520,7 @@ color: #6414E9;
 }
 .signup_button{
 width: 140px;
-height: 56px;
+height: 46px;
 background: #191970;
 border-radius: 10px;
 text-align: center;
@@ -1522,7 +1532,7 @@ margin-top: 20px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
-font-size: 16px;
+font-size: 13px;
 line-height: 15px;
 color: #191970;
 padding-top: 30px;
@@ -1981,25 +1991,26 @@ img.background_dot_image03{
 --------------------------------------------------------------*/
 
 .card-login{
-  width: 390px;
-  height: 388px;;
+  width: 436px;
+  height: 480px;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
   top: 100px;
   margin-left: 100px;
+  padding: 38px 36px;
 }
 .form_login{
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 15px;
   color: #191970;
   }
   .login_button{
     width: 140px;
-    height: 56px;
+    height: 48px;
     background: #191970;
     border-radius: 10px;
     text-align: center;

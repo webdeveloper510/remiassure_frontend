@@ -1,5 +1,8 @@
 import React,{useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 // start -----Why RemitAssure circle function
@@ -54,25 +57,25 @@ function BankTransferArrayOfObjects() {
       id: 1,
       home_src: "assets/img/home/home.png",
       bank_title: "Bank Transfer",
-      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+      bank_contents: "Send a secure bank transfer Send a secure bank transfer major banks worldwide.",  
     },
     {
       id: 2,
       home_src: "assets/img/home/home.png",
       bank_title: "Bank Transfer",
-      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+      bank_contents: "Send a secure bank transfer Send a secure bank transfer <br />major banks worldwide.",  
     },
     {
       id: 3,
       home_src: "assets/img/home/home.png",
       bank_title: "Bank Transfer",
-      bank_contents: "Send a secure bank transfer <br /> Send a secure bank transfer <br />major banks worldwide.",  
+      bank_contents: "Send a secure bank transfer  Send a secure bank transfer major banks worldwide.",  
     },
     {
       id: 4,
       home_src: "assets/img/home/home.png",
       bank_title: "Bank Transfer",
-      bank_contents: "Send a secure bank transfer<br /> Send a secure bank transfer <br />major banks worldwide.",  
+      bank_contents: "Send a secure bank transfer Send a secure bank transfer major banks worldwide.",  
     },
   ];
 
@@ -295,43 +298,68 @@ const Home = () => {
                                     <div className="row">
                                         <div className="col-4">
                                             <p className="send-text">You Send</p>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
-                                                        ADD
-                                                    </Dropdown.Toggle>
 
-                                                    <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                            <InputGroup className="mb-3">
+        
+                                        <Form.Control aria-label="Text input with dropdown button" />
 
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
+                                                <DropdownButton
+                                                  variant="outline-secondary"
+                                                  title="AUD"
+                                                  id="input-group-dropdown-2"
+                                                  align="end"
+                                                >
+                                                  <Dropdown.Item href="#">Action</Dropdown.Item>
+                                                  <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                                  <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                                  <Dropdown.Divider />
+                                                  <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                                </DropdownButton>
+                                              </InputGroup>
+
+
                                         </div>
-                                        <div className="col-4">
+                                        <div className="col-3">
                                             <p className="get-text">They get</p>
-                                            <Dropdown>
-                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
-                                                        ADD
-                                                    </Dropdown.Toggle>
+                                            <InputGroup className="mb-3">
+                                          <Form.Control aria-label="Text input with dropdown button" />
 
-                                                    <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
+                                          <DropdownButton
+                                            variant="outline-secondary"
+                                            title="AUD"
+                                            id="input-group-dropdown-2"
+                                            align="end"
+                                          >
+                                            <Dropdown.Item href="#">Action</Dropdown.Item>
+                                            <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                            <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                            <Dropdown.Divider />
+                                            <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                          </DropdownButton>
+                                        </InputGroup>
                                         </div>
-                                        <div className="col-4">
+                                        <div className="col-3">
                                             <p className="recived-text">Receive method</p>
-                                            <Dropdown>
-                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text04">
-                                                        ADD
-                                                    </Dropdown.Toggle>
+                                              <InputGroup className="mb-3">
+                                              <Form.Control aria-label="Text input with dropdown button" />
 
-                                                    <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
-                                            <button className="btn btn continue-button">Continue</button>
+                                              <DropdownButton
+                                                variant="outline-secondary"
+                                                title="AUD"
+                                                id="input-group-dropdown-2"
+                                                align="end"
+                                              >
+                                                <Dropdown.Item href="#">Action</Dropdown.Item>
+                                                <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                                <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                                <Dropdown.Divider />
+                                                <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                              </DropdownButton>
+                                            </InputGroup>
+                                           
+                                        </div>
+                                        <div className="col-2">
+                                        <button className="btn btn continue-button">Continue</button>
                                         </div>
                                     </div>
                                 </div>

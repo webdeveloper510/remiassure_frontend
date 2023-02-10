@@ -322,7 +322,7 @@ const Home = () => {
                                         <div className="col-4">
                                             <p className="recived-text">Receive method</p>
                                             <Dropdown>
-                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text">
+                                                    <Dropdown.Toggle id="dropdown-basic" className="bg-text04">
                                                         ADD
                                                     </Dropdown.Toggle>
 

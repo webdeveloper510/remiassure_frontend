@@ -116,7 +116,7 @@ const Referral = () => {
             },
             {
                 id: "3",
-                icon_src: "assets/img/referral/Vector02.png",
+                icon_src: "assets/img/referral/Group 14568.png",
                 icon_title:"We’re Cost-effective",
                 icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 

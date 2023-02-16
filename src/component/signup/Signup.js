@@ -5,21 +5,24 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 
 import {API} from "../../config/API";
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
 
+    const [show, setShow] = React.useState(false);
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [location, setLocation] = useState('');
-    const [referral_code, setrReferral_code] = useState('');
+    const [referral_code, setrReferral_code] = useState(null);
+    const [promo_marketing, setPromo_marketing] = useState(false);
 
     const navigate = useNavigate();
     const notify = () => toast.success("Sign Up Successfully!");
     const emptyData = () => toast.warn("Please fill out all the fields");
+    const emailExits = () => toast.error("User with this Email already exists!");
 
     const handleEmail =(e) => {
         setEmail(e.target.value);
@@ -35,39 +38,48 @@ const Signup = () => {
         setrReferral_code(e.target.value);
     }
 
+    const handlePromo_marketing = (e) => {
+        const { checked } = e.target;
+    
+        console.log("checked " + checked);
+    
+        setPromo_marketing((promo_marketing) => ({
+          ...promo_marketing, // <-- shallow copy previous state
+          Active: checked // <-- set new Active checked value
+        }));
+      };
+
+
     const handleSignupApi = (event) => {
-        alert("hii")
         event.preventDefault();
         axios.post(API.BASE_URL + 'register/', {
             email: email,
             password: password,
             location: location,
-            referral_code: referral_code, 
+            referral_code: !referral_code? referral_code: null, 
+            promo_marketing: promo_marketing.Active,
         }, {
             headers: {
-                // 'X-Oc-Merchant-Id': 'xuiYaBcFyxJqIyYixVpAoQ1xXdWtrNUc',
-                'Accept': 'application/json',
-                // 'X-Oc-Session': '8246a4ee18765745ded60b8310',
                 'Content-Type': 'application/json',
-                'mode': 'no-cors',
             },
           
         })
         .then(function(response) {
-            // alert(";,fopsdmfodmommgv")
-            console.log(response, "responseresponseresponseresponseresponse");
             console.log(response);
-            notify();
-            navigate('/login');
+            if (response.status)
+                notify();
+                navigate('/login');   
         })
-
-        .catch(function(error) {
-            console.log(error);
-            emptyData();
+        .catch(function(error, message) {
+            console.log(error.response)
+            if(error.response.status){
+                toast.error(error.response.data.message || error.response.data.password[0]);
+            } 
+            console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
     }
 
-    
+
 
     return(
         <>
@@ -93,7 +105,6 @@ const Signup = () => {
                                     <form>
                                         <Form.Label>Where are you sending money from?</Form.Label>
                                         <Form.Select 
-                                        aria-label="Where are you sending money from?"
                                          value={location}
                                          onClick={handeleLocation}
                                         >
@@ -123,11 +134,13 @@ const Signup = () => {
 
                                         <Form.Check  className="form_switch"
                                         type="switch" 
-                                        
+                                        onClick={() => setShow(!show)}
+                                        value={referral_code}
+                                        onChange={handleReferral_code}
                                         id="custom-switch" 
                                         label="Referred by a friend? Use the referral code below." 
                                         />
-
+                                 {show && <div>
                                         <Form.Group  className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>Your Referral Code</Form.Label>
                                             <Form.Control 
@@ -136,12 +149,17 @@ const Signup = () => {
                                             onChange={handleReferral_code}
                                             placeholder="Enter Referral Code" />
                                         </Form.Group>
+                                        </div>}
 
 
 
                                         <Form.Group className="mb-3 form_checkbox" controlId="formBasicCheckbox">
                                             <Form.Check className="form_label"
                                                 type="checkbox"
+                                                value={promo_marketing}
+                                                onChange={handlePromo_marketing}
+                                                checked={promo_marketing.Active} // <-- set the checked prop of input
+
                                                 label="If you DO NOT wish to receive marketing information 
                                                         about out products and special offers, please check this box"
                                             />

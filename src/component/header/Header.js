@@ -1,7 +1,36 @@
-import React from "react";
-import {links, NavLink} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {links, NavLink, useNavigate} from 'react-router-dom';
+
+import UserContext from '../context/UserContext';
+import {API} from "../../config/API";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUserCheck} from '@fortawesome/free-solid-svg-icons';
 
 const Header =() => {
+
+
+  const [ setSessionId ] = useState('');
+
+  const token = localStorage.getItem("token");
+  console.log("TOKEN", token)
+ 
+  let sessionID;
+  const navigate = useNavigate();
+
+  const notify = () => toast.success("User Logged Out!");
+  const memberLog = () => toast.warn("Please Login to Continue");
+
+  const handleLogout = (event) => {
+      event.preventDefault();
+      localStorage.clear();
+      window.location.reload(false);
+      notify();
+      
+  }
+
     return(
         <>
 
@@ -29,13 +58,79 @@ const Header =() => {
                     <li>
                       <NavLink to="/referral">Referral</NavLink>
                     </li>
+
+
                     <li>
-                      <NavLink to="/signup">Signup</NavLink>
+                      {
+                        token != undefined || '' ? (
+                          <NavLink to="#">Profile</NavLink>
+                         
+                        ) : (
+                        
+                          <NavLink to="/signup">Signup</NavLink>
+
+                        )
+                      }
+ 
                     </li>
 
                     <li>
-                      <NavLink to="/Login">Login</NavLink>
-                      </li>
+                      {
+                        token != undefined || ''? (
+                          <NavLink onClick={handleLogout}>Logout</NavLink>
+                        ) : (
+                          <NavLink to="/login">Login</NavLink>
+
+                        )
+                      }
+ 
+                    </li> 
+
+                     
+                     {/* <li class="dropdown">
+                      <a href="#"><span>
+                        {
+                          token != undefined || ''? (
+                            <FontAwesomeIcon icon={faUserCheck} style={{ color: 'rgb(20, 34, 224);' }} />
+                          ) : (
+
+                            
+                            <FontAwesomeIcon icon={faUser} style={{ color: 'rgb(20, 34, 224);' }} />
+                          )
+                        }
+                      
+                        </span> 
+                        
+                        </a>
+                        <ul>
+                        <li>
+                      {
+                        token != undefined || ''? (
+                          <NavLink to="/profile">Profile</NavLink>
+                        ) : (
+              
+                          <NavLink to="/signup">Signup</NavLink>
+
+                        )
+                      }
+ 
+                    </li>
+
+                    <li>
+                      {
+                        token != undefined || ''? (
+                          <NavLink onClick={handleLogout}>Logout</NavLink>
+                        ) : (
+                          <NavLink to="/login">Login</NavLink>
+
+                        )
+                      }
+ 
+                    </li>
+                        </ul>
+                      </li>   */}
+
+
                   </ul>
                   <i className="bi bi-list mobile-nav-toggle"></i>
                 </nav> 

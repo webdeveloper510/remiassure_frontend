@@ -1269,8 +1269,11 @@ left: 20px;
 # Help-Section
 --------------------------------------------------------------*/
 .help_banner {
+  background-image: url(/assets/img/about/about_banner.png);
+  /* min-height: 866px; */
   width: 100%;
-  background-color: #dcc8fc;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .support_image {
   text-align: center;
@@ -1505,9 +1508,11 @@ margin-top: 30px;
 }
 
 .signup_banner {
+  background-image: url(/assets/img/about/about_banner.png);
+  min-height: 866px; 
   width: 100%;
-  height: 850px;
-  background-color: #dcc8fc;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .Sign-heading{
 font-family: 'Montserrat';
@@ -1525,7 +1530,7 @@ background: #191970;
 border-radius: 10px;
 text-align: center;
 color: #fff;
-margin-left: 150px;
+margin-left: 100px;
 margin-top: 20px;
 }
 .form_signup{
@@ -2029,6 +2034,63 @@ img.background_dot_image03{
       margin-left: 100px;
     }
 
+
+
+    /*--------------------------------------------------------------
+    # Profile
+    --------------------------------------------------------------*/
+
+
+
+    .profile_banner {
+      /* background-image: url(/assets/img/about/about_banner.png); */
+      /* min-height: 866px; */
+      height: 670px;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+  .card-profile{
+    width: 1105px;
+    height: 480px;
+    background:#d9d0f3;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+    border-radius: 12px;
+    top: 100px;
+    /* margin-left: 100px; */
+    padding: 38px 36px;
+  }
+  .profile-heading{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 25px;
+    color: #6414E9;
+    }
+    .profile_button{
+    width: 140px;
+    height: 46px;
+    background: #191970;
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 20px;
+    }
+    .profile_login{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 15px;
+      color: #191970;
+      }
+      svg.svg-inline--fa.fa-user {
+        color: rgb(68 40 223);
+    }
+    element.style {
+      color: rgb(20, 34, 224);
+  }
 
 
 

@@ -89,7 +89,7 @@ const Signup = () => {
         <div className="row">
             <div className="col-lg-6">
                 <div className="support_image">
-                    <img src="assets/img/help/help_img02.png" alt="support_images" />
+                    <img src="assets/img/help/help_img02.svg" alt="support_images" />
                 </div>
             </div>
 

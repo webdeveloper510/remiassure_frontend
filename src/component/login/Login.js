@@ -85,16 +85,16 @@ const Login = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba help_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba login_banner" data-aos="fade-up" date-aos-delay="200">
     <div className="container">
         <div className="row">
-            <div className="col-lg-6">
+            {/* <div className="col-lg-6">
                 <div className="support_image">
                     <img src="assets/img/help/help_img02.png" alt="support_images" />
                 </div>
-            </div>
+            </div> */}
 
-            <div className="col-lg-6">
+            <div className="col-lg-12">
                 {/* start-- card */}
                 <div className="row">
                     <div className="col-lg-12">

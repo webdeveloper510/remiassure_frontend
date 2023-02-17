@@ -10,19 +10,19 @@ function WhyRenderingArrayOfObjects(){
   const dataItems = [
     {
       id:1,
-      src: "assets/img/home/Vector01.png",
+      src: "assets/img/home/Vector01.svg",
       circle_heading: "We're Safe",
       circle_content: "We use industry-leading technology to protect your money.",
     },
     {
       id:2,
-      src: "assets/img/home/Vector02.png",
+      src: "assets/img/home/Vector02.svg",
       circle_heading: "We're Safe",
       circle_content: "We use industry-leading technology to protect your money.",
     },
     {
       id:3,
-      src: "assets/img/home/Vector03.png",
+      src: "assets/img/home/Vector03.svg",
       circle_heading: "We're Low-Cost",
       circle_content: " conventional banks and money transfer services.",
     }
@@ -55,25 +55,25 @@ function BankTransferArrayOfObjects() {
   const  bankItems = [
     {
       id: 1,
-      home_src: "assets/img/home/home.png",
+      home_src: "assets/img/home/home.svg",
       bank_title: "Bank Transfer",
       bank_contents: "Send a secure bank transfer Send a secure bank transfer major banks worldwide.",  
     },
     {
       id: 2,
-      home_src: "assets/img/home/home.png",
+      home_src: "assets/img/home/home.svg",
       bank_title: "Bank Transfer",
-      bank_contents: "Send a secure bank transfer Send a secure bank transfer <br />major banks worldwide.",  
+      bank_contents: "Send a secure bank transfer Send a secure bank transfer major banks worldwide.",  
     },
     {
       id: 3,
-      home_src: "assets/img/home/home.png",
+      home_src: "assets/img/home/home.svg",
       bank_title: "Bank Transfer",
       bank_contents: "Send a secure bank transfer  Send a secure bank transfer major banks worldwide.",  
     },
     {
       id: 4,
-      home_src: "assets/img/home/home.png",
+      home_src: "assets/img/home/home.svg",
       bank_title: "Bank Transfer",
       bank_contents: "Send a secure bank transfer Send a secure bank transfer major banks worldwide.",  
     },
@@ -106,39 +106,39 @@ function FlagHomeArrayofoObjects() {
   const flagData = [
     {
       id: 1,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
-      flag_arrow_scr: "assets/img/home/arrow01.png",  
+      flag_arrow_scr: "assets/img/home/arrow01.svg",  
     },
     {
       id: 2,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
-      flag_arrow_scr: "assets/img/home/arrow01.png",  
+      flag_arrow_scr: "assets/img/home/arrow01.svg",  
     },
     {
       id: 3,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
       flag_arrow_scr: "assets/img/home/arrow01.png",  
     },
     {
       id: 4,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
-      flag_arrow_scr: "assets/img/home/arrow01.png",  
+      flag_arrow_scr: "assets/img/home/arrow01.svg",  
     },
     {
       id: 5,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
-      flag_arrow_scr: "assets/img/home/arrow01.png",  
+      flag_arrow_scr: "assets/img/home/arrow01.svg",  
     },
     {
       id: 6,
-      flag_src: "assets/img/home/Mask group.png",
+      flag_src: "assets/img/home/Mask group.svg",
       flag_title: "india",
-      flag_arrow_scr: "assets/img/home/arrow01.png",  
+      flag_arrow_scr: "assets/img/home/arrow01.svg",  
     },
   ];
 
@@ -183,10 +183,10 @@ const Card = (props) => {
   console.log(props,"propspropspropsprops")
   return (
     <li className="card li_card ">
-         <img src="assets/img/home/quote-up.png" alt="quote-up" className="quotup_icons" />
+         <img src="assets/img/home/quote-up.svg" alt="quote-up" className="quotup_icons" />
       <div className="row">
           <div className="col-lg-4">
-              <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
+              <img src="assets/img/home/boy.svg" alt="boy_icons" className="boy_icons"/>
               <p className="boy_icons_text">Worldtraveler</p>
             </div>
             <div className="col-8">
@@ -195,7 +195,7 @@ const Card = (props) => {
               <img src="assets/img/help/star.png"/>
            </div>
       </div>
-      <img src="assets/img/home/quote-down.png" alt="quote-up" className="quotdown_icons" />
+      <img src="assets/img/home/quote-down.svg" alt="quote-up" className="quotdown_icons" />
     </li>
   )
 }
@@ -257,180 +257,148 @@ const Home = () => {
     return(
         <>
 
+
     {/* <!-- ======= Home Better-Way-Section  start======= --> */}
-    <section className="why-us section-bgba banner_section" data-aos="fade-up" date-aos-delay="200">
-    <div className="container">
-        <div className="row">
+    <section className="top_sections" data-aos="fade-up" date-aos-delay="200">
+    <div class="container">
+        <div class="row">
+            <div className="col-lg-6">
+                <div className="vl">
+                    <h1 className="vl-heading">A Better Way</h1>
+                    <h1 className="vl-heading01">To Send Money</h1>
+                </div>
+                <div className="vl-content">
+                    <p className="vl-paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                        malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                    </p>
+                    <p className="vl-paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                        malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                    </p>
+                    <p className="vl-paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
+                        malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                    </p>
+                </div>
+            </div>
+            <div className="col-lg-6 right_sections">
+                <img src="assets/img/home/bank.svg" alt="background-images" />
+            </div>
+        </div>
+
+        <div class="row">
             <div className="col-lg-12">
-                <div className="backgound-img">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="vl">
-                                <h1 className="vl-heading">A Better Way</h1>
-                                <h1 className="vl-heading01">To Send Money</h1>
+                <div className="card card-flag new_card">
+                    <div className="card-body">
+                        <h6 className="exchange-heading">EXCHANGE RATE</h6>
+                        <p className="calculation">1 AUD = 0.59476 USD</p>
+                        <div className="row">
+                            <div className="col-4">
+                                <p className="send-text">You Send</p>
+                                <InputGroup className="mb-3">
+                                    <Form.Control aria-label="Text input with dropdown button" />
+                                    <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
+                                        <Dropdown.Item href="#">Action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                    </DropdownButton>
+                                </InputGroup>
                             </div>
-
-                            <div className="vl-content">
-                                <p className="vl-paragraph">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
-                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                                </p>
-                                <p className="vl-paragraph">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
-                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                                </p>
-                                <p className="vl-paragraph">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum <br />
-                                    malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
-                                </p>
+                            <div className="col-3">
+                                <p className="get-text">They get</p>
+                                <InputGroup className="mb-3">
+                                    <Form.Control aria-label="Text input with dropdown button" />
+                                    <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
+                                        <Dropdown.Item href="#">Action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                    </DropdownButton>
+                                </InputGroup>
                             </div>
-                        </div>
-                    </div>
-
-                    {/* start-- card */}
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="card card-flag">
-                                <div className="card-body">
-                                    <h6 className="exchange-heading">EXCHANGE RATE</h6>
-                                    <p className="calculation">1 AUD = 0.59476 USD</p>
-
-                                    <div className="row">
-                                        <div className="col-4">
-                                            <p className="send-text">You Send</p>
-
-                                            <InputGroup className="mb-3">
-        
-                                        <Form.Control aria-label="Text input with dropdown button" />
-
-                                                <DropdownButton
-                                                  variant="outline-secondary"
-                                                  title="AUD"
-                                                  id="input-group-dropdown-2"
-                                                  align="end"
-                                                >
-                                                  <Dropdown.Item href="#">Action</Dropdown.Item>
-                                                  <Dropdown.Item href="#">Another action</Dropdown.Item>
-                                                  <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                                                  <Dropdown.Divider />
-                                                  <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                                                </DropdownButton>
-                                              </InputGroup>
-
-
-                                        </div>
-                                        <div className="col-3">
-                                            <p className="get-text">They get</p>
-                                            <InputGroup className="mb-3">
-                                          <Form.Control aria-label="Text input with dropdown button" />
-
-                                          <DropdownButton
-                                            variant="outline-secondary"
-                                            title="AUD"
-                                            id="input-group-dropdown-2"
-                                            align="end"
-                                          >
-                                            <Dropdown.Item href="#">Action</Dropdown.Item>
-                                            <Dropdown.Item href="#">Another action</Dropdown.Item>
-                                            <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                                            <Dropdown.Divider />
-                                            <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                                          </DropdownButton>
-                                        </InputGroup>
-                                        </div>
-                                        <div className="col-3">
-                                            <p className="recived-text">Receive method</p>
-                                              <InputGroup className="mb-3">
-                                              <Form.Control aria-label="Text input with dropdown button" />
-
-                                              <DropdownButton
-                                                variant="outline-secondary"
-                                                title="AUD"
-                                                id="input-group-dropdown-2"
-                                                align="end"
-                                              >
-                                                <Dropdown.Item href="#">Action</Dropdown.Item>
-                                                <Dropdown.Item href="#">Another action</Dropdown.Item>
-                                                <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                                                <Dropdown.Divider />
-                                                <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                                              </DropdownButton>
-                                            </InputGroup>
-                                           
-                                        </div>
-                                        <div className="col-2">
-                                        <button className="btn btn continue-button">Continue</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="col-3">
+                                <p className="recived-text">Receive method</p>
+                                <InputGroup className="mb-3">
+                                    <Form.Control aria-label="Text input with dropdown button" />
+                                    <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
+                                        <Dropdown.Item href="#">Action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Another action</Dropdown.Item>
+                                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                        <Dropdown.Divider />
+                                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                    </DropdownButton>
+                                </InputGroup>
+                            </div>
+                            <div className="col-2">
+                                <button className="btn btn continue-button">Continue</button>
                             </div>
                         </div>
                     </div>
-                    {/* End-- card */}
                 </div>
             </div>
         </div>
     </div>
 </section>
+     {/* <!-- ======= Home Better-Way-Section End-Section ======= --> */}
 
-    {/* <!-- ======= Home Better-Way-Section End-Section ======= --> */}
+
 
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
-    <section className="why-us section-bg second_sec" data-aos="fade-up" date-aos-delay="200">
-    <div className="container">
-        <div className="row">
-            <div className="col-lg-12">
-                <div className="bg_sec">
-                    {/* -----======= first row start ====--- */}
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="vl01">
-                                <h1 className="vl-heading02">Why</h1>
-                                <h1 className="vl-heading03">RemitAssure ?</h1>
-                            </div>
+    <section className="why-us_section" data-aos="fade-up" date-aos-delay="200">
+    <div class="container">
 
-                            <ul className="list-">
-                                < WhyRenderingArrayOfObjects />
-                            </ul>
-                        </div>
-
-                        <div className="col-lg-6">
-                            <div className="background-images01">
-                                <img src="assets/img/home/img02.png" alt="background-images" />
-                            </div>
-                        </div>
-                    </div>
-                    {/* -----======= first row End ====--- */} {/* -----======= second row start ====--- */}
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="imge01">
-                                <img src="assets/img/home/img03.png" alt="background-images" />
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <div class="vl same_vl">
-                                <h1 class="vl-heading">A Better Way</h1>
-                                <h1 class="vl-heading01">To Send Money</h1>
-                            </div>
-                            <p class="vl-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis</p>
-                            <div className="link">
-                                <div className="left_link">
-                                    <img src="assets/img/home/Group 01.png" alt="home_icons" className="home_icons" />
-                                </div>
-                                <div className="rihjt_link">
-                                    <img src="assets/img/home/Group 02.png" alt="home_icons" className="home_icons" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* -----======= second row End ====--- */}
+        <div class="row">
+            <div className="col-lg-6">
+                <div className="vl">
+                    <h1 className="vl-heading">Why</h1>
+                    <h1 className="vl-heading01">RemitAssure ?</h1>
+                </div>
+                <div className="vl-content">
+                    <ul className="list-">
+                        < WhyRenderingArrayOfObjects />
+                    </ul>
                 </div>
             </div>
+            <div className="col-lg-6 right_sections">
+               <img src="assets/img/home/img02.svg" alt="background-images" />
+            </div>
         </div>
+
+        <div class="row">
+        <div className="col-lg-6 right_sections">
+              <img src="assets/img/home/img03.svg" alt="background-images" />
+            </div>
+
+             <div className="col-lg-6 better_sections">
+                <div className="vl">
+                    <h1 className="vl-heading">A Better Way</h1>
+                    <h1 className="vl-heading01">To Send Money ?</h1>
+                </div>
+                <div className="vl-content">
+                    <p className="vl-paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                    </p>
+                </div>
+                <div className="link">
+                    <div className="left_link">
+                        <img src="assets/img/home/Group 01.svg" alt="home_icons" className="home_icons" />
+                    </div>
+                    <div className="rihjt_link">
+                        <img src="assets/img/home/Group 02.svg" alt="home_icons" className="home_icons" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+
     </div>
 </section>
-
+  
   {/* <!-- ======= Home Why RemitAssure-Section End ======= --> */}
+
 
  {/* <!-- ======= Home Wide-Choice-Section  start======= --> */}
  <section className="why-us section-bgba banner_section05" data-aos="fade-up" date-aos-delay="200">
@@ -581,7 +549,7 @@ const Home = () => {
         </div>
           {/* main row  End*/}
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-12 call_heading">
               <h3 className="cal-heading">Call to us</h3>
               <p className="call-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
                 incididunt ut labore et dolore magna aliqua. Facilisi morbi tempus iaculis urna.</p>

@@ -7,10 +7,10 @@ import React, {useEffect, useState} from "react";
 const Card = (props) => {
    return (
      <li className="card li_card ">
-        <img src="assets/img/home/quote-up.png" alt="quote-up" className="quotup_icons" />
+        <img src="assets/img/home/quote-up.svg" alt="quote-up" className="quotup_icons" />
        <div className="row">
          <div className="col-lg-4">
-         <img src="assets/img/home/boy.png" alt="boy_icons" className="boy_icons"/>
+         <img src="assets/img/home/boy.svg" alt="boy_icons" className="boy_icons"/>
          <p className="boy_icons_text">Worldtraveler</p>
          </div>
          <div className="col-8">
@@ -20,7 +20,7 @@ const Card = (props) => {
  
          </div>
        </div>
-       <img src="assets/img/home/quote-down.png" alt="quote-up" className="quotdown_icons" />
+       <img src="assets/img/home/quote-down.svg" alt="quote-up" className="quotdown_icons" />
      </li>
    )
  }
@@ -32,22 +32,22 @@ const Aboutus = () => {
       const vissionData = [
          {
             id: 1,
-            vission_src:"assets/img/about/1st_icons.png",
+            vission_src:"assets/img/about/1st_icons.svg",
             vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
          },
          {
             id: 2,
-            vission_src:"assets/img/about/02nd_icons.png",
+            vission_src:"assets/img/about/02nd_icons.svg",
             vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
          },
          {
             id: 3,
-            vission_src:"assets/img/about/03thired_icons.png",
+            vission_src:"assets/img/about/03thired_icons.svg",
             vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
          },
          {
             id: 4,
-            vission_src:"assets/img/about/04four_icons.png",
+            vission_src:"assets/img/about/04four_icons.svg",
             vission_content:"Our essence is to serve our customers. We are committed to going above and beyond in our quest to ensure the satisfaction of our customers.",
          },
          
@@ -56,8 +56,8 @@ const Aboutus = () => {
       const VissionItems = vissionData.map((vission) =>{
          return(
             <li>
-               <img src={vission.vission_src} alt="alt_image"/>
-               <p>{vission.vission_content}</p>
+               <img src={vission.vission_src} className="vission_image" alt="alt_image"/>
+               <p className="vission_content">{vission.vission_content}</p>
            </li>
          )
       })
@@ -75,28 +75,28 @@ const Aboutus = () => {
       const whydata=[
           {
               id: "1",
-              icon_src: "assets/img/referral/Vector01.png",
+              icon_src: "assets/img/about/Vector01.svg",
               icon_title:"We’re Secure",
               icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
           },
           {
               id: "2",
-              icon_src: "assets/img/referral/Vector02.png",
+              icon_src: "assets/img/about/Vector02.svg",
               icon_title:"We're Fast",
               icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
           },
           {
               id: "3",
-              icon_src: "assets/img/referral/Vector02.png",
+              icon_src: "assets/img/about/Vector03.svg",
               icon_title:"We’re Cost-effective",
               icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
           }, 
           {
               id: "4",
-              icon_src: "assets/img/referral/Vector03.png",
+              icon_src: "assets/img/about/Vector04.svg",
               icon_title:"We’re Innovative",
               icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
@@ -187,7 +187,7 @@ const Aboutus = () => {
         <>
          
  {/* <!-- ======= AboutUs Our vission and mission-Section  start======= --> */}
-    <section className="why-us section-bgba banner_section about_banner" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us section-bgba banner_section about_banner innre_about" data-aos="fade-up" date-aos-delay="200">
    <div id="about">
       <div className="container">
          <div className="row">
@@ -195,18 +195,18 @@ const Aboutus = () => {
                <div className="vl about_v1">
                   <h1 className="vl-heading">About Us</h1>
                   <div className="vl-content about_content">
-                     <p>Our vission and mission statement will go here</p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam erat velit scelerisque in dictum. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id. Ornare suspendisse sed nisi lacus sed viverra tellus in. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Convallis convallis tellus id interdum velit laoreet id. Nunc non blandit massa enim nec dui nunc mattis enim. Consequat id porta nibh venenatis cras. Faucibus et molestie ac feugiat sed lectus vestibulum. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Nulla facilisi etiam dignissim diam quis. Ultrices dui sapien eget mi proin sed. Fermentum et sollicitudin ac orci. Faucibus scelerisque eleifend donec pretium. Sed sed risus pretium quam. Lectus quam id leo in vitae. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci.</p>
+                     <p className="our_vission">Our vission and mission statement will go here</p>
+                     <p className="our_vission01">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam erat velit scelerisque in dictum. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id. Ornare suspendisse sed nisi lacus sed viverra tellus in. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Convallis convallis tellus id interdum velit laoreet id. Nunc non blandit massa enim nec dui nunc mattis enim. Consequat id porta nibh venenatis cras. Faucibus et molestie ac feugiat sed lectus vestibulum. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Nulla facilisi etiam dignissim diam quis. Ultrices dui sapien eget mi proin sed. Fermentum et sollicitudin ac orci. Faucibus scelerisque eleifend donec pretium. Sed sed risus pretium quam. Lectus quam id leo in vitae. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci.</p>
                   </div>
                </div>
             </div>
             <div className="col-sm-4 right_side">
-               <img src="assets/img/about/right_about.png" /> 
+               <img src="assets/img/about/right_about.svg" /> 
             </div>
          </div>
          <div className="bottpm_banner">
             <div className="row">
-               <ul className="About_why-ramit-assure">
+               <ul className="About_why-content">
                   <OurVissionArrayObjects />
                </ul>
             </div>
@@ -224,7 +224,7 @@ const Aboutus = () => {
 
          <div className="row">
             <div className="col-sm-12">
-               <div className="vl about_v1">
+               <div className="vl about_v1 about_vl about_v1">
                   <h1 className="vl-heading">Why RemitAssure ?</h1>
                   <div className="about_why_heading">
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
@@ -234,8 +234,8 @@ const Aboutus = () => {
          </div>
 
          <div className="row">
-            <div className="col-md-12 col-lg-12">
-               <ul className="about_why-ramit-assure">
+            <div className="col-md-12 col-lg-12 secure_content">
+               <ul className="about_why-ramit-assure page_about-sec">
                  < WhyIconsRenderingArrayOfObjects />
                </ul>
             </div>                  

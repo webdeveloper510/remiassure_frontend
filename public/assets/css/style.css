@@ -545,6 +545,24 @@ padding-left: 10px;
     padding-top: 32px !important; 
 
   }
+
+  .wide-paragraph{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    color: #000000;
+    padding-top: 32px !important; 
+
+  }
+
+
+  
+
+
+
+
   .background-images{
     position: absolute;
     left: 60.65%;
@@ -716,6 +734,9 @@ padding-left: 10px;
     background-color:rgba(104, 164, 196, 0.7);
 
   }
+  img.flag_icons {
+    border-radius: 50px;
+}
 
 
 
@@ -955,6 +976,10 @@ margin-left: 490px;
 .call_button:hover{
   background-color: #0b212d;
 }
+.col-lg-12.call_heading {
+  margin-top: 70px;
+}
+
 
 /* carousel css :start */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -985,7 +1010,7 @@ margin-left: 490px;
 
 .carousel{
     width: var(--carouselWidth);
-    margin: 0 0 0 var(--carouselLeftMargin);
+    margin: 14px 0 0 var(--carouselLeftMargin);
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -1118,7 +1143,7 @@ img.testimonial-icons {
 }
 .vl03 {
   border-left: 6px solid  #6414E9;
-  height: 92px;
+  height: 86px;
 }
 .chose-heading{
   font-family: 'Montserrat';
@@ -1142,7 +1167,7 @@ img.testimonial-icons {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 25px;
   color: #000000;
   padding-top: 20px;
@@ -1158,6 +1183,7 @@ img.testimonial-icons {
   border-radius: 100px;
   padding: 5px;
   object-fit: none;
+  margin-top: 28px;
 }
 .bank_transfer{
   font-family: 'Montserrat';
@@ -1200,14 +1226,17 @@ img.testimonial-icons {
   height: 30px;
   background: linear-gradient(90deg, #689CF4 0%, #215DC1 100%);
   border-radius: 4px;
+  margin-top: 40px;
 }
 .right_icon{
   width: 30px;
   height: 30px;
   background: linear-gradient(90deg, #689CF4 0%, #215DC1 100%);
   border-radius: 4px;
+  margin-top: 40px;
 
 }
+
 span.material-icons {
   position: absolute;
   top: 20px;
@@ -1493,18 +1522,18 @@ background: #191970;
 border-radius: 10px;
 text-align: center;
 color: #fff;
-margin-left: 490px;
+margin-left: 508px;
 margin-top: 30px;
 }
 .card-signup{
   width: 450px;
-  height: 715px;;;
+  height: 672px;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
-  border-radius: 12px;
   top: 60px;
   margin-left: 100px;
   padding: 38px 36px;
+  border-radius: 20px;
 }
 
 .signup_banner {
@@ -1524,20 +1553,20 @@ text-align: center;
 color: #6414E9;
 }
 .signup_button{
-width: 140px;
-height: 46px;
-background: #191970;
-border-radius: 10px;
-text-align: center;
-color: #fff;
-margin-left: 100px;
-margin-top: 20px;
+  width: 368px;
+  height: 46px;
+  background: #191970;
+  border-radius: 10px;
+  /* text-align: center; */
+  color: #fff;
+  /* margin-left: 100px; */
+  margin-top: 20px;
 }
 .form_signup{
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
-font-size: 13px;
+font-size: 14px;
 line-height: 15px;
 color: #191970;
 padding-top: 30px;
@@ -1565,9 +1594,9 @@ color: #191970;
 
 }
 p.already_content {
-  padding-top: 8px;
+  padding-top: 18px;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
 }
 label.form-check-label {
   padding-top: 4px;
@@ -1580,16 +1609,26 @@ label.form-check-label {
 /* <--About Us Style --> */
 
 .about_v1 {
-  height: 50px;
+  height: 45px;
 }
-.about_content p {
+.our_vission{
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: 800;
   line-height: 25px;
   color: #000;
-  padding-top: 32px !important;
+  /* padding-top: 32px !important; */
+}
+.our_vission01{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+  color: #000;
+  padding-top: 14px !important;
 }
 .about_banner {
   background-image: url(/assets/img/about/about_banner.png);
@@ -1611,7 +1650,7 @@ label.form-check-label {
 .bottpm_banner {
   float: left;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .bottpm_banner .col-md-3 {
   text-align: center;
@@ -1623,10 +1662,20 @@ section.about_2nd.aos-animate {
   transform: matrix(1, 0, 0, -1, 0, 0);
 }
 .About_why-ramit-assure li {
-  display: flex;
   float: left;
   width: 25%;
   align-items: center;
+}
+.About_why-content li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+ul.About_why-content {
+  float: left;
+  /* width: 100%; */
+  /* margin-top: 40px; */
+  list-style-type: none;
 }
 ul.About_why-ramit-assure {
   float: left;
@@ -1637,10 +1686,10 @@ ul.About_why-ramit-assure {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
   color: #000000;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .about_why-ramit-assure li {
   display: flex;
@@ -1653,9 +1702,17 @@ ul.about_why-ramit-assure {
   width: 100%;
   margin-top: 78px;
 }
+img.vission_image {
+  text-align: center;
+}
+p.vission_content {
+  margin: 10px;
+}
+.col-md-12.col-lg-12.secure_content {
+  margin-top: 30px;
+  /* margin: 29px; */
+}
 /* <--About Us Style end--> */
-
-
 
 
 /*--------------------------------------------------------------
@@ -1870,6 +1927,27 @@ i.bx.bx-chevron-right {
   text-align: left;
   top: 3px;
 }
+
+i.bx.bx-chevron-left.prev_button01 {
+  color: #bd1414;
+  font-size: 28px;
+  left: 3px;
+  position: absolute;
+  text-align: left;
+  top: 3px;
+}
+i.bx.bx-chevron-right01 {
+  color: #ce2020;
+  font-size: 28px;
+  right: 3px;
+  position: absolute;
+  text-align: left;
+  top: 3px;
+}
+
+
+
+
 .review_content{
 
 font-family: 'Montserrat';
@@ -1994,34 +2072,45 @@ img.background_dot_image03{
 /*--------------------------------------------------------------
 # Login
 --------------------------------------------------------------*/
+.login_banner{
+  /* background-color: #2933c2; */
+  height: 670px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
 
 .card-login{
   width: 436px;
-  height: 480px;
-  background: #FCFCFC;
+  height: 460px;
+  background: #dbc8f5;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
   top: 100px;
-  margin-left: 100px;
+  margin-left: 337px;
   padding: 38px 36px;
+  /* text-align: center; */
+  border-radius: 20px;
 }
 .form_login{
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 15px;
   color: #191970;
   }
   .login_button{
-    width: 140px;
+    width: 354px;
     height: 48px;
     background: #191970;
     border-radius: 10px;
     text-align: center;
     color: #fff;
-    margin-left: 116px;
+    /* margin-left: 116px; */
     margin-top: 20px;
+    font-size: 16px;
     }
 
     .card-password{
@@ -2367,3 +2456,149 @@ img.quotup_icons {
 
 }
 
+/* css 17-02-23 */
+.second_sec.aos-init.aos-animate {
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}
+.vl.same_vl {
+  border-left: 6px solid #ffff;
+}
+.same_vl h1.vl-heading, .same_vl .vl-heading01 {
+  color: #fff;
+}
+.link {
+  display: flex;
+}
+.left_link {
+  width: 177.51px;
+  margin-right: 0px;
+  margin-top: 40px;
+}
+.link img.home_icons {
+  height: auto;
+  width: 155.51px;
+}
+.rihjt_link {
+  margin-top: 40px;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 10px;
+  color: var(--bs-card-color);
+}
+div#testimonial-section {
+  position: relative;
+  width: 100%;
+}
+.button_icons {
+  position: absolute;
+  top: 17px;
+  right: 0;
+}
+i.bx.bx-chevron-left.prev_button {
+  color: #fff;
+  font-size: 28px;
+  left: 3px;
+  position: absolute;
+  text-align: left;
+  top: 41px;;
+}
+i.bx.bx-chevron-right {
+  color: #fff;
+  font-size: 28px;
+  right: 3px;
+  position: absolute;
+  text-align: left;
+  top: 40px;
+}
+button.btn.btn.next.right_icon {
+  margin-left: 22px;
+}
+img.quotup_icons {
+  width: 56px;
+  position: absolute;
+  top: -34px;
+}
+.quotdown_icons{
+  width: 56px;
+  position: absolute;
+  left: 310px;
+  top: 120px;;
+}
+.Group_icons{
+  width: 56px;
+  position: absolute;
+  top: -34px;
+
+}
+section.top_sections.aos-init.aos-animate {
+  width: 100%;
+  background-image: url(http://localhost:3000/assets/img/home/top-main.svg);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 58px 0px 40px 0px;
+  min-height: 734px; 
+}
+.col-lg-6.right_sections {
+  padding-top: 70px;
+}
+.col-lg-6.better_sections {
+  padding-top: 70px;
+}
+
+.col-lg-6.right_sections img {
+  width: 100%;
+}
+section.top_sections.aos-init.aos-animate p.vl-paragraph>br {
+  display: none;
+}
+.card.card-flag.new_card {
+  position: inherit;
+  height: 145px;
+  margin-top: 40px;
+}
+.continue-button {
+  width: 131px;
+}
+button#input-group-dropdown-2 {
+  border: 1px solid #0aedc7;
+}
+section.why-us_section.aos-init.aos-animate {
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  opacity: 0.9;
+}
+section.why-us_section .vl {
+  border-left: 6px solid #fff;
+}
+section.why-us_section .vl h1 {
+  color: #fff;
+}
+section.why-us_section .right_sections img {
+  width: 90%;
+}
+.col-lg-6.better_sections p.vl-paragraph {
+  font-size: 13px;
+}
+.About_why-content li p.vission_content {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 25px;
+}
+img.vission_image {
+  text-align: center;
+  width: 25%;
+}
+.innre_about.aos-init.aos-animate {
+  height: 765px !important;
+  min-height: 765px;
+}
+.vl.about_v1.about_vl.about_v1 {
+    margin-top: 0px;
+}
+.page_about-sec {
+  margin-top: 52px !important;
+}

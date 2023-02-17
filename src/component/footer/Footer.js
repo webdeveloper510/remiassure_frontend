@@ -131,7 +131,7 @@ function LegalArrayObjects(){
                 <div className="row">
 
                 <div className="col-lg-1 col-md-6 footer-links">
-                   <img src="assets/img/home/footer_icon.png"  alt="imge_footer_icons" className="footer_icon" />
+                   <img src="assets/img/home/footer-logo.svg"  alt="imge_footer_icons" className="footer_icon" />
                 </div>
 
 
@@ -159,10 +159,10 @@ function LegalArrayObjects(){
 
                 <div className="col-lg-3 col-md-6 footer-info">
                     <h3>Contact Us</h3>
-                        <img src="assets/img/footer/email.png" alt="emai_icons" className="email_icons" />                  
+                        <img src="assets/img/footer/email.svg" alt="emai_icons" className="email_icons" />                  
                         <p> support@ercom.com </p>
 
-                        <img src="assets/img/footer/phone.png" alt="phone_icons" className="phone_icons" />                  
+                        <img src="assets/img/footer/phone.svg" alt="phone_icons" className="phone_icons" />                  
                         <p> +66 2399 1145</p>
                     <div className="social-links mt-3">
                     <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>

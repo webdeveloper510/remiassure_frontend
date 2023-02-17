@@ -40,7 +40,7 @@ const Header =() => {
 
                 <div className="logo">
                   <h1 className="text-light">
-                    <img src="assets/img/home/logo.png" alt="logo"  />
+                    <img src="assets/img/home/logo.svg" alt="logo"  />
                   </h1>
                 </div>
 
@@ -63,7 +63,7 @@ const Header =() => {
                     <li>
                       {
                         token != undefined || '' ? (
-                          <NavLink to="#">Profile</NavLink>
+                          <NavLink to="/profile">Profile</NavLink>
                          
                         ) : (
                         

@@ -13,18 +13,18 @@ const Help = () => {
         {
           id: 1,
           name: "How it works",
-          src: "assets/img/help/icon01.png"
+          src: "assets/img/help/icon01.svg"
         },
 
         {
           id: 2,
           name: "Faq",
-          src: "assets/img/help/Shape.png"
+          src: "assets/img/help/Shape.svg"
         },
         {
           id: 3,
           name: "My Account",
-          src: "assets/img/help/contact01.png"
+          src: "assets/img/help/contact01.svg"
         }
       ];
     
@@ -150,7 +150,7 @@ function AccordionArrayOfObjects() {
       <div className="container">
 
         <div className="support_image">
-            <img src="assets/img/help/suport.png" alt="support_images" />
+            <img src="assets/img/help/suport.svg" alt="support_images" />
         </div>
 
         <div className="row">
@@ -163,7 +163,7 @@ function AccordionArrayOfObjects() {
                                 <h5 className="Support-heading">Remitassure Support Center</h5>
                                 <p className="Support-paragraph">Hi, How can we help you?</p>
                                 <div className="search_input">
-                                    <img src="assets/img/help/search.png" alt="serch_img" className="serch_img" />
+                                    <img src="assets/img/help/search.svg" alt="serch_img" className="serch_img" />
                                     <span className="serch_content"> {input_content}</span>
                                </div>
 
@@ -201,7 +201,7 @@ function AccordionArrayOfObjects() {
 
         <div className="col-lg-6">
          <div className="help_image">
-          <img src="assets/img/help/help_img01.png" alt="help_img01" />
+          <img src="assets/img/help/help_img01.svg" alt="help_img01" />
          </div>
         </div>
       </div>

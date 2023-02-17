@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 const Card = (props) => {
     return (
       <li className="card li_card ">
-         <img src="assets/img/referral/Group.png" alt="quote-up" className="Group_icons" />
+         <img src="assets/img/referral/Group.svg" alt="quote-up" className="Group_icons" />
         <div className="row">      
           <div className="col-md-12">
             <div class="testimonial-text">
@@ -20,7 +20,7 @@ const Card = (props) => {
         <div className="row">
           <div className="col-md-12 col-lg-12 testimonial-client">
             <div class="testimonial-inner">
-                <img src="assets/img/referral/girl.png" alt="boy_icons" className="testimonial-icons"/>
+                <img src="assets/img/referral/girl.svg" alt="boy_icons" className="testimonial-icons"/>
                 <h3 className="kevin_content">Kevin Rich</h3>
                 <p className="testimonial_icons_text">Lorem Ipsum is simply</p>
             </div>
@@ -34,25 +34,6 @@ const Card = (props) => {
 
 const Referral = () => {
 
-    // copy button function start
-    // function myFunction() {
-    //     // Get the text field
-    //     var copyText = document.getElementById("myInput");
-      
-    //     // Select the text field
-    //     copyText.select();
-    //     copyText.setSelectionRange(0, 99999); // For mobile devices
-      
-    //     // Copy the text inside the text field
-    //     navigator.clipboard.writeText(copyText.value);
-        
-    //     // Alert the copied text
-    //     alert("Copied the text: " + copyText.value);
-    //   }
-
-     // copy button function End
-
-
      // Social Function start
      function SocialArrayObjects(){
         const socialdata = [
@@ -64,16 +45,16 @@ const Referral = () => {
             {
                 id:2,
                 links:"https://www.facebook.com/",
-                src: "assets/img/referral/facebook.png"
+                src: "assets/img/referral/facebook.svg"
               },
               {
                 id:3,
                 links:"https://www.instagram.com/",
-                src: "assets/img/referral/instagram.png"
+                src: "assets/img/referral/instagram.svg"
               },{
                 id:4,
                 links:"https://twitter.com/",
-                src: "assets/img/referral/twitter.png"
+                src: "assets/img/referral/twitter.svg"
               },
 
         ];
@@ -102,28 +83,28 @@ const Referral = () => {
         const whydata=[
             {
                 id: "1",
-                icon_src: "assets/img/referral/Vector01.png",
+                icon_src: "assets/img/referral/Vector01.svg",
                 icon_title:"We’re Secure",
                 icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
             },
             {
                 id: "2",
-                icon_src: "assets/img/referral/Vector02.png",
+                icon_src: "assets/img/referral/Vector02.svg",
                 icon_title:"We're Fast",
                 icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
             },
             {
                 id: "3",
-                icon_src: "assets/img/referral/Group 14568.png",
+                icon_src: "assets/img/referral/Vector04.svg",
                 icon_title:"We’re Cost-effective",
                 icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
             }, 
             {
                 id: "4",
-                icon_src: "assets/img/referral/Vector03.png",
+                icon_src: "assets/img/referral/Vector03.svg",
                 icon_title:"We’re Innovative",
                 icon_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 
@@ -224,7 +205,7 @@ const Referral = () => {
 
                     <div className="col-lg-6">
                         <div className="support_image">
-                            <img src="assets/img/referral/img01.png" alt="support_images" />
+                            <img src="assets/img/referral/img01.svg" alt="support_images" />
                         </div>                       
                     </div>
 
@@ -264,7 +245,7 @@ const Referral = () => {
                     <img src="assets/img/referral/dot_line.png"  className="background_dot_image02"/>
                         <div className="popup_content">
                           <p className="signup_content">2</p>
-                          <img src="assets/img/referral/comment_box02.png" alt=""  comment_box02/>
+                          <img src="assets/img/referral/comment_box02.svg" alt=""  comment_box02/>
                         </div>  
                     </div>
                     <div className="col-lg-3">
@@ -277,7 +258,7 @@ const Referral = () => {
                     <div className="col-lg-3">
                         <div className="popup_content">
                           <p className="signup_content">4</p>
-                          <img src="assets/img/referral/comment_box02.png" alt=""  comment_box02/>
+                          <img src="assets/img/referral/comment_box02.svg" alt=""  comment_box02/>
                         </div>  
                     </div>
 
@@ -432,7 +413,7 @@ const Referral = () => {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="imge01">
-                                <img src="assets/img/home/img03.png" alt="background-images" />
+                                <img src="assets/img/home/img03.svg" alt="background-images" />
                             </div>
                         </div>
                         <div className="col-lg-6">
@@ -443,10 +424,10 @@ const Referral = () => {
                             <p class="fast_paragraph">Download our app for free to send money online in minutes to over 130 other countries. Track your payments and view your transfer history from anywhere.</p>
                             <div className="link">
                                 <div className="left_link">
-                                    <img src="assets/img/home/Group 01.png" alt="home_icons" className="home_icons" />
+                                    <img src="assets/img/home/Group 01.svg" alt="home_icons" className="home_icons" />
                                 </div>
                                 <div className="rihjt_link">
-                                    <img src="assets/img/home/Group 02.png" alt="home_icons" className="home_icons" />
+                                    <img src="assets/img/home/Group 02.svg" alt="home_icons" className="home_icons" />
                                 </div>
                             </div>
                         </div>

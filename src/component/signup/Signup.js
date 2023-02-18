@@ -66,6 +66,7 @@ const Signup = () => {
         })
         .then(function(response) {
             console.log(response);
+            localStorage.setItem("firstname", response.data.First_name);
             if (response.status)
                 notify();
                 navigate('/login');   
@@ -106,14 +107,12 @@ const Signup = () => {
                                         <Form.Label>Where are you sending money from?</Form.Label>
                                         <Form.Select 
                                          value={location}
-                                         onClick={handeleLocation}
-                                        >
-                                            <option >Where are you sending money from?</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                         onChange={handeleLocation}
+                                         >
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Gurugram">Gurugram</option>
+                                            <option value="Mohali">Mohali</option>
                                         </Form.Select>
-
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>Your Email</Form.Label>
                                             <Form.Control 

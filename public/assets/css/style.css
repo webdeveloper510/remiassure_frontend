@@ -546,6 +546,17 @@ padding-left: 10px;
 
   }
 
+  .vl-paragraph01{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    color:  #6414E9;
+    padding-top: 32px !important; 
+
+  }
+
   .wide-paragraph{
     font-family: 'Montserrat';
     font-style: normal;
@@ -1010,7 +1021,7 @@ margin-left: 490px;
 
 .carousel{
     width: var(--carouselWidth);
-    margin: 14px 0 0 var(--carouselLeftMargin);
+    margin: 26px 0 0 var(--carouselLeftMargin);
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -1219,6 +1230,7 @@ img.testimonial-icons {
   line-height: 25px;
   text-align: center;
   color: #000000;
+  margin-top: -16px;
 
 }
 .left_icon{
@@ -1260,7 +1272,7 @@ img.boy_icons {
   width: 70px;
   border-radius: 50%;
   position: absolute;
-  top: 20px;
+  top: 28px;
   left: 20px;
 }
 li.card.li_card {
@@ -1278,7 +1290,7 @@ line-height: 25px;
 text-align: center;
 color: #191970;
 position: absolute;
-top: 91px;
+top: 100px;
 left: 20px;
 }
 
@@ -1527,7 +1539,7 @@ margin-top: 30px;
 }
 .card-signup{
   width: 450px;
-  height: 672px;
+  height: 725px;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   top: 60px;
@@ -1747,7 +1759,7 @@ p.vission_content {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 25px;
   text-transform: uppercase;
   color: #000000;
@@ -1808,6 +1820,7 @@ p.vission_content {
     text-align: center;
     text-transform: capitalize;
     color: #000000;
+    padding-top: 54px;
   }
   .social-image{
     width: 48.76px;
@@ -1851,15 +1864,15 @@ margin-top: 10px;
 .why_content{
   font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 800;
+  font-size: 13px;
   line-height: 25px;
   text-transform: uppercase;
   padding-top: 10px;
   /* padding-left: 10px; */
 }
 .why_content {
-  margin-top: 20px;
+  margin-top: 2px;
 }
 .why-ramit-assure li {
   display: flex;
@@ -1870,7 +1883,7 @@ margin-top: 10px;
 ul.why-ramit-assure {
   float: left;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;;
 }
 
 .circle-icons img {
@@ -1953,7 +1966,7 @@ i.bx.bx-chevron-right01 {
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 700;
-font-size: 14px;
+font-size: 12px;
 line-height: 25px;
 text-transform: uppercase;
 color: #000000;
@@ -2544,8 +2557,16 @@ section.top_sections.aos-init.aos-animate {
 .col-lg-6.right_sections {
   padding-top: 70px;
 }
+
+.col-lg-6.right_sections01 {
+  padding-top: 30px;
+}
 .col-lg-6.better_sections {
   padding-top: 70px;
+}
+
+.col-lg-6.better_sections01 {
+  /* padding-top: 30px; */
 }
 
 .col-lg-6.right_sections img {
@@ -2585,7 +2606,7 @@ section.why-us_section .right_sections img {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 25px;
 }
 img.vission_image {

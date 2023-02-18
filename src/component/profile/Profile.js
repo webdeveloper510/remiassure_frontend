@@ -12,8 +12,13 @@ import axios from "axios";
 const Profile = () => {
 
     const token = localStorage.getItem("token");
-    console.log("TOKEN", token)
-    
+    console.log("TOKEN", token);
+
+
+    const name = localStorage.getItem("firstname");
+    // alert(name)
+    console.log("firstname", name);
+
 
     const [First_name, setFirst_name] = useState('');
     const [Last_name, setLast_name] = useState('');
@@ -51,6 +56,7 @@ const Profile = () => {
         })
         .then(function(response) {
             console.log(response);
+
             if (response.status)
                 notify();
                 navigate('/');   
@@ -89,12 +95,32 @@ const Profile = () => {
                                     <form>
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>First Name</Form.Label>
-                                            <Form.Control type="text"
-                                              value={First_name}
-                                              onChange={handleFirstName}
+                                            {/* <Form.Control type="text"
+                                                value={First_name}
+                                                onChange={handleFirstName}
+                                                placeholder="First Name"
+                                            /> */}       
+                                            {
+                                            name != undefined || '' ? (
+                                            
+                                                <Form.Control type="text"
+                                                value={First_name}
+                                                onChange={handleFirstName}
                                             placeholder="First Name"
-                                             />
-                                        </Form.Group>
+                                            />
+                                            
+                                            ) : (
+                                            
+                                            
+                                                <Form.Control type="text"
+                                                value={First_name}
+                                                onChange={handleFirstName}
+                                                placeholder="First Name"
+                                            />
+
+                                            )
+                                        }
+                                     </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
                                             <Form.Label>Last Name</Form.Label>

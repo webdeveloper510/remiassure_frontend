@@ -10,9 +10,18 @@ import UserContext from '../context/UserContext';
 import './recent-style.scss';
 
 
-
 const RecentPassword = () => {
 
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    // const {id} = useParams();
+
+    const handlePassword =(e) =>{
+        setPassword(e.target.value);
+    }
+    const handleConfirmPassword = (e) =>{
+        setConfirmPassword(e.target.value);
+    }
 
     // const [token_forgot, setToken_forgot] = useState('');
 
@@ -35,16 +44,6 @@ const RecentPassword = () => {
     const navigate = useNavigate();
 
 
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const {id} = useParams();
-
-    const handlePassword =(e) =>{
-        setPassword(e.target.value);
-    }
-    const handleConfirmPassword = (e) =>{
-        setConfirmPassword(e.target.value);
-    }
 
     const handleRecent = (event) => {
         event.preventDefault();

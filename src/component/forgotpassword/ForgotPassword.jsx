@@ -9,17 +9,15 @@ import axios from 'axios';
 import UserContext from '../context/UserContext';
 
 const ForgotPassword = () => {
+    const [email, setEmail] = useState('');
 
     const notify = () =>toast.success("Check your email to Reset Password");
     const wrongData = () =>toast.warm("This E-mail is not our records, please try again");
-
-   const navigate = useNavigate('');
-
-    const [email, setEmail] = useState('');
+    const navigate = useNavigate('');
 
     const token_forgot = localStorage.getItem("token_forgot");
-
     // const token_forgot_url = localStorage.getItem("token_forgot_url");
+
 
     const handleEmail =(e) =>{
         setEmail(e.target.value);
@@ -46,7 +44,7 @@ const ForgotPassword = () => {
             .then(function(response) {
                 console.log("Forget API" ,response);
                 localStorage.setItem("token_forgot", response.data.token);
-                localStorage.setItem("token_forgot_url", `http://localhost:3000/resetpassword/${token_forgot}`);
+                // localStorage.setItem("token_forgot_url", `http://localhost:3000/resetpassword/${token_forgot}`);
                 // navigate(`/resetpassword/${token_forgot}`);
                 // window.location.reload(false);
 

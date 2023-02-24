@@ -8,18 +8,18 @@ import UserContext from './component/context/UserContext';
 
 const App =()=>{
   // const navigate = useNavigate('');
-  var token_forgot_url = localStorage.getItem("token_forgot_url");
-  console.log("token_forgot_url", token_forgot_url);
+  // var token_forgot_url = localStorage.getItem("token_forgot_url");
+  // console.log("token_forgot_url", token_forgot_url);
 
-  var token_forgot = localStorage.getItem("token_forgot");
-  var token = 'http://localhost:3000/resetpassword/' + token_forgot;
+  // var token_forgot = localStorage.getItem("token_forgot");
+  // var token = 'http://localhost:3000/resetpassword/' + token_forgot;
 
-  console.log("token_forgot" ,token_forgot)
+  // console.log("token_forgot" ,token_forgot)
 
-  if(token_forgot_url==token) {
-    window.open('http://localhost:3000/resetpassword/')
+  // if(token_forgot_url==token) {
+  //   window.open('http://localhost:3000/resetpassword/');
     
-  }
+  // }
 
 
 

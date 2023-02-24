@@ -11,11 +11,9 @@ import ForgotPassword from '../component/forgotpassword/ForgotPassword';
 import RecentPassword from '../component/resetPassword/ResetPassword';
 import Profile from '../component/profile/Profile';
 import Recipients from '../component/userRecipients/Recipients';
+import LocalStorage from '../component/userRecipients/Localstorage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const token_forgot_url = localStorage.getItem("token_forgot_url");
-  console.log("token_forgot_url", token_forgot_url);
 
 
 const Routerpage =()=>{
@@ -35,7 +33,8 @@ const Routerpage =()=>{
     <Route exact path='/referral' element = {< Referral />} />
     <Route exact path='/login' element = {< Login /> }  />
     <Route exact path='/forgotpassword' element= {< ForgotPassword /> } />
-    <Route exact path='/resetpassword' element= { < RecentPassword /> } />
+    <Route exact path='/resetpasswordsss' element= { < RecentPassword /> } />
+    <Route exact path='/resetpassword/:id' element= {< LocalStorage /> } />
     <Route exact path='/profile' element= {< Profile />} />
     <Route exact path='/user_recipients' element={< Recipients /> } />
   

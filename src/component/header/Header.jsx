@@ -45,7 +45,9 @@ const Header =() => {
 
                 <div className="logo">
                   <h1 className="text-light">
+                  <NavLink to="/">
                     <img src="assets/img/home/logo.svg" alt="logo"  />
+                    </NavLink>
                   </h1>
                 </div>
 

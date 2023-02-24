@@ -136,7 +136,7 @@ h6,
 
 .navbar a,
 .navbar a:focus {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px 10px 15px;
@@ -185,7 +185,7 @@ h6,
   padding: 10px 20px;
   font-size: 14px;
   text-transform: none;
-  color: #1c3745;
+  color: #000;
 }
 
 .navbar .dropdown ul a i {
@@ -195,7 +195,7 @@ h6,
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #68A4C4;
+  color: #6414E9;
 }
 
 .navbar .dropdown:hover>ul {
@@ -964,6 +964,7 @@ padding-left: 10px;
   text-align: center;
   text-transform: capitalize;
   color: #FFFFFF;
+  margin-top: 30px;
 
 }
 .call-paragraph{
@@ -983,6 +984,7 @@ border-radius: 10px;
 text-align: center;
 color: #fff;
 margin-left: 490px;
+margin-top: 30px;
 }
 .call_button:hover{
   background-color: #0b212d;
@@ -2113,6 +2115,7 @@ img.background_dot_image03{
   font-size: 14px;
   line-height: 15px;
   color: #191970;
+  padding-top: 12px;
   }
   .login_button{
     width: 354px;
@@ -2193,6 +2196,76 @@ img.background_dot_image03{
     element.style {
       color: rgb(20, 34, 224);
   }
+
+
+
+/*--------------------------------------------------------------
+# Forgot
+--------------------------------------------------------------*/
+.forgot_banner {
+  /* background-image: url(/assets/img/about/about_banner.png); */
+  /* min-height: 866px; */
+  width: 100%;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.forgot-heading{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 25px;
+  text-align: center;
+  color: #6414E9;
+  }
+  .card-forgot-password{
+    width: 436px;
+    height: 300px;
+    background: #dbc8f5;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+    border-radius: 12px;
+    top: 100px;
+    margin-left: 337px;
+    padding: 38px 36px;
+    /* text-align: center; */
+    border-radius: 20px;
+  }
+
+
+  /*--------------------------------------------------------------
+# Recent Password
+--------------------------------------------------------------*/
+.recent_banner {
+  /* background-image: url(/assets/img/about/about_banner.png); */
+  /* min-height: 866px; */
+  width: 100%;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card-recent-password{
+  width: 436px;
+  height: 390px;
+  background: #dbc8f5;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+  top: 100px;
+  margin-left: 337px;
+  padding: 38px 36px;
+  /* text-align: center; */
+  border-radius: 20px;
+}
+
+/*--------------------------------------------------------------
+# Recipients
+--------------------------------------------------------------*/
+
+
+.table_user_recipients{
+  margin-top: 5%;
+}
+
 
 
 
@@ -2622,4 +2695,50 @@ img.vission_image {
 }
 .page_about-sec {
   margin-top: 52px !important;
+}
+
+li.dropdown ul {
+  border: 1px solid #6414e947;
+  width: 129px;
+  padding: 0px !important;
+}
+
+li.dropdown ul li {
+  width: 100%;
+  float: left;
+  min-width: 100% !important;
+}
+
+li.dropdown ul li a {
+  padding: 0px !important;
+  float: left;
+  width: 100%;
+}
+
+li.dropdown ul li {
+  /* border-bottom: 1px solid #efefef; */
+  padding: 0px;
+}
+
+li.dropdown ul li a {
+  border-bottom: 1px solid #efefef;
+  padding: 10px !important;
+  width: 100%;
+  float: left;
+}
+
+table.table_user_recipients th {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  background: #6414E9;
+}
+table.table_user_recipients td {
+  color: #000;
+
+  font-size: 14px;
+  text-align: center;
+}
+table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
 }

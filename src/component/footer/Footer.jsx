@@ -158,12 +158,17 @@ function LegalArrayObjects(){
                 </div>
 
                 <div className="col-lg-3 col-md-6 footer-info">
+                   
                     <h3>Contact Us</h3>
+                    <li className="suppot_footer">
                         <img src="assets/img/footer/email.svg" alt="emai_icons" className="email_icons" />                  
                         <p> support@ercom.com </p>
-
+                        </li>
+                           
+                           <li className="suppot_footer">
                         <img src="assets/img/footer/phone.svg" alt="phone_icons" className="phone_icons" />                  
                         <p> +66 2399 1145</p>
+                        </li>
                     <div className="social-links mt-3">
                     <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
                     <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>

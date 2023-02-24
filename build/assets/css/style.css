@@ -72,7 +72,7 @@ h6,
 #header {
   height: 80px;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 9999999;
   transition: all 0.5s;
   background: #fff;
 }
@@ -2620,7 +2620,7 @@ img.quotup_icons {
 }
 section.top_sections.aos-init.aos-animate {
   width: 100%;
-  background-image: url(http://localhost:3000/assets/img/home/top-main.svg);
+  background-image: url(/assets/img/home/top-main.svg);
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2741,4 +2741,31 @@ table.table_user_recipients td {
   text-align: center;
 }
 table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
+}
+
+
+section.top_sections.aos-init.aos-animate{
+    z-index: 99999;
+    position: relative;
+}
+section.why-us_section.aos-init.aos-animate {
+    z-index: 1;
+    position: relative;
+}
+.view-button .call_button {
+  width: max-content;
+  padding: 10px 31px;
+  max-width: 100%;
+  margin-left: 0px;
+}
+.view-button {
+  width: 100%;
+  float: l;
+  float: left;
+  text-align: center;
+}
+li.suppot_footer {list-style: none;display: flex;align-items: center;margin-bottom: 10px;}
+
+li.suppot_footer img {
+    margin-right: 12px;
 }

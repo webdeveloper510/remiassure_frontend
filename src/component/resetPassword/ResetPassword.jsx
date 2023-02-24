@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import {API} from "../../config/API";
 import axios from 'axios';
 import UserContext from '../context/UserContext';
-import './recent-style.scss';
+
 
 
 const RecentPassword = () => {

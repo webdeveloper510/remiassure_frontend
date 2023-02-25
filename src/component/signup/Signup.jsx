@@ -85,7 +85,7 @@ const Signup = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba signup_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba signup_banner">
     <div className="container">
         <div className="row">
             <div className="col-lg-6">

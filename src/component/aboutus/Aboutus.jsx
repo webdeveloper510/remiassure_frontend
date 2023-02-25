@@ -187,7 +187,7 @@ const Aboutus = () => {
         <>
          
  {/* <!-- ======= AboutUs Our vission and mission-Section  start======= --> */}
-    <section className="why-us section-bgba banner_section about_banner innre_about" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us section-bgba banner_section about_banner innre_about">
    <div id="about">
       <div className="container">
          <div className="row">
@@ -219,7 +219,7 @@ const Aboutus = () => {
 
 
  {/* <!-- ======= AboUs Why RemitAssure-Section  start======= --> */}
- <section  className="why-us section-bgba aos-init aos-animate" data-aos="fade-up" date-aos-delay="200">
+ <section  className="why-us section-bgba aos-init aos-animate">
       <div className="container">
 
          <div className="row">

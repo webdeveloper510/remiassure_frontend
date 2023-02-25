@@ -85,7 +85,7 @@ const Login = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba login_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba login_banner">
     <div className="container">
         <div className="row">
             {/* <div className="col-lg-6">
@@ -130,7 +130,7 @@ const Login = () => {
                                                     value={promo_marketing}
                                                     onChange={handlePromo_marketing}
                                                     checked={promo_marketing.Active} // <-- set the checked prop of input    
-                                                    label="Check me out" />
+                                                    label="Remember me " />
                                                 </Form.Group>
                                             </div>
                                             <div className="col-lg-6">

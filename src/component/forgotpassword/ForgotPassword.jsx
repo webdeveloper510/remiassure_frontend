@@ -63,7 +63,7 @@ const ForgotPassword = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba forgot_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba forgot_banner">
     <div className="container">
         <div className="row">
             {/* <div className="col-lg-6">

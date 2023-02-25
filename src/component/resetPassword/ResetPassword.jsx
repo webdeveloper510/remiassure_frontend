@@ -23,19 +23,13 @@ const RecentPassword = () => {
         setConfirmPassword(e.target.value);
     }
 
-    // const [token_forgot, setToken_forgot] = useState('');
-
-    // useEffect(() => {
-    // localStorage.setItem('dataKey', JSON.stringify(token_forgot));
-    // }, [token_forgot]);
-
 
     const token_forgot = localStorage.getItem("token_forgot");
     console.log("Token_Forgot_password", token_forgot);
 
 
-    const token_forgot_url = localStorage.getItem("token_forgot_url");
-    console.log("token_forgot_url", token_forgot_url);
+    // const token_forgot_url = localStorage.getItem("token_forgot_url");
+    // console.log("token_forgot_url", token_forgot_url);
 
 
     const notify = () =>toast.success("Check your email to Reset Password");
@@ -57,14 +51,13 @@ const RecentPassword = () => {
             })
             .then(function(response) {
                 console.log("Forget API" ,response);
-                window.location.reload(false);
-                navigate('/login')
+                navigate('/')
                 notify();
             })
             .catch(function(error) {
                 console.log(error.response);
                 if(error.response.status){
-                    toast.error(error.response.data.detail);
+                    toast.error(error.response.data.message || error.response.data.non_field_errors);
                 }
                 // wrongData();
             })
@@ -73,7 +66,7 @@ const RecentPassword = () => {
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-         <section className="why-us section-bgba recent_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba recent_banner">
     <div className="container">
         <div className="row">
             {/* <div className="col-lg-6">

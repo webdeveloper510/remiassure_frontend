@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {links, NavLink, useNavigate} from 'react-router-dom';
 
+
 import UserContext from '../context/UserContext';
 import {API} from "../../config/API";
 import axios from 'axios';
@@ -8,6 +9,18 @@ import { toast } from 'react-toastify';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserCheck} from '@fortawesome/free-solid-svg-icons';
+
+// <!-- Vendor CSS Files -->
+import '../../assets/vendor/animatecss/animate.min.css';
+import '../../assets/vendor/aos/aos.css';
+import '../../assets/vendor/bootstrap/css/bootstrap.min.css';
+import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css';
+import '../../assets/vendor/boxicons/css/boxicons.min.css';
+import '../../assets/vendor/glightbox/css/glightbox.min.css';
+import '../../assets/vendor/swiper/swiper-bundle.min.css';
+import logo from '../../assets/img/home/logo.svg';
+// Main CSS File
+import '../../assets/css/style.css';
 
 const Header =() => {
 
@@ -46,7 +59,7 @@ const Header =() => {
                 <div className="logo">
                   <h1 className="text-light">
                   <NavLink to="/">
-                    <img src="assets/img/home/logo.svg" alt="logo"  />
+                    <img src={logo} alt="logo"  />
                     </NavLink>
                   </h1>
                 </div>
@@ -66,7 +79,7 @@ const Header =() => {
                       <NavLink to="/referral">Referral</NavLink>
                     </li>
 
-                    <li>
+                    {/* <li> */}
                     {
                       token != undefined || '' ? (
 
@@ -85,12 +98,16 @@ const Header =() => {
                       
                       ) : (
                         <>
+                        <li>
                         <NavLink to="/signup">Signup</NavLink>
+                        </li>
+                        <li>
                         <NavLink to="/login">Login</NavLink>
+                        </li>
                         </>
                       )
                     }
-                    </li>
+                    {/* </li> */}
 
 {/*               
                       {

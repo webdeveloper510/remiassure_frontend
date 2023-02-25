@@ -192,7 +192,7 @@ const Referral = () => {
     return(
         <>
          {/* <!-- ======= GBP for friends Remitassur -Section  start======= --> */}
-         <section className="why-us section-bgba help_banner" data-aos="fade-up" date-aos-delay="200">
+         <section className="why-us section-bgba help_banner">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6">
@@ -215,7 +215,7 @@ const Referral = () => {
          {/* <!-- ======= GBP for friends Remitassur -Section  End======= --> */}
 
           {/* <!-- ======= How do I refer a friend? Remitassur -Section  start======= --> */}
-          <section className="why-us section-bgba" data-aos="fade-up" date-aos-delay="200">
+          <section className="why-us section-bgba">
             <div className="container">
 
                 <div className="row">
@@ -298,7 +298,7 @@ const Referral = () => {
                         </div>
 
                         <div className="view-button">
-                            <button className="btn btn answer_button">Find out more</button>
+                            <button className="btn btn find_button">Find out more</button>
                         </div>
                         <div className="terms_content">
                           <p>*T&Cs apply.<span className="terms_content"style={{ color: 'rgba(100, 20, 233, 1)' }}>See terms and conditions</span> for details*</p>
@@ -311,7 +311,7 @@ const Referral = () => {
     {/* <!-- ======= How do I refer a friend? Remitassur -Section  End======= --> */}
 
     {/* <!-- ======= Why RemitAssure Remitassur -Section  start======= --> */}
-    <section className="why-us section-bgba why_banner" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us section-bgba why_banner">
             <div className="container">
 
                 <div className="row">
@@ -337,7 +337,7 @@ const Referral = () => {
 
 
  {/* <!-- ======= Testimonial-Section  start======= --> */}
-        <section className="why-us section-bgba" data-aos="fade-up" date-aos-delay="200">
+        <section className="why-us section-bgba">
             <div className="container">
         
             {/* main row  start*/}
@@ -407,7 +407,7 @@ const Referral = () => {
 
 
      {/* <!-- ======= Fast-security RemitAssure-Section start ======= --> */}
-     <section className="why-us section-bg banner_secure" data-aos="fade-up" date-aos-delay="200">
+     <section className="why-us section-bg banner_secure">
        <div className="container">        
                     {/* -----======= first row End ====--- */} {/* -----======= second row start ====--- */}
                     <div class="row">

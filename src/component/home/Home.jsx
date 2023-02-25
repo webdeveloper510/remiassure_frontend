@@ -5,14 +5,15 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 
+
 // start -----Why RemitAssure circle function
 function WhyRenderingArrayOfObjects(){
   const dataItems = [
     {
       id:1,
       src: "assets/img/home/Vector01.svg",
-      circle_heading: "We're Safe",
-      circle_content: "We use industry-leading technology to protect your money.",
+      circle_heading: "We're Fast",
+      circle_content: "95% of our transfers are ready in minutes..",
     },
     {
       id:2,
@@ -82,7 +83,7 @@ function BankTransferArrayOfObjects() {
   const Tranferdata = bankItems.map((bankdata)=>{
     return(
 
-          <li>
+          <li className="bank_lists">
             <div className="bank_contents">
                 <img src={bankdata.home_src} alt="home_icons" className="bank_icons" />
                 <h3 className="bank_transfer">{bankdata.bank_title}</h3>
@@ -259,7 +260,7 @@ const Home = () => {
 
 
     {/* <!-- ======= Home Better-Way-Section  start======= --> */}
-    <section className="top_sections" data-aos="fade-up" date-aos-delay="200">
+    <section className="top_sections">
     <div class="container">
         <div class="row">
             <div className="col-lg-6">
@@ -287,6 +288,7 @@ const Home = () => {
             </div>
         </div>
 
+       
         <div class="row">
             <div className="col-lg-12">
                 <div className="card card-flag new_card">
@@ -294,7 +296,7 @@ const Home = () => {
                         <h6 className="exchange-heading">EXCHANGE RATE</h6>
                         <p className="calculation">1 AUD = 0.59476 USD</p>
                         <div className="row">
-                            <div className="col-4">
+                            <div className="col-3-1">
                                 <p className="send-text">You Send</p>
                                 <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
@@ -307,7 +309,7 @@ const Home = () => {
                                     </DropdownButton>
                                 </InputGroup>
                             </div>
-                            <div className="col-3">
+                            <div className="col-3-1">
                                 <p className="get-text">They get</p>
                                 <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
@@ -320,7 +322,7 @@ const Home = () => {
                                     </DropdownButton>
                                 </InputGroup>
                             </div>
-                            <div className="col-3">
+                            <div className="col-3-1">
                                 <p className="recived-text">Receive method</p>
                                 <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
@@ -333,7 +335,7 @@ const Home = () => {
                                     </DropdownButton>
                                 </InputGroup>
                             </div>
-                            <div className="col-2">
+                            <div className="col-3-2">
                                 <button className="btn btn continue-button">Continue</button>
                             </div>
                         </div>
@@ -348,7 +350,7 @@ const Home = () => {
 
 
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
-    <section className="why-us_section" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us_section">
     <div class="container">
 
         <div class="row">
@@ -368,6 +370,8 @@ const Home = () => {
             </div>
         </div>
 
+
+       <div className="Money_section">
         <div class="row">
         <div className="col-lg-6 right_sections">
               <img src="assets/img/home/img03.svg" alt="background-images" />
@@ -393,6 +397,7 @@ const Home = () => {
                 </div>
             </div>
         </div> 
+        </div>
 
     </div>
 </section>
@@ -401,7 +406,7 @@ const Home = () => {
 
 
  {/* <!-- ======= Home Wide-Choice-Section  start======= --> */}
- <section className="why-us section-bgba banner_section05" data-aos="fade-up" date-aos-delay="200">
+ <section className="why-us section-bgba banner_section05" >
       <div className="container">
  
        {/* main row  start*/}
@@ -418,14 +423,16 @@ const Home = () => {
                     </div>
 
                     <div className="chose-content">
-                      <p className="chose-paragraph02">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br /> 
-                      labore et dolore magna aliqua. Facilisi morbi tempus iaculis urna. Amet tellus cras adipiscing<br /> 
-                       enim. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Volutpat diam ut<br /> 
-                       venenatis tellus in. Rhoncus aenean vel elit scelerisque. Nulla facilisi morbi tempus iaculis urna id volutpat lacus.<br />  
-                       Id faucibus nisl tincidunt eget nullam. Sed viverra tellus in hac<br />  
-                       habitasse platea dictumst. Ornare arcu odio ut sem nulla. Lectus mauris ultrices eros in<br /> 
-                       cursus turpis massa. Sed nisi lacus sed viverra. Integer vitae justo eget magna. Sed vulputate<br /> 
-                        mi sit amet. Nam aliquam sem et tortor consequat id porta.
+                      <p className="chose-paragraph02">Lorem ipsum dolor sit amet, consectetur
+                       adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Facilisi morbi tempus iaculis urna. Amet tellus cras adipiscing 
+                        enim. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. 
+                        Volutpat diam ut venenatis tellus in. Rhoncus aenean vel elit scelerisque. 
+                        Nulla facilisi morbi tempus iaculis urna id volutpat lacus. Id faucibus nisl 
+                        tincidunt eget nullam. Sed viverra tellus in hac habitasse platea dictumst.
+                         Ornare arcu odio ut sem nulla. Lectus mauris ultrices eros in cursus turpis 
+                         massa. Sed nisi lacus sed viverra. Integer vitae justo eget magna. 
+                         Sed vulputate mi sit amet. Nam aliquam sem et tortor consequat id porta.
                       </p>
                     
                     </div>
@@ -495,7 +502,7 @@ const Home = () => {
 
 
     {/* <!-- ======= Home Call-us section start======= --> */}
-    <section className="why-us section-bgba banner_section01" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us section-bgba banner_section01">
       <div className="container">
        
        {/* main row  start*/}
@@ -506,9 +513,8 @@ const Home = () => {
                   <div className="col-lg-6">
 
                     <div className="vl02">
-                       <h1 className="money-heading">Send money to over 130 countries</h1>
-                       <h1 className="worldwide-heading01">worldwide and choose from over</h1>
-                       <h1 className="currencies-heading01">70 currencies</h1>
+                       <h1 className="money-heading">Send money to over 130 countries worldwide and choose 
+                       from over 70 currencies</h1>
                     </div>
 
                     <div className="popular-content">

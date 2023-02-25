@@ -125,7 +125,7 @@ function LegalArrayObjects(){
     return(
         <>
          {/* <!-- ======= Footer ======= --> */}
-        <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <footer id="footer">
             <div className="footer-top">
             <div className="container">
                 <div className="row">
@@ -159,7 +159,7 @@ function LegalArrayObjects(){
 
                 <div className="col-lg-3 col-md-6 footer-info">
                    
-                    <h3>Contact Us</h3>
+                    <h4>Contact Us</h4>
                     <li className="suppot_footer">
                         <img src="assets/img/footer/email.svg" alt="emai_icons" className="email_icons" />                  
                         <p> support@ercom.com </p>

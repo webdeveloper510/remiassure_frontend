@@ -146,7 +146,7 @@ function AccordionArrayOfObjects() {
     <>
     
     {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-    <section className="why-us section-bgba help_banner" data-aos="fade-up" date-aos-delay="200">
+    <section className="why-us section-bgba help_banner">
       <div className="container">
 
         <div className="support_image">
@@ -187,7 +187,7 @@ function AccordionArrayOfObjects() {
     {/* <!-- ======= Help Better-Way-Section End-Section ======= --> */}
 
   {/* <!-- ======= Frequently asked questions FAQs  start======= --> */}
-  <section className="why-us section-bgba" data-aos="fade-up" date-aos-delay="200">
+  <section className="why-us section-bgba">
     <div className="container">
       <div className="row">
         <div className="col-lg-6">

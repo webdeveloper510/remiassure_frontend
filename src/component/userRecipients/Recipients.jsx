@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext , useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
 
@@ -9,65 +9,49 @@ import axios from "axios";
 
 const Recipients =() =>{
 
-    const [First_name, setFirst_name] = useState('');
-    const [Last_name, setLast_name] = useState('');
-    const [mobile, setMobile] = useState('');
+    const [data, setData] = useState([]);
+    alert(data);
+
 
     const navigate = useNavigate();
 
     const notify = () => toast.success("Profile Updated Successfully!");
- 
-  
-    const handleFirstName =(e) => {
-        setFirst_name(e.target.value);
-    }
-    const handleLastName =(e) => {
-        setLast_name(e.target.value);
-
-    }
-    const handeleMobile =(e) => {
-        setMobile(e.target.value);
-    } 
 
 
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
 
 
-
-    const handleRecipientList = (event) => {
-        event.preventDefault();
+    useEffect(() => {
         axios.post(API.BASE_URL + 'recipient-list/', {
-            First_name: First_name,
-            Last_name: Last_name,
-            mobile: mobile
-        }, {
             headers: {
                 "Authorization" : `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
-          
-        })
-        .then(function(response) {
-            console.log(response);
+          })
+          .then(function(response) {
+              console.log("Recipients APIIIII", response.data);
+              setData(response.data);
+              if (response.status)
+              notify();
+          })
+          .catch(function(error) {
+              console.log(error);
+              console.log(error.response)
+              if(error.response.status){
+                  toast.error(error.response.data.detail);
+              } 
+          })
+    }, [])
 
-            if (response.status)
-                notify();
-                navigate('/');   
-        })
-        .catch(function(error, message) {
-            console.log(error.response)
-            if(error.response.status){
-                toast.error(error.response.data.message);
-            } 
-            console.log(error, "klnklnklnknnnnnnnnnnnn");   
-        })
-    }
+
+
+
+
 
     return(
         <>
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
-    <section className="user_recipients_section" data-aos="fade-up" date-aos-delay="200">
+    <section className="user_recipients_section">
         <div class="container">
             <div class="row">
                 <div className="col-lg-12">
@@ -82,13 +66,25 @@ const Recipients =() =>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td></td>
-                        </tr>
+                        {data.map((items) => {
+                            console.log(items, "itemnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+                            return(
+                             
+                                <tr key={items.id}>
+                                    <td>{items.id}</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td></td>
+                              </tr>
+                                    
+                            )    
+                        })}
+
+                     
+
+
+
                         <tr>
                             <td>2</td>
                             <td>Jacob</td>

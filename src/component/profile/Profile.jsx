@@ -74,7 +74,7 @@ const Profile = () => {
     return(
         <>
           {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
-          <section className="why-us section-bgba profile_banner" data-aos="fade-up" date-aos-delay="200">
+          <section className="why-us section-bgba profile_banner">
     <div className="container">
         <div className="row">
             {/* <div className="col-lg-6">

@@ -2934,3 +2934,6 @@ div#testimonial-section {
 section.why-us.section-bgba.banner_section05 .row {
   align-items: center;
 }
+a.dropdown-item {
+  font-size: 12px;
+}

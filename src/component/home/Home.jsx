@@ -518,8 +518,8 @@ const Home = () => {
                     </div>
 
                     <div className="popular-content">
-                      <h5 className="popular-paragraph01">POPULAR COUNTRIES
-                      </h5>
+                      <h4 className="popular-paragraph01">POPULAR COUNTRIES
+                      </h4>
                       <p className="popular-paragraph02">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                       </p>
                       <p className="popular-paragraph02"> incididunt ut labore et dolore magna aliqua. Facilisi morbi tempus iaculis urna.

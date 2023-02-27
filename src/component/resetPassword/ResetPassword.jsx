@@ -81,7 +81,7 @@ const RecentPassword = () => {
                     <div className="col-lg-12">
                         <div className="card card-recent-password">
                             <div className="card-body">
-                                <h5 className="Sign-heading">Recent Password ?</h5>
+                                <h5 className="Sign-heading">Reset Password </h5>
 
                                 <div className="form_login">
                                     <form>
@@ -100,7 +100,7 @@ const RecentPassword = () => {
                                             type="password"
                                             value={confirmPassword}
                                             onChange={handleConfirmPassword}
-                                             placeholder="Enter Confirm Password" />
+                                             placeholder="Confirm Password" />
                                         </Form.Group>
 
                                         <button variant="primary" 

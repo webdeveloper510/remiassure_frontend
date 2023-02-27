@@ -10,12 +10,11 @@ import axios from "axios";
 const Recipients =() =>{
 
     const [data, setData] = useState([]);
-    alert(data);
-
+    // alert(data);
 
     const navigate = useNavigate();
 
-    const notify = () => toast.success("Profile Updated Successfully!");
+    const notify = () => toast.success("User Data Get Successfully!");
 
 
     const token = localStorage.getItem("token");
@@ -23,10 +22,10 @@ const Recipients =() =>{
 
 
     useEffect(() => {
-        axios.post(API.BASE_URL + 'recipient-list/', {
+        axios.post(API.BASE_URL + 'recipient-list/',{}, {
             headers: {
                 "Authorization" : `Bearer ${token}`,
-            },
+            }
           })
           .then(function(response) {
               console.log("Recipients APIIIII", response.data);
@@ -43,9 +42,7 @@ const Recipients =() =>{
           })
     }, [])
 
-
-
-
+    console.log(data," nnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
 
 
     return(
@@ -58,54 +55,32 @@ const Recipients =() =>{
                 <Table striped bordered hover className="table_user_recipients">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Action</th>
+                            <th>id#</th>
+                            <th>User</th>
+                            <th>Name</th>
+                            <th>Destination</th>
+                            <th>Detail-link</th>
+                            <th>transfer_now_link</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((items) => {
-                            console.log(items, "itemnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+                        {
+                        data.data?.map((res, index) => {
+                            //console.log(items, "itemnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
                             return(
                              
-                                <tr key={items.id}>
-                                    <td>{items.id}</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td></td>
+                                <tr key={res.id}>
+                                    <td>{res.id}</td>
+                                    <td>{res.user}</td>
+                                    <td>{res.name}</td>
+                                    <td>{res.destination}</td>
+                                    <td>{res.detail_link}</td>
+                                    <td>{res.transfer_now_link}</td>
+                                
                               </tr>
                                     
                             )    
                         })}
-
-                     
-
-
-
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td></td>
-                        </tr>
                       
                     </tbody>
                     </Table> 

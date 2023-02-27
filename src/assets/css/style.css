@@ -2929,3 +2929,8 @@ div#testimonial-section {
   background: #2F007E;
   border: none;
 }
+
+
+section.why-us.section-bgba.banner_section05 .row {
+  align-items: center;
+}

@@ -31,7 +31,7 @@ function WhyRenderingArrayOfObjects(){
 
   const circlItems = dataItems.map((value) =>{
     return(
-      <li className="">
+      <li className="" key={value.id}>
         <div className="circle-image">
               <img src={value.src} alt="circle-image" />
             </div>
@@ -83,7 +83,7 @@ function BankTransferArrayOfObjects() {
   const Tranferdata = bankItems.map((bankdata)=>{
     return(
 
-          <li className="bank_lists">
+          <li className="bank_lists" key={bankdata.id}>
             <div className="bank_contents">
                 <img src={bankdata.home_src} alt="home_icons" className="bank_icons" />
                 <h3 className="bank_transfer">{bankdata.bank_title}</h3>
@@ -146,7 +146,7 @@ function FlagHomeArrayofoObjects() {
   const flagdataItems = flagData.map((flagvalue)=>{
     return(
 
-      <li>
+      <li key={flagvalue.id}>
       <div className="col-lg-6">
         <div className="card card-flag01">
           <div className="row">
@@ -183,7 +183,7 @@ function FlagHomeArrayofoObjects() {
 const Card = (props) => {
   // console.log(props,"propspropspropsprops")
   return (
-    <li className="card li_card ">
+    <li className="card li_card " key={props.id}>
          <img src="assets/img/home/quote-up.svg" alt="quote-up" className="quotup_icons" />
       <div className="row">
           <div className="col-lg-4">

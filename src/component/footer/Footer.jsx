@@ -31,7 +31,7 @@ const Footer = () => {
 
         const NavigationItems = navigationData.map((value) => {
             return(
-                <li>
+                <li key={value.id}>
                  <a href="#">{value.content}</a>
                 </li>
             )
@@ -76,7 +76,7 @@ function WeDoArrayObjects(){
 
     const wedoItems = data.map((element)=>{
         return(
-             <li>
+             <li key={element.id}>
                  <a href="#">{element.title}</a>
              </li>
         )
@@ -108,7 +108,7 @@ function LegalArrayObjects(){
 
     const lagalItems = legalData.map((legal)=>{
         return(
-            <li>
+            <li key={legal.id}>
             <a href="#">{legal.content}</a>
         </li>
             

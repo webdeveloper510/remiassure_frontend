@@ -214,8 +214,9 @@ const Referral = () => {
         </section>
          {/* <!-- ======= GBP for friends Remitassur -Section  End======= --> */}
 
+
           {/* <!-- ======= How do I refer a friend? Remitassur -Section  start======= --> */}
-          <section className="why-us section-bgba">
+          <section className="why-us section-bgba referal-section">
             <div className="container">
 
                 <div className="row">
@@ -229,45 +230,42 @@ const Referral = () => {
                 </div>
 
 
-                <div className="row"> 
-                    <div className="col-lg-3">
+                <div className="timeline"> 
                 
-                        {/* <p className="popup_signup">Sign up</p> */}
-                     
-                        <img src="assets/img/referral/dot_line.png"  className="background_dot_image01"/>
-                        <img src="assets/img/referral/comment_box.png" alt="comment_box" className="comment_box01" />
-                        <div className="popup_content">
+                    <div className="timeline-content col-lg-3">
+                <p className="timeline-text odd">Sign up</p>
+                
+                        <div className="popup_content odd-text">
                           <p className="signup_content">1</p>
                           
                         </div>  
                     </div>
-                    <div className="col-lg-3">
-                    <img src="assets/img/referral/dot_line.png"  className="background_dot_image02"/>
-                        <div className="popup_content">
-                          <p className="signup_content">2</p>
-                          <img src="assets/img/referral/comment_box02.svg" alt=""  comment_box02/>
+                    <div className="timeline-content col-lg-3">
+                        <div className="popup_content even-text">
+                          <p className="signup_content">2</p>    
                         </div>  
+                        <p class="timeline-text even">Transfer Funds</p>
                     </div>
-                    <div className="col-lg-3">
-                    <img src="assets/img/referral/dot_line.png"  className="background_dot_image03"/>
-                    <img src="assets/img/referral/comment_box.png" alt="" comment_box03/>
-                        <div className="popup_content">
+                    <div className="timeline-content col-lg-3">
+                    <p class="timeline-text odd"> Share your referral code with family and friends</p>
+                        <div className="popup_content odd-text">
                           <p className="signup_content">3</p>
                         </div>  
                     </div>
-                    <div className="col-lg-3">
-                        <div className="popup_content">
+                    <div className="timeline-content col-lg-3">
+             
+                        <div className="popup_content even-text">
                           <p className="signup_content">4</p>
-                          <img src="assets/img/referral/comment_box02.svg" alt=""  comment_box02/>
                         </div>  
+                        <p class="timeline-text even"> When they sign up and send funds through their account, you both receive a voucher</p>
                     </div>
 
                 </div>
 
-
+                <div className="referal_code">
                 <div className="row">
                     <div className="col-lg-12">
-                        <p className="share_content">Share your unique referral code: </p>
+                        <p className="share_referal_code">Share your unique referral code: </p>
 
                         <InputGroup className="mb-3">
                             <Form.Control                           
@@ -286,6 +284,7 @@ const Referral = () => {
                         </InputGroup>
                     </div>
                 </div>
+                </div>
 
                 <div className="row">
                     <div className="col-lg-12">
@@ -301,7 +300,7 @@ const Referral = () => {
                             <button className="btn btn find_button">Find out more</button>
                         </div>
                         <div className="terms_content">
-                          <p>*T&Cs apply.<span className="terms_content"style={{ color: 'rgba(100, 20, 233, 1)' }}>See terms and conditions</span> for details*</p>
+                          <p>*T&Cs apply. <span style={{ color: 'rgba(100, 20, 233, 1)' }}> See terms and conditions</span> for details*</p>
                         </div>
                     </div>
                 </div>
@@ -337,28 +336,28 @@ const Referral = () => {
 
 
  {/* <!-- ======= Testimonial-Section  start======= --> */}
-        <section className="why-us section-bgba">
+        <section className="why-us section-bgba testimonials">
             <div className="container">
         
             {/* main row  start*/}
              <div className="row">
-                <div className="col-lg-10"> 
+                
                     <div className="testimonial_vl">
                         <h1 className="chose-heading">Testimonial</h1>                
-                    </div>
-                </div>
-                <div className="col-lg-2">
-                    <div className="button_icons">
-                        <button className="btn btn prev left_icon" onClick={() => setMoveClass('next')}>
+                    
+                    <div className="button_icons_referral">
+                        <button className="btn btn prev left_icon" onClick={() => setMoveClass('prev')}>
                         <i className="bx bx-chevron-left prev_button"></i>
                         </button>
 
-                        <button className="btn btn next right_icon" onClick={() => setMoveClass('prev')}>
+                        <button className="btn btn next right_icon"   onClick={() => setMoveClass('next')}>
                         <i className="bx bx-chevron-right "></i>
                         </button>
+                     
 
                     </div>
-                </div>
+                    </div>
+                
              </div>
 
                 <div className="row">
@@ -410,7 +409,7 @@ const Referral = () => {
      <section className="why-us section-bg banner_secure">
        <div className="container">        
                     {/* -----======= first row End ====--- */} {/* -----======= second row start ====--- */}
-                    <div class="row">
+                    <div className="row">
                         <div className="col-lg-6 right_sections01">
                                 <img src="assets/img/home/img03.svg" alt="background-images" />
                             </div>

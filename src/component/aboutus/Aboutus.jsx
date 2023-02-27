@@ -258,14 +258,14 @@ const Aboutus = () => {
                 </div>
                 <div className="col-lg-2">
                     <div className="button_icons">
-                        <button className="btn btn prev left_icon" onClick={() => setMoveClass('next')}>
+                        <button className="btn btn prev left_icon" onClick={() => setMoveClass('prev')}>
                         <i className="bx bx-chevron-left prev_button"></i>
                         </button>
 
-                        <button className="btn btn next right_icon" onClick={() => setMoveClass('prev')}>
+                        <button className="btn btn next right_icon" onClick={() => setMoveClass('next')} >
                         <i className="bx bx-chevron-right "></i>
                         </button>
-
+                      
                     </div>
                 </div>
              </div>

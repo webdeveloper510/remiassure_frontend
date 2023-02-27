@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {links, NavLink, useNavigate} from 'react-router-dom';
 
 
+
 import UserContext from '../context/UserContext';
 import {API} from "../../config/API";
 import axios from 'axios';
@@ -67,7 +68,7 @@ const Header =() => {
                 <nav id="navbar" className="navbar">
                   <ul>
                     <li>
-                      <NavLink className="active " to="/">Home</NavLink>
+                      <NavLink className="" to="/">Home</NavLink>
                     </li>
                     <li>
                       <NavLink to="/aboutus"> About us</NavLink>

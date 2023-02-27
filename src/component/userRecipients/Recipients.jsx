@@ -50,7 +50,7 @@ const Recipients =() =>{
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
     <section className="user_recipients_section">
         <div class="container">
-            <div class="row">
+            <div className="row">
                 <div className="col-lg-12">
                 <Table striped bordered hover className="table_user_recipients">
                     <thead>

@@ -181,7 +181,7 @@ function FlagHomeArrayofoObjects() {
 
 // card carousel start
 const Card = (props) => {
-  console.log(props,"propspropspropsprops")
+  // console.log(props,"propspropspropsprops")
   return (
     <li className="card li_card ">
          <img src="assets/img/home/quote-up.svg" alt="quote-up" className="quotup_icons" />
@@ -223,7 +223,7 @@ const Home = () => {
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     }
   ];
-  const [moveClass, setMoveClass] = useState('');
+  const [movePage, setMovePage] = useState('');
   const [carouselItems, setCarouselItems] = useState(items);
   //console.log(items, "carouselItemscarouselItemscarouselItemscarouselItemscarouselItems")
   
@@ -232,12 +232,12 @@ const Home = () => {
   }, [carouselItems])
   
   const handleAnimationEnd = () => {
-    if(moveClass === 'prev'){
+    if(movePage === 'prev'){
       shiftNext([...carouselItems]);
-    }else if(moveClass === 'next'){
+    }else if(movePage === 'next'){
       shiftPrev([...carouselItems]);
     }
-    setMoveClass('')
+    setMovePage('')
   }
   
   const shiftPrev = (paragraph) => {
@@ -351,9 +351,9 @@ const Home = () => {
 
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
     <section className="why-us_section">
-    <div class="container">
+    <div className="container">
 
-        <div class="row">
+        <div className="row">
             <div className="col-lg-6">
                 <div className="vl">
                     <h1 className="vl-heading">Why</h1>
@@ -384,7 +384,7 @@ const Home = () => {
                 </div>
                 <div className="vl-content">
                     <p className="vl-paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat cras fermentum malesuada ultrices dictum. Eu id sit malesuada quam et tincidunt eu dolor convallis
+                    Download our app for free to send money online in minutes to over 130 other countries. Track your payments and view your transfer history from anywhere.
                     </p>
                 </div>
                 <div className="link">
@@ -462,13 +462,15 @@ const Home = () => {
             <div className="col-lg-12">
               <h3 className="customers-heading">What customers say about us</h3>
               <div className="button_icons">
-                <button className="btn btn prev left_icon" onClick={() => setMoveClass('next')}>
+                <button className="btn btn prev left_icon" onClick={() => setMovePage('prev')}>
                   <i className="bx bx-chevron-left prev_button"></i>
                 </button>
 
-                <button className="btn btn next right_icon" onClick={() => setMoveClass('prev')}>
+                <button className="btn btn next right_icon"  onClick={() => setMovePage('next')}>
                   <i className="bx bx-chevron-right "></i>
                 </button>
+
+               
 
               </div>
               
@@ -482,7 +484,7 @@ const Home = () => {
             <div className="col-lg-12">
             <div className="carouselwrapper module-wrapper">
 
-              <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
+              <ul onAnimationEnd={handleAnimationEnd} className={`${movePage} carousel`}>
                 {carouselItems.map((t, index) => 
                   <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
                   
@@ -533,7 +535,7 @@ const Home = () => {
                   
                    {/* first row flag */}
                     <div className="row">
-                    <ul class="bank_transfer">
+                    <ul className="bank_transfer">
                      < FlagHomeArrayofoObjects/>
                      </ul>
 

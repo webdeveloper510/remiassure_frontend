@@ -1802,7 +1802,7 @@ p.vission_content {
     font-size: 26px;
     text-transform: capitalize;
     color: #6414E9;
-    background-color: #fff !important;
+    background-color: #f5efff  !important;
     z-index: 9;
     position: relative;
 }
@@ -2331,11 +2331,17 @@ img.background_dot_image03{
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+#app{
+  min-height: 100vh; 
+   display: flex;
+    flex-direction: column;
+}
 #footer {
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
   background: rgba(47, 0, 126, 1); 
+  margin-top: auto;;
 }
 
 #footer .footer-newsletter {
@@ -3028,19 +3034,15 @@ a.dropdown-item {
 }
 .timeline-content:nth-child(1) .popup_content {
   margin-top: 15px;
-  background: #fff;
 }
 .timeline-content:nth-child(2) .popup_content {
   margin-top: 94px;
-  background: #fff;
 }
 .timeline-content:nth-child(3) .popup_content {
   margin-top: 15px;
-  background: #fff;
 }
 .timeline-content:nth-child(4) .popup_content {
   margin-top: 94px;
-  background: #fff;
 }
 .timeline-content:first-child p.timeline-text.odd {
   margin-top: 28px;

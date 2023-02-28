@@ -55,12 +55,12 @@ const Recipients =() =>{
                 <Table striped bordered hover className="table_user_recipients">
                     <thead>
                         <tr>
-                            <th>id#</th>
-                            <th>User</th>
+                            <th>Sr.No </th>
+                            {/* <th>User</th> */}
                             <th>Name</th>
                             <th>Destination</th>
-                            <th>Detail-link</th>
-                            <th>transfer_now_link</th>
+                            <th>Detail Link</th>
+                            <th>Transfer Now Link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,7 +71,7 @@ const Recipients =() =>{
                              
                                 <tr key={res.id}>
                                     <td>{res.id}</td>
-                                    <td>{res.user}</td>
+                                    {/* <td>{res.user}</td> */}
                                     <td>{res.name}</td>
                                     <td>{res.destination}</td>
                                     <td>{res.detail_link}</td>

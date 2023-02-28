@@ -70,7 +70,7 @@ const Recipients =() =>{
                             return(
                              
                                 <tr key={res.id}>
-                                    <td>{res.id}</td>
+                                    <td>{index}</td>
                                     {/* <td>{res.user}</td> */}
                                     <td>{res.name}</td>
                                     <td>{res.destination}</td>

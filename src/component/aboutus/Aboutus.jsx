@@ -251,13 +251,13 @@ const Aboutus = () => {
         
             {/* main row  start*/}
              <div className="row">
-                <div className="col-lg-10"> 
+                
                     <div className="testimonial_vl">
                         <h1 className="chose-heading">What customers say about us</h1>                
-                    </div>
-                </div>
-                <div className="col-lg-2">
-                    <div className="button_icons">
+                    
+               
+             
+                    <div className="button_icons_referral">
                         <button className="btn btn prev left_icon" onClick={() => setMoveClass('prev')}>
                         <i className="bx bx-chevron-left prev_button"></i>
                         </button>
@@ -267,7 +267,7 @@ const Aboutus = () => {
                         </button>
                       
                     </div>
-                </div>
+                    </div>
              </div>
 
                 <div className="row">

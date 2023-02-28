@@ -263,7 +263,7 @@ const Home = () => {
     <section className="top_sections">
     <div class="container">
         <div class="row">
-            <div className="col-lg-6">
+            <div className="col-lg-6 no-padding banner-content">
                 <div className="vl">
                     <h1 className="vl-heading">A Better Way</h1>
                     <h1 className="vl-heading01">To Send Money</h1>
@@ -350,7 +350,7 @@ const Home = () => {
 
 
     {/* <!-- ======= Home Why RemitAssure-Section start ======= --> */}
-    <section className="why-us_section">
+    <section className="why-us_section homepage-why-us">
     <div className="container">
 
         <div className="row">

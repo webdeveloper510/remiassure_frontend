@@ -1005,7 +1005,7 @@ margin-top: 30px;
 
 /* carousel css :start */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
 
 :root {
   --up: 3;
@@ -1108,7 +1108,7 @@ li.card {
     margin: var(--card-margin);
     background:var(--color-white);
     margin-top: 47px;
-    width: 381px;
+    /*width: 381px;*/
     /* height: 145px; */
     border-radius: 16px;
     padding-bottom: 10px;
@@ -1149,6 +1149,8 @@ img.testimonial-icons {
     transform:translateX(calc(0px - var(--cardWidth)));
   }
 }
+
+
 /* carousel css :End */
 
 
@@ -2681,11 +2683,13 @@ section.top_sections {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 58px 0px 40px 0px;
-  min-height: 734px; 
+  padding: 81px 0px 40px 0px;
+  min-height: px; 
 }
 .col-lg-6.right_sections {
   padding-top: 0px;
+  width: 534.55px;
+
 }
 
 .col-lg-6.right_sections01 {
@@ -2703,6 +2707,7 @@ section.top_sections .row {
 
 .col-lg-6.right_sections img {
   width: 100%;
+  margin-top:50px;
 }
 /* section.top_sections {
   display: none;
@@ -3159,3 +3164,15 @@ input#myInput {
 }
 
 */
+
+.no-padding{
+  padding:0px;
+}
+
+.banner-content{
+  width:614px;
+}
+
+.homepage-why-us{
+  padding-top:0px;
+}

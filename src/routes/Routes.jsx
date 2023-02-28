@@ -12,9 +12,11 @@ import RecentPassword from '../component/resetPassword/ResetPassword';
 import Profile from '../component/profile/Profile';
 import Recipients from '../component/userRecipients/Recipients';
 import LocalStorage from '../component/resetPassword/Localstorage';
+import Spinner from '../component/common/Spinner';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter } from "react-router-dom";
+import Verification from '../component/verification/Verification';
 
 
 const Routerpage =()=>{
@@ -39,6 +41,8 @@ const Routerpage =()=>{
     <Route exact path='/resetpassword/:id' element= {< LocalStorage /> } />
     <Route exact path='/profile' element= {< Profile />} />
     <Route exact path='/user_recipients' element={< Recipients /> } />
+    <Route exact path='/Spinner' element= {< Spinner />} />
+    <Route exact path='/verification' element= {< Verification /> } />
   
     </Routes>
     <ToastContainer />

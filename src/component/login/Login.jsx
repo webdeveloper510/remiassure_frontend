@@ -16,6 +16,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [promo_marketing, setPromo_marketing] = useState(false);
     // const {setAuth, userauth}= useContext(UserContext);
+    const [loading, setLoading] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -50,12 +52,15 @@ const Login = () => {
             console.log("Login Session", sessionID);
         },3000
     );
+    let keyword;
 
     const handleLogin = (event) => {
         event.preventDefault();
+        setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'login/', {
             email: email,
             password: password,
+            params: { keyword },
         }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -64,6 +69,7 @@ const Login = () => {
         .then(function(response) {
             console.log("Login API" ,response);
             localStorage.setItem("token", response.data.token.access);
+            setLoading(false); // Stop loading
             if (response.status)
                 notify();
                 navigate('/');  
@@ -71,6 +77,7 @@ const Login = () => {
 
         .catch(function(error, message) {
             console.log(error.response)
+            setLoading(false); // Stop loading in case of error
 
             if(error.response.status){
                 toast.error(error.response.data.message);
@@ -144,6 +151,12 @@ const Login = () => {
                                          onClick={handleLogin}
                                          >
                                             Login
+                                            
+                                              {loading ? <>
+                                              <div class="loader" >
+                                              Loading..
+                                              </div>
+                                              </> : <></>}
                                         </button>
                                         <p className="already_content">Don't have account? 
                                           <NavLink to="/signup"> Sign-up</NavLink>

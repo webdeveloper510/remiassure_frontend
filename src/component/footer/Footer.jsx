@@ -189,7 +189,7 @@ function LegalArrayObjects(){
                     </div>
                 </div>
 
-                <div className="col-lg-10">
+                <div className="col-lg-10  reserved_content">
                    
                     <div className="copyright">
                         &copy; Copyright <strong><span>Remit-Assure</span></strong>. All Rights Reserved

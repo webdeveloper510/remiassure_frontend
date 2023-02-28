@@ -1562,15 +1562,22 @@ margin-top: 30px;
   }
 .card-signup{
   width: 450px;
-  height: 725px;
+  height: 664px;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
-  top: 60px;
+  top: 81px;
   margin-left: 100px;
   padding: 38px 36px;
   border-radius: 20px;
 }
-
+.card-signup p.already_content a {
+  border: 1px solid;
+  margin-left: 10px;
+  padding: 4px 13px;
+}
+.signup_banner .support_image img {
+  margin-top: 25px;
+}
 .signup_banner {
   background-image: url(../img/about/about_banner.png);
   min-height: 866px; 
@@ -1588,7 +1595,7 @@ text-align: center;
 color: #6414E9;
 }
 .signup_button{
-  width: 368px;
+  width: 100%;
   height: 46px;
   background: #191970;
   border-radius: 10px;
@@ -1632,12 +1639,15 @@ p.already_content {
   padding-top: 18px;
   text-align: center;
   font-size: 17px;
+  color:#191970;
 }
 label.form-check-label {
   padding-top: 4px;
 }
 
-
+p.already_content a {
+  color: #191970;
+}
 /*--------------------------------------------------------------
 # Aboutus
 --------------------------------------------------------------*/
@@ -2147,22 +2157,49 @@ img.background_dot_image03{
 # Login
 --------------------------------------------------------------*/
 .login_banner{
-  /* background-color: #2933c2; */
+ /*background:url(../img/home/login-bg.svg); */
   height: 670px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-
+  background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+  position:relative;
 }
 
+.login_banner:before {
+  content: url(../img/home/login-light-bg.svg);
+  left: 0;
+  top: 69px;
+  position: absolute;
+  opacity: .1;
+}
+/*.card-login h5 ,.card-login label {
+  color: #fff;
+}*/
+.card-login a.forgot_pass {
+  float: right;
+  color: #191970;
+  margin-top: 5px;
+}
+.card-login p.already_content a {
+  margin-left: 8px;
+  border: 1px solid #191970;
+  padding: 4px 13px;
+}
+
+.card-login p.already_content {
+  padding-top: 18px;
+  text-align: center;
+  font-size: 17px;
+}
 .card-login{
   width: 436px;
   height: 460px;
-  background: #dbc8f5;
+box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
   top: 100px;
-  margin-left: 337px;
+  margin:0 auto;
   padding: 38px 36px;
   /* text-align: center; */
   border-radius: 20px;
@@ -2177,7 +2214,7 @@ img.background_dot_image03{
   padding-top: 12px;
   }
   .login_button{
-    width: 354px;
+    width: 100%;
     height: 48px;
     background: #191970;
     border-radius: 10px;
@@ -2208,23 +2245,35 @@ img.background_dot_image03{
 
     .profile_banner {
       /* background-image: url(/assets/img/about/about_banner.png); */
-      /* min-height: 866px; */
+      min-height: 670px; 
       height: 670px;
       width: 100%;
       background-repeat: no-repeat;
       background-size: cover;
+      background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+    position: relative;
     }
-
+    .profile_banner:before {
+      content: url(../img/home/login-light-bg.svg);
+      left: 0;
+      top: 69px;
+      position: absolute;
+      opacity: .1;
+  }
   .card-profile{
-    width: 1105px;
+    width: 436px;
     height: 480px;
-    background:#d9d0f3;
-    box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+    box-shadow:0px 4px 20px rgb(0 0 0 / 16%);
     border-radius: 12px;
     top: 100px;
-    /* margin-left: 100px; */
+    margin:0 auto;
     padding: 38px 36px;
   }
+  .card-profile h5 {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
   .profile-heading{
     font-family: 'Montserrat';
     font-style: normal;
@@ -2234,7 +2283,7 @@ img.background_dot_image03{
     color: #6414E9;
     }
     .profile_button{
-    width: 140px;
+    width: 100%;
     height: 46px;
     background: #191970;
     border-radius: 10px;
@@ -2262,12 +2311,18 @@ img.background_dot_image03{
 # Forgot
 --------------------------------------------------------------*/
 .forgot_banner {
-  /* background-image: url(/assets/img/about/about_banner.png); */
-  /* min-height: 866px; */
   width: 100%;
-  height: 500px;
+  height: 670px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+  position: relative;
+}
+.forgot_banner:before {
+  content: url(../img/home/login-light-bg.svg);
+  left: 0;
+  top: 69px;
+  position: absolute;
+  opacity: .1;
 }
 .forgot-heading{
   font-family: 'Montserrat';
@@ -2278,14 +2333,17 @@ img.background_dot_image03{
   text-align: center;
   color: #6414E9;
   }
+  /*.card-forgot-password h5, .card-forgot-password label {
+    color: #fff;
+}*/
   .card-forgot-password{
     width: 436px;
     height: 300px;
-    background: #dbc8f5;
+    box-shadow: 0px 7px 15px rgb(100 20 233 / 19%);
     box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
     border-radius: 12px;
-    top: 100px;
-    margin-left: 337px;
+    top: 150px;
+    margin:0 auto;
     padding: 38px 36px;
     /* text-align: center; */
     border-radius: 20px;
@@ -2326,11 +2384,88 @@ img.background_dot_image03{
 }
 
 
+/*--------------------------------------------------------------
+# Verification 
+--------------------------------------------------------------*/
+.verification_banner{
+  height: 600px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form_verification {
+  font-family: 'Montserrat';
+}
+.card-verification {
+  width: 614px;
+  background: linear-gradient(96.2deg, #A374F2 1.68%, #6414E9 97.64%);
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  top: 100px;
+  padding: 38px 36px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
 
+button.continue_button {
+  width: 354px;
+  height: 48px;
+  background: #191970;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.card-verification p {
+  color: #fff;
+  text-align: center;
+  margin-top: 35px;
+  font-family: 'Montserrat';
+}
+.form_verification label {
+  color:#fff ;
+}
+.card-verification h5 {
+  color: #fff;
+}
+.align-center{
+  text-align:center;
+}
+.mb-3.verification_input input:last-child {
+  margin-right: 0;
+}
 
+.mb-3.verification_input input::placeholder {
+  color: #fff;
+}
+
+.mb-3.verification_input input {
+  margin-right: 10px;
+  text-align: center;
+  width: 16.66% !important;
+  border-radius: 0px;
+  background: transparent;
+  color: #fff !important;
+  border-bottom: 1px solid #fff !important;
+  border: none;
+}
+.mb-3.verification_input input:focus {
+  outline: none !important;
+}
+.verification_input {
+  display: flex;
+  margin-top: 26px;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+.footer-links:first-child {
+  width: 12% !important;
+}
+.footer-links ,.footer-info {
+  width: 22% !important;
+  float: left;
+}
 #app{
   min-height: 100vh; 
    display: flex;
@@ -3177,4 +3312,34 @@ input#myInput {
 
 .homepage-why-us{
   padding-top:0px;
+}
+.col-lg-10.reserved_content {
+  /* text-align: center; */
+  margin-left: 100px;
+}
+
+
+.loader {
+  position: absolute;
+  top: 150px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

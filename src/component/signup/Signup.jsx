@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 const Signup = () => {
 
     const [show, setShow] = React.useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     const [email, setEmail] = useState('');
@@ -49,15 +50,18 @@ const Signup = () => {
         }));
       };
 
+      let keyword;
 
     const handleSignupApi = (event) => {
         event.preventDefault();
+        setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'register/', {
             email: email,
             password: password,
             location: location,
             referral_code: !referral_code? referral_code: null, 
             promo_marketing: promo_marketing.Active,
+            params: { keyword },
         }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -67,12 +71,14 @@ const Signup = () => {
         .then(function(response) {
             console.log(response);
             localStorage.setItem("firstname", response.data.First_name);
+            setLoading(false); // Stop loading
             if (response.status)
                 notify();
-                navigate('/login');   
+                navigate('/verification');   
         })
         .catch(function(error, message) {
             console.log(error.response)
+            setLoading(false); // Stop loading in case of error
             if(error.response.status){
                 toast.error(error.response.data.message || error.response.data.password[0]);
             } 
@@ -108,10 +114,11 @@ const Signup = () => {
                                         <Form.Select 
                                          value={location}
                                          onChange={handeleLocation}
-                                         >
-                                            <option value="Delhi">Delhi</option>
-                                            <option value="Gurugram">Gurugram</option>
-                                            <option value="Mohali">Mohali</option>
+                                         >   
+                                            <option value="">--- Select Location ---</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="China">China</option>
                                         </Form.Select>
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>Your Email</Form.Label>
@@ -150,8 +157,6 @@ const Signup = () => {
                                         </Form.Group>
                                         </div>}
 
-
-
                                         <Form.Group className="mb-3 form_checkbox" controlId="formBasicCheckbox">
                                             <Form.Check className="form_label"
                                                 type="checkbox"
@@ -167,8 +172,8 @@ const Signup = () => {
                                         <button variant="primary"
                                          type="submit" 
                                          onClick={handleSignupApi}
-                                         className="signup_button">
-                                            Sign Up
+                                         className="signup_button ">
+                                           {loading ? <>Loading..</> : <>Signup</>}
                                         </button>
                                         <p className="already_content">Already have an account? 
                                           <NavLink to="/login"> Sign in</NavLink>

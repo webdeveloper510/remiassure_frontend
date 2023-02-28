@@ -2,19 +2,20 @@ import React, { useState, useContext , useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
 
-
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
+import spinner from '../../assets/spinning-loading.gif';
+
 
 const Recipients =() =>{
 
     const [data, setData] = useState([]);
-    // alert(data);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const notify = () => toast.success("User Data Get Successfully!");
+    // const notify = () => toast.success("User Data Get Successfully!");
 
 
     const token = localStorage.getItem("token");
@@ -22,6 +23,7 @@ const Recipients =() =>{
 
 
     useEffect(() => {
+        setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'recipient-list/',{}, {
             headers: {
                 "Authorization" : `Bearer ${token}`,
@@ -29,13 +31,15 @@ const Recipients =() =>{
           })
           .then(function(response) {
               console.log("Recipients APIIIII", response.data);
+              setLoading(false); // Stop loading
               setData(response.data);
-              if (response.status)
-              notify();
+            //   if (response.status)
+            // // notify();
           })
           .catch(function(error) {
               console.log(error);
-              console.log(error.response)
+              console.log(error.response);
+            //   setLoading(false); // Stop loading in case of error
               if(error.response.status){
                   toast.error(error.response.data.detail);
               } 
@@ -67,10 +71,24 @@ const Recipients =() =>{
                         {
                         data.data?.map((res, index) => {
                             //console.log(items, "itemnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
+
+                           
                             return(
+
+                                
+                                <>
+                                 {loading ? <>
+                                    <div class="loader" >
+                                         {/* Loading.. */}
+                                    </div>
+                                </> : <></>}
+
+
+                                
                              
                                 <tr key={res.id}>
-                                    <td>{index}</td>
+                                
+                                    <td>{index +1}</td>
                                     {/* <td>{res.user}</td> */}
                                     <td>{res.name}</td>
                                     <td>{res.destination}</td>
@@ -78,6 +96,7 @@ const Recipients =() =>{
                                     <td>{res.transfer_now_link}</td>
                                 
                               </tr>
+                              </>
                                     
                             )    
                         })}

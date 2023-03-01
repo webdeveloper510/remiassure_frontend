@@ -19,14 +19,19 @@ const Signup = () => {
     const [location, setLocation] = useState('');
     const [referral_code, setrReferral_code] = useState(null);
     const [promo_marketing, setPromo_marketing] = useState(false);
+    const [mobile, setMobile] = useState('');
 
     const navigate = useNavigate();
+
     const notify = () => toast.success("Sign Up Successfully!");
     const emptyData = () => toast.warn("Please fill out all the fields");
     const emailExits = () => toast.error("User with this Email already exists!");
 
     const handleEmail =(e) => {
         setEmail(e.target.value);
+    }
+    const handleMobile =(e) =>{
+        setMobile(e.target.value);
     }
     const handlePassword =(e) => {
         setPassword(e.target.value);
@@ -57,6 +62,7 @@ const Signup = () => {
         setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'register/', {
             email: email,
+            mobile: mobile,
             password: password,
             location: location,
             referral_code: !referral_code? referral_code: null, 
@@ -72,21 +78,19 @@ const Signup = () => {
             console.log(response);
             localStorage.setItem("firstname", response.data.First_name);
             setLoading(false); // Stop loading
-            if (response.status)
                 notify();
                 navigate('/verification');   
+                // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
         })
         .catch(function(error, message) {
             console.log(error.response)
             setLoading(false); // Stop loading in case of error
-            if(error.response.status){
+            if(error.response.data.status){
                 toast.error(error.response.data.message || error.response.data.password[0]);
             } 
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
     }
-
-
 
     return(
         <>
@@ -127,6 +131,15 @@ const Signup = () => {
                                             value={email}
                                             onChange={handleEmail}
                                             placeholder="Enter email" />
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
+                                            <Form.Label>Your Phone</Form.Label>
+                                            <Form.Control 
+                                            type="mobile"
+                                            value={mobile}
+                                            onChange={handleMobile}
+                                            placeholder="Enter Phone" />
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
@@ -173,7 +186,15 @@ const Signup = () => {
                                          type="submit" 
                                          onClick={handleSignupApi}
                                          className="signup_button ">
-                                           {loading ? <>Loading..</> : <>Signup</>}
+                                            Signup
+                                          {loading ? <>
+                                                <div class="loader-overly"> 
+                                                <div class="loader" > 
+                                                
+                                                </div>
+                                                
+                                                </div>
+                                              </> : <></>}
                                         </button>
                                         <p className="already_content">Already have an account? 
                                           <NavLink to="/login"> Sign in</NavLink>

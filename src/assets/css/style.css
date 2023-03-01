@@ -1562,10 +1562,8 @@ margin-top: 30px;
   }
 .card-signup{
   width: 450px;
-  height: 664px;
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
-  top: 81px;
   margin-left: 100px;
   padding: 38px 36px;
   border-radius: 20px;
@@ -1580,19 +1578,21 @@ margin-top: 30px;
 }
 .signup_banner {
   background-image: url(../img/about/about_banner.png);
-  min-height: 866px; 
+ /* min-height: 866px; */
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top:80px;
 }
 .Sign-heading{
 font-family: 'Montserrat';
 font-style: normal;
-font-weight: 700;
-font-size: 34px;
+font-weight: 600;
+font-size: 30px;
 line-height: 25px;
 text-align: center;
 color: #6414E9;
+text-transform: capitalize;
 }
 .signup_button{
   width: 100%;
@@ -2157,13 +2157,12 @@ img.background_dot_image03{
 # Login
 --------------------------------------------------------------*/
 .login_banner{
- /*background:url(../img/home/login-bg.svg); */
-  height: 670px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
   position:relative;
+  margin-top: 80px;
 }
 
 .login_banner:before {
@@ -2194,11 +2193,9 @@ img.background_dot_image03{
 }
 .card-login{
   width: 436px;
-  height: 460px;
 box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  top: 100px;
   margin:0 auto;
   padding: 38px 36px;
   /* text-align: center; */
@@ -2312,10 +2309,10 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 --------------------------------------------------------------*/
 .forgot_banner {
   width: 100%;
-  height: 670px;
   background-repeat: no-repeat;
   background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
   position: relative;
+  margin-top:80px;
 }
 .forgot_banner:before {
   content: url(../img/home/login-light-bg.svg);
@@ -2338,11 +2335,9 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 }*/
   .card-forgot-password{
     width: 436px;
-    height: 300px;
     box-shadow: 0px 7px 15px rgb(100 20 233 / 19%);
     box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
     border-radius: 12px;
-    top: 150px;
     margin:0 auto;
     padding: 38px 36px;
     /* text-align: center; */
@@ -2388,19 +2383,24 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 # Verification 
 --------------------------------------------------------------*/
 .verification_banner{
-  height: 600px;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+    position: relative;
+    margin-top: 80px;
+}
+.verification_banner:before {
+  content: url(../img/home/login-light-bg.svg);
+  left: 0;
+  top: 69px;
+  position: absolute;
+  opacity: .1;
 }
 .form_verification {
   font-family: 'Montserrat';
 }
 .card-verification {
-  width: 614px;
-  background: linear-gradient(96.2deg, #A374F2 1.68%, #6414E9 97.64%);
+  width: 436px;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
-  top: 100px;
   padding: 38px 36px;
   border-radius: 20px;
   margin: 0 auto;
@@ -2417,17 +2417,11 @@ button.continue_button {
   font-size: 16px;
 }
 .card-verification p {
-  color: #fff;
   text-align: center;
   margin-top: 35px;
   font-family: 'Montserrat';
 }
-.form_verification label {
-  color:#fff ;
-}
-.card-verification h5 {
-  color: #fff;
-}
+
 .align-center{
   text-align:center;
 }
@@ -2436,7 +2430,7 @@ button.continue_button {
 }
 
 .mb-3.verification_input input::placeholder {
-  color: #fff;
+  color:#191970;
 }
 
 .mb-3.verification_input input {
@@ -2445,8 +2439,8 @@ button.continue_button {
   width: 16.66% !important;
   border-radius: 0px;
   background: transparent;
-  color: #fff !important;
-  border-bottom: 1px solid #fff !important;
+  color: #191970 !important;
+  border-bottom: 1px solid #191970 !important;
   border: none;
 }
 .mb-3.verification_input input:focus {
@@ -2455,6 +2449,55 @@ button.continue_button {
 .verification_input {
   display: flex;
   margin-top: 26px;
+}
+
+
+
+/*--------------------------------------------------------------
+# User-dashboard css
+--------------------------------------------------------------*/
+.user_dashboard_banner {
+  margin-top: 80px;
+}
+.money_exchange_row {
+  width: 100%;
+  text-align: center;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+}
+.rate_input{
+  width: 350px !important;
+}
+.money_exchange_row select , .money_exchange_row .disabled-btn{
+  background-color: #0AEDC7  !important;
+  border: none !important;
+  font-family: 'Montserrat'  !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: center;
+  color: #190079  !important;
+}
+button.disabled-btn.btn.btn-primary {
+  width: 90px;
+}
+select.form-select option {
+  background: #fff;
+}
+.progressBar {
+  max-width: 500px;
+  margin: 40px auto;
+}
+.progress {
+  height: 10px;
+  border-radius: 5px;
+}
+
+.progress-bar {
+  background-color: #6414E9 !important;
 }
 /*--------------------------------------------------------------
 # Footer
@@ -2466,11 +2509,11 @@ button.continue_button {
   width: 22% !important;
   float: left;
 }
-#app{
+/*#root{
   min-height: 100vh; 
    display: flex;
     flex-direction: column;
-}
+}*/
 #footer {
   padding: 0 0 30px 0;
   color: #fff;
@@ -3318,22 +3361,32 @@ input#myInput {
   margin-left: 100px;
 }
 
-
+/* loader css strat */
+.loader-overly {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0 0 0 / 71%);
+  height: 100%;
+  z-index: 99999999;
+}
 .loader {
   position: absolute;
-  top: 150px;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid blue;
-  border-right: 16px solid green;
-  border-bottom: 16px solid red;
-  border-left: 16px solid pink;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
+  border-top: 7px solid #9251EF;
+  border-right: 7px solid #fff;
+  border-bottom:7px solid #9251EF;
+  border-left: 7px solid #fff;
+  width: 80px;
+  height: 80px;
   animation: spin 2s linear infinite;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: calc(30% + 0px);
 }
-
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -3343,3 +3396,5 @@ input#myInput {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* loader css strat */

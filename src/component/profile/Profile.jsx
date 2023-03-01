@@ -1,4 +1,4 @@
-import { faUnsorted } from "@fortawesome/free-solid-svg-icons";
+import { faL, faSlash, faUnsorted } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useContext, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,6 +7,7 @@ import {Links, NavLink, useNavigate} from 'react-router-dom';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
+import CountryDropdown from 'country-dropdown-with-flags-for-react';  
 
 
 const Profile = () => {
@@ -23,7 +24,8 @@ const Profile = () => {
     const [First_name, setFirst_name] = useState('');
     const [Last_name, setLast_name] = useState('');
     const [mobile, setMobile] = useState('');
-
+    const [loading, setLoading] = useState(false);
+ 
     const navigate = useNavigate();
 
     const notify = () => toast.success("Profile Updated Successfully!");
@@ -43,6 +45,7 @@ const Profile = () => {
     
     const handleProfileApi = (event) => {
         event.preventDefault();
+        setLoading(true) // Set loading before sending API request
         axios.post(API.BASE_URL + 'update-profile/', {
             First_name: First_name,
             Last_name: Last_name,
@@ -56,13 +59,14 @@ const Profile = () => {
         })
         .then(function(response) {
             console.log(response);
-
+            setLoading(false) //stop loading
             if (response.status)
                 notify();
                 navigate('/');   
         })
         .catch(function(error, message) {
             console.log(error.response)
+            setLoading(false) //stop loading in case with error 
             if(error.response.status){
                 toast.error(error.response.data.message);
             } 
@@ -139,6 +143,8 @@ const Profile = () => {
                                             placeholder="Mobile No"
                                              />
                                         </Form.Group>
+
+                                        <CountryDropdown  id="UNIQUE_ID" className='YOUR_CSS_CLASS' preferredCountries={['gb', 'us']}  value="" handleChange={e => console.log(e.target.value)}></CountryDropdown>   
                                       
                                              
                             
@@ -148,6 +154,17 @@ const Profile = () => {
                                          className="profile_button"
                                          >
                                           Update Profile
+
+                                          {
+                                            loading ? <>
+                                              <div class="loader-overly"> 
+                                                <div class="loader" > 
+                                                
+                                                </div>
+                                                
+                                                </div>
+                                            </>:<></>
+                                          }
                                         </button>
                                         {/* <p className="already_content">Don't have account? 
                                           <NavLink to="/signup"> Sign-up</NavLink>

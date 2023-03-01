@@ -153,13 +153,17 @@ const Login = () => {
                                             Login
                                             
                                               {loading ? <>
-                                              <div class="loader" >
-                                              Loading..
-                                              </div>
+                                                <div class="loader-overly"> 
+                                                <div class="loader" > 
+                                                
+                                                </div>
+                                                
+                                                </div>
                                               </> : <></>}
                                         </button>
+                                        
                                         <p className="already_content">Don't have account? 
-                                          <NavLink to="/signup"> Sign-up</NavLink>
+                                          <NavLink to="/signup"> Sign up</NavLink>
                                         </p>
                                     </form>
                                 </div>

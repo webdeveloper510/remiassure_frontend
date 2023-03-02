@@ -112,7 +112,7 @@ const Login = () => {
                                 <div className="form_login">
                                     <form>
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>Your Email</Form.Label>
+                                            <Form.Label>Your Email<span style={{color: 'red'}} >*</span></Form.Label>
                                             <Form.Control type="email" 
                                             value={email}
                                             onChange= {handleEmail}
@@ -121,7 +121,7 @@ const Login = () => {
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
-                                            <Form.Label> Your Password</Form.Label>
+                                            <Form.Label> Your Password<span style={{color: 'red'}} >*</span></Form.Label>
                                             <Form.Control type="password" 
                                              value={password}
                                              onChange= {handlePassword}
@@ -163,7 +163,7 @@ const Login = () => {
                                         </button>
                                         
                                         <p className="already_content">Don't have account? 
-                                          <NavLink to="/signup"> Sign up</NavLink>
+                                          <NavLink to="/signup">Sign up</NavLink>
                                         </p>
                                     </form>
                                 </div>

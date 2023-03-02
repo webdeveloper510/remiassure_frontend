@@ -114,7 +114,7 @@ const Signup = () => {
                                 <div className="form_signup">
 
                                     <form>
-                                        <Form.Label>Where are you sending money from?</Form.Label>
+                                        <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
                                         <Form.Select 
                                          value={location}
                                          onChange={handeleLocation}
@@ -125,7 +125,7 @@ const Signup = () => {
                                             <option value="China">China</option>
                                         </Form.Select>
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>Your Email</Form.Label>
+                                            <Form.Label>Your Email<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="email"
                                             value={email}
@@ -134,7 +134,7 @@ const Signup = () => {
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>Your Phone</Form.Label>
+                                            <Form.Label>Your Phone<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="mobile"
                                             value={mobile}
@@ -143,7 +143,7 @@ const Signup = () => {
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
-                                            <Form.Label> Your Password</Form.Label>
+                                            <Form.Label> Your Password<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="password"
                                             value={password}
@@ -171,11 +171,12 @@ const Signup = () => {
                                         </div>}
 
                                         <Form.Group className="mb-3 form_checkbox" controlId="formBasicCheckbox">
+                                           
                                             <Form.Check className="form_label"
                                                 type="checkbox"
                                                 value={promo_marketing}
                                                 onChange={handlePromo_marketing}
-                                                checked={promo_marketing.Active} // <-- set the checked prop of input
+                                                checked={promo_marketing.Active} // <-- set the checked prop of input\
 
                                                 label="If you DO NOT wish to receive marketing information 
                                                         about out products and special offers, please check this box"
@@ -197,7 +198,7 @@ const Signup = () => {
                                               </> : <></>}
                                         </button>
                                         <p className="already_content">Already have an account? 
-                                          <NavLink to="/login"> Sign in</NavLink>
+                                          <NavLink to="/login">Sign in</NavLink>
                                         </p>
                                     </form>
 

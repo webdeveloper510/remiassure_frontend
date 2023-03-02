@@ -9,8 +9,8 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
   color: #444;
+  font-family: 'Montserrat' !important;
 }
 
 a {
@@ -1569,9 +1569,10 @@ margin-top: 30px;
   border-radius: 20px;
 }
 .card-signup p.already_content a {
-  border: 1px solid;
   margin-left: 10px;
-  padding: 4px 13px;
+  text-transform: capitalize;
+  border-bottom: 1px solid;
+  padding-bottom: 2px;
 }
 .signup_banner .support_image img {
   margin-top: 25px;
@@ -1639,7 +1640,8 @@ p.already_content {
   padding-top: 18px;
   text-align: center;
   font-size: 17px;
-  color:#191970;
+  color: #191970;
+  font-family: 'Montserrat';
 }
 label.form-check-label {
   padding-top: 4px;
@@ -2181,9 +2183,10 @@ img.background_dot_image03{
   margin-top: 5px;
 }
 .card-login p.already_content a {
-  margin-left: 8px;
-  border: 1px solid #191970;
-  padding: 4px 13px;
+  margin-left: 10px;
+  text-transform: capitalize;
+  border-bottom: 1px solid;
+  padding-bottom: 2px;
 }
 
 .card-login p.already_content {
@@ -2467,9 +2470,12 @@ button.continue_button {
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
 }
-.rate_input{
-  width: 350px !important;
+.rate_input {
+  width: 100% !important;
 }
+
+
+
 .money_exchange_row select , .money_exchange_row .disabled-btn{
   background-color: #0AEDC7  !important;
   border: none !important;
@@ -2499,6 +2505,169 @@ select.form-select option {
 .progress-bar {
   background-color: #6414E9 !important;
 }
+.country-select.inside .flag-dropdown , .country-select .country-list{
+  width: 100%;
+}
+.country-select .country-list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 38px;
+}
+.form_body h1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 25px;
+  text-align: center;
+  color: #6414E9;
+  text-transform: capitalize;
+  margin-bottom: 36px;
+}
+.form-button {
+  height: 48px;
+  background: #191970;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+  font-size: 16px;
+  margin: 20px auto;
+  width: 50%;
+  float:right;
+}
+.form_body {
+  float: left;
+  width: 100%;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+  margin: 0 auto;
+  padding: 38px 36px;
+}
+.country-select {
+  width: 100%;
+}
+.country-select.inside .selected-flag {
+  float: right;
+}
+.country-select.inside input, .country-select.inside input[type=text] {
+  padding-left: 6px !important;
+  padding-right: 52px !important;
+  margin-left: 0;
+}
+.step1{
+  background-color: #6414E9 !important;
+  width: 20%;
+  color: #6414E9;
+}
+.step2{
+  background-color: #6414E9 !important;
+  width: 40%;
+  color: #6414E9;
+}
+.step3{
+  background-color: #6414E9 !important;
+  width: 60%;
+  color: #6414E9;
+}
+.step4{
+  background-color: #6414E9 !important;
+  width: 80%;
+  color: #6414E9;
+}
+.step5{
+  background-color: #6414E9 !important;
+  width: 100%;
+  color: #6414E9;
+}
+.row.each-row {
+  margin-top: 30px;
+}
+.user_dashboard_banner p.get-text {
+  z-index: 1;
+}
+.row.each-row h5 {
+  margin-bottom: 34px;
+  font-size: 18px;
+  font-family: 'Montserrat' !important;
+}
+.user_dashboard_banner .rate_input {
+  border: 1px solid #ced4da;
+}
+.form-check.method_type {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-left: 40px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.form-check.method_type label.form-check-label {
+  margin-left: 25px;
+  padding: 16px;
+  cursor: pointer;
+  border-left: 1px solid #ced4da;
+  width: 100%;
+}
+.form-check.method_type input{
+  cursor: pointer;
+}
+.form-check-input:checked {
+  background-color: #26096f;
+  border-color: #26096f;
+}
+.form-check-input:checked + .form-check-label {
+  background: #e8f0ff;
+}
+.summary {
+  font-family: 'Montserrat';
+  font-style: normal;
+  width: 100%;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+  margin: 92px auto 0px;
+  padding: 10px;
+  float: right;
+}
+.summary h5 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 18px;
+  color: #000;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+}
+.summary table tr th {
+  font-weight: 500;
+  border-right: 1px solid #ced4da;
+}
+button.start-form-button {
+  height: 48px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+  font-size: 16px;
+  margin: 20px auto;
+  background: #fff;
+  border: none;
+  color: #000;
+  padding: 0px 30px;
+  border: 3px solid #ced4da;
+  font-weight: 500;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -3356,11 +3525,11 @@ input#myInput {
 .homepage-why-us{
   padding-top:0px;
 }
-.col-lg-10.reserved_content {
-  /* text-align: center; */
+/*-.col-lg-10.reserved_content {
+  /* text-align: center; 
   margin-left: 100px;
 }
-
+*/
 /* loader css strat */
 .loader-overly {
   position: fixed;

@@ -6,7 +6,8 @@ import React, { useState, useContext } from "react";
 
 const Multiple = () => {
 
-  const [name,setName] = React.useState()
+    // const [username, setUsername] = React.useState('');
+    // const [password, setPassword] = React.useState('');
   
   
 
@@ -25,14 +26,14 @@ const Multiple = () => {
 
             <div className="col-lg-12">
               
-            <h1>Text Input</h1>
+            {/* <h1>Text Input</h1>
       
       <div className="form-group">
         <label for="text">Name</label>
         <input className="form-control" value={name} onChange={e=>setName(e.target.value)} />
       </div>
       
-      {name&&<h1>Hello, {name}!</h1>}
+      {name&&<h1>Hello, {name}!</h1>} */}
 
        
             

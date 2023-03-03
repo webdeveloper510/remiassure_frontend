@@ -2533,8 +2533,9 @@ select.form-select option {
   margin-top: 20px;
   font-size: 16px;
   margin: 20px auto;
-  width: 50%;
-  float:right;
+  width: 38%;
+  float: right;
+  margin-left: 12px;
 }
 .form_body {
   float: left;
@@ -2557,39 +2558,41 @@ select.form-select option {
 }
 .step1{
   background-color: #6414E9 !important;
-  width: 20%;
+  width: 25%;
   color: #6414E9;
 }
 .step2{
   background-color: #6414E9 !important;
-  width: 40%;
+  width: 50%;
   color: #6414E9;
 }
 .step3{
   background-color: #6414E9 !important;
-  width: 60%;
+  width: 75%;
   color: #6414E9;
 }
 .step4{
   background-color: #6414E9 !important;
-  width: 80%;
-  color: #6414E9;
-}
-.step5{
-  background-color: #6414E9 !important;
   width: 100%;
   color: #6414E9;
 }
+/*.step5{
+  background-color: #6414E9 !important;
+  width: 100%;
+  color: #6414E9;
+}*/
 .row.each-row {
   margin-top: 30px;
 }
 .user_dashboard_banner p.get-text {
   z-index: 1;
+  font-weight: 600;
 }
 .row.each-row h5 {
   margin-bottom: 34px;
   font-size: 18px;
   font-family: 'Montserrat' !important;
+  font-weight: 600;
 }
 .user_dashboard_banner .rate_input {
   border: 1px solid #ced4da;
@@ -2664,10 +2667,51 @@ button.start-form-button {
   border: none;
   color: #000;
   padding: 0px 30px;
-  border: 3px solid #ced4da;
+  border: 1px solid #ced4da;
   font-weight: 500;
 }
+.fade.modal-backdrop.show  ,.fade.modal.show{
+  z-index: 9999999;
+}
+th.popup-heading {
+  text-align: center;
+  font-weight: 600;
+  background: #E7F0FF;
+}
+.modal-content table tr td {
+  border-left: 1px solid #ced4da;
+  font-size: 15px;
+}
 
+.modal-content table tr th {
+  font-weight: 600;
+  font-size: 15px;
+}
+.modal-footer .btn-primary {
+  background: #191970 !important;
+}
+.modal-footer button.btn.btn-secondary {
+  background: #fff;
+  border: 1px solid #ced4da;
+  color: #000 !important;
+}
+.modal-title.h4 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 25px;
+  text-align: center;
+  color: #6414E9;
+  text-transform: capitalize;
+}
+.modal-footer {
+  background: #E7F0FF;
+}
+.modal-footer button {
+  text-transform: capitalize;
+  border-radius: 10px;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

@@ -7,7 +7,6 @@ import {Links, NavLink, useNavigate} from 'react-router-dom';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
-import CountryDropdown from 'country-dropdown-with-flags-for-react';  
 
 
 const Profile = () => {
@@ -143,10 +142,6 @@ const Profile = () => {
                                             placeholder="Mobile No"
                                              />
                                         </Form.Group>
-
-                                        <CountryDropdown  id="UNIQUE_ID" className='YOUR_CSS_CLASS' preferredCountries={['gb', 'us']}  value="" handleChange={e => console.log(e.target.value)}></CountryDropdown>   
-                                      
-                                             
                             
                                         <button variant="primary" 
                                         type="submit"

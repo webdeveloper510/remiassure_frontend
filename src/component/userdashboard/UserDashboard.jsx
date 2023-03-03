@@ -1,64 +1,76 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import Table from 'react-bootstrap/Table';
-import { ProgressBar } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import UserContext from "../context/UserContext";
+     
+
 
 const UserDashboard = () => {
+   //start Summury content change
+   const [payment, setPayment] = React.useState('');
+   const [payment_partners, setPayment_partners] = React.useState('');
 
-    // start changing value state
+   const handlePayout = (e) =>{
+    setPayment(e.target.value)
+   }
 
-    const [name,setName] = React.useState();
+   const handlePayout_partners = (e) =>{
+    setPayment_partners(e.target.value)
+   }
+//end Summury content change 
 
-    const handleVerificationSecond = (e) => {
-        setName(e.target.value);
-    }
+
+ // start select value get data
+ const {location} = useContext(UserContext);
+
+//  const handleLocationValue = (e) =>{
+//   setLocation(e.target.value)
+//  }
 
 
-   // start changing value state
+ // start select value get data
 
 
 
     const {useState} = React;
     const [step,setStep] = useState(0);
-
-    const [selected, setSelected] = useState('yes');
-
-  const handleChange = event => {
-    console.log(event.target.value);
-    setSelected(event.target.value);
-  };
     
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const step_form = step+1;
     
+
+
     const Form = ()=>{
     
-    if(step==0){
-    
-    return (
-    <Step1 /> );
-    
-    }else if(step==1){
-    
-    return (
-    <Step2 /> );
-    
-    }else if(step==2){
-    
-    return (
-    <Step3 /> );
-    
-    }else if(step==3){
-    
-    return (
-    <Step4 /> );
-    }else if(step==4){
-    
-        return (
-        <Step5 /> );
-        }
-    }
+      if(step==0){
+      
+      return (
+      <Step1 /> );
+      
+      }else if(step==1){
+      
+      return (
+      <Step2 /> );
+      
+      }else if(step==2){
+      
+      return (
+      <Step3 /> );
+      
+      }else if(step==3){
+      
+          return (
+          <Step4 /> );
+      }
+      }
 
 
 
@@ -66,121 +78,131 @@ const UserDashboard = () => {
     
     return (
     <>
-   <section className="why-us section-bgba user_dashboard_banner">
-    <div className="container">
-        <div className="row">
-        <div className="col-lg-8">
-            <div class="progressBar">
-            <div class="progress">
-                <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-            </div>
-            </div>
-            <div className="form_body">
-            <div className="header">
-                <h1>Amount & delivery</h1>
-            </div>
-            <div className="row">
-                <div className="col-md-6">
-                <div className="input_field">
-                    <p className="get-text">Country</p>
-                    <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
-                </div>
-                </div>
-                <div className="col-md-6">
-                <div className="input_field">
-                    <p className="get-text">Exchange Rate</p>
-                    <input type="text" className='rate_input form-control' />
-                </div>
-                </div>
-            </div>
-            <div className="row each-row">
-                <div className="col-md-6">
-                <div className="input_field">
-                    <p className="get-text">Amount</p>
-                    <input 
-                    type="text" 
-                    className='rate_input form-control'
-                    value={name} 
-                    onChange={handleVerificationSecond}
-                     />
-                </div>
-                </div>
-                <div className="col-md-6">
-                <div className="input_field">
-                    <p className="get-text">Exchange Amount</p>
-                    <input type="text" className='rate_input form-control' />
-                </div>
-                </div>
-            </div>
-            <div className="row each-row">
-                <h5>Receive Method</h5>
-                <div className="col-md-12">
-                <div className="input_field">
-                    <div className="form-check method_type">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" defaultChecked />
-                    <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
-                    </div>
-                </div>
-                </div>
-                <div className="col-md-12">
-                <div className="input_field">
-                    <div className="form-check method_type">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                    <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div className="row each-row">
-                <h5>Payout Partners</h5>
-                <div className="col-md-12">
-                <div className="form-check method_type">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3" defaultChecked />
-                    <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
-                </div>
-                </div>
-                <div className="col-md-12">
-                <div className="form-check method_type">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" />
-                    <label className="form-check-label" for="flexRadioDefault4"> Services </label>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-                <div className="col-md-4">
-                <button className="start-form-button">Start Over</button>
-                </div>
-                <div className="col-md-8">
-                <button className="form-button" onClick={()=>{setStep(step+1)}}>Next</button>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div className="col-md-4">
-            <div className="summary">
-            <h5>Summary</h5>
-            <Table>
-                <tbody>
-                <tr>
-                    <th>Amount</th>
-                    <td>$556.00 ⇒ ₹45,803.28</td>
-                </tr>
-                <tr>
-                    <th>Received Method</th>
-                    <td>Mobile Wallet</td>
-                </tr>
-                <tr>
-                    <th>Payout Partners</th>
-                    <td> 
-      {name&&<> {name}</>}</td>
-                </tr>
-                </tbody>
-            </Table>
-            </div>
-        </div>
-        </div>
-    </div>
-</section>
+        
+        <div class="progressBar">
+   <div class="progress">
+     <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+   </div>
+ </div>
+ <div className="form_body">
+   <div className="header">
+     <h1>Amount & delivery</h1>
+   </div>
+   <div className="row">
+   <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">From</p>
+         <CountryDropdown
+            id="UNIQUE_ID" 
+            className='YOUR_CSS_CLASS rate_input form-control'
+            preferredCountries={['gb', 'us' ]} 
+            value={location}
+            // handleChange={handleLocationValue}
+             >
+         </CountryDropdown>
+       </div>
+     </div>
+     <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">To</p>
+         <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
+       </div>
+     </div>
+     <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">Exchange Rate</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-6">
+       <div className="input_field">
+         <p className="get-text">Amount</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+     <div className="col-md-6">
+       <div className="input_field">
+         <p className="get-text">Exchange Amount</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <h5>Receive Method</h5>
+     <div className="col-md-12">
+       <div className="input_field">
+         <div className="form-check method_type">
+         <input 
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            value="Bank Transfer" 
+            onChange={handlePayout}
+            id="flexRadioDefault1" 
+            defaultChecked
+          />
+           <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
+         </div>
+       </div>
+     </div>
+     <div className="col-md-12">
+       <div className="input_field">
+         <div className="form-check method_type">
+         <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault" 
+            value="Mobile Wallet" 
+            onChange={handlePayout}
+            id="flexRadioDefault2"
+         />
+           <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <h5>Payout Partners</h5>
+     <div className="col-md-12">
+       <div className="form-check method_type">
+         <input 
+            className="form-check-input"
+            type="radio" 
+            name="flexRadioDefault1"
+            id="flexRadioDefault3" 
+            value="Bank" 
+            onChange={handlePayout_partners}
+            defaultChecked 
+          />
+         <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
+       </div>
+     </div>
+     <div className="col-md-12">
+       <div className="form-check method_type">
+         <input 
+            className="form-check-input" 
+            type="radio"              
+            name="flexRadioDefault1"
+            id="flexRadioDefault4"
+            value="Services" 
+            onChange={handlePayout_partners}
+           />
+         <label className="form-check-label" for="flexRadioDefault4"> Services </label>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+     <div className="col-md-4">
+       <button className="start-form-button">Cancel</button>
+     </div>
+     <div className="col-md-8">
+       <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+     </div>
+   </div>
+ </div>
+
     </>
     );
     }
@@ -190,49 +212,176 @@ const UserDashboard = () => {
     
     return (
     <>
-     <section className="why-us section-bgba user_dashboard_banner">
-     <div className="container">
-       <div className="row">
-         <div className="col-lg-8">
-           <div class="progressBar">
-             <div class="progress">
-               <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-             </div>
-           </div>
-           <div className="form_body">
-             <div className="header">
-               <h1>Contact Info</h1>
-             </div>
-             <div className="form_data">
-               <div className="input_field">
-                 <input type="text" required />
-                 <span>Country</span>
-               </div>
-               <div className="input_field">
-                 <input type="text" required />
-                 <span>State</span>
-               </div>
-               <div className="input_field">
-                 <input type="text" required />
-                 <span>Address Line 1</span>
-               </div>
-               <div className="input_field">
-                 <input type="text" required />
-                 <span>Address Line 2</span>
-               </div>
-             </div>
-             <div className="col-md-12">
-               <button className="form-button" onClick={()=>{setStep(step+1)}}>Next</button>
-               <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-             </div>
-           </div>
-         </div>
-         <div className="col-md-4">
-           <img src="assets/img/home/bank.svg" className="user_rate_img" alt="background-images" />
-         </div>
+       <div class="progressBar">
+   <div class="progress">
+     <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+   </div>
+ </div>
+ <div className="form_body">
+   <div className="header">
+     <h1>Recipient Bank Details</h1>
+   </div>
+   <div className="col-md-12">
+     <div className="input_field">
+       <p className="get-text">Bank Name</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-12">
+       <div className="input_field">
+         <p className="get-text">Account Name</p>
+         <input type="text" className='rate_input form-control' />
        </div>
      </div>
-   </section>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-12">
+       <div className="input_field">
+         <p className="get-text">Account number</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <h5>Recipient Details</h5>
+     <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">First Name</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+     <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">Middle Name</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+     <div className="col-md-4">
+       <div className="input_field">
+         <p className="get-text">Last Name</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-6">
+       <div className="input_field">
+         <p className="get-text">Email</p>
+         <input type="email" className='rate_input form-control' />
+       </div>
+     </div>
+     <div className="col-md-6">
+       <div className="input_field">
+         <p className="get-text">Mobile</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-12">
+       <div className="input_field">
+         <p className="get-text">Address</p>
+         <input type="text" className='rate_input form-control' />
+       </div>
+     </div>
+   </div>
+   <div className="row each-row">
+     <div className="col-md-12">
+       <div className="input_field">
+         <p className="get-text">Reason For Sending Money</p>
+         <select class="form-select rate_input form-control" aria-label="Select a reason">
+           <option selected>Select a reason</option>
+           <option value="1">Family Support</option>
+           <option value="2">Education</option>
+           <option value="3">Tax Payment</option>
+           <option value="3">Loan Payment</option>
+           <option value="3">Travel Payment</option>
+           <option value="3">Utility Payment</option>
+         </select>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+     <div className="col-md-4">
+       <button className="start-form-button">Cancel</button>
+     </div>
+     <div className="col-md-8">
+       <button className="form-button" onClick={handleShow}>Continue</button>
+       <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+     </div>
+   </div>
+ </div>
+
+
+<Modal show={show} onHide={handleClose}
+ centered
+>
+        <Modal.Header closeButton>
+          <Modal.Title>Recipient details Summary</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+        <Table>
+        <thead>
+  <tr>
+    <th colSpan={2} className="popup-heading">Bank Details</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>Bank Name</th>
+    <td>Bank Of India</td>
+  </tr>
+  <tr>
+    <th>Account Name</th>
+    <td>Varun Sharma</td>
+  </tr>
+  <tr>
+    <th>Account number</th>
+    <td>1123345455445</td>
+  </tr>
+</tbody>
+<thead>
+  <tr>
+    <th colSpan={2} className="popup-heading">Recipient Details</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>First Name</th>
+    <td>Varun</td>
+  </tr>
+  <tr>
+    <th>Middle Name</th>
+    <td>kumar</td>
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td>Sharma</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>varun@gmail.com</td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td>Hno.253 Mohali Punjab</td>
+  </tr>
+  <tr>
+    <th>Reason For Sending Money</th>
+    <td>Tax Payment</td>
+  </tr>
+</tbody>
+               </Table>
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+            Go back to Edit
+          </Button>
+          <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button>
+        </Modal.Footer>
+      </Modal>
     </>
     );
     }
@@ -242,138 +391,240 @@ const UserDashboard = () => {
     
     return (
     <>
-
-<section className="why-us section-bgba user_dashboard_banner">
-  <div className="container">
-    <div className="row">
-      <div className="col-md-8">
-        <div class="progressBar">
-          <div class="progress">
-            <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-          </div>
-        </div>
-        <div className="form_body">
-          <div className="header">
-            <h1>Social Info</h1>
-          </div>
-          <div className="form_data">
-            <div className="input_field">
-              <input type="text" required />
-              <span>Facebook</span>
-            </div>
-            <div className="input_field">
-              <input type="text" required />
-              <span>Instgram</span>
-            </div>
-            <div className="input_field">
-              <input type="text" required />
-              <span>Linkedin</span>
-            </div>
-            <div className="input_field">
-              <input type="text" required />
-              <span>Twitter</span>
-            </div>
-          </div>
-          <div className="col-md-12">
-            <button className="form-button" onClick={()=>{setStep(step+1)}}>Next</button>
-            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          </div>
+      <div class="progressBar">
+    <div class="progress">
+      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+    </div>
+  </div>
+  <div className="form_body">
+    <div className="header">
+      <h1>Payment details</h1>
+    </div>
+    <div className="row each-row">
+      <h5>Payment type</h5>
+      <div className="col-md-12">
+        <div className="form-check method_type">
+          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3" defaultChecked />
+          <label className="form-check-label" for="flexRadioDefault3"> Osko </label>
         </div>
       </div>
+      <div className="col-md-12">
+        <div className="form-check method_type">
+          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" />
+          <label className="form-check-label" for="flexRadioDefault4"> Debit/Credit Card </label>
+        </div>
+      </div>
+      <div className="col-md-12">
+        <div className="form-check method_type">
+          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault5" />
+          <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div className="col-md-4">
-        <img src="assets/img/home/bank.svg" className="user_rate_img" alt="background-images" />
+        <button className="start-form-button">Cancel</button>
+      </div>
+      <div className="col-md-8">
+        <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+        <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
       </div>
     </div>
   </div>
-</section>
+        
     </>
     );
     }
-    
-    
+
     const Step4 = () =>{
     
-    return (
-    <>
-    <section className="why-us section-bgba user_dashboard_banner">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-8">
-          <div class="progressBar">
-            <div class="progress">
-              <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
-            </div>
-          </div>
-          <div className="form_body">
-            <div className="final_content">
-              <span className="check">
-                <i className="fa fa-check"></i>
-              </span>
-              <p>Your Information has been submitted! We will contact you soon!</p>
-            </div>
-            <div className="col-md-12">
-              <button className="form-button" onClick={()=>{setStep(step+1)}}>Next</button>
-              <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-            </div>
-          </div>
-        </div>
+      return (
+      <>
+        <div class="progressBar">
+      <div class="progress">
+        <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
+      </div>
+    </div>
+    <div className="form_body">
+      <div className="header">
+        <h1>User Identity</h1>
+      </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">First Name</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Middle Name</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Last Name</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Customer ID</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Date of birth</p>
+       <input type="date" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Gender</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Country of Birth</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">ID Type</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Email</p>
+       <input type="email" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Mobile</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+  <h5>Address</h5>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Flat/Unit No.</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Building No./Name</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Street</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Postcode</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">City/Town</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">State</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Country Code</p>
+       <input type="text" className='rate_input form-control' />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Country</p>
+       <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
+
+     </div>
+   </div>
+ </div>
+      <div class="row each-row">
         <div className="col-md-4">
-          <img src="assets/img/home/bank.svg" className="user_rate_img" alt="background-images" />
+          <button className="start-form-button">Cancel</button>
+        </div>
+        <div className="col-md-8">
+          <button className="form-button">Continue</button>
+          <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
         </div>
       </div>
     </div>
-  </section>
-    </>
-    );
-    }
-    
-    const Step5= () =>{
-    
-        return (
-        <>
-        <section className="why-us section-bgba user_dashboard_banner">
-     <div className="container">
-       <div className="row">
-         <div className="col-md-8">
-           <div class="progressBar">
-             <div class="progress">
-               <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
-             </div>
-           </div>
-           <div className="form_body">
-             <div className="final_content">
-               <span className="check">
-                 <i className="fa fa-check"></i>
-               </span>
-               <p>Your Information has been submitted! We will contact you soon!</p>
-             </div>
-             <div className="col-md-12">
-               <button className="form-button" onClick={()=>{setStep(step+1)}}>Next</button>
-               <button className="form-button" onClick={()=>{setStep(step-1)}}>Cancel</button>
-             </div>
-           </div>
-         </div>
-         <div className="col-md-4">
-           <img src="assets/img/home/bank.svg" className="user_rate_img" alt="background-images" />
-         </div>
-       </div>
-     </div>
-   </section>
-        </>
-        );
-        }
-    
+          
+      </>
+      );
+      }
     
     return (
     
     <>
         <div class="form">
-            <div className="card">
-                <div>{
-                    <Form />}</div>
-    
-            </div>
-        </div>
+   <div className="card">
+     <section className="why-us section-bgba user_dashboard_banner">
+       <div className="container">
+         <div className="row">
+           <div className="col-md-8">{
+             <Form />}
+           </div>
+           <div className="col-md-4">
+             <div className="summary">
+               <h5>Summary</h5>
+               <Table>
+                 <tbody>
+                   <tr>
+                     <th>Amount</th>
+                     <td>$556.00 ⇒ ₹45,803.28</td>
+                   </tr>
+                   <tr>
+                     <th>Received Method</th>
+                     <td>{payment}</td>
+                   </tr>
+                   <tr>
+                     <th>Payout Partners</th>
+                     <td>{payment_partners}</td>
+                   </tr>
+                 </tbody>
+               </Table>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+   </div>
+ </div>
     </>
     );
 }

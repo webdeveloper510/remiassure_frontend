@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import CountryDropdown from 'country-dropdown-with-flags-for-react';
 
 import {API} from "../../config/API";
 import axios from 'axios';
@@ -115,7 +116,16 @@ const Signup = () => {
 
                                     <form>
                                         <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
-                                        <Form.Select 
+                                        <CountryDropdown
+                                         id="UNIQUE_ID" 
+                                         className='YOUR_CSS_CLASS rate_input form-control'
+                                          preferredCountries={['gb', 'us' ]} 
+                                          value={location}
+                                          handleChange={handeleLocation}
+                                        //   handleChange={e=> console.log(e.target.value)}
+                                          >
+                                        </CountryDropdown>
+                                        {/* <Form.Select 
                                          value={location}
                                          onChange={handeleLocation}
                                          >   
@@ -123,7 +133,7 @@ const Signup = () => {
                                             <option value="Austria">Austria</option>
                                             <option value="Canada">Canada</option>
                                             <option value="China">China</option>
-                                        </Form.Select>
+                                        </Form.Select> */}
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>Your Email<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 

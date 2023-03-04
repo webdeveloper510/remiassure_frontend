@@ -76,6 +76,7 @@ const Verification = () => {
             })
             .then(function(response) {
                 console.log(response);
+                localStorage.setItem("verification_otp", response.data.msg);
                 setLoading(false)  //stop loading 
                 if (response.status)
                     notify();

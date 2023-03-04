@@ -31,8 +31,11 @@ const Header =() => {
   const token = localStorage.getItem("token");
   console.log("TOKEN", token);
 
-  const token_forgot = localStorage.getItem("token_forgot");
-    console.log("TOken_Forgot_password", token_forgot);
+  const verification_otp = localStorage.getItem("verification_otp");
+  console.log("Verification Message", verification_otp)
+
+  // const token_forgot = localStorage.getItem("token_forgot");
+  //   console.log("TOken_Forgot_password", token_forgot);
  
   let sessionID;
   const navigate = useNavigate();
@@ -82,7 +85,7 @@ const Header =() => {
 
                     {/* <li> */}
                     {
-                      token != undefined || '' ? (
+                      verification_otp || token != undefined || '' ? (
 
                         <li class="dropdown">
                           <a href="#">

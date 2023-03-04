@@ -77,7 +77,7 @@ const Signup = () => {
         })
         .then(function(response) {
             console.log(response);
-            localStorage.setItem("firstname", response.data.First_name);
+            // localStorage.setItem("signup_message", response.data.msg);
             setLoading(false); // Stop loading
                 notify();
                 navigate('/verification');   

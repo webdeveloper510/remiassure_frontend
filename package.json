@@ -24,8 +24,11 @@
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-bootstrap": "^2.7.0",
+    "react-currency-flags": "^0.1.2",
     "react-dom": "^18.2.0",
     "react-dropdown": "^1.11.0",
+    "react-flag-currency": "^1.0.5",
+    "react-flags-select": "^2.2.3",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.7.1",
     "react-image": "^4.0.3",
@@ -39,6 +42,7 @@
     "react-slideshow-image": "^4.2.0",
     "react-toastify": "^9.1.1",
     "sass-loader": "^13.2.0",
+    "styled-components": "^5.3.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

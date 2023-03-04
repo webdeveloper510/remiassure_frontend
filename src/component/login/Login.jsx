@@ -72,7 +72,8 @@ const Login = () => {
             setLoading(false); // Stop loading
             if (response.status)
                 notify();
-                navigate('/');  
+            navigate('/userdashboard');   
+                
         })
 
         .catch(function(error, message) {

@@ -6,10 +6,18 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UserContext from "../context/UserContext";
-     
+
+import { toast } from "react-toastify";
+import { API } from "../../config/API";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router";
+import ReactFlagsSelect from "react-flags-select";
 
 
 const UserDashboard = () => {
+  const [selected, setSelected] = React.useState("");
+
+
    //start Summury content change
    const [payment, setPayment] = React.useState('');
    const [payment_partners, setPayment_partners] = React.useState('');
@@ -31,11 +39,71 @@ const UserDashboard = () => {
 //   setLocation(e.target.value)
 //  }
 
-
- // start select value get data
-
+ // End select value get data
 
 
+ // Start Api call Amount & Delivery
+  const [from, setFrom] =React.useState('');
+  // alert(from)
+  const [to, setTo] = React.useState('');
+  const [amount, setAmount] = React.useState('');
+  // console.log(from, "fromfromfromfromfromfromfromfrom")
+  // console.log(to, "totototototototo")
+
+
+  const handleFrom = (e) =>{
+    setFrom(e.target.value) 
+  }
+  
+  const handleTo =(e) =>{
+    setTo(e.target.value)
+  }
+
+  const handleAmount = (e) =>{
+    setAmount(e.target.value)
+  }
+
+  const navigate = useNavigate();
+  const notify = () => toast.success("Amount & Delivery Successfully!!");
+
+
+    const handleAmountDelivery =(event) =>{
+      event.preventDefault();
+        axios.post(API.BASE_URL + 'exchange-rate/', {
+          from: from,
+          to: to,
+          amount: amount
+       
+        }, {
+            headers: {
+                // 'Content-Type': 'application/json',
+            },
+          
+        })
+        .then(function(response) {
+            console.log(response);
+            if (response.status)
+                notify();
+                // navigate('/verification');   
+                // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
+        })
+        .catch(function(error, message) {
+            console.log(error.response)
+            if(error.response.data.status){
+                toast.error(error.response.data.message);
+            } 
+            console.log(error, "klnklnklnknnnnnnnnnnnn");   
+        })
+    }
+
+
+
+
+  // End Api call Amount & Delivery
+
+
+
+ // Start design state
     const {useState} = React;
     const [step,setStep] = useState(0);
     
@@ -46,8 +114,6 @@ const UserDashboard = () => {
 
     const step_form = step+1;
     
-
-
     const Form = ()=>{
     
       if(step==0){
@@ -79,129 +145,146 @@ const UserDashboard = () => {
     return (
     <>
         
-        <div class="progressBar">
-   <div class="progress">
-     <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-   </div>
- </div>
- <div className="form_body">
-   <div className="header">
-     <h1>Amount & delivery</h1>
-   </div>
-   <div className="row">
-   <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">From</p>
-         <CountryDropdown
-            id="UNIQUE_ID" 
-            className='YOUR_CSS_CLASS rate_input form-control'
-            preferredCountries={['gb', 'us' ]} 
-            value={location}
-            // handleChange={handleLocationValue}
-             >
-         </CountryDropdown>
-       </div>
-     </div>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">To</p>
-         <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
-       </div>
-     </div>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Exchange Rate</p>
-         <input type="text" className='rate_input form-control' />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <div className="col-md-6">
-       <div className="input_field">
-         <p className="get-text">Amount</p>
-         <input type="text" className='rate_input form-control' />
-       </div>
-     </div>
-     <div className="col-md-6">
-       <div className="input_field">
-         <p className="get-text">Exchange Amount</p>
-         <input type="text" className='rate_input form-control' />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <h5>Receive Method</h5>
-     <div className="col-md-12">
-       <div className="input_field">
-         <div className="form-check method_type">
-         <input 
-            className="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            value="Bank Transfer" 
-            onChange={handlePayout}
-            id="flexRadioDefault1" 
-            defaultChecked
-          />
-           <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
-         </div>
-       </div>
-     </div>
-     <div className="col-md-12">
-       <div className="input_field">
-         <div className="form-check method_type">
-         <input
-            className="form-check-input"
-            type="radio"
-            name="flexRadioDefault" 
-            value="Mobile Wallet" 
-            onChange={handlePayout}
-            id="flexRadioDefault2"
-         />
-           <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <h5>Payout Partners</h5>
-     <div className="col-md-12">
-       <div className="form-check method_type">
-         <input 
-            className="form-check-input"
-            type="radio" 
-            name="flexRadioDefault1"
-            id="flexRadioDefault3" 
-            value="Bank" 
-            onChange={handlePayout_partners}
-            defaultChecked 
-          />
-         <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
-       </div>
-     </div>
-     <div className="col-md-12">
-       <div className="form-check method_type">
-         <input 
-            className="form-check-input" 
-            type="radio"              
-            name="flexRadioDefault1"
-            id="flexRadioDefault4"
-            value="Services" 
-            onChange={handlePayout_partners}
-           />
-         <label className="form-check-label" for="flexRadioDefault4"> Services </label>
-       </div>
-     </div>
-   </div>
-   <div class="row">
-     <div className="col-md-4">
-       <button className="start-form-button">Cancel</button>
-     </div>
-     <div className="col-md-8">
-       <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
-     </div>
-   </div>
- </div>
+      <div class="progressBar">
+        <div class="progress">
+          <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+        </div>
+      </div>
+      
+      <form>
+      <div className="form_body">
+        <div className="header">
+          <h1>Amount & delivery</h1>
+        </div>
+        <div className="row">
+        <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">From</p>
+                <select 
+                className="form-select rate_input form-control"
+                 aria-label="Select a reason"
+                 value={from}
+                 onChange={handleFrom}
+                 >
+                  <option value="">--- Select Currency ---</option>
+                  <option value="USD">USD</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">To</p>
+                <select 
+                className="form-select rate_input form-control"
+                 aria-label="Select a reason"
+                 value={to}
+                 onChange={handleTo}
+                 >
+                  <option value="">--- Select Currency ---</option>
+                  <option value="INR">INR</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Amount</p>
+              <input 
+              type="text"
+              className='rate_input form-control'
+              value={amount}
+              onChange={handleAmount}
+               />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Exchange Rate</p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Exchange Amount</p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <h5>Receive Method</h5>
+          <div className="col-md-12">
+            <div className="input_field">
+              <div className="form-check method_type">
+              <input 
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  value="Bank Transfer" 
+                  onChange={handlePayout}
+                  id="flexRadioDefault1" 
+                  defaultChecked
+                />
+                <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-12">
+            <div className="input_field">
+              <div className="form-check method_type">
+              <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault" 
+                  value="Mobile Wallet" 
+                  onChange={handlePayout}
+                  id="flexRadioDefault2"
+              />
+                <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <h5>Payout Partners</h5>
+          <div className="col-md-12">
+            <div className="form-check method_type">
+              <input 
+                  className="form-check-input"
+                  type="radio" 
+                  name="flexRadioDefault1"
+                  id="flexRadioDefault3" 
+                  value="Bank" 
+                  onChange={handlePayout_partners}
+                  defaultChecked 
+                />
+              <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
+            </div>
+          </div>
+          <div className="col-md-12">
+            <div className="form-check method_type">
+              <input 
+                  className="form-check-input" 
+                  type="radio"              
+                  name="flexRadioDefault1"
+                  id="flexRadioDefault4"
+                  value="Services" 
+                  onChange={handlePayout_partners}
+                />
+              <label className="form-check-label" for="flexRadioDefault4"> Services </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div className="col-md-4">
+            <button className="start-form-button">Cancel</button>
+          </div>
+          <div className="col-md-8">
+            <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+          </div>
+        </div>
+      </div>
+      </form>
 
     </>
     );
@@ -578,7 +661,7 @@ const UserDashboard = () => {
           <button className="start-form-button">Cancel</button>
         </div>
         <div className="col-md-8">
-          <button className="form-button">Continue</button>
+          <button className="form-button" onClick={handleAmountDelivery}>Continue</button>
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
         </div>
       </div>

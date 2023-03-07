@@ -80,7 +80,7 @@ const Verification = () => {
                 setLoading(false)  //stop loading 
                 if (response.status)
                     notify();
-                    navigate('/userdashboard');   
+                    navigate('/sendMoney');   
             })
             .catch(function(error, message) {
                 console.log(error.response)

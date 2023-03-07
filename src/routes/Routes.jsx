@@ -17,7 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter } from "react-router-dom";
 import Verification from '../component/verification/Verification';
 import Multiple from '../component/profile/Multiple';
-import UserDashboard from '../component/userdashboard/UserDashboard';
+import SendMoney from '../component/userdashboard/SendMoney';
+import Transaction from '../component/userdashboard/Transaction';
 const Routerpage =()=>{
   return(
 
@@ -42,7 +43,8 @@ const Routerpage =()=>{
     <Route exact path='/multiple' element= {< Multiple />} />
     <Route exact path='/user_recipients' element={< Recipients /> } />
     <Route exact path='/verification' element= {< Verification /> } />
-    <Route exact path='/userdashboard' element= {< UserDashboard /> } />
+    <Route exact path='/sendMoney' element= {< SendMoney /> } />
+    <Route exact path='/transaction' element={<Transaction /> } />
     </Routes>
     <ToastContainer />
      

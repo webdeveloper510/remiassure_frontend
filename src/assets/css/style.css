@@ -2474,8 +2474,14 @@ button.continue_button {
   width: 100% !important;
 }
 
-
-
+.user_dashboard_banner form {
+  float: left;
+  width: 100%;
+}
+.exchange-rate{
+  margin-top:10px;
+  font-family: 'Montserrat' !important;
+}
 .money_exchange_row select , .money_exchange_row .disabled-btn{
   background-color: #0AEDC7  !important;
   border: none !important;

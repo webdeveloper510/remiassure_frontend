@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import VerificationInput from "react-verification-input";
 const axios = require("axios");
 
 
@@ -106,6 +107,8 @@ const Multiple = () => {
         </div>
       </div>
     </div>
+
+    <VerificationInput />
 
        
             

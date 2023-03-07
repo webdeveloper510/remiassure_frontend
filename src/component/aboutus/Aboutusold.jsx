@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import Scrollbar from '../scrollbar/Scrollbar';
+
+
 
 
 // card carousel start
@@ -132,23 +131,23 @@ const Aboutus = () => {
 
   const items = [
    {
-       heading:"Best on the market 1.",
-       paragraph:'1.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    },{
-       heading:"Best on the market 2.",
-       paragraph:'2.B.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'B.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    },{
-       heading:"Best on the market 3.",
-       paragraph:'3. At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    },{
-       heading:"Best on the market 4.",
-       paragraph:'4.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    },{
-       heading:"Best on the market 5.",
-       paragraph:'5. At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    },{
-       heading:"Best on the market 6.",
-       paragraph:'6. At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
+       heading:"Best on the market.",
+       paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
    }
  ];
  const [moveClass, setMoveClass] = useState('');
@@ -159,29 +158,29 @@ const Aboutus = () => {
    document.documentElement.style.setProperty('--num', carouselItems.length);
  }, [carouselItems])
  
-//  const handleAnimationEnd = () => {
-//    if(moveClass === 'prev'){
-//      shiftNext([...carouselItems]);
-//    }else if(moveClass === 'next'){
-//      shiftPrev([...carouselItems]);
-//    }
-//    setMoveClass('')
-  
-//  }
+ const handleAnimationEnd = () => {
+   if(moveClass === 'prev'){
+     shiftNext([...carouselItems]);
+   }else if(moveClass === 'next'){
+     shiftPrev([...carouselItems]);
+   }
+   setMoveClass('')
+ }
  
-//  const shiftPrev = (paragraph) => {
-//    let lastcard = paragraph.pop();
-//    paragraph.splice(0, 0, lastcard);
-//    setCarouselItems(paragraph);
-//  }
+ const shiftPrev = (paragraph) => {
+   let lastcard = paragraph.pop();
+   paragraph.splice(0, 0, lastcard);
+   setCarouselItems(paragraph);
+ }
  
-//  const shiftNext = (paragraph) => {
-//    let firstcard = paragraph.shift();
-//    paragraph.splice(paragraph.length, 0, firstcard);
-//    setCarouselItems(paragraph);
-//  }
+ const shiftNext = (paragraph) => {
+   let firstcard = paragraph.shift();
+   paragraph.splice(paragraph.length, 0, firstcard);
+   setCarouselItems(paragraph);
+ }
 
  // End carousel End
+
 
 
     return(
@@ -216,6 +215,8 @@ const Aboutus = () => {
    </div>
 </section>
     {/* <!-- ======= AboutUs Our vission and mission-Section  End======= --> */}
+
+
 
  {/* <!-- ======= AboUs Why RemitAssure-Section  start======= --> */}
  <section  className="why-us section-bgba aos-init aos-animate">
@@ -256,7 +257,7 @@ const Aboutus = () => {
                     
                
              
-                    {/* <div className="button_icons_referral">
+                    <div className="button_icons_referral">
                         <button className="btn btn prev left_icon" onClick={() => setMoveClass('prev')}>
                         <i className="bx bx-chevron-left prev_button"></i>
                         </button>
@@ -265,7 +266,7 @@ const Aboutus = () => {
                         <i className="bx bx-chevron-right "></i>
                         </button>
                       
-                    </div> */}
+                    </div>
                     </div>
              </div>
 
@@ -278,21 +279,25 @@ const Aboutus = () => {
 
                 {/* carousel start  */}
                 <div className="row">
-                    <div className="col-lg-12">
-
-                    <Scrollbar />
-
-                    {/* <div className="carouselwrapper module-wrapper">
+                    <div className="col-col-lg-12">
+                    <div className="carouselwrapper module-wrapper">
               
-      
+                        {/* <div className="ui">
+                            <button onClick={() => setMoveClass('next')} className="prev">
+                            <span className="material-icons prev_button">chevron_left</span>
+                            </button>
+                            <button onClick={() => setMoveClass('prev')} className="next">
+                            <span className="material-icons">chevron_right</span>
+                            </button>
+                        </div> */}
                         <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
-                            {carouselItems.map((items, index) => 
-                            <Card key={items.paragraph + index} heading={items.heading} paragraph={items.paragraph} />
+                            {carouselItems.map((t, index) => 
+                            <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
                             
                             
                             )}
                         </ul>
-                        </div>      */}
+                        </div>     
                        </div>
                     
                 </div>

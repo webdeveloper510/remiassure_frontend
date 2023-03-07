@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import ReferralScrollbar from '../referralscrollbar/ReferralScrollbar';
 
 
 // card carousel start
@@ -345,7 +346,7 @@ const Referral = () => {
                     <div className="testimonial_vl">
                         <h1 className="chose-heading">Testimonial</h1>                
                     
-                    <div className="button_icons_referral">
+                    {/* <div className="button_icons_referral">
                         <button className="btn btn prev left_icon" onClick={() => setMoveClass('prev')}>
                         <i className="bx bx-chevron-left prev_button"></i>
                         </button>
@@ -355,7 +356,7 @@ const Referral = () => {
                         </button>
                      
 
-                    </div>
+                    </div> */}
                     </div>
                 
              </div>
@@ -374,16 +375,9 @@ const Referral = () => {
                 {/* carousel start  */}
                 <div className="row">
                     <div className="col-col-lg-12">
-                    <div className="carouselwrapper module-wrapper">
+                    {/* <div className="carouselwrapper module-wrapper">
               
-                        {/* <div className="ui">
-                            <button onClick={() => setMoveClass('next')} className="prev">
-                            <span className="material-icons prev_button">chevron_left</span>
-                            </button>
-                            <button onClick={() => setMoveClass('prev')} className="next">
-                            <span className="material-icons">chevron_right</span>
-                            </button>
-                        </div> */}
+                       
                         <ul onAnimationEnd={handleAnimationEnd} className={`${moveClass} carousel`}>
                             {carouselItems.map((t, index) => 
                             <Card key={t.paragraph + index} crad_icons={t.crad_icons} paragraph={t.paragraph} />
@@ -391,7 +385,9 @@ const Referral = () => {
                             
                             )}
                         </ul>
-                        </div>     
+                        </div>      */}
+
+              <ReferralScrollbar />  
                        </div>
                     
                 </div>

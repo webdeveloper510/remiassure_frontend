@@ -9,7 +9,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 
-const Signup = () => {
+const ReferralData = () => {
 
     // const token = localStorage.getItem("token");
     // console.log("TOKEN", token);
@@ -292,4 +292,4 @@ const Signup = () => {
 
 
 
-export default Signup;
+export default ReferralData;

@@ -19,6 +19,7 @@ import Verification from '../component/verification/Verification';
 import Multiple from '../component/profile/Multiple';
 import SendMoney from '../component/userdashboard/SendMoney';
 import Transaction from '../component/userdashboard/Transaction';
+import ReferralData from '../component/referralData/ReferralData';
 const Routerpage =()=>{
   return(
 
@@ -45,6 +46,8 @@ const Routerpage =()=>{
     <Route exact path='/verification' element= {< Verification /> } />
     <Route exact path='/sendMoney' element= {< SendMoney /> } />
     <Route exact path='/transaction' element={<Transaction /> } />
+    <Route exact path='/referraldata' element={<ReferralData /> } />
+    
     </Routes>
     <ToastContainer />
      

@@ -579,10 +579,9 @@ padding-left: 10px;
   }
 
 
-  
-
-
-
+.home-select-method{
+  height: 44.81px;
+}
 
   .background-images{
     position: absolute;
@@ -1127,17 +1126,19 @@ img.testimonial-icons {
     }
   
     p {
-      font-family: 'Open Sans Condensed', sans-serif;
+      font-family: 'Montserrat';
       margin-bottom: 0;
     }
 
 
 @keyframes next {
+
+
   from {
     transform:translateX(0px);
   }
   to {
-    transform:translateX(calc(0px + var(--cardWidth)));
+    transform:translateX(calc(0px - var(--cardWidth)));
   }
 }
 
@@ -1146,7 +1147,7 @@ img.testimonial-icons {
     transform:translateX(0px);
   }
   to {
-    transform:translateX(calc(0px - var(--cardWidth)));
+    transform:translateX(calc(0px + var(--cardWidth)));
   }
 }
 
@@ -1261,8 +1262,7 @@ img.testimonial-icons {
 }
 
 span.material-icons {
-  position: absolute;
-  top: 20px;
+  top: 0px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
@@ -1282,9 +1282,6 @@ img.boy_icons {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-  position: absolute;
-  top: 28px;
-  left: 20px;
 }
 li.card.li_card {
   text-align: inherit;
@@ -1300,9 +1297,6 @@ font-size: 12px;
 line-height: 25px;
 text-align: center;
 color: #191970;
-position: absolute;
-top: 100px;
-left: 20px;
 }
 
 .works_text {
@@ -1326,6 +1320,32 @@ left: 20px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.accrodion_contents button {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.003em;
+  color: #000000;
+}
+.accordion-button:not(.collapsed) {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.003em;
+  color: #6414E9;
+}
+.accrodion_contents .accordion-body {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+  color: #191970;
 }
 .support_image {
   text-align: center;
@@ -1354,14 +1374,36 @@ line-height: 25px;
 text-align: center;
 color: #191970;
 }
-.search_input{
+.search_input {
   width: 80%;
   height: 50px;
   background: #ECECEC;
   border-radius: 100px;
   margin: 0 auto;
   margin-top: 26px;
-
+  background-image: url(../img/help/search.svg);
+  background-repeat: no-repeat;
+  background-position: left 2% center;
+  padding-left: 54px;
+  line-height: 50px;
+}
+input.search_input:focus {
+  outline: 2px solid #7300e7 !important;
+}
+.outer-search_input input {
+  border: none;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: var(--bs-btn-active-color);
+  background-color: linear-gradient(90deg, #689CF4 0%, #215DC1 100%) !important;
+  border-color: var(--bs-btn-active-border-color);
+}
+input:focus, select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.outer-search_input {
+  text-align: center;
 }
 img.serch_img {
   padding-left: 20px;
@@ -2075,7 +2117,6 @@ p.material_heading_card {
   font-weight: 500;
   font-size: 14px;
   color: #191970;
-  margin-top: -36px;
 }
 .vl.securiy_vl {
   border-left: 6px solid rgba(100, 20, 233, 1);
@@ -2479,8 +2520,46 @@ button.continue_button {
   width: 100%;
 }
 .exchange-rate{
-  margin-top:10px;
+  margin-top: 10px;
   font-family: 'Montserrat' !important;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 25px;
+  color: #190079;
+}
+.inline.select-currency {
+  display: flex;
+}
+.select-currency .home-select-method option {
+  color: #000;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #000000;
+  background-color: #0AEDC7;
+}
+.select-currency .home-select-method {
+  background-color: #0AEDC7;
+  border-radius: 0px 13px 13px 0px;
+  width: 91.75px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}
+.inline.select-currency input {
+  width: 200px !important;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right: none;
 }
 .money_exchange_row select , .money_exchange_row .disabled-btn{
   background-color: #0AEDC7  !important;
@@ -2991,11 +3070,12 @@ img.quotup_icons {
   position: absolute;
   top: -34px;
 }
-.quotdown_icons{
+.quotdown_icons {
   width: 56px;
   position: absolute;
-  left: 310px;
-  top: 113px;
+  left: inherit !important;
+  right: 20px;
+  top: inherit !important;
 }
 .Group_icons{
   width: 56px;
@@ -3617,3 +3697,79 @@ input#myInput {
 }
 
 /* loader css strat */
+
+
+
+/************* slider css start ******************/
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 2px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 5px;
+  width: 15%;
+  border-radius: 0%;
+  background: #000;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+.custom-slider {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  padding: 0 20px;
+}
+.custom-slider__input {
+  width: 100%;
+}
+.image-item {
+  padding: 20px 0 20px 20px;
+}
+.image-container.increase-size {
+  box-shadow: 0px 1px 2px 0px var(--card-shadow);
+  border-radius: 13px;
+  margin: 0;
+  background: var(--color-white);
+  margin-top: 47px;
+  padding: 28px;
+  position:relative;
+}
+
+.react-multi-carousel-list {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  overflow-y: inherit !important;
+  overflow-x: clip !important;
+}
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right, button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  top: -60px;
+  min-width: 30px;
+  min-height: 30px;
+  background: linear-gradient(90deg, #689CF4 0%, #215DC1 100%);
+  border-radius: 4px;
+}
+.react-multiple-carousel__arrow--left {
+  right: calc(9% + 1px);
+  left: inherit;
+}

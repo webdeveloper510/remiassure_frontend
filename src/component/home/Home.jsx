@@ -4,7 +4,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Scrollbar from '../scrollbar/Scrollbar';
 
 // start -----Why RemitAssure circle function
 function WhyRenderingArrayOfObjects(){
@@ -204,26 +206,26 @@ const Card = (props) => {
 const Home = () => {
   const items = [
     {
-        heading:"Best on the market.",
+        heading:"Best on the market 1.",
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     },{
-        heading:"Best on the market.",
+        heading:"Best on the market 2.",
         paragraph:'B.At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     },{
-        heading:"Best on the market.",
+        heading:"Best on the market 3.",
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     },{
-        heading:"Best on the market.",
+        heading:"Best on the market 4.",
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     },{
-        heading:"Best on the market.",
+        heading:"Best on the market 5.",
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     },{
-        heading:"Best on the market.",
+        heading:"Best on the market 6.",
         paragraph:'At ultrices mi tempus imperdiet nulla. Risus nullam eget felis eget nunc lobortis. Fusce id velit ut tortor pretium viverra suspendisse...'
     }
   ];
-  const [movePage, setMovePage] = useState('');
+  //const [movePage, setMovePage] = useState('');
   const [carouselItems, setCarouselItems] = useState(items);
   //console.log(items, "carouselItemscarouselItemscarouselItemscarouselItemscarouselItems")
   
@@ -231,26 +233,26 @@ const Home = () => {
     document.documentElement.style.setProperty('--num', carouselItems.length);
   }, [carouselItems])
   
-  const handleAnimationEnd = () => {
-    if(movePage === 'prev'){
-      shiftNext([...carouselItems]);
-    }else if(movePage === 'next'){
-      shiftPrev([...carouselItems]);
-    }
-    setMovePage('')
-  }
+  // const handleAnimationEnd = () => {
+  //   if(movePage === 'prev'){
+  //     shiftNext([...carouselItems]);
+  //   }else if(movePage === 'next'){
+  //     shiftPrev([...carouselItems]);
+  //   }
+  //   setMovePage('')
+  // }
   
-  const shiftPrev = (paragraph) => {
-    let lastcard = paragraph.pop();
-    paragraph.splice(0, 0, lastcard);
-    setCarouselItems(paragraph);
-  }
+  // const shiftPrev = (paragraph) => {
+  //   let lastcard = paragraph.pop();
+  //   paragraph.splice(0, 0, lastcard);
+  //   setCarouselItems(paragraph);
+  // }
   
-  const shiftNext = (paragraph) => {
-    let firstcard = paragraph.shift();
-    paragraph.splice(paragraph.length, 0, firstcard);
-    setCarouselItems(paragraph);
-  }
+  // const shiftNext = (paragraph) => {
+  //   let firstcard = paragraph.shift();
+  //   paragraph.splice(paragraph.length, 0, firstcard);
+  //   setCarouselItems(paragraph);
+  // }
 
   // End carousel End
 
@@ -298,20 +300,30 @@ const Home = () => {
                         <div className="row">
                             <div className="col-3-1">
                                 <p className="send-text">You Send</p>
+                                <div className="inline select-currency">
                                 <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
-                                    <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
-                                        <Dropdown.Item href="#">Action</Dropdown.Item>
-                                        <Dropdown.Item href="#">Another action</Dropdown.Item>
-                                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                                        <Dropdown.Divider />
-                                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                                    </DropdownButton>
                                 </InputGroup>
+                                <select class="form-select form-control mb-3 home-select-method" aria-label="Select a reason">
+                                      <option className="option-custom" selected value="1">AUD</option>
+                                      <option className="option-custom" value="2">USD</option>
+                                      <option className="option-custom" value="3">INR</option>
+                               </select> 
+                               </div>
                             </div>
                             <div className="col-3-1">
                                 <p className="get-text">They get</p>
+                                <div className="inline select-currency">
                                 <InputGroup className="mb-3">
+                                    <Form.Control aria-label="Text input with dropdown button" />
+                                </InputGroup>
+                                <select class="form-select form-control mb-3 home-select-method" aria-label="Select a reason">
+                                      <option selected value="1">AUD</option>
+                                      <option value="2">USD</option>
+                                      <option value="3">INR</option>
+                               </select> 
+                               </div>
+                                {/* <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
                                     <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
                                         <Dropdown.Item href="#">Action</Dropdown.Item>
@@ -320,11 +332,16 @@ const Home = () => {
                                         <Dropdown.Divider />
                                         <Dropdown.Item href="#">Separated link</Dropdown.Item>
                                     </DropdownButton>
-                                </InputGroup>
+                                </InputGroup> */}
                             </div>
                             <div className="col-3-1">
-                                <p className="recived-text">Receive method</p>
-                                <InputGroup className="mb-3">
+                            <p className="get-text">Receive method</p>
+                              <select class="form-select rate_input form-control mb-3 home-select-method" aria-label="Select a reason">
+                                      <option selected>Select Method</option>
+                                      <option value="1">Bank Transfer</option>
+                                      <option value="2">Mobile Wallet</option>
+                               </select> 
+                                {/* <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
                                     <DropdownButton variant="outline-secondary" title="AUD" id="input-group-dropdown-2" align="end">
                                         <Dropdown.Item href="#">Action</Dropdown.Item>
@@ -333,7 +350,7 @@ const Home = () => {
                                         <Dropdown.Divider />
                                         <Dropdown.Item href="#">Separated link</Dropdown.Item>
                                     </DropdownButton>
-                                </InputGroup>
+                                </InputGroup> */}
                             </div>
                             <div className="col-3-2">
                                 <button className="btn btn continue-button">Continue</button>
@@ -461,7 +478,7 @@ const Home = () => {
           <div className="row" id="testimonial-section">
             <div className="col-lg-12">
               <h3 className="customers-heading">What customers say about us</h3>
-              <div className="button_icons">
+              {/* <div className="button_icons">
                 <button className="btn btn prev left_icon" onClick={() => setMovePage('prev')}>
                   <i className="bx bx-chevron-left prev_button"></i>
                 </button>
@@ -472,7 +489,7 @@ const Home = () => {
 
                
 
-              </div>
+              </div> */}
               
               <p className="customers-paragraph">We do our best to provide you the best experience ever</p>
             </div>
@@ -482,8 +499,10 @@ const Home = () => {
 
           <div className="row">
             <div className="col-lg-12">
-            <div className="carouselwrapper module-wrapper">
+            {/* <div className="carouselwrapper module-wrapper">
+  
 
+            
               <ul onAnimationEnd={handleAnimationEnd} className={`${movePage} carousel`}>
                 {carouselItems.map((t, index) => 
                   <Card key={t.paragraph + index} heading={t.heading} paragraph={t.paragraph} />
@@ -491,7 +510,8 @@ const Home = () => {
                 )}
               </ul>
 
-            </div>     
+            </div>   */}
+            <Scrollbar />   
             </div>
           </div>
 

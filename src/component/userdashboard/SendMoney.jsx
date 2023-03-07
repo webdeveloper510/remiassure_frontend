@@ -122,14 +122,11 @@ const SendMoney = () => {
 
     const handleAmountDelivery =(event) =>{
       event.preventDefault();
-      // setTotal_amount(event.key);
-      // setExchange_amount(event.key);
       setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'exchange-rate/', {
           from: from,
           to: to,
-        
-       
+          amount: amount 
         }, {
             headers: {
                 // 'Content-Type': 'application/json',
@@ -139,16 +136,9 @@ const SendMoney = () => {
         .then(function(response) {
             console.log(response);
             if (response.status)
-            // localStorage.setItem("Total_amount", response.data.amount);
-            setTotal_amount(response.data.amount);
-            setExchange_amount(response.data.amount);
-            // localStorage.setItem("Total_INR", response.data.rate);
-
             setStep(step+1)
             setLoading(false); // Stop loading
-              //   notify();
-              //  navigate('/sendMoney');   
-                // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
+
         })
         .catch(function(error, message) {
             console.log(error.response)

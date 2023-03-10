@@ -48,19 +48,14 @@ const SendMoney = () => {
  // start select value get data
  const {location} = useContext(UserContext);
 
-//  const handleLocationValue = (e) =>{
-//   setLocation(e.target.value)
-//  }
-
- // End select value get data
 
 
  // Start Api call Amount & Delivery
 
-  const [from, setFrom] =React.useState('$');
-  // alert(from)
-  const [to, setTo] = React.useState('inr');
-  const [amount, setAmount] = React.useState(0);
+  const [from, setFrom] =React.useState('USD');
+  const [shows, setShows] = React.useState(false);
+  const [to, setTo] = React.useState('INR');
+  const [amount, setAmount] = React.useState('');
   const [exchange_amount, setExchange_amount] =React.useState('');
   const [total_amount, setTotal_amount] =React.useState('');
   const [total_rate, setTotal_rate] =React.useState('');
@@ -89,31 +84,31 @@ const SendMoney = () => {
 
 
    // Function to switch between two currency
-   function flip() {
-    var temp = from;
-    setFrom(to);
-    setTo(temp);
-  }
+  //  function flip() {
+  //   var temp = from;
+  //   setFrom(to);
+  //   setTo(temp);
+  // }
 
   // let convert
     // Calling the convert function whenever
    // a user switches the currency
-   useEffect(() => {
-    setOptions(Object.keys(info));
-    var rate = info[to];
-  }, [info])
+  //  useEffect(() => {
+  //   setOptions(Object.keys(info));
+  //   var rate = info[to];
+  // }, [info])
     
 
   //  Function to convert the currency
-   useEffect(() => {
-    var rate = info[to];
-    setOutput(amount * rate);
-   const  value = (amount * rate)
-}, [])
+//    useEffect(() => {
+//     var rate = info[to];
+//     setOutput(amount * rate);
+//    const  value = (amount * rate)
+// }, [])
   
 
   const navigate = useNavigate();
-  const notify = () => toast.success("Amount & Delivery Successfully!!");
+  // const notify = () => toast.success("Amount & Delivery Successfully!!");
 
   //localstorage of get data 
     // const Total_amount= localStorage.getItem(Total_amount);
@@ -136,7 +131,8 @@ const SendMoney = () => {
         .then(function(response) {
             console.log(response);
             if (response.status)
-            setStep(step+1)
+            setStep(step+1) //next step call
+            setShows(!shows) //show hide summery function call
             setLoading(false); // Stop loading
 
         })
@@ -144,7 +140,7 @@ const SendMoney = () => {
             console.log(error.response)
             setLoading(false); // Stop loading in case of error
             if(error.response.data.status){
-                toast.error(error.response.data.message);
+                // toast.error(error.response.data.message);
             } 
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
@@ -196,14 +192,15 @@ const SendMoney = () => {
 // End Ratio Amount Api call 
 
 
+
 // Start Total Amount Api call 
     const myTotalAmount =(value)=> {   
       console.log("====================>",value)
-    setLoading(true); // Set loading before sending API request
+     setLoading(true); // Set loading before sending API request
       axios.post(API.BASE_URL + 'exchange-rate/', {
         from: from,
         to: to,
-        amount: value
+        amount: amount
      
       }, {
           headers: {
@@ -214,26 +211,19 @@ const SendMoney = () => {
       .then(function(response) {
           console.log(response);
           if (response.status)
-          localStorage.setItem("Total_amount", response.data.amount);
+          // localStorage.setItem("Total_amount", response.data.amount);
           setTotal_amount(response.data.amount);
           setExchange_amount(response.data.amount);
           setTotal_rate( response.data.rate);
-          // console.log(exchange_amount, "setTosetTosetTosetTosetTo")
-          // localStorage.setItem("Total_INR",) response.data.rate;
-
-          // setStep(step+1)
-          // setLoading(false); // Stop loading
-            //   notify();
-            //  navigate('/userdashboard');   
-              // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
+          setLoading(false); // Stop loading
       })
       .catch(function(error, message) {
           console.log(error.response)
           setLoading(false); // Stop loading in case of error
-          if(error.response.data.status){
-              toast.error(error.response.data.message);
-          } 
-          console.log(error, "klnklnklnknnnnnnnnnnnn");   
+          // if(error.response.data.status){
+          //     toast.error(error.response.data.message);
+          // } 
+          // console.log(error, "klnklnklnknnnnnnnnnnnn");   
       })
 
    }
@@ -283,12 +273,13 @@ const SendMoney = () => {
     
     return (
     <>
-        
+   
       <div class="progressBar">
         <div class="progress">
           <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
         </div>
       </div>
+
       
       <form>
       <div className="form_body">
@@ -303,16 +294,32 @@ const SendMoney = () => {
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={from}
-                 onChange={handleFrom}
+                //  onChange={handleFrom}
+                 onChange={(e)=> {myTotalAmount(e.target.value);setFrom(e.target.value)}}
                  >
-                  <option value="">--- Select Currency ---</option>
-                  <option value="USD">USD</option>
-              </select>
+                  {/* <option value="">--- Select Currency ---</option> */}
+                  <option value="USD" selected="selected">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="BRL">BRL</option>
+                  <option value="BGN">BGN</option>
+                  <option value="XAF">XAF</option>
+                  <option value="CAD">CAD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="CZK">CZK</option>
+                  <option value="DKK">DKK</option>
+                  <option value="GHS">GHS</option>
+                  <option value="ISK">ISK</option>
+                  <option value="JOD">JPD</option>
+                  <option value="KWD">KWD</option>
+                  <option value="NZD">NZD</option>
+                  <option value="PHP">PHP</option>
+                  <option value="ZAR">ZAR</option> 
+                  <option value="CHF">CHF</option>
+                  <option value="GBP">GBP</option>
+                
+                 
 
-              {/* <div className="switch">
-          <HiSwitchHorizontal size="30px" 
-                        onClick={() => { flip()}}/>
-        </div> */}
+              </select>
             </div>
           </div>
           <div className="col-md-4">
@@ -322,18 +329,35 @@ const SendMoney = () => {
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={to}
-                //  onKeyUp={ratioAmount()}
-                 onChange={handleTo}
+                //  onChange={handleTo}
+                 onChange={(e)=> {myTotalAmount(e.target.value);setTo(e.target.value)}}
                  >
-                  <option value="">--- Select Currency ---</option>
-                  <option value="INR">INR</option>
+                  {/* <option value="">--- Select Currency ---</option> */}
+                  <option value="INR" selected="selected">INR</option>
+                  <option value="EUR">EUR</option>
+                  <option value="BRL">BRL</option>
+                  <option value="BGN">BGN</option>
+                  <option value="XAF">XAF</option>
+                  <option value="CAD">CAD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="CZK">CZK</option>
+                  <option value="DKK">DKK</option>
+                  <option value="GHS">GHS</option>
+                  <option value="ISK">ISK</option>
+                  <option value="JOD">JPD</option>
+                  <option value="KWD">KWD</option>
+                  <option value="NZD">NZD</option>
+                  <option value="PHP">PHP</option>
+                  <option value="ZAR">ZAR</option> 
+                  <option value="CHF">CHF</option>
+                  <option value="GBP">GBP</option>
               </select>
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Exchange Rate</p>
-              <p className="exchange-rate" >1 <span>{from}</span>⇒ {total_rate +to }</p>
+              <p className="get-text Exchange_rate">Exchange Rate</p>
+              <p className="exchange-rate exchange_value" >1 <span>{from}</span>⇒ {total_rate} <span>{to}</span> </p>
               {/* <input type="text" className='rate_input form-control' /> */}
             </div>
           </div>
@@ -355,19 +379,16 @@ const SendMoney = () => {
 
           <div className="col-md-6">
             <div className="input_field">
-              <p className="get-text">{loading ? <>Loading..</> : <>Exchange Amount</>}</p>
+              <p className="get-text">
+                Exchange Amount
+                </p>
               <input
                type="text"
                value={exchange_amount}
                 className='rate_input form-control'
-                placeholder="Total-Amount"
+                
                  />
-                   {/* {loading ? <>
-                 
-                    loading...
-                                                
-               
-               </> : <></>} */}
+
             </div>
           </div>
         </div>
@@ -440,20 +461,20 @@ const SendMoney = () => {
             <button className="start-form-button">Cancel</button>
           </div>
           <div className="col-md-8">
-            <button 
-            className="form-button" 
-            onClick={handleAmountDelivery}
-            >
+          <button
+           className="form-button"
+          //  onChange={() => setShows(!shows)}
+            onClick={handleAmountDelivery}>
               Continue
-              {/* {loading ? <>
-                  <div class="loader-overly"> 
+              {loading ? <>
+                <div class="loader-overly"> 
                     <div class="loader" > 
-                                                
+                                                  
+                      </div>
+                                                  
                  </div>
-                                                
-                    </div>
-               </> : <></>} */}
-              </button>
+           </> : <></>}
+          </button>
           </div>
         </div>
       </div>
@@ -853,6 +874,7 @@ const SendMoney = () => {
     return (
     
     <>
+    
         <div class="form">
    <div className="card">
      <section className="why-us section-bgba user_dashboard_banner">
@@ -861,6 +883,7 @@ const SendMoney = () => {
            <div className="col-md-8">{
              <Form />}
            </div>
+           {shows &&
            <div className="col-md-4">
              <div className="summary">
                <h5>Summary</h5>
@@ -882,11 +905,16 @@ const SendMoney = () => {
                </Table>
              </div>
            </div>
+
+           }
          </div>
        </div>
      </section>
    </div>
  </div>
+
+
+
     </>
     );
 }

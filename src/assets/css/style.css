@@ -2536,7 +2536,7 @@ button.continue_button {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
   text-align: center;
   color: #000000;
@@ -2549,7 +2549,7 @@ button.continue_button {
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
   text-align: center;
   color: #000000;
@@ -3772,4 +3772,15 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right, but
 .react-multiple-carousel__arrow--left {
   right: calc(9% + 1px);
   left: inherit;
+}
+input.mb-3.new_input {
+  color: #000;
+  width: 200px !important;
+  border-right: none;
+  border: 1px solid #EAEAEA;
+  border-radius: 13px;
+}
+select.form-select.rate_input.form-control.mb-3.home-select-method {
+  width: 100% !important;
+  border-radius: 13px;
 }

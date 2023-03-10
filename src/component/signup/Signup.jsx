@@ -23,7 +23,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [location, setLocation] = useState('');
     const [referral_code, setrReferral_code] = useState();
-    const [referral_value, setrReferral_value] = useState('');
+    const [referral_value, setrReferral_value] = useState();
     const [promo_marketing, setPromo_marketing] = useState(false);
     const [mobile, setMobile] = useState('');
     const search = useLocation()
@@ -61,15 +61,7 @@ const Signup = () => {
         
     const handleReferral_code = (e) =>{
          setrReferral_code(e.target.value);
-        const { checked } = e.target;
-    
-        console.log("checked " + checked);
-    
-        setrReferral_code((referral_code) => ({
-          ...referral_code, // <-- shallow copy previous state
-          Active: checked // <-- set new Active checked value
-        }));
-      
+       
     }
     
 
@@ -102,7 +94,7 @@ const Signup = () => {
             mobile: mobile,
             password: password,
             location: location,
-            referral_code: !referral_code? referral_code: null, 
+            referral_code: referral_code,
             promo_marketing: promo_marketing.Active,
             params: { keyword },
         }, {
@@ -161,23 +153,14 @@ const Signup = () => {
          const search1 = search.search;
         const term = new URLSearchParams(search1).get('ref');
         console.log(term, "termterm")
-        if(true){
+        if(term){
             setrReferral_value(term)
             setShow(true)
             console.log(referral_code, "referral_codereferral_codereferral_code");
         
 
         }
-        // if (isChecked) {
-        //     // The switch enabled
-        //     text_view.text = "Switch on"
-
-        // } else {
-        //     // The switch disabled
-        //     text_view.text = "Switch off"
-
-        // }
-        
+       
       },[]);
 
 //End get value Urls
@@ -185,32 +168,32 @@ const Signup = () => {
     let checked;
 
     //Start Referal code Api
-    // if(checked=== true)
-    const myReferalCode =(value)=> {   
-        // useEffect(() => {
-            // setrReferral_code(checked==true);
-            axios.post(API.BASE_URL + 'referral-link/',{}, {
-                headers: {
-                    "Authorization" : `Bearer ${token}`,
-                }
-            })
-            .then(function(response) {
-                console.log(response);
-                localStorage.setItem("referral_link",response.data.referral_link);
-                    // notify();
-                    // navigate('/verification');   
-                    // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
-            })
-            .catch(function(error, message) {
-                console.log(error.response)
-                if(error.response.data.status){
-                    toast.error(error.response.data.message);
-                } 
-                console.log(error, "klnklnklnknnnnnnnnnnnn");   
-            })
+    //
+    // const myReferalCode =(value)=> {   
+    //     // useEffect(() => {
+    //         // setrReferral_code(checked==true);
+    //         axios.post(API.BASE_URL + 'referral-link/',{}, {
+    //             headers: {
+    //                 "Authorization" : `Bearer ${token}`,
+    //             }
+    //         })
+    //         .then(function(response) {
+    //             console.log(response);
+    //             localStorage.setItem("referral_link",response.data.referral_link);
+    //                 // notify();
+    //                 // navigate('/verification');   
+    //                 // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
+    //         })
+    //         .catch(function(error, message) {
+    //             console.log(error.response)
+    //             if(error.response.data.status){
+    //                 toast.error(error.response.data.message);
+    //             } 
+    //             console.log(error, "klnklnklnknnnnnnnnnnnn");   
+    //         })
 
-        // }, [true])
-    }
+    //     // }, [true])
+    // }
     //End Referal code ApI
 
 
@@ -292,10 +275,9 @@ const Signup = () => {
                                         type="switch" 
                                         onClick={() => setShow(!show)}
                                         value={referral_code}
-                                        disabled = {checkBoxValue}
-                                        onChange={(e)=> {myReferalCode(e.target.value);setrReferral_code(e.target.value)}}
-                                        // checked={referral_code.Active}
-                                        // onClick={myReferalCode}
+                                        checked={show ? true : false}
+                                        // onChange={(e)=> {myReferalCode(e.target.value);setrReferral_code(e.target.value)}}
+                                        //   onChange={(e)=> {setrReferral_code(e.target.value)}}
                                         id="custom-switch" 
                                         label="Referred by a friend? Use the referral code below." 
                                        

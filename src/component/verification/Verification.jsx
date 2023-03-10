@@ -62,7 +62,7 @@ const Verification = () => {
 
      const navigate = useNavigate();
 
-    const notify = () => toast.success("Email Verify Successfully!");
+    const notify = () => toast.success("Email Verified Successfully!");
 
     const handleEmailVerification = (event) =>{
             event.preventDefault();
@@ -105,8 +105,8 @@ const Verification = () => {
                     <div className="col-lg-12">
                         <div className="card card-verification">
                             <div className="card-body">
-                                <h5 className="Sign-heading">Verify your OTP</h5>
-                                <p>OTP sent to your Email</p>
+                                <h5 className="Sign-heading">Verify your Account</h5>
+                                <p>Please Right Verification code send your Email</p>
                                 <div className="form_verification">
                                     <form>
                                         <Form.Group className="mb-3 verification_input" controlId="formBasicEmail">

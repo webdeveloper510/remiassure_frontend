@@ -1,3 +1,4 @@
+
 import React,{useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -7,6 +8,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Scrollbar from '../scrollbar/Scrollbar';
+
+import {toast} from "react-toastify";
+import {API} from "../../config/API";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router";
 
 // start -----Why RemitAssure circle function
 function WhyRenderingArrayOfObjects(){
@@ -257,6 +263,144 @@ const Home = () => {
   // End carousel End
 
 
+
+  //*********** */ Start Main EXCHANGE RATE Api call *********************\\
+   const [amount, setAmount] = useState('');
+  //  alert(amount)
+   const [from, setFrom] = useState('USD');
+   const [to, setTo] = useState('INR');
+
+   const [loading, setLoading] = useState(false);
+   const [total_amounts, setTotal_amounts] =useState('');
+   const [total_rates, setTotal_rates] = useState('');
+  //  alert(total_amounts)
+
+
+   const HandleAmount =(e)=>{
+    setAmount(e.target.value)
+   }
+   
+   const HandleFrom = (e) =>{
+    setFrom(e.target.value)
+   }
+
+   const HandleTo =(e) =>{
+    setTo(e.target.value)
+   }
+
+   const navigate = useNavigate();
+  //  const notify = () => toast.success("Amount & Delivery Successfully!!")
+
+
+
+  //main Api call
+   const handleAmonutDelivery =(event) =>{
+    event.preventDefault();
+    setLoading(true); // Set loading before sending API request
+       axios.post(API.BASE_URL + 'exchange-rate/', {
+        amount: amount,
+        from: from,
+        to: to
+       }, {
+        headers:{
+
+        },
+
+       })
+       .then(function(response){
+         console.log(response)
+         setLoading(false); // Stop loading
+         if(response.status){
+          // notify();
+          navigate('/login');
+
+         }
+       })
+       .catch(function(error){
+        console.log(error.response);
+        setLoading(false); // Stop loading in case of error
+        // if(error.response.data.status){
+        //   toast.error(error.response.data.message)
+        // }
+
+       })
+
+   }
+
+   //End main Api
+
+
+   // Start--Exchange money Api call 
+   const myExchangeTotalAmount =(value) =>{
+    console.log("====================>",value)
+    // alert("hii")
+    // event.preventDefault();
+    setLoading(true); // Set loading before sending API request
+    axios.post(API.BASE_URL + 'exchange-rate/', {
+      amount: amount,
+      from: from,
+      to: to
+    }, {
+       headers: {
+
+       }
+
+    })
+    .then(function(response){
+      console.log(response);
+      setTotal_amounts(response.data.amount);
+      setTotal_rates(response.data.rate);
+      setLoading(false); // Stop loading
+    })
+    .catch(function(error){
+      console.log(error.response)
+      setLoading(false); // Stop loading in case of error
+      // if(error.response.data.status){
+      //   toast.error(error.response.data.message)
+      // }
+    })
+   }
+
+
+   // End--Exchange money Api call 
+
+
+  //  const getInitialState = () => {
+  //   const value = "USD";
+  //   return value;
+  // };
+
+  // const [value, setValue] = useState(getInitialState);
+
+  // const handleChange = (e) => {
+  //   setValue(e.target.value);
+  // };
+
+
+
+  // //second to 
+  // const getInitialStatess = () => {
+  //   const value = "INR";
+  //   return value;
+  // };
+
+  // const [valuess, setValuess] = useState(getInitialStatess);
+
+  // const handleChangess= (e) => {
+  //   setValuess(e.target.value);
+  // };
+
+
+
+
+
+  //*********** */ End EXCHANGE RATE Api call *********************\\
+
+
+
+
+
+
     return(
         <>
 
@@ -296,32 +440,92 @@ const Home = () => {
                 <div className="card card-flag new_card">
                     <div className="card-body">
                         <h6 className="exchange-heading">EXCHANGE RATE</h6>
-                        <p className="calculation">1 AUD = 0.59476 USD</p>
+                        <p className="calculation">1 {from} = {total_rates} {to}</p>
                         <div className="row">
                             <div className="col-3-1">
                                 <p className="send-text">You Send</p>
                                 <div className="inline select-currency">
-                                <InputGroup className="mb-3">
+                                <InputGroup 
+                                className="mb-3"
+                                value={amount}
+                                // onChange={HandleAmount}
+                                placeholder="Please Enter Amount"
+                                 onChange={(e) =>{myExchangeTotalAmount(e.target.value); setAmount(e.target.value)}}
+
+                                >
                                     <Form.Control aria-label="Text input with dropdown button" />
                                 </InputGroup>
-                                <select class="form-select form-control mb-3 home-select-method" aria-label="Select a reason">
-                                      <option className="option-custom" selected value="1">AUD</option>
-                                      <option className="option-custom" value="2">USD</option>
-                                      <option className="option-custom" value="3">INR</option>
+                                <select
+                                 className="form-select form-control mb-3 home-select-method"
+                                  aria-label="Select a reason"
+                                  value={from}
+                                  // value={value}
+                                  // onChange={HandleFrom}
+                                  // onClick={myExchangeTotalAmount}
+                                  onChange={(e)=> {myExchangeTotalAmount(e.target.value);setFrom(e.target.value)}}
+                                  >         
+                                  {/* <option className="option-custom" value="">Select</option> */}
+                                  <option className="option-custom" value="USD" selected="selected">USD</option>
+                                  <option className="option-custom" value="EUR">EUR</option>
+                                  <option className="option-custom" value="BRL">BRL</option>
+                                  <option className="option-custom" value="BGN">BGN</option>
+                                  <option className="option-custom" value="XAF">XAF</option>
+                                  <option className="option-custom" value="CAD">CAD</option>
+                                  <option className="option-custom" value="EUR">EUR</option>
+                                  <option className="option-custom" value="CZK">CZK</option>
+                                  <option className="option-custom" value="DKK">DKK</option>
+                                  <option className="option-custom" value="GHS">GHS</option>
+                                  <option className="option-custom" value="ISK">ISK</option>
+                                  <option className="option-custom" value="JOD">JPD</option>
+                                  <option className="option-custom" value="KWD">KWD</option>
+                                  <option className="option-custom" value="NZD">NZD</option>
+                                  <option className="option-custom" value="PHP">PHP</option>
+                                  <option className="option-custom" value="ZAR">ZAR</option> 
+                                  <option className="option-custom" value="CHF">CHF</option>
+                                  <option className="option-custom" value="GBP">GBP</option>
                                </select> 
                                </div>
                             </div>
                             <div className="col-3-1">
                                 <p className="get-text">They get</p>
                                 <div className="inline select-currency">
-                                <InputGroup className="mb-3">
-                                    <Form.Control aria-label="Text input with dropdown button" />
-                                </InputGroup>
-                                <select class="form-select form-control mb-3 home-select-method" aria-label="Select a reason">
-                                      <option selected value="1">AUD</option>
-                                      <option value="2">USD</option>
-                                      <option value="3">INR</option>
-                               </select> 
+                                <input
+                                className="mb-3 new_input"
+                                value={total_amounts}
+
+                                />
+                                   
+                               
+                                <select 
+                                className="form-select form-control mb-3 home-select-method"
+                                 aria-label="Select a reason"
+                                 value={to}
+                                // value={valuess}
+                                //  onChange={HandleTo}
+                                //  onClick={myExchangeTotalAmount}
+                                 onChange={(e)=> {myExchangeTotalAmount(e.target.value);setTo(e.target.value)}}
+
+                                 >
+                                       {/* <option value="">Select</option> */}
+                                        <option value="INR" selected="selected">INR</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="BRL">BRL</option>
+                                        <option value="BGN">BGN</option>
+                                        <option value="XAF">XAF</option>
+                                        <option value="CAD">CAD</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="CZK">CZK</option>
+                                        <option value="DKK">DKK</option>
+                                        <option value="GHS">GHS</option>
+                                        <option value="ISK">ISK</option>
+                                        <option value="JOD">JPD</option>
+                                        <option value="KWD">KWD</option>
+                                        <option value="NZD">NZD</option>
+                                        <option value="PHP">PHP</option>
+                                        <option value="ZAR">ZAR</option> 
+                                        <option value="CHF">CHF</option>
+                                        <option value="GBP">GBP</option>
+                                    </select> 
                                </div>
                                 {/* <InputGroup className="mb-3">
                                     <Form.Control aria-label="Text input with dropdown button" />
@@ -353,7 +557,21 @@ const Home = () => {
                                 </InputGroup> */}
                             </div>
                             <div className="col-3-2">
-                                <button className="btn btn continue-button">Continue</button>
+                                <button 
+                                type="submit"
+                                className="btn btn continue-button"
+                                onClick={handleAmonutDelivery}
+                                >
+                                  Continue
+                                  {loading ? <>
+                                                <div class="loader-overly"> 
+                                                <div class="loader" > 
+                                                
+                                                </div>
+                                                
+                                                </div>
+                                              </> : <></>}
+                                </button>
                             </div>
                         </div>
                     </div>

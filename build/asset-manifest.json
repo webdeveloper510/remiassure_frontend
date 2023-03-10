@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b5e2d620.css",
-    "main.js": "/static/js/main.0476197f.js",
+    "main.css": "/static/css/main.8ecf3b55.css",
+    "main.js": "/static/js/main.da4e734b.js",
     "static/media/top-main.svg": "/static/media/top-main.102ec1fede59c9c786b5.svg",
     "static/media/boxicons.svg": "/static/media/boxicons.9e2b21b135bc7d4c803f.svg",
     "static/media/boxicons.eot": "/static/media/boxicons.65a8ce52fc5427e8f94d.eot",
@@ -15,13 +15,17 @@
     "static/media/about_banner.png": "/static/media/about_banner.61ae790492bcdbda7428.png",
     "static/media/flags.png": "/static/media/flags.3f9d4c2eaac6057ce601.png",
     "static/media/logo.svg": "/static/media/logo.c2ad6a46cdb14100e6a2099509d94562.svg",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/login-light-bg.svg": "/static/media/login-light-bg.a805008f4d9a4345e35a.svg",
     "index.html": "/index.html",
-    "main.b5e2d620.css.map": "/static/css/main.b5e2d620.css.map",
-    "main.0476197f.js.map": "/static/js/main.0476197f.js.map"
+    "static/media/search.svg": "/static/media/search.c6fcea69ac857842f294.svg",
+    "main.8ecf3b55.css.map": "/static/css/main.8ecf3b55.css.map",
+    "main.da4e734b.js.map": "/static/js/main.da4e734b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5e2d620.css",
-    "static/js/main.0476197f.js"
+    "static/css/main.8ecf3b55.css",
+    "static/js/main.da4e734b.js"
   ]
 }

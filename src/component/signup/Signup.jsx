@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
+import {useLocation} from "react-router-dom";
 
 import {API} from "../../config/API";
 import axios from 'axios';
@@ -11,8 +12,8 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
 
-    // const token = localStorage.getItem("token");
-    // console.log("TOKEN", token);
+    const token = localStorage.getItem("token");
+    console.log("TOKEN", token);
 
     const [show, setShow] = React.useState(false);
     const [loading, setLoading] = useState(false);
@@ -21,9 +22,12 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [location, setLocation] = useState('');
-    const [referral_code, setrReferral_code] = useState(null);
+    const [referral_code, setrReferral_code] = useState();
+    const [referral_value, setrReferral_value] = useState('');
     const [promo_marketing, setPromo_marketing] = useState(false);
     const [mobile, setMobile] = useState('');
+    const search = useLocation()
+    const [checkBoxValue, setCheckBoxvalue] = useState(false);
 
     const navigate = useNavigate();
 
@@ -44,9 +48,30 @@ const Signup = () => {
     const handeleLocation =(e) => {
         setLocation(e.target.value);
     } 
+
+    // const handleCheckBox =(e) =>{
+    //     if(e.target.checked){
+    //         setCheckBoxvalue(true);
+    //     }
+    // else{
+    //     setCheckBoxvalue(false);
+    //     }
+    // }
+  
+        
     const handleReferral_code = (e) =>{
-        setrReferral_code(e.target.value);
+         setrReferral_code(e.target.value);
+        const { checked } = e.target;
+    
+        console.log("checked " + checked);
+    
+        setrReferral_code((referral_code) => ({
+          ...referral_code, // <-- shallow copy previous state
+          Active: checked // <-- set new Active checked value
+        }));
+      
     }
+    
 
     const handlePromo_marketing = (e) => {
         const { checked } = e.target;
@@ -67,10 +92,11 @@ const Signup = () => {
     //   } else{
         
     //   }
-
+  
     const handleSignupApi = (event) => {
         event.preventDefault();
         setLoading(true); // Set loading before sending API request
+
         axios.post(API.BASE_URL + 'register/', {
             email: email,
             mobile: mobile,
@@ -103,45 +129,89 @@ const Signup = () => {
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
     }
+    
 
+//Start get value Url
+    // useEffect(()=> {
 
+        // const queryParams = new URLSearchParams(window.location.search);
+        // const term = queryParams.get('ref');
+        // console.log(term, "termtermtermterm");
+        // alert("hii")
 
-    //Start Referal code ApI
-
-
-
-    // const  myReferalCode = (event) =>{   
-    //     event.preventDefault();
-    //     setLoading(true); // Set loading before sending API request
-    //     axios.post(API.BASE_URL + 'register/', {
-    //         // referral_code: !referral_code? referral_code: null, 
-         
-    //     }, {
-    //         headers: {
-    //             // "Authorization" : `Bearer ${token}`,
-    //             'Content-Type': 'application/json',
-    //         },
+        // const search1 = search.search;
+        // const term = new URLSearchParams(search).get('ref');
+        // console.log(term, "termterm")
+        // var  url =window.location.search
+        // console.log(url, "urlurlurlurlurlurlurlurl")
+        // const queryParams = new URLSearchParams(url)
+        // const term = queryParams.get("ref");
+        // console.log(term)
+        // if(true){
+        //     // setrReferral_code(term)
+        //     setShow(true)
+        //     // console.log(referral_code, "referral_codereferral_code")
           
-    //     })
-    //     .then(function(response) {
-    //         console.log(response);
-    //         // localStorage.setItem("signup_message", response.data.msg);
-         
-    //         setLoading(false); // Stop loading
-    //             // notify();
-    //             // navigate('/verification');   
-    //             // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
-    //     })
-    //     .catch(function(error, message) {
-    //         console.log(error.response)
-    //         setLoading(false); // Stop loading in case of error
-    //         if(error.response.data.status){
-    //             toast.error(error.response.data.detail);
-    //         } 
-    //         console.log(error, "klnklnklnknnnnnnnnnnnn");   
-    //     })
-    // }
-    // //End Referal code ApI
+        // }
+       
+    // },[])
+    
+
+    useEffect(() => {
+         const search1 = search.search;
+        const term = new URLSearchParams(search1).get('ref');
+        console.log(term, "termterm")
+        if(true){
+            setrReferral_value(term)
+            setShow(true)
+            console.log(referral_code, "referral_codereferral_codereferral_code");
+        
+
+        }
+        // if (isChecked) {
+        //     // The switch enabled
+        //     text_view.text = "Switch on"
+
+        // } else {
+        //     // The switch disabled
+        //     text_view.text = "Switch off"
+
+        // }
+        
+      },[]);
+
+//End get value Urls
+
+    let checked;
+
+    //Start Referal code Api
+    // if(checked=== true)
+    const myReferalCode =(value)=> {   
+        // useEffect(() => {
+            // setrReferral_code(checked==true);
+            axios.post(API.BASE_URL + 'referral-link/',{}, {
+                headers: {
+                    "Authorization" : `Bearer ${token}`,
+                }
+            })
+            .then(function(response) {
+                console.log(response);
+                localStorage.setItem("referral_link",response.data.referral_link);
+                    // notify();
+                    // navigate('/verification');   
+                    // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
+            })
+            .catch(function(error, message) {
+                console.log(error.response)
+                if(error.response.data.status){
+                    toast.error(error.response.data.message);
+                } 
+                console.log(error, "klnklnklnknnnnnnnnnnnn");   
+            })
+
+        // }, [true])
+    }
+    //End Referal code ApI
 
 
  
@@ -222,7 +292,9 @@ const Signup = () => {
                                         type="switch" 
                                         onClick={() => setShow(!show)}
                                         value={referral_code}
-                                        onChange={handleReferral_code}
+                                        disabled = {checkBoxValue}
+                                        onChange={(e)=> {myReferalCode(e.target.value);setrReferral_code(e.target.value)}}
+                                        // checked={referral_code.Active}
                                         // onClick={myReferalCode}
                                         id="custom-switch" 
                                         label="Referred by a friend? Use the referral code below." 
@@ -233,7 +305,7 @@ const Signup = () => {
                                             <Form.Label>Your Referral Code</Form.Label>
                                             <Form.Control 
                                             type="text"
-                                            value={referral_code}
+                                            value={referral_value}
                                             onChange={handleReferral_code}
                                             placeholder="Enter Referral Code" />
                                         </Form.Group>

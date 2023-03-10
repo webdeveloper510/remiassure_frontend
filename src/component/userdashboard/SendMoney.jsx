@@ -197,12 +197,13 @@ const SendMoney = () => {
 
 
 // Start Total Amount Api call 
-    function myTotalAmount() {   
+    const myTotalAmount =(value)=> {   
+      console.log("====================>",value)
     setLoading(true); // Set loading before sending API request
       axios.post(API.BASE_URL + 'exchange-rate/', {
         from: from,
         to: to,
-        amount: amount
+        amount: value
      
       }, {
           headers: {
@@ -346,8 +347,8 @@ const SendMoney = () => {
               type="text"
               className='rate_input form-control'
               value={amount}
-              onkeyup={myTotalAmount()}
-              onChange={handleAmount}
+              // onkeyup={(text)=> myTotalAmount(text)}
+              onChange={(e)=> {myTotalAmount(e.target.value);setAmount(e.target.value)}}
                />
             </div>
           </div>

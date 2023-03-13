@@ -32,16 +32,65 @@ const SendMoney = () => {
 
 
    //start Summury content change
-   const [payment, setPayment] = React.useState('Bank Transfer');
-   const [payment_partners, setPayment_partners] = React.useState('Bank');
+  //  const [payment, setPayment] = React.useState('Bank Transfer');
+  //  const [payment_partners, setPayment_partners] = React.useState('Bank');
+   
+   
+  // start Recive Radio button
+   const initialValue={  
+    recivedMethod: "bankTransfer",
+    payOutPartner: "bank",
+    amount:0
+  }
+    const [moneyTransiction , setMoneyTransiction] =React.useState(initialValue);
+    const {  
+      recivedMethod,
+      payOutPartner,
+      amount
+      } = moneyTransiction;
+        
 
-   const handlePayout = (e) =>{
-    setPayment(e.target.value)
-   }
+      const onInputChange = e => {
+        console.log(e.target.name)
+        console.log(e.target.value)
+        // console.log(defaultCountryData.length)
+        setMoneyTransiction(item1=>({...item1,[e.target.name]: e.target.value }));
+    }
 
-   const handlePayout_partners = (e) =>{
-    setPayment_partners(e.target.value)
-   }
+ // End Recive Radio button
+
+
+
+        
+
+ // End payment_partners Radio button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //  const handlePayout = (e) =>{
+  //   console.log(e.target.name)
+  //   console.log(e.target.value)
+  //   setPayment(e.target.value)
+  //  }
+
+  //  const handlePayout_partners = (e) =>{
+  //   console.log(e.target.name)
+  //   console.log(e.target.value)
+  //   setPayment_partners(e.target.value)
+  //  }
 //end Summury content change 
 
 
@@ -54,8 +103,8 @@ const SendMoney = () => {
 
   const [from, setFrom] =React.useState('USD');
   const [shows, setShows] = React.useState(false);
-  const [to, setTo] = React.useState('INR');
-  const [amount, setAmount] = React.useState('');
+  const [to, setTo] = React.useState('');
+  // const [amount, setAmount] = React.useState('');
   const [exchange_amount, setExchange_amount] =React.useState('');
   const [total_amount, setTotal_amount] =React.useState('');
   const [total_rate, setTotal_rate] =React.useState('');
@@ -78,9 +127,17 @@ const SendMoney = () => {
     setTo(e.target.value)
   }
 
-  const handleAmount = (e) =>{
-    setAmount(e.target.value)
-  }
+  // const handleAmount = (e) =>{
+  //   setAmount(e.target.value)
+  // }
+
+
+  const handleEntailmentRequest =(e) => {
+    e.preventDefault();
+    window.location.reload(false);
+
+    console.log("handle request ");
+}
 
 
    // Function to switch between two currency
@@ -294,11 +351,12 @@ const SendMoney = () => {
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={from}
-                //  onChange={handleFrom}
-                 onChange={(e)=> {myTotalAmount(e.target.value);setFrom(e.target.value)}}
+                 onChange={handleFrom}
+                //  onChange={(e)=> {myTotalAmount(e.target.value);setFrom(e.target.value)}}
                  >
-                  {/* <option value="">--- Select Currency ---</option> */}
-                  <option value="USD" selected="selected">USD</option>
+                  <option value="">--- Select Currency ---</option>
+                  {/* <option value="USD" selected="selected">USD</option> */}
+                  <option value="USD">USD</option> 
                   <option value="EUR">EUR</option>
                   <option value="BRL">BRL</option>
                   <option value="BGN">BGN</option>
@@ -329,11 +387,12 @@ const SendMoney = () => {
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={to}
-                //  onChange={handleTo}
-                 onChange={(e)=> {myTotalAmount(e.target.value);setTo(e.target.value)}}
+                 onChange={handleTo}
+                //  onChange={(e)=> {myTotalAmount(e.target.value);setTo(e.target.value)}}
                  >
-                  {/* <option value="">--- Select Currency ---</option> */}
-                  <option value="INR" selected="selected">INR</option>
+                  <option value="">--- Select Currency ---</option>
+                  {/* <option value="INR" selected="selected">INR</option> */}
+                  <option value="INR">INR</option> 
                   <option value="EUR">EUR</option>
                   <option value="BRL">BRL</option>
                   <option value="BGN">BGN</option>
@@ -370,9 +429,11 @@ const SendMoney = () => {
               <input 
               type="text"
               className='rate_input form-control'
-              value={amount}
+              value={moneyTransiction.amount || ""}
+              name="amount"
               // onkeyup={(text)=> myTotalAmount(text)}
-              onChange={(e)=> {myTotalAmount(e.target.value);setAmount(e.target.value)}}
+              // onChange={e => onInputChangeDealType(e)}
+              onChange={(e)=> {myTotalAmount(e.target.value);onInputChange(e)}}
                />
             </div>
           </div>
@@ -400,11 +461,12 @@ const SendMoney = () => {
               <input 
                   className="form-check-input"
                   type="radio"
-                  name="flexRadioDefault"
-                  value="Bank Transfer" 
-                  onChange={handlePayout}
-                  id="flexRadioDefault1" 
-                  defaultChecked
+                  name="recivedMethod"
+                  value="bankTransfer" 
+                  checked={moneyTransiction.recivedMethod== "bankTransfer"}
+                  onChange={e => onInputChange(e)}
+                  // id="flexRadioDefault1" 
+               
                 />
                 <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
               </div>
@@ -416,10 +478,11 @@ const SendMoney = () => {
               <input
                   className="form-check-input"
                   type="radio"
-                  name="flexRadioDefault" 
-                  value="Mobile Wallet" 
-                  onChange={handlePayout}
-                  id="flexRadioDefault2"
+                  name="recivedMethod" 
+                  value="mobileWallet" 
+                  checked={moneyTransiction.recivedMethod== "mobileWallet"}
+                  onChange={e => onInputChange(e)}
+                  // id="flexRadioDefault2"
               />
                 <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
               </div>
@@ -433,11 +496,12 @@ const SendMoney = () => {
               <input 
                   className="form-check-input"
                   type="radio" 
-                  name="flexRadioDefault1"
-                  id="flexRadioDefault3" 
-                  value="Bank" 
-                  onChange={handlePayout_partners}
-                  defaultChecked 
+                  name="payOutPartner"
+                  // id="flexRadioDefault3" 
+                  checked={moneyTransiction.payOutPartner== "bank"}
+                  value="bank" 
+                    onChange={e => onInputChange(e)}
+                   
                 />
               <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
             </div>
@@ -447,10 +511,11 @@ const SendMoney = () => {
               <input 
                   className="form-check-input" 
                   type="radio"              
-                  name="flexRadioDefault1"
-                  id="flexRadioDefault4"
-                  value="Services" 
-                  onChange={handlePayout_partners}
+                  name="payOutPartner"
+                  // id="flexRadioDefault4"
+                  checked={moneyTransiction.payOutPartner== "services"}
+                  value="services" 
+                  onChange={e => onInputChange(e)}
                 />
               <label className="form-check-label" for="flexRadioDefault4"> Services </label>
             </div>
@@ -458,7 +523,10 @@ const SendMoney = () => {
         </div>
         <div class="row">
           <div className="col-md-4">
-            <button className="start-form-button">Cancel</button>
+            <button 
+            className="start-form-button"
+            onClick={handleEntailmentRequest}
+            >Cancel</button>
           </div>
           <div className="col-md-8">
           <button
@@ -681,19 +749,19 @@ const SendMoney = () => {
       <h5>Payment type</h5>
       <div className="col-md-12">
         <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3" defaultChecked />
-          <label className="form-check-label" for="flexRadioDefault3"> Osko </label>
+          <input className="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault34" defaultChecked />
+          <label className="form-check-label" for="flexRadioDefault34"> Osko </label>
         </div>
       </div>
       <div className="col-md-12">
         <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" />
-          <label className="form-check-label" for="flexRadioDefault4"> Debit/Credit Card </label>
+          <input className="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault44" />
+          <label className="form-check-label" for="flexRadioDefault44"> Debit/Credit Card </label>
         </div>
       </div>
       <div className="col-md-12">
         <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault5" />
+          <input className="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault5" />
           <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
         </div>
       </div>
@@ -895,11 +963,11 @@ const SendMoney = () => {
                    </tr>
                    <tr>
                      <th>Received Method</th>
-                     <td>{payment}</td>
+                     <td>{recivedMethod}</td>
                    </tr>
                    <tr>
                      <th>Payout Partners</th>
-                     <td>{payment_partners}</td>
+                     <td>{payOutPartner}</td>  
                    </tr>
                  </tbody>
                </Table>

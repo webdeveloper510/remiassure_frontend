@@ -2498,7 +2498,7 @@ button.continue_button {
 
 
 /*--------------------------------------------------------------
-# User-dashboard css
+# Send Money css
 --------------------------------------------------------------*/
 .user_dashboard_banner {
   margin-top: 80px;
@@ -2669,6 +2669,26 @@ select.form-select option {
 .row.each-row {
   margin-top: 30px;
 }
+.input_field.rate-value .Exchange_rate {
+  text-align: center;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+
+.input_field.rate-value {
+  text-align: center;
+  margin: 30px 0px;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  padding: 30px;
+}
+.input_field.rate-value .exchange-rate{
+color:#fff;
+font-size: 20px;
+margin-top: 15px;
+}
+
 .user_dashboard_banner p.get-text {
   z-index: 1;
   font-weight: 600;

@@ -337,7 +337,7 @@ const Home = () => {
     // event.preventDefault();
     setLoading(true); // Set loading before sending API request
     axios.post(API.BASE_URL + 'exchange-rate/', {
-      amount: amount,
+      amount: value,
       from: from,
       to: to
     }, {

@@ -25,11 +25,7 @@ const SendMoney = () => {
   const Total_INR = localStorage.getItem("Total_INR");
   console.log("Amount rate", Total_INR);
 
-
-
-
   const [selected, setSelected] = React.useState("");
-
 
    //start Summury content change
   //  const [payment, setPayment] = React.useState('Bank Transfer');
@@ -40,71 +36,33 @@ const SendMoney = () => {
    const initialValue={  
     recivedMethod: "bankTransfer",
     payOutPartner: "bank",
-    amount:0
+    // amount:0
   }
     const [moneyTransiction , setMoneyTransiction] =React.useState(initialValue);
     const {  
       recivedMethod,
       payOutPartner,
-      amount
+      // amount
       } = moneyTransiction;
         
-
       const onInputChange = e => {
         console.log(e.target.name)
         console.log(e.target.value)
         // console.log(defaultCountryData.length)
         setMoneyTransiction(item1=>({...item1,[e.target.name]: e.target.value }));
     }
-
  // End Recive Radio button
-
-
-
-        
-
- // End payment_partners Radio button
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //  const handlePayout = (e) =>{
-  //   console.log(e.target.name)
-  //   console.log(e.target.value)
-  //   setPayment(e.target.value)
-  //  }
-
-  //  const handlePayout_partners = (e) =>{
-  //   console.log(e.target.name)
-  //   console.log(e.target.value)
-  //   setPayment_partners(e.target.value)
-  //  }
-//end Summury content change 
 
 
  // start select value get data
  const {location} = useContext(UserContext);
 
 
-
  // Start Api call Amount & Delivery
-
   const [from, setFrom] =React.useState('USD');
   const [shows, setShows] = React.useState(false);
   const [to, setTo] = React.useState('');
-  // const [amount, setAmount] = React.useState('');
+  const [amount, setAmount] = React.useState();
   const [exchange_amount, setExchange_amount] =React.useState('');
   const [total_amount, setTotal_amount] =React.useState('');
   const [total_rate, setTotal_rate] =React.useState('');
@@ -127,9 +85,13 @@ const SendMoney = () => {
     setTo(e.target.value)
   }
 
-  // const handleAmount = (e) =>{
-  //   setAmount(e.target.value)
-  // }
+  const handleAmount = (e) =>{
+    setAmount(e.target.value)
+  }
+
+  useEffect(() => {
+    console.log(amount)
+  }, [amount])
 
 
   const handleEntailmentRequest =(e) => {
@@ -139,30 +101,6 @@ const SendMoney = () => {
     console.log("handle request ");
 }
 
-
-   // Function to switch between two currency
-  //  function flip() {
-  //   var temp = from;
-  //   setFrom(to);
-  //   setTo(temp);
-  // }
-
-  // let convert
-    // Calling the convert function whenever
-   // a user switches the currency
-  //  useEffect(() => {
-  //   setOptions(Object.keys(info));
-  //   var rate = info[to];
-  // }, [info])
-    
-
-  //  Function to convert the currency
-//    useEffect(() => {
-//     var rate = info[to];
-//     setOutput(amount * rate);
-//    const  value = (amount * rate)
-// }, [])
-  
 
   const navigate = useNavigate();
   // const notify = () => toast.success("Amount & Delivery Successfully!!");
@@ -206,58 +144,14 @@ const SendMoney = () => {
   // End Api call Amount & Delivery
 
 
-  // Start Ratio Amount Api call 
-  // function ratioAmount() {   
-  //   setLoading(true); // Set loading before sending API request
-  //     axios.post(API.BASE_URL + 'exchange-rate/', {
-  //       from: from,
-  //       to: to,
-  //       amount: amount
-     
-  //     }, {
-  //         headers: {
-  //             // 'Content-Type': 'application/json',
-  //         },
-        
-  //     })
-  //     .then(function(response) {
-  //         console.log(response);
-  //         if (response.status)
-  //         localStorage.setItem("Total_amount", response.data.amount);
-  //         // setTotal_amount(response.data.amount);
-  //         // setExchange_amount(response.data.amount);
-  //         setTotal_rate( response.data.rate);
-  //         // console.log(exchange_amount, "setTosetTosetTosetTosetTo")
-  //         // localStorage.setItem("Total_INR",) response.data.rate;
-
-  //         // setStep(step+1)
-  //         // setLoading(false); // Stop loading
-  //           //   notify();
-  //           //  navigate('/userdashboard');   
-  //             // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
-  //     })
-  //     .catch(function(error, message) {
-  //         console.log(error.response)
-  //         setLoading(false); // Stop loading in case of error
-  //         if(error.response.data.status){
-  //             toast.error(error.response.data.message);
-  //         } 
-  //         console.log(error, "klnklnklnknnnnnnnnnnnn");   
-  //     })
-
-  //  }
-// End Ratio Amount Api call 
-
-
-
 // Start Total Amount Api call 
     const myTotalAmount =(value)=> {   
-      console.log("====================>",value)
+      console.log("====================>",amount)
      setLoading(true); // Set loading before sending API request
       axios.post(API.BASE_URL + 'exchange-rate/', {
         from: from,
         to: to,
-        amount: amount
+        amount: value
      
       }, {
           headers: {
@@ -344,7 +238,16 @@ const SendMoney = () => {
           <h1>Amount & delivery</h1>
         </div>
         <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-12">
+            <div className="input_field rate-value">
+              <p className="get-text Exchange_rate">Exchange Rate</p>
+              <p className="exchange-rate exchange_value" >1 <span>{from}</span> = {total_rate} <span>{to}</span> </p>
+              {/* <input type="text" className='rate_input form-control' /> */}
+            </div>
+          </div>
+          </div>
+        <div className="row">
+        <div className="col-md-6">
             <div className="input_field">
               <p className="get-text">From</p>
                 <select 
@@ -380,7 +283,7 @@ const SendMoney = () => {
               </select>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-6">
             <div className="input_field">
               <p className="get-text">To</p>
                 <select 
@@ -413,13 +316,6 @@ const SendMoney = () => {
               </select>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text Exchange_rate">Exchange Rate</p>
-              <p className="exchange-rate exchange_value" >1 <span>{from}</span>⇒ {total_rate} <span>{to}</span> </p>
-              {/* <input type="text" className='rate_input form-control' /> */}
-            </div>
-          </div>
           
         </div>
         <div className="row each-row">
@@ -429,11 +325,11 @@ const SendMoney = () => {
               <input 
               type="text"
               className='rate_input form-control'
-              value={moneyTransiction.amount || ""}
+              value={amount}
+              onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
               name="amount"
               // onkeyup={(text)=> myTotalAmount(text)}
               // onChange={e => onInputChangeDealType(e)}
-              onChange={(e)=> {myTotalAmount(e.target.value);onInputChange(e)}}
                />
             </div>
           </div>

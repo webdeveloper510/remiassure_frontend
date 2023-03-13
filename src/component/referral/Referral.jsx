@@ -5,6 +5,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import ReferralScrollbar from '../referralscrollbar/ReferralScrollbar';
 
 
+
+
+
 // card carousel start
 const Card = (props) => {
     return (
@@ -34,6 +37,15 @@ const Card = (props) => {
 
 
 const Referral = () => {
+
+const token = localStorage.getItem("token");
+console.log("TOKEN", token);
+
+const verification_otp = localStorage.getItem("verification_otp");
+console.log("Verification Message", verification_otp)
+
+
+
 
      // Social Function start
      function SocialArrayObjects(){
@@ -263,29 +275,48 @@ const Referral = () => {
 
                 </div>
 
-                <div className="referal_code">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <p className="share_referal_code">Share your unique referral code: </p>
+                {
+                 verification_otp || token != undefined || '' ? (
+                      <div className="referal_code">
+                      <div className="row">
+                          <div className="col-lg-12">
+                              <p className="share_referal_code">Share your unique referral code:</p>
+  
+                              <InputGroup className="mb-3">
+                                  <Form.Control aria-label="Recipient's username" aria-describedby="basic-addon2" value="275878274565826758367" id="myInput" className="copy_input" />
+  
+                                  <button variant="outline-secondary" id="button-addon2" className="button_copy">
+                                      Copy
+                                  </button>
+                              </InputGroup>
+                          </div>
+                      </div>
+                  </div>
 
-                        <InputGroup className="mb-3">
-                            <Form.Control                           
-                            aria-label="Recipient's username"
-                            aria-describedby="basic-addon2"
-                            value="275878274565826758367"
-                            id="myInput"
-                            className="copy_input"
-                            />
+                ) : (
+                    <>
+                    
+                    </>
+                )
+                }
 
-                            <Button variant="outline-secondary" id="button-addon2"
-                             className="button_copy">
-                             Copy
-                            </Button>
+                  {/* <div className="referal_code">
+                      <div className="row">
+                          <div className="col-lg-12">
+                              <p className="share_referal_code">Share your unique referral code:</p>
+  
+                              <InputGroup className="mb-3">
+                                  <Form.Control aria-label="Recipient's username" aria-describedby="basic-addon2" value="275878274565826758367" id="myInput" className="copy_input" />
+  
+                                  <button variant="outline-secondary" id="button-addon2" className="button_copy">
+                                      Copy
+                                  </button>
+                              </InputGroup>
+                          </div>
+                      </div>
+                  </div>
+                             */}
 
-                        </InputGroup>
-                    </div>
-                </div>
-                </div>
 
                 <div className="row">
                     <div className="col-lg-12">

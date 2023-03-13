@@ -337,7 +337,7 @@ const Home = () => {
     // event.preventDefault();
     setLoading(true); // Set loading before sending API request
     axios.post(API.BASE_URL + 'exchange-rate/', {
-      amount: value,
+      amount: amount,
       from: from,
       to: to
     }, {
@@ -491,7 +491,7 @@ const Home = () => {
                                 <div className="inline select-currency">
                                 <input
                                 className="mb-3 new_input"
-                                value={total_amounts}
+                                value={total_amounts && amount != 0 || "" ? total_amounts : ""}
 
                                 />
                                    

@@ -10,9 +10,18 @@ import axios from "axios";
 
 
 const Profile = () => {
-
+    
+ // Start page show hide condtion page 
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
+
+    const verification_otp = localStorage.getItem("verification_otp");
+    console.log("Verification Message", verification_otp)
+
+// Start page show hide condtion page
+
+    // const token = localStorage.getItem("token");
+    // console.log("TOKEN", token);
 
 
     const name = localStorage.getItem("firstname");
@@ -76,7 +85,12 @@ const Profile = () => {
 
     return(
         <>
+
           {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
+
+          {  
+          verification_otp || token != undefined || '' ? (
+
           <section className="why-us section-bgba profile_banner">
     <div className="container">
         <div className="row">
@@ -174,7 +188,14 @@ const Profile = () => {
             </div>
         </div>
     </div>
-</section>
+ </section>
+         ) : (
+            <>
+            
+            </>
+        )
+        }
+
 
         {/* <!-- ======= Help Better-Way-Section End-Section ======= --> */}
           

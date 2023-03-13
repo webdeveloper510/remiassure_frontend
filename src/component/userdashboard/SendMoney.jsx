@@ -17,6 +17,16 @@ import ReactFlagsSelect from "react-flags-select";
 
 const SendMoney = () => {
 
+   // Start page show hide condtion page 
+   const token = localStorage.getItem("token");
+   console.log("TOKEN", token);
+
+   const verification_otp = localStorage.getItem("verification_otp");
+   console.log("Verification Message", verification_otp)
+
+// Start page show hide condtion page
+
+
   //Total Amount get data
   const Total_amount = localStorage.getItem("Total_amount");
   console.log("Amonut", Total_amount);
@@ -63,7 +73,7 @@ const SendMoney = () => {
   const [shows, setShows] = React.useState(false);
   const [to, setTo] = React.useState('');
   const [amount, setAmount] = React.useState();
-  const [exchange_amount, setExchange_amount] =React.useState('');
+  const [exchange_amount, setExchange_amount] =React.useState();
   const [total_amount, setTotal_amount] =React.useState('');
   const [total_rate, setTotal_rate] =React.useState('');
 
@@ -85,9 +95,15 @@ const SendMoney = () => {
     setTo(e.target.value)
   }
 
-  const handleAmount = (e) =>{
-    setAmount(e.target.value)
-  }
+  // useEffect(() =>)
+  // const handleAmount = (e) =>{
+  //   setAmount(e.target.value)
+  //     if (amount.value.length == 0)
+  //     { 
+       
+  //       return (setAmount.value.length = 0);
+  //     }  	
+  // }
 
   useEffect(() => {
     console.log(amount)
@@ -224,7 +240,10 @@ const SendMoney = () => {
     
     return (
     <>
-   
+    
+    {  
+          verification_otp || token != undefined || '' ? (
+   <section>
       <div class="progressBar">
         <div class="progress">
           <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
@@ -322,6 +341,7 @@ const SendMoney = () => {
         <div className="col-md-6">
             <div className="input_field">
               <p className="get-text">Amount Send</p>
+
               <input 
               type="text"
               className='rate_input form-control'
@@ -331,6 +351,7 @@ const SendMoney = () => {
               // onkeyup={(text)=> myTotalAmount(text)}
               // onChange={e => onInputChangeDealType(e)}
                />
+
             </div>
           </div>
 
@@ -341,7 +362,7 @@ const SendMoney = () => {
                 </p>
               <input
                type="text"
-               value={exchange_amount}
+               value={exchange_amount && amount != 0 || "" ? exchange_amount : ""}
                 className='rate_input form-control'
                 
                  />
@@ -443,6 +464,13 @@ const SendMoney = () => {
         </div>
       </div>
       </form>
+      </section>
+   ) : (
+    <>
+    
+    </>
+)
+}
 
     </>
     );
@@ -453,6 +481,9 @@ const SendMoney = () => {
     
     return (
     <>
+     {  
+          verification_otp || token != undefined || '' ? (
+    <section>
        <div class="progressBar">
    <div class="progress">
      <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
@@ -623,6 +654,15 @@ const SendMoney = () => {
           <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button>
         </Modal.Footer>
       </Modal>
+
+      </section>
+
+    ) : (
+      <>
+      
+      </>
+  )
+  }
     </>
     );
     }
@@ -632,6 +672,9 @@ const SendMoney = () => {
     
     return (
     <>
+     {  
+          verification_otp || token != undefined || '' ? (
+    <section>
       <div class="progressBar">
     <div class="progress">
       <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
@@ -672,7 +715,14 @@ const SendMoney = () => {
       </div>
     </div>
   </div>
-        
+  </section> 
+  
+  ) : (
+    <>
+    
+    </>
+)
+} 
     </>
     );
     }
@@ -681,6 +731,10 @@ const SendMoney = () => {
     
       return (
       <>
+
+{  
+          verification_otp || token != undefined || '' ? (
+      <section>
         <div class="progressBar">
       <div class="progress">
         <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
@@ -688,7 +742,7 @@ const SendMoney = () => {
     </div>
     <div className="form_body">
       <div className="header">
-        <h1>Send Details </h1>
+        <h1>Sender Details </h1>
       </div>
  <div className="row each-row">
    <div className="col-md-4">
@@ -830,6 +884,14 @@ const SendMoney = () => {
         </div>
       </div>
     </div>
+    </section>
+
+) : (
+  <>
+  
+  </>
+)
+}
           
       </>
       );
@@ -838,6 +900,10 @@ const SendMoney = () => {
     return (
     
     <>
+
+{  
+          verification_otp || token != undefined || '' ? (
+    <section>
     
         <div class="form">
    <div className="card">
@@ -878,7 +944,14 @@ const SendMoney = () => {
  </div>
 
 
+ </section>
 
+) : (
+  <>
+  
+  </>
+)
+}
     </>
     );
 }

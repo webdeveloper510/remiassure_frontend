@@ -3,6 +3,7 @@ import React, {useState} from "react";
 const UserContext = React.createContext();
 
 export const AuthProvider = ({children})=>{
+    const [userauth, setAuth] = React.useState({});
     const [location, setLocation] = useState('');
     const [sessionID, setSessionID] = React.useState({});
    
@@ -10,7 +11,7 @@ export const AuthProvider = ({children})=>{
     console.log('userAuthContext', location)
 
     return (
-        <UserContext.Provider value={{ location, setLocation, sessionID, setSessionID}}>
+        <UserContext.Provider value={{ location, setLocation, userauth, setAuth, sessionID, setSessionID}}>
             {children}
         </UserContext.Provider>
     )

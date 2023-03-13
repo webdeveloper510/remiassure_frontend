@@ -8,6 +8,15 @@ import axios from "axios";
 
 
 const Recipients =() =>{
+
+// Start page show hide condtion page 
+    const token = localStorage.getItem("token");
+    console.log("TOKEN", token);
+
+    const verification_otp = localStorage.getItem("verification_otp");
+    console.log("Verification Message", verification_otp)
+
+// Start page show hide condtion page
     
 
     const [data, setData] = useState([]);
@@ -18,8 +27,8 @@ const Recipients =() =>{
     // const notify = () => toast.success("User Data Get Successfully!");
 
 
-    const token = localStorage.getItem("token");
-    console.log("TOKEN", token);
+    // const token = localStorage.getItem("token");
+    // console.log("TOKEN", token);
     
 
 
@@ -55,9 +64,29 @@ const Recipients =() =>{
     return(
         <>
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
+       {  
+          verification_otp || token != undefined || '' ? (
+
+      
+
+    //    <section className="user_recipients_section">
+    //     <div class="container">
+    //         <div className="row">
+    //             <div className="col-lg-12">
+                    
+    //             </div>
+    //             </div>
+    //             </div>
+    //     </section>        
+
+
+
     <section className="user_recipients_section">
         <div class="container">
             <div className="row">
+            <h1 className="recipients_lists">Recipients Lists</h1>
+              
+
                 <div className="col-lg-12">
                     {/* loader start */}
 
@@ -70,7 +99,7 @@ const Recipients =() =>{
                   </div>
                 </> : <></>}
              {/* loader End */}
-
+             {/* <h1 className="recipients_lists">Recipients Lists</h1> */}
 
                 <Table striped bordered hover className="table_user_recipients">
                     <thead>
@@ -115,6 +144,15 @@ const Recipients =() =>{
             </div>
         </div>
    </section>
+
+    ) : (
+        <>
+        
+        </>
+    )
+    }
+
+
   
   {/* <!-- ======= Recept RemitAssure-Section End ======= --> */}
 

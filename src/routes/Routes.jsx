@@ -20,12 +20,15 @@ import Multiple from '../component/profile/Multiple';
 import SendMoney from '../component/userdashboard/SendMoney';
 import Transaction from '../component/userdashboard/Transaction';
 import ReferralData from '../component/referralData/ReferralData';
+import GoToTop from '../GoToTop';
+import { AuthProvider } from '../component/context/UserContext';
 const Routerpage =()=>{
   return(
 
     
 
     <Router>  
+    <GoToTop />
 
     <>
   

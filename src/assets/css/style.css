@@ -520,6 +520,10 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
 }
+a.btn.btn.call_button:hover {
+  background: #6414e9;
+  color: #ffff !important;
+}
 /* .backgound-img{
   background-image: url('/assets/img/home/bg03.jpg');
   height: 716px;
@@ -1409,10 +1413,10 @@ input.search_input:focus {
   background-color: linear-gradient(90deg, #689CF4 0%, #215DC1 100%) !important;
   border-color: var(--bs-btn-active-border-color);
 }
-input:focus, select:focus {
+/* input:focus, select:focus {
   outline: none !important;
   box-shadow: none !important;
-}
+} */
 .outer-search_input {
   text-align: center;
 }
@@ -2511,8 +2515,11 @@ button.continue_button {
 /*--------------------------------------------------------------
 # Send Money css
 --------------------------------------------------------------*/
-.user_dashboard_banner {
+/* .user_dashboard_banner {
   margin-top: 80px;
+} */
+section.why-us.section-bgba.user_dashboard_banner {
+  padding-top: 0;
 }
 .money_exchange_row {
   width: 100%;
@@ -2596,6 +2603,7 @@ select.form-select option {
 .progress {
   height: 10px;
   border-radius: 5px;
+  overflow: visible;
 }
 
 .progress-bar {
@@ -2652,26 +2660,124 @@ select.form-select option {
   padding-right: 52px !important;
   margin-left: 0;
 }
-.step1{
+.step1 ,.step2 , .step3 , .step4 {
   background-color: #6414E9 !important;
   width: 25%;
   color: #6414E9;
+  position:relative;
+  overflow: inherit;
 }
-.step2{
+.step1:after  {
+  position: absolute;
+  content: "1";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  border-radius: 100%;
+  line-height: 35px;
+}
+.step1:before , .step2:before , .step3:before  , .step4:before {
+  width: 15px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #6414e9;
+  position: absolute;
+  content: "";
+  top: -7px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 0;
+}
+
+.step2:after  {
+  position: absolute;
+  content: "2";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  border-radius: 100%;
+  line-height: 35px;
+}
+.step3:after  {
+  position: absolute;
+  content: "3";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  border-radius: 100%;
+  line-height: 35px;
+}
+.step4:after  {
+  position: absolute;
+  content: "4";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  border-radius: 100%;
+  line-height: 35px;
+}
+/* .step2{
   background-color: #6414E9 !important;
   width: 50%;
   color: #6414E9;
+  position:relative;
+  overflow: inherit;
 }
 .step3{
   background-color: #6414E9 !important;
   width: 75%;
   color: #6414E9;
+  position:relative;
+  overflow: inherit;
 }
 .step4{
   background-color: #6414E9 !important;
   width: 100%;
   color: #6414E9;
-}
+  position:relative;
+  overflow: inherit;
+} */
 /*.step5{
   background-color: #6414E9 !important;
   width: 100%;
@@ -2753,7 +2859,7 @@ margin-top: 15px;
   width: 100%;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  margin: 92px auto 0px;
+  margin: 155px auto 0px;
   padding: 10px;
   float: right;
 }

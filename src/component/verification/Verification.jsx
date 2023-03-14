@@ -115,6 +115,7 @@ const Verification = () => {
                                             maxlength="1" 
                                             onChange= {handleVerificationFirst}
                                             placeholder="0"
+                                            autoFocus="autofocus"
                                              />
                                       
                                             <Form.Control type="text" 
@@ -122,6 +123,7 @@ const Verification = () => {
                                             maxlength="1" 
                                             onChange= {handleVerificationSecond}
                                             placeholder="0"
+                                            autoFocus="autofocus"
                                              />
                                    
                                             <Form.Control type="text" 

@@ -31,31 +31,32 @@ const SendMoney = () => {
 /**************************************************************************
  * ************** Start -Recipient Bank Details************************************
  * ***********************************************************************/
-const [userName, setUserName] = React.useState ("");
+const [bank_data, setBank_data] = React.useState([]);
+const [bank_name, setBank_name] = React.useState ("");
 
-	
-localStorage.setItem("Username", "userName")
-localStorage.setItem("Username", JSON.stringify(userName));
+const [arrayOne, setArrayOne] = React.useState("");
+const [arrayTwo, setArrayTwo] = React.useState("");
+const [account_name, setAccount_name] = React.useState ("");
+var valuesArray = [];
+
+
+localStorage.setItem("BankName", JSON.stringify(bank_name));
+localStorage.setItem("AccountName", JSON.stringify(account_name));
+
 
 
 useEffect(() => { 
-  localStorage.setItem("Username",JSON.stringify(userName))
-  }, [userName]);
+  valuesArray.push(bank_name)
+  valuesArray.push(account_name)
+  }, []);
 
 
-  // const handleBankName =(e) =>{
-  //   setBank_name(e.target.value)
-  //   console.log(bank_name,"oe")
-  // }
-
-
-
-
-
-
-
-
-
+  const handleBankName =(e) =>{
+    setBank_name(e.target.value)
+  }
+  const handleAccountName =(e) =>{
+    setAccount_name(e.target.value)
+  }
 
 
   //Total Amount get data
@@ -520,6 +521,7 @@ useEffect(() => {
     <section>
        <div class="progressBar">
    <div class="progress">
+   <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
      <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
    </div>
  </div>
@@ -531,13 +533,15 @@ useEffect(() => {
         <div className="input_field">
           <p className="get-text">Bank Name</p>
             <input
+              // autoFocus="autofocus"
             type="text" 
             className="rate_input form-control"
             
-            // value={bank_name}
-            // onChange={handleBankName}
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={bank_name}
+            onChange={handleBankName}
+            // value={userName}
+            // onChange={(e) => setUserName(e.target.value)}
+            // autoFocus="autofocus"
             />
         </div>
     </div>
@@ -547,7 +551,10 @@ useEffect(() => {
          <p className="get-text">Account Name</p>
          <input 
          type="text"
+         value={account_name}
+         onChange={handleAccountName}
           className='rate_input form-control'
+          // autoFocus="autofocus"
            />
        </div>
      </div>
@@ -746,6 +753,8 @@ useEffect(() => {
     <section>
       <div class="progressBar">
     <div class="progress">
+    <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
       <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
     </div>
   </div>
@@ -806,6 +815,9 @@ useEffect(() => {
       <section>
         <div class="progressBar">
       <div class="progress">
+      <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
         <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
       </div>
     </div>

@@ -837,7 +837,7 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="view-button">
-                   <button className="btn btn call_button">Call Now</button>
+                   <a href="tel:+66 2399 1145" className="btn btn call_button">Call Now</a>
                </div>
             </div>
           </div>

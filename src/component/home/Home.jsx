@@ -13,6 +13,7 @@ import {toast} from "react-toastify";
 import {API} from "../../config/API";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 // start -----Why RemitAssure circle function
 function WhyRenderingArrayOfObjects(){
@@ -189,7 +190,7 @@ function FlagHomeArrayofoObjects() {
 
 // card carousel start
 const Card = (props) => {
-  // console.log(props,"propspropspropsprops")
+  // console.log(props,"propspropspropsprops")x
   return (
     <li className="card li_card " key={props.id}>
          <img src="assets/img/home/quote-up.svg" alt="quote-up" className="quotup_icons" />
@@ -210,6 +211,18 @@ const Card = (props) => {
 }
 
 const Home = () => {
+
+  // Start page show hide condtion page 
+   const token = localStorage.getItem("token");
+   console.log("TOKEN", token);
+
+   const verification_otp = localStorage.getItem("verification_otp");
+   console.log("Verification Message", verification_otp)
+
+// Start page show hide condtion page
+
+
+
   const items = [
     {
         heading:"Best on the market 1.",
@@ -468,6 +481,7 @@ const Home = () => {
                                   <option className="option-custom" value="USD" selected="selected">USD</option>
                                   <option className="option-custom" value="EUR">EUR</option>
                                   <option className="option-custom" value="BRL">BRL</option>
+                                  <option className="option-custom" value="INR">INR</option>
                                   <option className="option-custom" value="BGN">BGN</option>
                                   <option className="option-custom" value="XAF">XAF</option>
                                   <option className="option-custom" value="CAD">CAD</option>
@@ -512,6 +526,7 @@ const Home = () => {
                                         <option value="BRL">BRL</option>
                                         <option value="BGN">BGN</option>
                                         <option value="XAF">XAF</option>
+                                        <option value="USD">USD</option>
                                         <option value="CAD">CAD</option>
                                         <option value="EUR">EUR</option>
                                         <option value="CZK">CZK</option>
@@ -780,10 +795,28 @@ const Home = () => {
                     </div>
                     {/* first row flag */}
 
-          
+                    {  
+                    verification_otp || token != undefined || '' ? (
+
                     <div className="view-button">
+                      <NavLink to={"/sendMoney"}>
                       <button className="btn btn view_button">View all</button>
+                      </NavLink>
                     </div>
+
+                  ) : (
+                    <>
+                    
+                    <div className="view-button">
+                      <NavLink to={"/login"}>
+                      <button className="btn btn view_button">View all</button>
+                      </NavLink>
+                    </div>
+                    
+                    </>
+                  )
+                  }
+
 
             
                   </div>

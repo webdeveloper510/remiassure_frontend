@@ -66,20 +66,26 @@ const Recipients =() =>{
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
        {  
           verification_otp || token != undefined || '' ? (
+            <section className="user_recipients_section">
+                <div class="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            
+                        </div>
+                        </div>
+                        </div>
+                </section>    
+            
+            ) : (
+                <>
+                
+                </>
+            )
+            }
 
-      
 
-    //    <section className="user_recipients_section">
-    //     <div class="container">
-    //         <div className="row">
-    //             <div className="col-lg-12">
-                    
-    //             </div>
-    //             </div>
-    //             </div>
-    //     </section>        
-
-
+    {  
+        verification_otp || token != undefined || '' ? (
 
     <section className="user_recipients_section">
         <div class="container">

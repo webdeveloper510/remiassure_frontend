@@ -27,6 +27,37 @@ const SendMoney = () => {
 // Start page show hide condtion page
 
 
+
+/**************************************************************************
+ * ************** Start -Recipient Bank Details************************************
+ * ***********************************************************************/
+const [userName, setUserName] = React.useState ("");
+
+	
+localStorage.setItem("Username", "userName")
+localStorage.setItem("Username", JSON.stringify(userName));
+
+
+useEffect(() => { 
+  localStorage.setItem("Username",JSON.stringify(userName))
+  }, [userName]);
+
+
+  // const handleBankName =(e) =>{
+  //   setBank_name(e.target.value)
+  //   console.log(bank_name,"oe")
+  // }
+
+
+
+
+
+
+
+
+
+
+
   //Total Amount get data
   const Total_amount = localStorage.getItem("Total_amount");
   console.log("Amonut", Total_amount);
@@ -280,6 +311,7 @@ const SendMoney = () => {
                   {/* <option value="USD" selected="selected">USD</option> */}
                   <option value="USD">USD</option> 
                   <option value="EUR">EUR</option>
+                  <option value="INR">INR</option> 
                   <option value="BRL">BRL</option>
                   <option value="BGN">BGN</option>
                   <option value="XAF">XAF</option>
@@ -317,6 +349,7 @@ const SendMoney = () => {
                   <option value="INR">INR</option> 
                   <option value="EUR">EUR</option>
                   <option value="BRL">BRL</option>
+                  <option value="USD">USD</option>
                   <option value="BGN">BGN</option>
                   <option value="XAF">XAF</option>
                   <option value="CAD">CAD</option>
@@ -344,6 +377,7 @@ const SendMoney = () => {
 
               <input 
               type="text"
+              autoFocus="autofocus"
               className='rate_input form-control'
               value={amount}
               onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
@@ -493,17 +527,28 @@ const SendMoney = () => {
    <div className="header">
      <h1>Recipient Bank Details</h1>
    </div>
-   <div className="col-md-12">
-     <div className="input_field">
-       <p className="get-text">Bank Name</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
+    <div className="col-md-12">
+        <div className="input_field">
+          <p className="get-text">Bank Name</p>
+            <input
+            type="text" 
+            className="rate_input form-control"
+            
+            // value={bank_name}
+            // onChange={handleBankName}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            />
+        </div>
+    </div>
    <div className="row each-row">
      <div className="col-md-12">
        <div className="input_field">
          <p className="get-text">Account Name</p>
-         <input type="text" className='rate_input form-control' />
+         <input 
+         type="text"
+          className='rate_input form-control'
+           />
        </div>
      </div>
    </div>
@@ -511,7 +556,10 @@ const SendMoney = () => {
      <div className="col-md-12">
        <div className="input_field">
          <p className="get-text">Account number</p>
-         <input type="text" className='rate_input form-control' />
+         <input 
+         type="text" 
+         className='rate_input form-control'
+          />
        </div>
      </div>
    </div>
@@ -520,19 +568,28 @@ const SendMoney = () => {
      <div className="col-md-4">
        <div className="input_field">
          <p className="get-text">First Name</p>
-         <input type="text" className='rate_input form-control' />
+         <input
+          type="text" 
+          className='rate_input form-control'
+           />
        </div>
      </div>
      <div className="col-md-4">
        <div className="input_field">
          <p className="get-text">Middle Name</p>
-         <input type="text" className='rate_input form-control' />
+         <input
+          type="text"
+           className='rate_input form-control' 
+           />
        </div>
      </div>
      <div className="col-md-4">
        <div className="input_field">
          <p className="get-text">Last Name</p>
-         <input type="text" className='rate_input form-control' />
+         <input 
+         type="text" 
+         className='rate_input form-control'
+          />
        </div>
      </div>
    </div>
@@ -540,13 +597,19 @@ const SendMoney = () => {
      <div className="col-md-6">
        <div className="input_field">
          <p className="get-text">Email</p>
-         <input type="email" className='rate_input form-control' />
+         <input
+          type="email" 
+          className='rate_input form-control'
+           />
        </div>
      </div>
      <div className="col-md-6">
        <div className="input_field">
          <p className="get-text">Mobile</p>
-         <input type="text" className='rate_input form-control' />
+         <input 
+         type="text" 
+         className='rate_input form-control'
+          />
        </div>
      </div>
    </div>
@@ -554,7 +617,10 @@ const SendMoney = () => {
      <div className="col-md-12">
        <div className="input_field">
          <p className="get-text">Address</p>
-         <input type="text" className='rate_input form-control' />
+         <input
+          type="text" 
+          className='rate_input form-control'
+           />
        </div>
      </div>
    </div>
@@ -562,7 +628,10 @@ const SendMoney = () => {
      <div className="col-md-12">
        <div className="input_field">
          <p className="get-text">Reason For Sending Money</p>
-         <select class="form-select rate_input form-control" aria-label="Select a reason">
+         <select
+          className="form-select rate_input form-control"
+           aria-label="Select a reason"
+           >
            <option selected>Select a reason</option>
            <option value="1">Family Support</option>
            <option value="2">Education</option>

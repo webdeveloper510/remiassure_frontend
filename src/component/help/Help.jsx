@@ -162,10 +162,12 @@ function AccordionArrayOfObjects() {
                             <div className="card-body">
                                 <h5 className="Support-heading">Remitassure Support Center</h5>
                                 <p className="Support-paragraph">Hi, How can we help you?</p>
-                                <div className="search_input">
-                                    <img src="assets/img/help/search.svg" alt="serch_img" className="serch_img" />
-                                    <span className="serch_content"> {input_content}</span>
-                               </div>
+                               
+                                <div className="search-div">
+                                  <input type="text" className="search_input"/>
+                                    {/* <img src="assets/img/help/search.svg" alt="serch_img" className="serch_img" />
+                                    <span className="serch_content"> {input_content}</span> */}
+                                  </div>
 
                                 <div className="row">
                                     <div className="col-md-12" id="align_list">
@@ -232,4 +234,3 @@ function AccordionArrayOfObjects() {
 }
 
 export default Help; 
-

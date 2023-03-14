@@ -56,7 +56,7 @@ const Aboutus = () => {
       
       const VissionItems = vissionData.map((vission) =>{
          return(
-            <li>
+            <li key={vission.id}>
                <img src={vission.vission_src} className="vission_image" alt="alt_image"/>
                <p className="vission_content">{vission.vission_content}</p>
            </li>
@@ -106,7 +106,7 @@ const Aboutus = () => {
       const ArrayIconsIttems = whydata.map((icon)=>{
           return(
               
-                  <li>
+                  <li key={icon.id}>x
                   <div className="circle-icons">
                       <img src={icon.icon_src} alt="circle-image" />
                       </div>
@@ -197,7 +197,19 @@ const Aboutus = () => {
                   <h1 className="vl-heading">About Us</h1>
                   <div className="vl-content about_content">
                      <p className="our_vission">Our vission and mission statement will go here</p>
-                     <p className="our_vission01">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam erat velit scelerisque in dictum. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id. Ornare suspendisse sed nisi lacus sed viverra tellus in. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Convallis convallis tellus id interdum velit laoreet id. Nunc non blandit massa enim nec dui nunc mattis enim. Consequat id porta nibh venenatis cras. Faucibus et molestie ac feugiat sed lectus vestibulum. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Nulla facilisi etiam dignissim diam quis. Ultrices dui sapien eget mi proin sed. Fermentum et sollicitudin ac orci. Faucibus scelerisque eleifend donec pretium. Sed sed risus pretium quam. Lectus quam id leo in vitae. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci.</p>
+                     <p className="our_vission01">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam 
+                      erat velit scelerisque in dictum. Pellentesque massa placerat duis ultricies
+                      lacus sed turpis tincidunt id. Ornare suspendisse sed nisi lacus sed viverra 
+                      tellus in. Morbi tincidunt ornare massa eget egestas purus viverra accumsan. 
+                      Metus dictum at tempor commodo ullamcorper a lacus vestibulum sed. Convallis
+                      convallis tellus id interdum velit laoreet id. Nunc non blandit massa enim nec
+                      dui nunc mattis enim. Consequat id porta nibh venenatis cras. Faucibus et molestie
+                      ac feugiat sed lectus vestibulum. Adipiscing diam donec adipiscing tristique risus nec
+                      feugiat in fermentum. Nulla facilisi etiam dignissim diam quis. Ultrices dui sapien eget
+                       mi proin sed. Fermentum et sollicitudin ac orci. Faucibus scelerisque eleifend donec 
+                       pretium. Sed sed risus pretium quam. Lectus quam id leo in vitae. Vulputate eu scelerisque
+                        felis imperdiet proin fermentum leo vel orci.</p>
                   </div>
                </div>
             </div>

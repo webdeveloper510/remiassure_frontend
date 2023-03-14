@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {links, NavLink, useNavigate} from 'react-router-dom';
 
 
 const Footer = () => {
@@ -6,14 +7,16 @@ const Footer = () => {
 // Navigator Footer Content Start 
     function NavigationFooterArrayObjects() {
         const navigationData = [
-        {
-            id: 1,
-            content: "Home",
-        },
-        {
-            id: 2,
-            content: "About Us",
-        },
+        // {
+        //     id: 1,
+        //     content: "Home",
+          
+        // },
+        // {
+        //     id: 2,
+        //     content: "About Us",
+          
+        // },
         {
             id: 3,
             content: "What We Do",
@@ -30,9 +33,10 @@ const Footer = () => {
         ];
 
         const NavigationItems = navigationData.map((value) => {
+            console.log(navigationData, "ooook")
             return(
                 <li key={value.id}>
-                 <a href="#">{value.content}</a>
+                 <NavLink to="#">{value.content}</NavLink>
                 </li>
             )
         })
@@ -137,8 +141,14 @@ function LegalArrayObjects(){
 
                 <div className="col-lg-2 col-md-6 footer-links">
                     <h4>Navigation</h4>
+                  
                     <ul>
-                     <NavigationFooterArrayObjects />
+                    <li><NavLink to="/">Home</NavLink></li>
+                   <li> <NavLink to="/aboutus">About Us</NavLink></li>
+                   <li><a href="#">What We Do</a></li>
+                   <li><a href="#">To The Power of 10</a></li>
+                   <li><a href="#">Donate</a></li>
+                     {/* <NavigationFooterArrayObjects  /> */}
                     </ul>
                 </div>
 

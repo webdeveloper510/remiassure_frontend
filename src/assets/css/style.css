@@ -2520,6 +2520,7 @@ button.continue_button {
 } */
 section.why-us.section-bgba.user_dashboard_banner {
   padding-top: 0;
+  margin-top:140px;
 }
 .money_exchange_row {
   width: 100%;
@@ -2859,7 +2860,7 @@ margin-top: 15px;
   width: 100%;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  margin: 155px auto 0px;
+  margin: 63px auto 0px;
   padding: 10px;
   float: right;
 }

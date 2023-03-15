@@ -14,7 +14,6 @@ import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
 import ReactFlagsSelect from "react-flags-select";
 
-
 const SendMoney = () => {
 
    // Start page show hide condtion page 
@@ -27,74 +26,28 @@ const SendMoney = () => {
 // Start page show hide condtion page
 
 
-
 /**************************************************************************
  * ************** Start -Recipient Bank Details************************************
  * ***********************************************************************/
-const [bank_data, setBank_data] = React.useState([]);
-const [bank_name, setBank_name] = React.useState ("");
 
-const [arrayOne, setArrayOne] = React.useState("");
-const [arrayTwo, setArrayTwo] = React.useState("");
+// const [bank_data, setBank_data] = React.useState([]);
+
+const [formValue, setFormValue] = React.useState ({
+    bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
+   lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
+
+
+
+
 const [account_name, setAccount_name] = React.useState ("");
-var valuesArray = [];
-
-
-localStorage.setItem("BankName", JSON.stringify(bank_name));
-localStorage.setItem("AccountName", JSON.stringify(account_name));
-
-
-
-useEffect(() => { 
-  valuesArray.push(bank_name)
-  valuesArray.push(account_name)
-  }, []);
-
-
-  const handleBankName =(e) =>{
-    setBank_name(e.target.value)
-  }
-  const handleAccountName =(e) =>{
-    setAccount_name(e.target.value)
-  }
-
-
-  //Total Amount get data
-  const Total_amount = localStorage.getItem("Total_amount");
-  console.log("Amonut", Total_amount);
-
-  //Total Amount rate data 
-  const Total_INR = localStorage.getItem("Total_INR");
-  console.log("Amount rate", Total_INR);
-
-  const [selected, setSelected] = React.useState("");
-
-   //start Summury content change
-  //  const [payment, setPayment] = React.useState('Bank Transfer');
-  //  const [payment_partners, setPayment_partners] = React.useState('Bank');
-   
-   
-  // start Recive Radio button
-   const initialValue={  
-    recivedMethod: "bankTransfer",
-    payOutPartner: "bank",
-    // amount:0
-  }
-    const [moneyTransiction , setMoneyTransiction] =React.useState(initialValue);
-    const {  
-      recivedMethod,
-      payOutPartner,
-      // amount
-      } = moneyTransiction;
-        
-      const onInputChange = e => {
-        console.log(e.target.name)
-        console.log(e.target.value)
-        // console.log(defaultCountryData.length)
-        setMoneyTransiction(item1=>({...item1,[e.target.name]: e.target.value }));
-    }
- // End Recive Radio button
-
+const [account_number, setAccount_number] = React.useState ("");
+const [first_name, setFirst_name] = React.useState ("");
+const [middle_name, setMiddle_name] = React.useState ("");
+const [last_name, setLast_name] = React.useState ("");
+const [email, setEmail] = React.useState ("");
+const [mobile, setMobile] = React.useState ("");
+const [address, setAddress] = React.useState ("");
+const [reason_money, setReason_money] = React.useState ("");
 
  // start select value get data
  const {location} = useContext(UserContext);
@@ -113,6 +66,166 @@ useEffect(() => {
   const [output, setOutput] = React.useState(0);
   const [info, setInfo] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+
+
+const handleStep2InputChange =(e,key) =>{
+  console.log(e.target.value)
+  console.log(key)
+  let valueForm = formValue
+  valueForm[key] = e.target.value
+  setFormValue(valueForm)
+  console.log(formValue)
+}
+
+
+const handleAccountName =(e) =>{
+  setAccount_name(e.target.value)
+}
+const handleAccountNumber =(e) =>{
+  setAccount_number(e.target.value)
+}
+const handleFirstName =(e) =>{
+  setFirst_name(e.target.value)
+}
+const handleMiddleName =(e) =>{
+  setMiddle_name(e.target.value)
+}
+const handleLastName =(e) =>{
+  setLast_name(e.target.value)
+}
+const handleEmail =(e) =>{
+  setEmail(e.target.value)
+}
+const handleAddress =(e) =>{
+  setAddress(e.target.value)
+}
+const handleMobile =(e) =>{
+  setMobile(e.target.value)
+}
+const handleReasoMoney =(e) =>{
+  setReason_money(e.target.value)
+}
+
+//store localstorage
+// localStorage.setItem("bank_name", (bank_name));
+localStorage.setItem("bankName",(formValue.bankName));
+localStorage.setItem("accountName",(formValue.accountName));
+localStorage.setItem("accountNumber",(formValue.accountNumber));
+localStorage.setItem("firstName",(formValue.firstName));
+localStorage.setItem("middleName",(formValue.middleName));
+localStorage.setItem("lastName",(formValue.lastName));
+localStorage.setItem("email",(formValue.email));
+localStorage.setItem("mobile",(formValue.mobile));
+localStorage.setItem("address",(formValue.address));
+localStorage.setItem("reasonMoney",(formValue.reasonMoney));
+
+
+//get localstorage
+
+
+const bankName = localStorage.getItem("bankName")
+console.log(bankName, "bankName");
+
+const accountName = localStorage.getItem("accountName")
+console.log(accountName, "accountName");
+
+const accountNumber = localStorage.getItem("accountNumber")
+console.log(accountNumber, "accountNumber");
+
+const firstName = localStorage.getItem("firstName")
+console.log(firstName, "firstName");
+
+const middleName = localStorage.getItem("middleName")
+console.log(middleName, "middleName");
+
+const lastName = localStorage.getItem("lastName")
+console.log(lastName, "lastName");
+
+const emailData = localStorage.getItem("email")
+console.log(emailData, "emailData");
+
+const mobileData = localStorage.getItem("mobile")
+console.log(mobileData, "mobileData");
+
+const addressData = localStorage.getItem("address")
+console.log(addressData, "addressData");
+
+const reasonMoney = localStorage.getItem("reasonMoney")
+console.log(reasonMoney, "reasonMoney");
+
+
+
+
+
+// function handleDataStore(){
+
+//   var courses =JSON.parse(localStorage.getItem('courses') || "[]")
+//   var course ={
+//     bank_name:bank_name,
+//     account_name:account_name
+//   }
+//   courses.push(course)
+
+//   localStorage.setItem('courses', JSON.stringify(courses))
+// }
+
+//multiple function call
+function someFunc() {
+  handleShow();
+  // handleDataStore();
+}
+
+
+//Get item localstorage
+const courses = localStorage.getItem('courses');
+console.log(courses,"coursescourses");
+
+
+
+
+  //Total Amount get data
+  const Total_amount = localStorage.getItem("Total_amount");
+  console.log("Amonut", Total_amount);
+
+  //Total Amount rate data 
+  const Total_INR = localStorage.getItem("Total_INR");
+  console.log("Amount rate", Total_INR);
+
+  const [selected, setSelected] = React.useState("");
+
+   //start Summury content change
+   const [payment, setPayment] = React.useState('Bank Transfer');
+   const [payment_partners, setPayment_partners] = React.useState('Bank');
+   
+   
+  // start Recive Radio button
+   const initialValue={  
+    recivedMethod: "bankTransfer",
+    payOutPartner: "bank",
+    paymentType: "Oslo",
+    // amount:0
+  }
+    const [moneyTransiction , setMoneyTransiction] =React.useState(initialValue);
+    const {  
+      recivedMethod,
+      payOutPartner,
+      paymentType,
+      // amount
+      } = moneyTransiction;
+        
+      const onInputChange = e => {
+        console.log(e.target.name)
+        console.log(e.target.value)
+        // console.log(defaultCountryData.length)
+        setMoneyTransiction(item1=>({...item1,[e.target.name]: e.target.value }));
+    }
+ // End Recive Radio button
+
+
+
+
+
+
  
   
   // console.log(from, "fromfromfromfromfromfromfromfrom")
@@ -228,8 +341,38 @@ useEffect(() => {
    }
    // End Total Amount Api call 
 
+/**************************************************************************
+ * ************** Start -Digital ID call Api************************************
+ * ***********************************************************************/
 
-  
+const digitalIdAsyncInit =(event) =>{
+  event.preventDefault();
+    axios.post('https://digitalid-sandbox.com/sdk/app.js', {
+
+      clientId: 'ctid2poVwlVfjH2PAnWEAB2l4v',
+      uxMode: 'popup',
+      
+    }, {
+        headers: {
+            // 'Content-Type': 'application/json',
+        },
+      
+    })
+    .then(function onComplete (response) {
+        console.log("Check",response);
+        // onComplete: function (response) { console.log(response)
+          console.log(response)
+        
+
+    })
+    .catch(function(error, message) {
+      console.log(error.response)
+      
+    })
+}
+
+
+
  // Start design state
     const {useState} = React;
     const [step,setStep] = useState(0);
@@ -397,7 +540,7 @@ useEffect(() => {
                 </p>
               <input
                type="text"
-               value={exchange_amount && amount != 0 || "" ? exchange_amount : ""}
+               defaultValue={exchange_amount && amount != 0 || "" ? exchange_amount : ""}
                 className='rate_input form-control'
                 
                  />
@@ -409,7 +552,7 @@ useEffect(() => {
           <h5>Receive Method</h5>
           <div className="col-md-12">
             <div className="input_field">
-              <div className="form-check method_type">
+              <div className="form-cverification_heck method_type">
               <input 
                   className="form-check-input"
                   type="radio"
@@ -517,7 +660,7 @@ useEffect(() => {
     return (
     <>
      {  
-          verification_otp || token != undefined || '' ? (
+          
     <section>
        <div class="progressBar">
    <div class="progress">
@@ -536,12 +679,9 @@ useEffect(() => {
               // autoFocus="autofocus"
             type="text" 
             className="rate_input form-control"
-            
-            value={bank_name}
-            onChange={handleBankName}
-            // value={userName}
-            // onChange={(e) => setUserName(e.target.value)}
-            // autoFocus="autofocus"
+            name="bankName"
+            defaultValue={formValue.bankName}
+            onChange={(e)=>handleStep2InputChange(e,'bankName')}
             />
         </div>
     </div>
@@ -551,8 +691,8 @@ useEffect(() => {
          <p className="get-text">Account Name</p>
          <input 
          type="text"
-         value={account_name}
-         onChange={handleAccountName}
+         defaultValue={formValue.accountName}
+         onChange={(e)=>handleStep2InputChange(e,'accountName')}
           className='rate_input form-control'
           // autoFocus="autofocus"
            />
@@ -564,8 +704,11 @@ useEffect(() => {
        <div className="input_field">
          <p className="get-text">Account number</p>
          <input 
-         type="text" 
+         type="text"
+         name="accountNumber"
          className='rate_input form-control'
+         defaultValue={formValue.accountNumber}
+         onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
           />
        </div>
      </div>
@@ -578,6 +721,9 @@ useEffect(() => {
          <input
           type="text" 
           className='rate_input form-control'
+          name="firstName"
+         defaultValue={formValue.firstName}
+         onChange={(e)=> handleStep2InputChange(e,'firstName')}
            />
        </div>
      </div>
@@ -587,6 +733,9 @@ useEffect(() => {
          <input
           type="text"
            className='rate_input form-control' 
+           name="middleName"
+         defaultValue={formValue.middleName}
+         onChange={(e)=> handleStep2InputChange(e,'middleName')}
            />
        </div>
      </div>
@@ -596,6 +745,9 @@ useEffect(() => {
          <input 
          type="text" 
          className='rate_input form-control'
+         name="lastName"
+         defaultValue={formValue.lastName}
+         onChange={(e)=> handleStep2InputChange(e,'lastName')}
           />
        </div>
      </div>
@@ -607,6 +759,9 @@ useEffect(() => {
          <input
           type="email" 
           className='rate_input form-control'
+          name="email"
+         defaultValue={formValue.email}
+         onChange={(e)=> handleStep2InputChange(e,'email')}
            />
        </div>
      </div>
@@ -616,6 +771,9 @@ useEffect(() => {
          <input 
          type="text" 
          className='rate_input form-control'
+         name="mobile"
+         defaultValue={formValue.mobile}
+         onChange={(e)=> handleStep2InputChange(e,'mobile')}
           />
        </div>
      </div>
@@ -627,6 +785,9 @@ useEffect(() => {
          <input
           type="text" 
           className='rate_input form-control'
+          name="address"
+          defaultValue={formValue.address}
+          onChange={(e)=> handleStep2InputChange(e,'address')}
            />
        </div>
      </div>
@@ -638,14 +799,17 @@ useEffect(() => {
          <select
           className="form-select rate_input form-control"
            aria-label="Select a reason"
+           name="reasonMoney"
+           defaultValue={formValue.reasonMoney}
+           onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
            >
            <option selected>Select a reason</option>
-           <option value="1">Family Support</option>
-           <option value="2">Education</option>
-           <option value="3">Tax Payment</option>
-           <option value="3">Loan Payment</option>
-           <option value="3">Travel Payment</option>
-           <option value="3">Utility Payment</option>
+           <option value="Family Support">Family Support</option>
+           <option value="Education">Education</option>
+           <option value="Tax Payment">Tax Payment</option>
+           <option value="Loan Payment">Loan Payment</option>
+           <option value="Travel Payment">Travel Payment</option>
+           <option value="Utility Payment">Utility Payment</option>
          </select>
        </div>
      </div>
@@ -655,7 +819,8 @@ useEffect(() => {
        <button className="start-form-button">Cancel</button>
      </div>
      <div className="col-md-8">
-       <button className="form-button" onClick={handleShow}>Continue</button>
+       {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
+       <button className="form-button" onClick={someFunc}>Continue</button>
        <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
      </div>
    </div>
@@ -679,15 +844,15 @@ useEffect(() => {
 <tbody>
   <tr>
     <th>Bank Name</th>
-    <td>Bank Of India</td>
+    <td>{bankName}</td>
   </tr>
   <tr>
     <th>Account Name</th>
-    <td>Varun Sharma</td>
+    <td>{accountName}</td>
   </tr>
   <tr>
     <th>Account number</th>
-    <td>1123345455445</td>
+    <td>{accountNumber}</td>
   </tr>
 </tbody>
 <thead>
@@ -698,27 +863,31 @@ useEffect(() => {
 <tbody>
   <tr>
     <th>First Name</th>
-    <td>Varun</td>
+    <td>{firstName}</td>
   </tr>
   <tr>
     <th>Middle Name</th>
-    <td>kumar</td>
+    <td>{middleName}</td>
   </tr>
   <tr>
     <th>Last Name</th>
-    <td>Sharma</td>
+    <td>{lastName}</td>
   </tr>
   <tr>
     <th>Email</th>
-    <td>varun@gmail.com</td>
+    <td>{emailData}</td>
   </tr>
   <tr>
     <th>Address</th>
-    <td>Hno.253 Mohali Punjab</td>
+    <td>{addressData}</td>
   </tr>
-  <tr>
+  <tr> 
+      <>
+      
+      </>
+  
     <th>Reason For Sending Money</th>
-    <td>Tax Payment</td>
+    <td>{reasonMoney}</td>
   </tr>
 </tbody>
                </Table>
@@ -727,17 +896,14 @@ useEffect(() => {
         <Button variant="secondary" onClick={handleClose}>
             Go back to Edit
           </Button>
-          <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button>
+          {/* <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button> */}
+          <Button variant="primary" onClick={digitalIdAsyncInit}>Continue</Button>
         </Modal.Footer>
       </Modal>
 
       </section>
 
-    ) : (
-      <>
-      
-      </>
-  )
+   
   }
     </>
     );
@@ -759,40 +925,64 @@ useEffect(() => {
     </div>
   </div>
   <div className="form_body">
-    <div className="header">
-      <h1>Payment details</h1>
-    </div>
-    <div className="row each-row">
-      <h5>Payment type</h5>
-      <div className="col-md-12">
-        <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault11" id="flexRadioDefault34" defaultChecked />
-          <label className="form-check-label" for="flexRadioDefault34"> Osko </label>
+      <div className="header">
+        <h1>Payment details</h1>
+      </div>
+      <div className="row each-row">
+        <h5>Payment type</h5>
+        <div className="col-md-12">
+          <div className="form-check method_type">
+            <input 
+              className="form-check-input" 
+              type="radio"
+              name="paymentType"
+              // id="flexRadioDefault3" 
+              checked={moneyTransiction.paymentType== "Oslo"}
+              value="Oslo" 
+              onChange={e => onInputChange(e)}
+            />
+            <label className="form-check-label" for="flexRadioDefault34"> Oslo </label>
+          </div>
+        </div>
+        <div className="col-md-12">
+          <div className="form-check method_type">
+            <input
+             className="form-check-input" 
+             type="radio"
+             name="paymentType"
+             // id="flexRadioDefault3" 
+             checked={moneyTransiction.paymentType== "Debit/Credit Card"}
+             value="Debit/Credit Card" 
+             onChange={e => onInputChange(e)}
+              />
+            <label className="form-check-label" for="flexRadioDefault44"> Debit/Credit Card </label>
+          </div>
+        </div>
+        <div className="col-md-12">
+          <div className="form-check method_type">
+            <input
+            className="form-check-input" 
+            type="radio" 
+            name="paymentType"
+             // id="flexRadioDefault3" 
+             checked={moneyTransiction.paymentType== " PoLI Internet Banking"}
+             value=" PoLI Internet Banking" 
+             onChange={e => onInputChange(e)}
+            />
+            <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
+          </div>
         </div>
       </div>
-      <div className="col-md-12">
-        <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault15" id="flexRadioDefault44" />
-          <label className="form-check-label" for="flexRadioDefault44"> Debit/Credit Card </label>
+      <div class="row">
+        <div className="col-md-4">
+          <button className="start-form-button">Cancel</button>
         </div>
-      </div>
-      <div className="col-md-12">
-        <div className="form-check method_type">
-          <input className="form-check-input" type="radio" name="flexRadioDefault14" id="flexRadioDefault5" />
-          <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
+        <div className="col-md-8">
+          <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+          <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div className="col-md-4">
-        <button className="start-form-button">Cancel</button>
-      </div>
-      <div className="col-md-8">
-        <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
-        <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-      </div>
-    </div>
-  </div>
   </section> 
   
   ) : (
@@ -983,7 +1173,7 @@ useEffect(() => {
     <>
 
 {  
-          verification_otp || token != undefined || '' ? (
+         (
     <section>
     
         <div class="form">
@@ -1027,11 +1217,7 @@ useEffect(() => {
 
  </section>
 
-) : (
-  <>
-  
-  </>
-)
+) 
 }
     </>
     );

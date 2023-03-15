@@ -49,7 +49,7 @@ const Header =() => {
       navigate('/login')
       window.location.reload(false);
       window.location.reload();
-      notify();
+      // notify();
       
   }
 

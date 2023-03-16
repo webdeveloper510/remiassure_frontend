@@ -277,24 +277,25 @@ console.log("Verification Message", verification_otp)
 
                 {
                  verification_otp || token != undefined || '' ? (
-                      <div className="referal_code">
-                      <div className="row">
-                          <div className="col-lg-12">
-                              <p className="share_referal_code">Share your unique referral code:</p>
-  
-                              <InputGroup className="mb-3">
-                                  <Form.Control aria-label="Recipient's username" aria-describedby="basic-addon2" value="275878274565826758367" id="myInput" className="copy_input" />
-  
-                                  <button variant="outline-secondary" id="button-addon2" className="button_copy">
-                                      Copy
-                                  </button>
-                              </InputGroup>
-                          </div>
-                      </div>
-                  </div>
+                    <div className="referal_code">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <p className="share_referal_code">Share your unique referral code:</p>
+    
+                                <InputGroup className="mb-3">
+                                    <Form.Control aria-label="Recipient's username" aria-describedby="basic-addon2" value="275878274565826758367" id="myInput" className="copy_input" />
+    
+                                    <button variant="outline-secondary" id="button-addon2" className="button_copy">
+                                        Copy
+                                    </button>
+                                </InputGroup>
+                            </div>
+                        </div>
+                    </div>
 
                 ) : (
                     <>
+                    <div className="social_links_change"></div>
                     
                     </>
                 )
@@ -317,8 +318,10 @@ console.log("Verification Message", verification_otp)
                   </div>
                              */}
 
-
-                <div className="row">
+                             
+                {
+                 verification_otp || token != undefined || '' ? (
+                    <div className="row" >
                     <div className="col-lg-12">
                         <p className="share_content">Way to share</p>
 
@@ -337,6 +340,35 @@ console.log("Verification Message", verification_otp)
                     </div>
                 </div>
 
+
+                    ) : (
+                        <>
+                         <div className="row social_links_change" >
+                    <div className="col-lg-12">
+                        <p className="share_content">Way to share</p>
+
+                       <div className="social_icons">
+                       <ul className="social-media-icons">
+                        < SocialArrayObjects />
+                      </ul>
+                        </div>
+
+                        <div className="view-button">
+                            <button className="btn btn find_button">Find out more</button>
+                        </div>
+                        <div className="terms_content">
+                          <p>*T&Cs apply. <span style={{ color: 'rgba(100, 20, 233, 1)' }}> See terms and conditions</span> for details*</p>
+                        </div>
+                    </div>
+                </div>
+
+                        
+                        </>
+                    )
+                    }
+
+
+              
             </div>
         </section>
     {/* <!-- ======= How do I refer a friend? Remitassur -Section  End======= --> */}

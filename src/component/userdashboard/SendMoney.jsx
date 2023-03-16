@@ -16,7 +16,7 @@ import ReactFlagsSelect from "react-flags-select";
 
 const SendMoney = () => {
 
-   // Start page show hide condtion page 
+// Start page show hide condtion page 
    const token = localStorage.getItem("token");
    console.log("TOKEN", token);
 
@@ -32,10 +32,11 @@ const SendMoney = () => {
 
 // const [bank_data, setBank_data] = React.useState([]);
 
-const [formValue, setFormValue] = React.useState ({
+// Start -Recipient Bank Details
+  const [formValue, setFormValue] = React.useState ({
     bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
    lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
-
+// End -Recipient Bank Details
 
 
 
@@ -67,7 +68,14 @@ const [reason_money, setReason_money] = React.useState ("");
   const [info, setInfo] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
+  // Start ------    digital Api state 
+  const [code, setConde] =React.useState('');
+  const [data, setData] = React.useState([]);
+ // End ------    digital Api state 
 
+
+
+// Start -Recipient Bank Details 
 const handleStep2InputChange =(e,key) =>{
   console.log(e.target.value)
   console.log(key)
@@ -154,7 +162,7 @@ const reasonMoney = localStorage.getItem("reasonMoney")
 console.log(reasonMoney, "reasonMoney");
 
 
-
+// End -Recipient Bank Details 
 
 
 // function handleDataStore(){
@@ -223,11 +231,6 @@ console.log(courses,"coursescourses");
 
 
 
-
-
-
- 
-  
   // console.log(from, "fromfromfromfromfromfromfromfrom")
   // console.log(to, "totototototototo")
 
@@ -289,7 +292,7 @@ console.log(courses,"coursescourses");
             if (response.status)
             setStep(step+1) //next step call
             setShows(!shows) //show hide summery function call
-            setLoading(false); // Stop loading
+            setLoading(false); // Stop loading 
 
         })
         .catch(function(error, message) {
@@ -341,35 +344,46 @@ console.log(courses,"coursescourses");
    }
    // End Total Amount Api call 
 
+
 /**************************************************************************
- * ************** Start -Digital ID call Api************************************
+ * ************** Start -Digital ID Api call ******************************
  * ***********************************************************************/
+      const handleDigitalValue =(event) =>{
+        event.preventDefault();
+        setLoading(true); // Set loading before sending API request
+        axios.post(API.BASE_URL + 'digital-verification/',{
+          code: '3WU9IL' ,
+        }, {
+          headers: {
+              "Authorization" : `Bearer ${token}`,
+          }
+        })
+        .then(function(response) {
+            console.log("Recipients APIIIII", response.data);
+            setStep(step+1)
+            setData(response.data);
+            setLoading(false); // Stop loading
+       
+       
+          //   if (response.status)
+          // // notify();
+        })
+        .catch(function(error) {
+            console.log(error);
+            console.log(error.response);
+            setLoading(false); // Stop loading in case of error
+            if(error.response.status){
+                toast.error(error.response.data.detail);
+            } 
+        })
+      }
+    
 
-const digitalIdAsyncInit =(event) =>{
-  event.preventDefault();
-    axios.post('https://digitalid-sandbox.com/sdk/app.js', {
 
-      clientId: 'ctid2poVwlVfjH2PAnWEAB2l4v',
-      uxMode: 'popup',
-      
-    }, {
-        headers: {
-            // 'Content-Type': 'application/json',
-        },
-      
-    })
-    .then(function onComplete (response) {
-        console.log("Check",response);
-        // onComplete: function (response) { console.log(response)
-          console.log(response)
-        
 
-    })
-    .catch(function(error, message) {
-      console.log(error.response)
-      
-    })
-}
+
+
+
 
 
 
@@ -552,7 +566,7 @@ const digitalIdAsyncInit =(event) =>{
           <h5>Receive Method</h5>
           <div className="col-md-12">
             <div className="input_field">
-              <div className="form-cverification_heck method_type">
+              <div className="form-cverification_heck method_type form-check">
               <input 
                   className="form-check-input"
                   type="radio"
@@ -656,7 +670,6 @@ const digitalIdAsyncInit =(event) =>{
     
     
     const Step2 = () =>{
-    
     return (
     <>
      {  
@@ -896,8 +909,9 @@ const digitalIdAsyncInit =(event) =>{
         <Button variant="secondary" onClick={handleClose}>
             Go back to Edit
           </Button>
-          {/* <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button> */}
-          <Button variant="primary" onClick={digitalIdAsyncInit}>Continue</Button>
+          <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button>
+           {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
+        
         </Modal.Footer>
       </Modal>
 
@@ -996,6 +1010,39 @@ const digitalIdAsyncInit =(event) =>{
     }
 
     const Step4 = () =>{
+
+      useEffect(() => {
+        const script = document.createElement('script');
+      
+              script.src = 'https://digitalid-sandbox.com/sdk/app.js';
+              script.async = true;
+      
+              document.body.appendChild(script);
+      
+              script.onload = () => {
+      
+                  /* Verify with Digital iD */
+                  window.digitalId.init({
+                      clientId: 'ctid2poVwlVfjH2PAnWEAB2l4v',
+                      uxMode: 'popup',
+                      onLoadComplete: function () {
+                          console.log(1,"log");
+                      },
+                      onComplete: function (res,msg,onComplete) {
+                          console.log(2,"log2");
+                          console.log(res, "codes")
+
+                   
+                      },
+                      onClick: function (opts) {
+                      },
+                      onKeepAlive: function () {
+                      }
+                  });
+      
+              }
+       
+      }, []);
     
       return (
       <>
@@ -1019,7 +1066,9 @@ const digitalIdAsyncInit =(event) =>{
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">First Name</p>
-       <input type="text" className='rate_input form-control' />
+       <input
+        type="text"
+         className='rate_input form-control' />
      </div>
    </div>
    <div className="col-md-4">
@@ -1140,18 +1189,21 @@ const digitalIdAsyncInit =(event) =>{
    </div>
  </div>
       <div class="row each-row">
-        <div className="col-md-4">
+        <div className="col-md-2 new_buttonss">
           <button className="start-form-button">Cancel</button>
         </div>
-        <div className="col-md-8">
-          <button
+        <div className="col-md-10 new_buttons">
+          {/* <button
            className="form-button"
          
             >
               Continue
           
-              </button>
+              </button> */}
+             
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+          <div id="digitalid-verify"></div>
+
         </div>
       </div>
     </div>

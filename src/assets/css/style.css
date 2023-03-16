@@ -1,9 +1,3 @@
-/**
-* Template Name: Moderna - v4.11.0
-* Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
@@ -2520,7 +2514,6 @@ button.continue_button {
 } */
 section.why-us.section-bgba.user_dashboard_banner {
   padding-top: 0;
-  margin-top:140px;
 }
 .money_exchange_row {
   width: 100%;
@@ -3932,4 +3925,21 @@ h1.recipients_lists {
 }
 #footer ul li a.active {
   color: #fff !important;
+}
+div#digitalid-verify button:nth-child(1) {
+  display: none !important;
+}
+row.social_links_change p.share_content {
+  margin-top: 80px;
+}
+.new_buttons button.form-button {
+  margin-top: 0px;
+  margin-right: 10px;
+}
+.new_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.new_buttonss button.start-form-button {
+  margin-top: 0px;
 }

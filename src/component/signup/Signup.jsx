@@ -96,7 +96,6 @@ const Signup = () => {
             location: location,
             referral_code: referral_code,
             promo_marketing: promo_marketing.Active,
-            params: { keyword },
         }, {
             headers: {
                 'Content-Type': 'application/json',

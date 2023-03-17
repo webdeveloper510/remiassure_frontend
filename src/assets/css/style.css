@@ -2386,6 +2386,13 @@ section.profile-page {
     text-transform: capitalize;
     color: #6414E9;
 }
+span.progress-step {
+  position: absolute;
+  bottom: -37px;
+  left: -24px;
+  font-size: 12px;
+  font-weight: 600;
+}
 /*--------------------------------------------------------------
 # Forgot
 --------------------------------------------------------------*/
@@ -2882,7 +2889,7 @@ margin-top: 15px;
   width: 100%;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  margin: 63px auto 0px;
+  margin: 150px auto 0px;
   padding: 10px;
   float: right;
 }
@@ -3541,9 +3548,15 @@ table.table_user_recipients .accordion h4 {
 }
 .table_user_recipients .accordion-body {
   margin-top: 14px;
+  margin-bottom: 40px;
 }
 .table_user_recipients .progressBar {
   margin-bottom: 0;
+}
+.RSPBprogressBar {
+  background-color: green !important;
+  width: 85% !important;
+  margin: 0 auto !important;
 }
 section.top_sections{
     z-index: 99999;
@@ -4082,4 +4095,3 @@ row.social_links_change p.share_content {
 .row.social_links_change {
   margin-top: 100px;
 }
-

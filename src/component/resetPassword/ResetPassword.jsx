@@ -13,7 +13,10 @@ import UserContext from '../context/UserContext';
 const RecentPassword = () => {
 
     const [password, setPassword] = useState('');
+    const [reset_password_otp, setReset_password_otp] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [loading, setLoading] = useState(false);
     // const {id} = useParams();
 
     const handlePassword =(e) =>{
@@ -41,8 +44,10 @@ const RecentPassword = () => {
 
     const handleRecent = (event) => {
         event.preventDefault();
-            axios.post(API.BASE_URL + `reset-password/${token_forgot}/`, {
+        setLoading(true); // Set loading before sending API request
+            axios.post(API.BASE_URL + `reset-password/`, {
                 password: password,
+                reset_password_otp: '653665',
                 confirmPassword: confirmPassword,
             }, {
                 headers: {
@@ -51,11 +56,13 @@ const RecentPassword = () => {
             })
             .then(function(response) {
                 console.log("Forget API" ,response);
+                setLoading(false); // Stop loading
                 navigate('/')
                 notify();
             })
             .catch(function(error) {
                 console.log(error.response);
+                setLoading(false); // Stop loading in case of error
                 if(error.response.status){
                     toast.error(error.response.data.message || error.response.data.non_field_errors);
                 }
@@ -109,6 +116,14 @@ const RecentPassword = () => {
                                        onClick={handleRecent}
                                        >
                                             Recent Password
+                                            {loading ? <>
+                                                <div class="loader-overly"> 
+                                                <div class="loader" > 
+                                                
+                                                </div>
+                                                
+                                                </div>
+                                              </> : <></>}
                                         </button>
                                     </form>
                                 </div>

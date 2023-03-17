@@ -39,6 +39,14 @@ const SendMoney = () => {
 // End -Recipient Bank Details
 
 
+// start Amount value 
+const [amountValue, setAmountValue] = React.useState({
+  amount: '',
+})
+
+// Start IS Digital Id get State Data 
+ const [verificationValue, setverificationValue] = React.useState(false);
+// End IS Digital Id get State Data 
 
 const [account_name, setAccount_name] = React.useState ("");
 const [account_number, setAccount_number] = React.useState ("");
@@ -68,7 +76,7 @@ const [reason_money, setReason_money] = React.useState ("");
   const [info, setInfo] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
-  // Start ------    digital Api state 
+ // Start ------   Verify payment state digital Api state 
   const [code, setConde] =React.useState('');
   const [data, setData] = React.useState([]);
  // End ------    digital Api state 
@@ -84,6 +92,19 @@ const handleStep2InputChange =(e,key) =>{
   setFormValue(valueForm)
   console.log(formValue)
 }
+
+
+// Start Amount Api
+// Start -Recipient Bank Details 
+const handleAmountCahngeValue =(e,key) =>{
+  console.log(e.target.value)
+  console.log(key)
+  let AmountData = amountValue
+  AmountData[key] = e.target.value
+  setAmountValue(AmountData)
+  console.log(amountValue)
+}
+
 
 
 const handleAccountName =(e) =>{
@@ -273,6 +294,9 @@ console.log(courses,"coursescourses");
     // const Total_amount= localStorage.getItem(Total_amount);
     // console.log(Total_amount, "Total_amount money")
 
+/**************************************************************************
+ * ************** Start  All Amount & Delivery  ******************************
+ * ***********************************************************************/
 
     const handleAmountDelivery =(event) =>{
       event.preventDefault();
@@ -307,8 +331,9 @@ console.log(courses,"coursescourses");
 
   // End Api call Amount & Delivery
 
-
-// Start Total Amount Api call 
+/**************************************************************************
+ * ************** Start  Total Amount Api call  ******************************
+ * ***********************************************************************/
     const myTotalAmount =(value)=> {   
       console.log("====================>",amount)
      setLoading(true); // Set loading before sending API request
@@ -346,47 +371,79 @@ console.log(courses,"coursescourses");
 
 
 /**************************************************************************
- * ************** Start -Digital ID Api call ******************************
+ * ************** Start condtion -IS Digital ID Api call ******************************
  * ***********************************************************************/
-      const handleDigitalValue =(event) =>{
+      const handleISDigitalVerified =(event) =>{
         event.preventDefault();
         setLoading(true); // Set loading before sending API request
-        axios.post(API.BASE_URL + 'digital-verification/',{
-          code: '3WU9IL' ,
+        axios.post(API.BASE_URL + 'is-digitalid-verified/',{
         }, {
           headers: {
               "Authorization" : `Bearer ${token}`,
           }
         })
         .then(function(response) {
+          console.log(response);
             console.log("Recipients APIIIII", response.data);
-            setStep(step+1)
-            setData(response.data);
+            // setStep(step+1)
+            setverificationValue(response.data.verification_status);
+            console.log(verificationValue)
+            // setStep(step+1)
             setLoading(false); // Stop loading
-       
-       
-          //   if (response.status)
+            
+            // if (response.data.verification_status == false){
+            //   setStep(step+1)
+            // } else{
+            //   setStep(step+1)
+            // } 
           // // notify();
+
         })
         .catch(function(error) {
             console.log(error);
             console.log(error.response);
             setLoading(false); // Stop loading in case of error
-            if(error.response.status){
-                toast.error(error.response.data.detail);
-            } 
+            // if(error.response.status){
+            //     toast.error(error.response.data.detail);
+            // } 
         })
       }
+
+/**************************************************************************
+ * ************** Start -Digital ID Verifiyed Payment Api call *************
+ * ***********************************************************************/
+  const handleVerifiedPaymentDigitalId =(event) =>{
+    event.preventDefault();
+    setLoading(true); // Set loading before sending API request
+      axios.post(API.BASE_URL + 'digital-verification/', {
+       code: '3WU9IL',
+      }, {
+          headers: {
+            "Authorization" : `Bearer ${token}`,
+          },
+        
+      })
+      .then(function(response) {
+          console.log(response);
+          if (response.status)
+          // setStep(step+1) //next step call
+          setData(response.data);
+          setLoading(false); // Stop loading 
+
+      })
+      .catch(function(error, message) {
+          console.log(error.response)
+          setLoading(false); // Stop loading in case of error
+          if(error.response.data.status){
+              // toast.error(error.response.data.message);
+          } 
+          console.log(error, "klnklnklnknnnnnnnnnnnn");   
+      })
+  }
+
+
+
     
-
-
-
-
-
-
-
-
-
  // Start design state
     const {useState} = React;
     const [step,setStep] = useState(0);
@@ -421,6 +478,11 @@ console.log(courses,"coursescourses");
           return (
           <Step4 /> );
       }
+      else if(step==4){
+      
+        return (
+        <Step5 /> );
+    }
       }
 
 
@@ -641,7 +703,8 @@ console.log(courses,"coursescourses");
           <button
            className="form-button"
           //  onChange={() => setShows(!shows)}
-            onClick={handleAmountDelivery}>
+            // onClick={handleAmountDelivery}>
+            onClick={()=>{setStep(step+1)}}>
               Continue
               {loading ? <>
                 <div class="loader-overly"> 
@@ -906,6 +969,7 @@ console.log(courses,"coursescourses");
                </Table>
         </Modal.Body>
         <Modal.Footer>
+          
         <Button variant="secondary" onClick={handleClose}>
             Go back to Edit
           </Button>
@@ -933,9 +997,9 @@ console.log(courses,"coursescourses");
     <section>
       <div class="progressBar">
     <div class="progress">
-    <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+    {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
+      {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
     </div>
   </div>
   <div className="form_body">
@@ -1052,10 +1116,10 @@ console.log(courses,"coursescourses");
       <section>
         <div class="progressBar">
       <div class="progress">
-      <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-        <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
+      {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
+      {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
+        {/* <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span> */}
       </div>
     </div>
     <div className="form_body">
@@ -1193,16 +1257,18 @@ console.log(courses,"coursescourses");
           <button className="start-form-button">Cancel</button>
         </div>
         <div className="col-md-10 new_buttons">
-          {/* <button
-           className="form-button"
          
-            >
-              Continue
-          
-              </button> */}
-             
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          <div id="digitalid-verify"></div>
+          { verificationValue == false ? (
+             <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>
+
+          ):(
+            <div id="digitalid-verify"></div>
+          )
+          }
+         
+          
+         
 
         </div>
       </div>
@@ -1219,6 +1285,49 @@ console.log(courses,"coursescourses");
       </>
       );
       }
+
+      const Step5 = () =>{
+    
+        return (
+        <>
+         {  
+              verification_otp || token != undefined || '' ? (
+        <section>
+          <div class="progressBar">
+        <div class="progress">
+        {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+        <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
+          {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
+        </div>
+      </div>
+      <div className="form_body">
+          <div className="header">
+            <h1>Verifiyed Payment</h1>
+          </div>
+        
+          <div class="row">
+            {/* <div className="col-md-4">
+              <button className="start-form-button">Cancel</button>
+            </div> */}
+            <div className="col-md-8">
+              <button className="form-button" onClick={handleVerifiedPaymentDigitalId}>Continue</button>
+              <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+            </div>
+          </div>
+        </div>
+      </section> 
+      
+      ) : (
+        <>
+        
+        </>
+    )
+    } 
+        </>
+        );
+        }
+
+      
     
     return (
     

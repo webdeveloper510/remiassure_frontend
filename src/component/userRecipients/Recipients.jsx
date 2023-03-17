@@ -5,7 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
-
+import MultiStepProgressBar from "./MultiStepProgressBar";
 
 const Recipients =() =>{
 
@@ -145,13 +145,7 @@ const Recipients =() =>{
                                         <Accordion.Header>Completed</Accordion.Header>
                                         <Accordion.Body>
                                         
-                                        <div class="progressBar">
-                                    <div class="progress">
-                                    <span class="progress-bar bg-success progress-bar-striped payment-step1">Payment Initiated</span>
-                                    <span class="progress-bar bg-success progress-bar-striped payment-step2">Payment processing</span>
-                                    <span class="progress-bar bg-success progress-bar-striped payment-step3">Completed</span>
-                                    </div>
-                                    </div>
+                                        <MultiStepProgressBar />
                                                        
                                                     
                                         </Accordion.Body>

@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                 // localStorage.setItem("token_forgot_url", `http://localhost:3000/resetpassword/${token_forgot}`);
                 // navigate(`/resetpassword/${token_forgot}`);
                 // window.location.reload(false);
-
+               navigate('/resetpasswords')
                 notify();
             })
             .catch(function(error) {

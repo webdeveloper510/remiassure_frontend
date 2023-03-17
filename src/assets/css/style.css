@@ -1,3 +1,9 @@
+/**
+* Template Name: Moderna - v4.11.0
+* Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
 
 /*--------------------------------------------------------------
 # General
@@ -2294,13 +2300,9 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 
 
     .profile_banner {
-      /* background-image: url(/assets/img/about/about_banner.png); */
-      min-height: 670px; 
-      height: 670px;
+
       width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+
     position: relative;
     }
     .profile_banner:before {
@@ -2355,8 +2357,35 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
       color: rgb(20, 34, 224);
   }
 
-
-
+  button.profile-form-button {
+    height: 48px;
+    background: #191970;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 16px;
+    margin: 20px auto;
+    width: 38%;
+    float: right;
+    margin-left: 12px;
+    width: 150px;
+}
+section.profile-page {
+  border: 1px solid rgb(217, 224, 232);
+  margin-top: 100px;
+  padding-top: 40px;
+}
+.profile-page h1{
+  font-family: 'Montserrat' !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 70px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #6414E9;
+}
 /*--------------------------------------------------------------
 # Forgot
 --------------------------------------------------------------*/
@@ -3423,10 +3452,99 @@ table.table_user_recipients td {
   font-size: 14px;
   text-align: center;
 }
+table.table_user_recipients th:last-child {
+  width: 360px;
+}
 table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
+}
+table.table_user_recipients .accordion h4 {
+  font-family: 'Montserrat' !important;
+  font-size: 14px;
 }
 
 
+.payment-step1 ,.payment-step2 , .payment-step3  {
+  background-color: green !important;
+  width: 33.333%;
+  color: green;
+  position:relative;
+  overflow: inherit;
+  font-size: 0px;
+}
+.payment-step1:after  {
+  position: absolute;
+  content: "Initiated";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.payment-step1:before , .payment-step2:before , .payment-step3:before  {
+  width: 15px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid green;
+  position: absolute;
+  content: "";
+  top: -7px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 0;
+}
+
+.payment-step2:after  {
+  position: absolute;
+  content: "Processing";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.payment-step3:after  {
+  position: absolute;
+  content: "Completed";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.table_user_recipients .accordion-body {
+  margin-top: 14px;
+}
+.table_user_recipients .progressBar {
+  margin-bottom: 0;
+}
 section.top_sections{
     z-index: 99999;
     position: relative;
@@ -3494,6 +3612,7 @@ p.get-text {
   position: relative;
   font-size: 13px;
   padding: 2px 10px;
+  font-weight:600;
 }
 
 p.recived-text {
@@ -3921,13 +4040,30 @@ select.form-select.rate_input.form-control.mb-3.home-select-method {
   border-radius: 13px;
 }
 h1.recipients_lists {
+  font-family: 'Montserrat' !important;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 70px;
   text-align: center;
+  text-transform: capitalize;
+  color: #6414E9;
 }
 #footer ul li a.active {
   color: #fff !important;
 }
 div#digitalid-verify button:nth-child(1) {
   display: none !important;
+}
+table.table_user_recipients .accordion button {
+  padding: 8px;
+  font-family: 'Montserrat' !important;
+  font-size: 14px;
+}
+section.user_recipients_section {
+  border: 1px solid rgb(217, 224, 232);
+  margin-top: 100px;
+  padding-top: 40px;
 }
 row.social_links_change p.share_content {
   margin-top: 80px;
@@ -3943,3 +4079,7 @@ row.social_links_change p.share_content {
 .new_buttonss button.start-form-button {
   margin-top: 0px;
 }
+.row.social_links_change {
+  margin-top: 100px;
+}
+

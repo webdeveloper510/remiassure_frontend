@@ -344,8 +344,8 @@ const Home = () => {
 
 
    // Start--Exchange money Api call 
-   const myExchangeTotalAmount =(value) =>{
-    console.log("====================>",value)
+   const myExchangeTotalAmount =(event) =>{
+    event.preventDefault();
     // alert("hii")
     // event.preventDefault();
     setLoading(true); // Set loading before sending API request
@@ -463,19 +463,23 @@ const Home = () => {
                                 value={amount}
                                 // onChange={HandleAmount}
                                 placeholder="Please Enter Amount"
-                                 onChange={(e) =>{myExchangeTotalAmount(e.target.value); setAmount(e.target.value)}}
+                                //  onChange={(e) =>{myExchangeTotalAmount(e.target.value); setAmount(e.target.value)}}
+                                onChange={(e)=> {setAmount(e.target.value)}}
+                                onBlur={myExchangeTotalAmount}
 
                                 >
                                     <Form.Control aria-label="Text input with dropdown button" />
                                 </InputGroup>
                                 <select
-                                 className="form-select form-control mb-3 home-select-method"
+                                 className="form-select mb-3 home-select-method"
                                   aria-label="Select a reason"
                                   value={from}
                                   // value={value}
                                   // onChange={HandleFrom}
                                   // onClick={myExchangeTotalAmount}
-                                  onChange={(e)=> {myExchangeTotalAmount(e.target.value);setFrom(e.target.value)}}
+                                  // onChange={(e)=> {myExchangeTotalAmount(e.target.value);setFrom(e.target.value)}}
+                                  onChange={(e)=> {setFrom(e.target.value)}}
+                                  onBlurCapture={myExchangeTotalAmount}
                                   >         
                                   {/* <option className="option-custom" value="">Select</option> */}
                                   <option className="option-custom" value="USD" selected="selected">USD</option>
@@ -517,7 +521,9 @@ const Home = () => {
                                 // value={valuess}
                                 //  onChange={HandleTo}
                                 //  onClick={myExchangeTotalAmount}
-                                 onChange={(e)=> {myExchangeTotalAmount(e.target.value);setTo(e.target.value)}}
+                                //  onChange={(e)=> {myExchangeTotalAmount(e.target.value);setTo(e.target.value)}}
+                                onChange={(e)=> {setTo(e.target.value)}}
+                                onBlurCapture={myExchangeTotalAmount}
 
                                  >
                                        {/* <option value="">Select</option> */}

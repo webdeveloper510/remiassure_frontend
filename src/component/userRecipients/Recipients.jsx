@@ -1,7 +1,7 @@
 import React, { useState, useContext , useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
-
+import Accordion from 'react-bootstrap/Accordion';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
@@ -64,7 +64,7 @@ const Recipients =() =>{
     return(
         <>
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
-       {  
+       {/* {  
           verification_otp || token != undefined || '' ? (
             <section className="user_recipients_section">
                 <div class="container">
@@ -81,15 +81,16 @@ const Recipients =() =>{
                 
                 </>
             )
-            }
+            } */}
 
 
     {  
         verification_otp || token != undefined || '' ? (
 
-    <section className="user_recipients_section">
+    <section>
         <div class="container">
             <div className="row">
+            <section className="user_recipients_section">
             <h1 className="recipients_lists">Recipients Lists</h1>
               
 
@@ -116,6 +117,7 @@ const Recipients =() =>{
                             <th>Destination</th>
                             <th>Detail Link</th>
                             <th>Transfer Now Link</th>
+                            <th>Transfer Progress</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -137,7 +139,26 @@ const Recipients =() =>{
                                     <td>{res.destination}</td>
                                     <td>{res.detail_link}</td>
                                     <td>{res.transfer_now_link}</td>
-                                
+                                    <td>
+                                    <Accordion>
+                                    <Accordion.Item eventKey="0">
+                                        <Accordion.Header>Completed</Accordion.Header>
+                                        <Accordion.Body>
+                                        
+                                        <div class="progressBar">
+                                    <div class="progress">
+                                    <span class="progress-bar bg-success progress-bar-striped payment-step1">Payment Initiated</span>
+                                    <span class="progress-bar bg-success progress-bar-striped payment-step2">Payment processing</span>
+                                    <span class="progress-bar bg-success progress-bar-striped payment-step3">Completed</span>
+                                    </div>
+                                    </div>
+                                                       
+                                                    
+                                        </Accordion.Body>
+                                    </Accordion.Item> 
+                                    </Accordion>
+
+                                    </td>
                               </tr>
                               
                                     
@@ -147,6 +168,7 @@ const Recipients =() =>{
                     </tbody>
                     </Table> 
                </div>
+               </section>
             </div>
         </div>
    </section>

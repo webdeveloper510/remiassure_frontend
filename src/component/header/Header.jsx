@@ -31,8 +31,8 @@ const Header =() => {
   const token = localStorage.getItem("token");
   console.log("TOKEN", token);
 
-  const verification_otp = localStorage.getItem("verification_otp");
-  console.log("Verification Message", verification_otp)
+  // const verification_otp = localStorage.getItem("verification_otp");
+  // console.log("Verification Message", verification_otp)
 
   // const token_forgot = localStorage.getItem("token_forgot");
   //   console.log("TOken_Forgot_password", token_forgot);
@@ -47,8 +47,8 @@ const Header =() => {
       event.preventDefault();
       localStorage.clear();
       navigate('/login')
-      window.location.reload(false);
-      window.location.reload();
+      // window.location.reload(false);
+      // window.location.reload();
       // notify();
       
   }
@@ -85,7 +85,7 @@ const Header =() => {
 
                     {/* <li> */}
                     {
-                      verification_otp || token != undefined || '' ? (
+                      token != undefined || '' ? (
 
                         <li class="dropdown">
                           <a href="#">
@@ -95,11 +95,12 @@ const Header =() => {
                           </a>
                         <ul>
                         
-                        <li> <NavLink to="/user_recipients">Recipients</NavLink></li>
-                          <li> <NavLink to="/profile">Profile</NavLink></li>
-                          <li> <NavLink to="/sendMoney">SendMoney</NavLink></li>
+                        {/* <li> <NavLink to="/user_recipients">Recipients</NavLink></li> */}
+                        <li> <NavLink to="/userdashboard">UserDashboard</NavLink></li>
+                          {/* <li> <NavLink to="/profile">Profile</NavLink></li> */}
+                          {/* <li> <NavLink to="/sendMoney">SendMoney</NavLink></li> */}
                           {/* <li><NavLink to="/transaction">Transaction</NavLink></li> */}
-                          <li><NavLink to="#">Refer</NavLink></li>
+                          {/* <li><NavLink to="#">Refer</NavLink></li> */}
                           <li><NavLink onClick={handleLogout}>Logout</NavLink></li>
                         </ul>
                       </li>

@@ -72,7 +72,7 @@ const Login = () => {
             setLoading(false); // Stop loading
             if (response.status)
                 notify();
-            navigate('/sendMoney');   
+            navigate('/userdashboard');   
                 
         })
 

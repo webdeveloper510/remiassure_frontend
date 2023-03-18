@@ -75,6 +75,7 @@ h6,
   z-index: 9999999;
   transition: all 0.5s;
   background: #fff;
+  border: 1px solid rgb(217, 224, 232);
 }
 
 /* #header.header-transparent {
@@ -1364,11 +1365,14 @@ color: #191970;
 }
 .card-support{
   width: 1180px;
-  height: 300px;
+  /* height: 300px; */
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.16);
   border-radius: 12px;
   top: 40px;
+}
+.help_banner h5.Support-heading {
+  margin-top: 20px;
 }
 .Support-heading{
 text-align: center;
@@ -1488,7 +1492,8 @@ div#align_list {
 }
 .support-vl02{
   border-left: 6px solid  #6414E9;
-  height: 46px;
+  margin-bottom: 30px;
+  /* height: 46px; */
 }
 .vl-support{
 font-family: 'Montserrat';
@@ -2464,7 +2469,7 @@ span.progress-step {
 
 
 .table_user_recipients{
-  margin-top: 2%;
+  margin-top: 30px;
 }
 
 
@@ -2550,6 +2555,7 @@ button.continue_button {
 } */
 section.why-us.section-bgba.user_dashboard_banner {
   padding-top: 0;
+  margin-top:90px;
 }
 .money_exchange_row {
   width: 100%;
@@ -2690,12 +2696,13 @@ select.form-select option {
   padding-right: 52px !important;
   margin-left: 0;
 }
-.step1 ,.step2 , .step3 , .step4 {
+.step1 ,.step2 , .step3 , .step4, .step5  {
   background-color: #6414E9 !important;
-  width: 25%;
+  width: 20%;
   color: #6414E9;
   position:relative;
   overflow: inherit;
+  font-size:0px;
 }
 .step1:after  {
   position: absolute;
@@ -2716,7 +2723,7 @@ select.form-select option {
   border-radius: 100%;
   line-height: 35px;
 }
-.step1:before , .step2:before , .step3:before  , .step4:before {
+.step1:before , .step2:before , .step3:before  , .step4:before , .step5:before {
   width: 15px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
@@ -2771,6 +2778,25 @@ select.form-select option {
 .step4:after  {
   position: absolute;
   content: "4";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: radial-gradient(100% 972.64% at 100% 0.04%, #6414E9 0%, #191970 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected;; */;
+  border-radius: 100%;
+  line-height: 35px;
+}
+.step5:after  {
+  position: absolute;
+  content: "5";
   bottom: 0;
   color: #fff;
   display: block;
@@ -3418,7 +3444,6 @@ img.vission_image {
 
 li.dropdown ul {
   border: 1px solid #6414e947;
-  width: 129px;
   padding: 0px !important;
 }
 
@@ -3459,9 +3484,7 @@ table.table_user_recipients td {
   font-size: 14px;
   text-align: center;
 }
-table.table_user_recipients th:last-child {
-  width: 360px;
-}
+
 table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
 }
 table.table_user_recipients .accordion h4 {
@@ -4095,3 +4118,265 @@ row.social_links_change p.share_content {
 .row.social_links_change {
   margin-top: 100px;
 }
+
+
+/******************** userdahsboard css  start **************/
+
+.margin-set{
+  margin-top:180px;
+}
+.nav-pills .nav-link.active {
+  background: #190079;
+  border-radius: 10px;
+  color: #fff !important;
+}
+.tabs-page .nav-pills .nav-item a {
+  padding: 10px;
+  color: #000;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.tabs-page .nav-pills .nav-item a:hover {
+  color:#190079;
+}
+
+.tabs-page {
+  margin-bottom: 30px;
+}
+.tabs-page .nav-item:first-child {
+  margin-top: 0;
+}
+.tabs-page .nav-item {
+  position: relative;
+  margin-bottom: 15px;
+
+}
+/* .tabs-page .nav-item:after {
+  position: absolute;
+  content: "";
+  border-left: 1px dashed;
+  bottom: -30px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  width: 0px;
+}
+.tabs-page .nav-item:last-child:after{
+  display:none;
+}
+.tabs-page {
+  margin-bottom: 30px;
+} */
+.tabs-page .accordion-item {
+  margin-bottom: 18px;
+  border-radius: 20px;
+  border: 1px solid rgb(217, 224, 232);
+}
+.my-auto.transac-text span {
+  color: #000 !important;
+  float: left;
+  width: 100%;
+  text-align: right;
+  font-size: 14px !important;
+  padding-bottom: 0px !important;
+}
+h2.accordion-header {
+  font-family: 'Montserrat' !important;
+}
+.trsnsfer-process h4 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px;
+  color: #6414E9;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.tabs-page .tab-content {
+  margin-left: 80px;
+}
+
+.tabs-page .card-text {
+  width: 100%;
+}
+.trsnsfer-process span {
+  width: 100%;
+  float: left;
+  font-size: 14px !important;
+}
+.my-auto.transac-text {
+  margin-right: 20px;
+}
+.tabs-page .accordion-body h4 {
+  font-size: 15px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+}
+.tabs-page h1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 25px;
+  text-align: center;
+  color: #6414E9;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+.transaction-progress {
+  margin: 0 auto;
+  border: 1px solid rgb(217, 224, 232);
+  border-radius: 12px;
+  padding: 38px 36px;
+}
+
+.user-sendmoney section.why-us.section-bgba.user_dashboard_banner {
+  margin-top: 0px;
+}
+
+.user-sendmoney .container , .tabs-recipent .container {
+  width: 100%;
+  max-width: inherit;
+}
+.tabs-recipent section.user_recipients_section {
+  margin: 0 auto;
+  border: none;
+}
+.user-sendmoney .progressBar {
+  DISPLAY: NONE;
+}
+.user-sendmoney section , .tabs-recipent section{
+  padding: 0;
+}
+.user-sendmoney .form_body {
+  box-shadow: none;
+}
+
+.user-sendmoney section.profile-page {
+  margin: 0;
+  border-radius: 12px;
+  padding: 38px 36px;
+}
+.transaction-progress .accordion {
+  margin-top: 30px;
+}
+.form-control:disabled {
+  background-color: #fbfbfb !important;
+  opacity: 1;
+}
+.tabs-page .nav-pills .nav-item a svg {
+  margin-right: 10px;
+}
+.user-sendmoney section.user_recipients_section {
+  border: none;
+  margin-top: 0;
+  margin: 0 auto;
+  padding: 38px 36px;
+}
+.user-sendmoney .row.custom-row {
+  margin: 0;
+}
+.add-recipent-section {
+  text-align: center;
+}
+.add-recipent-section img {
+  width: 50%;
+  margin-bottom: 30px;
+}
+.add-recipent-section {
+  text-align: center;
+  float: left;
+  width: 100%;
+  padding: 38px 36px;
+  display: block;
+}
+button.add-recepient.form-button {
+  width: 100%;
+  
+}
+.removerecepient ,.remove-add-recipent-section {
+  display: none;
+}
+.showrecepient {
+  display: block;
+  float: left;
+  width: 100%;
+}
+.tabs-recipent {
+  float: left;
+    width: 100%;
+  border-radius: 12px;
+  /* padding: 38px 36px; */
+  border: 1px solid rgb(217, 224, 232);
+}
+.add-recipent-section ul {
+  width: 70%;
+    margin: 30px auto;
+  padding: 0;
+}
+
+.add-recipent-section ul li {
+  border: 1px solid #ccc;
+  list-style: none;
+  margin: 16px 0px;
+  text-align: left;
+  display: block;
+}
+.add-recipent-section ul li a {
+  padding: 10px;
+  width: 100%;
+  color: midnightblue;
+  display: block;
+  font-weight: 500;
+}
+.add-recipent-section ul li a svg {
+  float: right;
+  background: #cfcfcf;
+  fill: #fff;
+  height: 24px;
+  width: 24px;
+  padding: 5px;
+  border-radius: 100%;
+}
+.add-rec {
+  width: 70%;
+  margin: 30px auto;
+}
+.add-rec button {
+  margin: 0;
+}
+button.start-form-button.full-width {
+  width: 100%;
+  margin: 0 !important;
+}
+.tabs-recipent ul li button {
+  margin: 0 0px 10px;
+  width: 100px;
+}
+.tabs-recipent ul li {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-bottom: 1px solid rgb(217, 224, 232);
+}
+.tabs-recipent ul li button {
+    margin: 0 0px 10px;
+    width: 100px;
+}
+.add-rec-new {
+  width: 70%;
+  margin: 0 auto;
+}
+.add-rec-new button {
+  width: 100%;
+  margin: 0 auto;
+  float: inherit;
+}
+.tabs-recipent section.showrecepient {
+  padding: 38px 36px;
+}
+/******************** userdahsboard css  end **************/

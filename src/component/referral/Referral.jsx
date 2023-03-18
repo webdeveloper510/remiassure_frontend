@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -332,7 +333,9 @@ console.log("Verification Message", verification_otp)
                         </div>
 
                         <div className="view-button">
-                            <button className="btn btn find_button">Find out more</button>
+                            <NavLink to="/aboutus">
+                            <button className="btn btn find_button">Find out more </button>
+                            </NavLink>
                         </div>
                         <div className="terms_content">
                           <p>*T&Cs apply. <span style={{ color: 'rgba(100, 20, 233, 1)' }}> See terms and conditions</span> for details*</p>

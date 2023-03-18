@@ -12,12 +12,8 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
 
-    const token = localStorage.getItem("token");
-    console.log("TOKEN", token);
-
     const [show, setShow] = React.useState(false);
     const [loading, setLoading] = useState(false);
-
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,6 +24,12 @@ const Signup = () => {
     const [mobile, setMobile] = useState('');
     const search = useLocation()
     const [checkBoxValue, setCheckBoxvalue] = useState(false);
+
+
+
+   //Token get 
+    const token = localStorage.getItem("token");
+    console.log("TOKEN", token);
 
     const navigate = useNavigate();
 
@@ -56,14 +58,11 @@ const Signup = () => {
     // else{
     //     setCheckBoxvalue(false);
     //     }
-    // }
-  
-        
+    // }    
     const handleReferral_code = (e) =>{
          setrReferral_code(e.target.value);
        
     }
-    
 
     const handlePromo_marketing = (e) => {
         const { checked } = e.target;
@@ -76,14 +75,39 @@ const Signup = () => {
         }));
       };
 
-      let keyword;
+/**************************************************************************
+ * ************** Store data in local Storage  **********************************
+ * ***********************************************************************/
 
-    //   if(switch==!checked)
-    //   {
-        
-    //   } else{
-        
-    //   }
+//store localstorage
+// localStorage.setItem("bank_name", (bank_name));
+localStorage.setItem("Location",(location));
+localStorage.setItem("Password",(password));
+localStorage.setItem("Email",(email));
+localStorage.setItem("Mobile",(mobile));
+localStorage.setItem("Referral_code",(referral_code));
+
+//Sore in Array of data
+// function handleDataStore(){
+
+//   var courses =JSON.parse(localStorage.getItem('courses') || "[]")
+//   var course ={
+//     Location:location,
+//     Password:password,
+//     Email: email,
+//     Mobile: mobile,
+//     Referral_code:referral_code, 
+//   }
+//   courses.push(course)
+
+//   localStorage.setItem('courses', JSON.stringify(courses))
+// }
+
+
+
+/**************************************************************************
+ * ************** Start -Signup Api call **********************************
+ * ***********************************************************************/
   
     const handleSignupApi = (event) => {
         event.preventDefault();
@@ -122,31 +146,9 @@ const Signup = () => {
     }
     
 
-//Start get value Url
-    // useEffect(()=> {
-
-        // const queryParams = new URLSearchParams(window.location.search);
-        // const term = queryParams.get('ref');
-        // console.log(term, "termtermtermterm");
-        // alert("hii")
-
-        // const search1 = search.search;
-        // const term = new URLSearchParams(search).get('ref');
-        // console.log(term, "termterm")
-        // var  url =window.location.search
-        // console.log(url, "urlurlurlurlurlurlurlurl")
-        // const queryParams = new URLSearchParams(url)
-        // const term = queryParams.get("ref");
-        // console.log(term)
-        // if(true){
-        //     // setrReferral_code(term)
-        //     setShow(true)
-        //     // console.log(referral_code, "referral_codereferral_code")
-          
-        // }
-       
-    // },[])
-    
+/**************************************************************************
+ * ************** Start-- get value Url **********************************
+ * ***********************************************************************/
 
     useEffect(() => {
          const search1 = search.search;
@@ -164,41 +166,13 @@ const Signup = () => {
 
 //End get value Urls
 
-    let checked;
 
-    //Start Referal code Api
-    //
-    // const myReferalCode =(value)=> {   
-    //     // useEffect(() => {
-    //         // setrReferral_code(checked==true);
-    //         axios.post(API.BASE_URL + 'referral-link/',{}, {
-    //             headers: {
-    //                 "Authorization" : `Bearer ${token}`,
-    //             }
-    //         })
-    //         .then(function(response) {
-    //             console.log(response);
-    //             localStorage.setItem("referral_link",response.data.referral_link);
-    //                 // notify();
-    //                 // navigate('/verification');   
-    //                 // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
-    //         })
-    //         .catch(function(error, message) {
-    //             console.log(error.response)
-    //             if(error.response.data.status){
-    //                 toast.error(error.response.data.message);
-    //             } 
-    //             console.log(error, "klnklnklnknnnnnnnnnnnn");   
-    //         })
+//Multiple Api call function 
+  function handleSignupData() {
+    // handleSignupApi();
+    // handleDataStore()
 
-    //     // }, [true])
-    // }
-    //End Referal code ApI
-
-
- 
-
-
+  }
 
 
 

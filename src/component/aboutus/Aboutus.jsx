@@ -106,7 +106,7 @@ const Aboutus = () => {
       const ArrayIconsIttems = whydata.map((icon)=>{
           return(
               
-                  <li key={icon.id}>x
+                  <li key={icon.id}>
                   <div className="circle-icons">
                       <img src={icon.icon_src} alt="circle-image" />
                       </div>

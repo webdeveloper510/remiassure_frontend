@@ -29,6 +29,7 @@ const SendMoney = () => {
 /**************************************************************************
  * ************** Start -Recipient Bank Details************************************
  * ***********************************************************************/
+const [summaryList, setSummaryList] = React.useState(false);
 
 // const [bank_data, setBank_data] = React.useState([]);
 
@@ -41,7 +42,8 @@ const SendMoney = () => {
 
 // start Amount value 
 const [amountValue, setAmountValue] = React.useState({
-  amount: '',
+  amountInput: '',
+  // summaryList: false,
 })
 
 // Start IS Digital Id get State Data 
@@ -204,6 +206,11 @@ function someFunc() {
   // handleDataStore();
 }
 
+function handleRecipientSummary() {
+  setStep(step+1);
+  setSummaryList(!summaryList);
+}
+
 
 //Get item localstorage
 const courses = localStorage.getItem('courses');
@@ -304,7 +311,7 @@ console.log(courses,"coursescourses");
         axios.post(API.BASE_URL + 'exchange-rate/', {
           from: from,
           to: to,
-          amount: amount 
+          amount: amountValue.amountInput
         }, {
             headers: {
                 // 'Content-Type': 'application/json',
@@ -334,13 +341,14 @@ console.log(courses,"coursescourses");
 /**************************************************************************
  * ************** Start  Total Amount Api call  ******************************
  * ***********************************************************************/
-    const myTotalAmount =(value)=> {   
-      console.log("====================>",amount)
+    const myTotalAmount =(event)=> {   
+      event.preventDefault();
+      // console.log("====================>",amount)
      setLoading(true); // Set loading before sending API request
       axios.post(API.BASE_URL + 'exchange-rate/', {
         from: from,
         to: to,
-        amount: value
+        amount: amountValue.amountInput
      
       }, {
           headers: {
@@ -388,7 +396,7 @@ console.log(courses,"coursescourses");
             // setStep(step+1)
             setverificationValue(response.data.verification_status);
             console.log(verificationValue)
-            // setStep(step+1)
+            setStep(step+1)
             setLoading(false); // Stop loading
             
             // if (response.data.verification_status == false){
@@ -441,9 +449,7 @@ console.log(courses,"coursescourses");
       })
   }
 
-
-
-    
+ 
  // Start design state
     const {useState} = React;
     const [step,setStep] = useState(0);
@@ -492,8 +498,6 @@ console.log(courses,"coursescourses");
     return (
     <>
     
-    {  
-          verification_otp || token != undefined || '' ? (
    <section>
       <div class="progressBar">
         <div class="progress">
@@ -597,11 +601,13 @@ console.log(courses,"coursescourses");
 
               <input 
               type="text"
-              autoFocus="autofocus"
+              // autoFocus="autofocus"
               className='rate_input form-control'
-              value={amount}
-              onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
-              name="amount"
+              // onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
+              name="amountInput"
+              defaultValue={amountValue.amountInput}
+              onChange={(e)=>handleAmountCahngeValue(e,'amountInput')}
+              onBlurCapture={myTotalAmount}
               // onkeyup={(text)=> myTotalAmount(text)}
               // onChange={e => onInputChangeDealType(e)}
                />
@@ -703,29 +709,26 @@ console.log(courses,"coursescourses");
           <button
            className="form-button"
           //  onChange={() => setShows(!shows)}
-            // onClick={handleAmountDelivery}>
-            onClick={()=>{setStep(step+1)}}>
+            onClick={handleAmountDelivery}
+            // onClick={()=>{setStep(step+1)}}
+            >
               Continue
-              {loading ? <>
+              {/* {loading ? <>
                 <div class="loader-overly"> 
                     <div class="loader" > 
                                                   
                       </div>
                                                   
                  </div>
-           </> : <></>}
+           </> : <></>} */}
           </button>
           </div>
         </div>
       </div>
       </form>
       </section>
-   ) : (
-    <>
-    
-    </>
-)
-}
+   
+
 
     </>
     );
@@ -735,7 +738,7 @@ console.log(courses,"coursescourses");
     const Step2 = () =>{
     return (
     <>
-     {  
+     
           
     <section>
        <div class="progressBar">
@@ -973,7 +976,9 @@ console.log(courses,"coursescourses");
         <Button variant="secondary" onClick={handleClose}>
             Go back to Edit
           </Button>
-          <Button variant="primary" onClick={()=>{setStep(step+1)}}>Continue</Button>
+          <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+          {/* <Button variant="primary" onClick={handleRecipientSummary()}>Continue</Button> */}
+          {/* onClick={() => setShow(!show)} */}
            {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
         
         </Modal.Footer>
@@ -982,7 +987,7 @@ console.log(courses,"coursescourses");
       </section>
 
    
-  }
+  
     </>
     );
     }
@@ -992,14 +997,13 @@ console.log(courses,"coursescourses");
     
     return (
     <>
-     {  
-          verification_otp || token != undefined || '' ? (
+    
     <section>
       <div class="progressBar">
     <div class="progress">
-    {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
-      {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
+    <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
     </div>
   </div>
   <div className="form_body">
@@ -1063,12 +1067,8 @@ console.log(courses,"coursescourses");
     </div>
   </section> 
   
-  ) : (
-    <>
-    
-    </>
-)
-} 
+ 
+
     </>
     );
     }
@@ -1111,15 +1111,14 @@ console.log(courses,"coursescourses");
       return (
       <>
 
-{  
-          verification_otp || token != undefined || '' ? (
+
       <section>
         <div class="progressBar">
       <div class="progress">
-      {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
-      {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
-        {/* <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span> */}
+      <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+        <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
       </div>
     </div>
     <div className="form_body">
@@ -1192,7 +1191,8 @@ console.log(courses,"coursescourses");
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Mobile</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' /> 
+    
      </div>
    </div>
  </div>
@@ -1275,12 +1275,7 @@ console.log(courses,"coursescourses");
     </div>
     </section>
 
-) : (
-  <>
-  
-  </>
-)
-}
+
           
       </>
       );
@@ -1290,14 +1285,15 @@ console.log(courses,"coursescourses");
     
         return (
         <>
-         {  
-              verification_otp || token != undefined || '' ? (
+        
         <section>
           <div class="progressBar">
         <div class="progress">
-        {/* <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-        <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span> */}
-          {/* <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span> */}
+        <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+        <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+          <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+          <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
+          <span class="progress-bar bg-success progress-bar-striped step5">{step_form}</span>
         </div>
       </div>
       <div className="form_body">
@@ -1309,7 +1305,7 @@ console.log(courses,"coursescourses");
             {/* <div className="col-md-4">
               <button className="start-form-button">Cancel</button>
             </div> */}
-            <div className="col-md-8">
+            <div className="col-md-12">
               <button className="form-button" onClick={handleVerifiedPaymentDigitalId}>Continue</button>
               <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
             </div>
@@ -1317,12 +1313,7 @@ console.log(courses,"coursescourses");
         </div>
       </section> 
       
-      ) : (
-        <>
-        
-        </>
-    )
-    } 
+    
         </>
         );
         }
@@ -1333,9 +1324,8 @@ console.log(courses,"coursescourses");
     
     <>
 
-{  
-         (
-    <section>
+
+  
     
         <div class="form">
    <div className="card">
@@ -1345,8 +1335,9 @@ console.log(courses,"coursescourses");
            <div className="col-md-8">{
              <Form />}
            </div>
-           {shows &&
+          
            <div className="col-md-4">
+           {shows &&
              <div className="summary">
                <h5>Summary</h5>
                <Table>
@@ -1366,9 +1357,45 @@ console.log(courses,"coursescourses");
                  </tbody>
                </Table>
              </div>
+            };
+
+
+        {  
+              show == true || firstName != undefined  ? (
+       
+           <>
+           </>
+          
+            
+          ):(
+           <>
+            <div className="summary">
+               <h5>Recipient details Summary</h5>
+               <Table>
+                 <tbody>
+                   <tr>
+                     <th>Amount</th>
+                     <td>{firstName}</td>
+                   </tr>
+                   <tr>
+                     <th>Received Method</th>
+                     <td>{recivedMethod}</td>
+                   </tr>
+                   <tr>
+                     <th>Payout Partners</th>
+                     <td>{payOutPartner}</td>  
+                   </tr>
+                 </tbody>
+               </Table>
+             </div>
+           </>
+          )
+          
+          }
+
            </div>
 
-           }
+          
          </div>
        </div>
      </section>
@@ -1376,10 +1403,8 @@ console.log(courses,"coursescourses");
  </div>
 
 
- </section>
 
-) 
-}
+
     </>
     );
 }

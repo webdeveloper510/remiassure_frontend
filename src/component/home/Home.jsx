@@ -805,7 +805,7 @@ const Home = () => {
                     verification_otp || token != undefined || '' ? (
 
                     <div className="view-button">
-                      <NavLink to={"/sendMoney"}>
+                      <NavLink to={"/userdashboard"}>
                       <button className="btn btn view_button">View all</button>
                       </NavLink>
                     </div>

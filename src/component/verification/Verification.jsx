@@ -7,6 +7,7 @@ import { API } from "../../config/API";
 import axios from "axios";
 import CountryDropdown from 'country-dropdown-with-flags-for-react';  
 import { Navigate, useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -20,10 +21,14 @@ const Verification = () => {
     const [fivenumber, setFivenumber] = useState('');
     const [sixnumber, setSixnumber] = useState('');
     const [email_otp, setEmail_otp] = useState('');
+
     //loader state
     const [loading, setLoading] = useState(false);
 
+
+    //multiple store data in one variable
     const Allvalue = email_otp + firstnumber +secondnumber +thirednumber +fournumber  +fivenumber +sixnumber ;
+
 
     const handleVerificationFirst = (e) => {
        
@@ -61,8 +66,12 @@ const Verification = () => {
     // console.log("TOKEN", token);
 
      const navigate = useNavigate();
+     const notify = () => toast.success("Email Verified Successfully!");
+     
 
-    const notify = () => toast.success("Email Verified Successfully!");
+/**************************************************************************
+ * ************** Email Verification Api  **********************************
+ * ***********************************************************************/
 
     const handleEmailVerification = (event) =>{
             event.preventDefault();
@@ -155,11 +164,11 @@ const Verification = () => {
                                              />
                                         </Form.Group>
                                       <div class="col-md-12 align-center">
-
+                                        <NavLink to="/sendMoney">
                                         <button variant="primary" 
                                         type="submit"
                                          className="continue_button"
-                                         onClick={handleEmailVerification}
+                                        //  onClick={handleEmailVerification}
                                          >
                                             Continue
                                             {
@@ -171,6 +180,7 @@ const Verification = () => {
                                                 </>:<></>
                                             }
                                         </button>
+                                        </NavLink>
 
                                         </div>
                                     </form>

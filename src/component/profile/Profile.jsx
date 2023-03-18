@@ -1,4 +1,3 @@
-import { faL, faSlash, faUnsorted } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useContext, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,12 +11,25 @@ import axios from "axios";
 
 const Profile = () => {
     
+
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleClick = () => {
+    setIsDisabled(false);
+  };
+  const handleClickNew = () => {
+    setIsDisabled(true);
+  };
+
+
+
+
  // Start page show hide condtion page 
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
 
     const verification_otp = localStorage.getItem("verification_otp");
-    console.log("Verification Message", verification_otp)
+    //console.log("Verification Message", verification_otp)
 
 // Start page show hide condtion page
 
@@ -27,7 +39,7 @@ const Profile = () => {
 
     const name = localStorage.getItem("firstname");
     // alert(name)
-    console.log("firstname", name);
+    //console.log("firstname", name);
 
 
     const [First_name, setFirst_name] = useState('');
@@ -110,23 +122,25 @@ const Profile = () => {
       <div className="header">
         <h1>User Profile</h1>
       </div>
+
+<div className="update-profile">
  <div className="row each-row">
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">First Name</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control'  disabled={isDisabled} />
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Middle Name</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Last Name</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -134,19 +148,19 @@ const Profile = () => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Customer ID</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Date of birth</p>
-       <input type="date" className='rate_input form-control' />
+       <input type="date" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Gender</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
      </div>
    </div>
  </div>
@@ -154,13 +168,13 @@ const Profile = () => {
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Country of Birth</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">ID Type</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -168,13 +182,13 @@ const Profile = () => {
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Email</p>
-       <input type="email" className='rate_input form-control' />
+       <input type="email" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Mobile</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -183,19 +197,19 @@ const Profile = () => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Current Password</p>
-       <input type="password" className='rate_input form-control' />
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
-       <p className="get-text">New Password*</p>
-       <input type="password" className='rate_input form-control' />
+       <p className="get-text">New Password</p>
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
-       <p className="get-text">Confirm Password*</p>
-       <input type="password" className='rate_input form-control' />
+       <p className="get-text">Confirm Password</p>
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -204,19 +218,19 @@ const Profile = () => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Flat/Unit No.</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Building No./Name</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Street</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -224,19 +238,19 @@ const Profile = () => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Postcode</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">City/Town</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">State</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
  </div>
@@ -244,7 +258,7 @@ const Profile = () => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Country Code</p>
-       <input type="text" className='rate_input form-control' />
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
      </div>
    </div>
    <div className="col-md-4">
@@ -255,13 +269,16 @@ const Profile = () => {
      </div>
    </div>
  </div>
+
+ </div>
       <div class="row each-row">
         <div className="col-md-6">
           <button className="start-form-button">Cancel</button>
         </div>
         <div className="col-md-6">
-          <button className="profile-form-button">Edit</button>
-          <button className="profile-form-button">Save</button>
+        <button className="profile-form-button" onClick={handleClickNew} >Save</button>
+          <button className="profile-form-button" onClick={handleClick}>Edit</button>
+          
         </div>
       </div>
   

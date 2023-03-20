@@ -168,7 +168,7 @@ const Verification = () => {
                                         <button variant="primary" 
                                         type="submit"
                                          className="continue_button"
-                                        //  onClick={handleEmailVerification}
+                                         onClick={handleEmailVerification}
                                          >
                                             Continue
                                             {

@@ -40,7 +40,7 @@ const [summaryList, setSummaryList] = React.useState(false);
 // End -Recipient Bank Details
 
 
-// start Amount value 
+// start Amount value  state
 const [amountValue, setAmountValue] = React.useState({
   amountInput: '',
   // summaryList: false,

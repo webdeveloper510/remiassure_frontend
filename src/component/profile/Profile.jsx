@@ -1,7 +1,7 @@
-import { faL, faSlash, faUnsorted } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useContext, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
 
 import { toast } from "react-toastify";
@@ -11,12 +11,25 @@ import axios from "axios";
 
 const Profile = () => {
     
+
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleClick = () => {
+    setIsDisabled(false);
+  };
+  const handleClickNew = () => {
+    setIsDisabled(true);
+  };
+
+
+
+
  // Start page show hide condtion page 
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
 
     const verification_otp = localStorage.getItem("verification_otp");
-    console.log("Verification Message", verification_otp)
+    //console.log("Verification Message", verification_otp)
 
 // Start page show hide condtion page
 
@@ -26,7 +39,7 @@ const Profile = () => {
 
     const name = localStorage.getItem("firstname");
     // alert(name)
-    console.log("firstname", name);
+    //console.log("firstname", name);
 
 
     const [First_name, setFirst_name] = useState('');
@@ -100,95 +113,181 @@ const Profile = () => {
                 </div>
             </div> */}
 
-            <div className="col-lg-12">
-                {/* start-- card */}
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="card card-profile">
-                            <div className="card-body">
-                                <h5 className="profile-heading">User Profile</h5>
+            
 
-                                <div className="profile_login">
-                                    <form>
-                                        <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>First Name</Form.Label>
-                                            {/* <Form.Control type="text"
-                                                value={First_name}
-                                                onChange={handleFirstName}
-                                                placeholder="First Name"
-                                            /> */}       
-                                            {
-                                            name != undefined || '' ? (
-                                            
-                                                <Form.Control type="text"
-                                                value={First_name}
-                                                onChange={handleFirstName}
-                                            placeholder="First Name"
-                                            />
-                                            
-                                            ) : (
-                                            
-                                            
-                                                <Form.Control type="text"
-                                                value={First_name}
-                                                onChange={handleFirstName}
-                                                placeholder="First Name"
-                                            />
 
-                                            )
-                                        }
-                                     </Form.Group>
+     
+            <section class="profile-page">
+   
+      <div className="header">
+        <h1>User Profile</h1>
+      </div>
 
-                                        <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
-                                            <Form.Label>Last Name</Form.Label>
-                                            <Form.Control type="text"
-                                               value={Last_name}
-                                               onChange={handleLastName} 
-                                            placeholder="Last Name"
-                                             />
-                                        </Form.Group>
+<div className="update-profile">
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">First Name</p>
+       <input type="text" className='rate_input form-control'  disabled={isDisabled} />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Middle Name</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Last Name</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Customer ID</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Date of birth</p>
+       <input type="date" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Gender</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Country of Birth</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">ID Type</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Email</p>
+       <input type="email" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-6">
+     <div className="input_field">
+       <p className="get-text">Mobile</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+  <h5>Change Password</h5>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Current Password</p>
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">New Password</p>
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Confirm Password</p>
+       <input type="password" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+  <h5>Address</h5>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Flat/Unit No.</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled} />
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Building No./Name</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Street</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Postcode</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">City/Town</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">State</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+ </div>
+ <div className="row each-row">
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Country Code</p>
+       <input type="text" className='rate_input form-control' disabled={isDisabled}/>
+     </div>
+   </div>
+   <div className="col-md-4">
+     <div className="input_field">
+       <p className="get-text">Country</p>
+       <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
 
-                                        <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
-                                            <Form.Label>Mobile No</Form.Label>
-                                            <Form.Control type="number"
-                                             value={mobile} 
-                                             onChange ={handeleMobile}
-                                            placeholder="Mobile No"
-                                             />
-                                        </Form.Group>
-                            
-                                        <button variant="primary" 
-                                        type="submit"
-                                        onClick={handleProfileApi}
-                                         className="profile_button"
-                                         >
-                                          Update Profile
+     </div>
+   </div>
+ </div>
 
-                                          {
-                                            loading ? <>
-                                              <div class="loader-overly"> 
-                                                <div class="loader" > 
-                                                
-                                                </div>
-                                                
-                                                </div>
-                                            </>:<></>
-                                          }
-                                        </button>
-                                        {/* <p className="already_content">Don't have account? 
-                                          <NavLink to="/signup"> Sign-up</NavLink>
-                                        </p> */}
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* End-- card */}
-            </div>
+ </div>
+      <div class="row each-row">
+        <div className="col-md-6">
+          <button className="start-form-button">Cancel</button>
+        </div>
+        <div className="col-md-6">
+        <button className="profile-form-button" onClick={handleClickNew} >Save</button>
+          <button className="profile-form-button" onClick={handleClick}>Edit</button>
+          
+        </div>
+      </div>
+  
+    </section>
         </div>
     </div>
  </section>
+
+
          ) : (
             <>
             

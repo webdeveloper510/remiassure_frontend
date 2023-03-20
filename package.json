@@ -18,6 +18,7 @@
     "axios": "^0.24.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
     "country-dropdown-with-flags-for-react": "^1.1.4",
     "mini-css-extract-plugin": "^2.7.2",
     "otp-input-react": "^0.3.0",
@@ -31,7 +32,7 @@
     "react-flag-currency": "^1.0.5",
     "react-flags-select": "^2.2.3",
     "react-helmet": "^6.1.0",
-    "react-icons": "^4.7.1",
+    "react-icons": "^4.8.0",
     "react-image": "^4.0.3",
     "react-multi-carousel": "^2.8.2",
     "react-multistep": "^5.5.8",
@@ -73,6 +74,7 @@
     ]
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.3.0",
     "css-loader": "^6.7.3",
     "sass": "^1.58.3",
     "style-loader": "^3.3.1"

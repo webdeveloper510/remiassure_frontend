@@ -95,11 +95,9 @@ const Header =() => {
                           </a>
                         <ul>
                         
-                        <li> <NavLink to="/user_recipients">Recipients</NavLink></li>
-                          <li> <NavLink to="/profile">Profile</NavLink></li>
+                        {/* <li> <NavLink to="/user_recipients">Recipients</NavLink></li> */}
+                        <li> <NavLink to="/userdashboard">UserDashborad</NavLink></li>
                           <li> <NavLink to="/sendMoney">SendMoney</NavLink></li>
-                          <li><NavLink to="/transaction">Transaction</NavLink></li>
-                          <li><NavLink to="#">Refer</NavLink></li>
                           <li><NavLink onClick={handleLogout}>Logout</NavLink></li>
                         </ul>
                       </li>

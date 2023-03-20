@@ -75,6 +75,7 @@ h6,
   z-index: 9999999;
   transition: all 0.5s;
   background: #fff;
+  border: 1px solid rgb(217, 224, 232);
 }
 
 /* #header.header-transparent {
@@ -1364,11 +1365,14 @@ color: #191970;
 }
 .card-support{
   width: 1180px;
-  height: 300px;
+  /* height: 300px; */
   background: #FCFCFC;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.16);
   border-radius: 12px;
   top: 40px;
+}
+.help_banner h5.Support-heading {
+  margin-top: 20px;
 }
 .Support-heading{
 text-align: center;
@@ -1488,7 +1492,8 @@ div#align_list {
 }
 .support-vl02{
   border-left: 6px solid  #6414E9;
-  height: 46px;
+  margin-bottom: 30px;
+  /* height: 46px; */
 }
 .vl-support{
 font-family: 'Montserrat';
@@ -2300,13 +2305,9 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 
 
     .profile_banner {
-      /* background-image: url(/assets/img/about/about_banner.png); */
-      min-height: 670px; 
-      height: 670px;
+
       width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+
     position: relative;
     }
     .profile_banner:before {
@@ -2361,8 +2362,42 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
       color: rgb(20, 34, 224);
   }
 
-
-
+  button.profile-form-button {
+    height: 48px;
+    background: #191970;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 16px;
+    margin: 20px auto;
+    width: 38%;
+    float: right;
+    margin-left: 12px;
+    width: 150px;
+}
+section.profile-page {
+  border: 1px solid rgb(217, 224, 232);
+  margin-top: 100px;
+  padding-top: 40px;
+}
+.profile-page h1{
+  font-family: 'Montserrat' !important;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 70px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #6414E9;
+}
+span.progress-step {
+  position: absolute;
+  bottom: -37px;
+  left: -24px;
+  font-size: 12px;
+  font-weight: 600;
+}
 /*--------------------------------------------------------------
 # Forgot
 --------------------------------------------------------------*/
@@ -2434,7 +2469,7 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 
 
 .table_user_recipients{
-  margin-top: 2%;
+  margin-top: 30px;
 }
 
 
@@ -2667,6 +2702,7 @@ select.form-select option {
   color: #6414E9;
   position:relative;
   overflow: inherit;
+  font-size:0px;
 }
 .step1:after  {
   position: absolute;
@@ -2860,7 +2896,7 @@ margin-top: 15px;
   width: 100%;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  margin: 63px auto 0px;
+  margin: 150px auto 0px;
   padding: 10px;
   float: right;
 }
@@ -3389,7 +3425,6 @@ img.vission_image {
 
 li.dropdown ul {
   border: 1px solid #6414e947;
-  width: 129px;
   padding: 0px !important;
 }
 
@@ -3430,10 +3465,103 @@ table.table_user_recipients td {
   font-size: 14px;
   text-align: center;
 }
+
 table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
+}
+table.table_user_recipients .accordion h4 {
+  font-family: 'Montserrat' !important;
+  font-size: 14px;
 }
 
 
+.payment-step1 ,.payment-step2 , .payment-step3  {
+  background-color: green !important;
+  width: 33.333%;
+  color: green;
+  position:relative;
+  overflow: inherit;
+  font-size: 0px;
+}
+.payment-step1:after  {
+  position: absolute;
+  content: "Initiated";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.payment-step1:before , .payment-step2:before , .payment-step3:before  {
+  width: 15px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid green;
+  position: absolute;
+  content: "";
+  top: -7px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 0;
+}
+
+.payment-step2:after  {
+  position: absolute;
+  content: "Processing";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.payment-step3:after  {
+  position: absolute;
+  content: "Completed";
+  bottom: 0;
+  color: #fff;
+  display: block;
+  clear: both;
+  font-size: 14px;
+  top: -50px;
+  font-weight: 600;
+  width: 95px;
+  height: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  line-height: 35px;
+}
+.table_user_recipients .accordion-body {
+  margin-top: 14px;
+  margin-bottom: 40px;
+}
+.table_user_recipients .progressBar {
+  margin-bottom: 0;
+}
+.RSPBprogressBar {
+  background-color: green !important;
+  width: 85% !important;
+  margin: 0 auto !important;
+}
 section.top_sections{
     z-index: 99999;
     position: relative;
@@ -3501,6 +3629,7 @@ p.get-text {
   position: relative;
   font-size: 13px;
   padding: 2px 10px;
+  font-weight:600;
 }
 
 p.recived-text {
@@ -3928,8 +4057,307 @@ select.form-select.rate_input.form-control.mb-3.home-select-method {
   border-radius: 13px;
 }
 h1.recipients_lists {
+  font-family: 'Montserrat' !important;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 70px;
   text-align: center;
+  text-transform: capitalize;
+  color: #6414E9;
 }
 #footer ul li a.active {
   color: #fff !important;
 }
+div#digitalid-verify button:nth-child(1) {
+  display: none !important;
+}
+table.table_user_recipients .accordion button {
+  padding: 8px;
+  font-family: 'Montserrat' !important;
+  font-size: 14px;
+}
+section.user_recipients_section {
+  border: 1px solid rgb(217, 224, 232);
+  margin-top: 100px;
+  padding-top: 40px;
+}
+row.social_links_change p.share_content {
+  margin-top: 80px;
+}
+.new_buttons button.form-button {
+  margin-top: 0px;
+  margin-right: 10px;
+}
+.new_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.new_buttonss button.start-form-button {
+  margin-top: 0px;
+}
+.row.social_links_change {
+  margin-top: 100px;
+}
+
+
+/******************** userdahsboard css  start **************/
+
+.margin-set{
+  margin-top:180px;
+}
+.nav-pills .nav-link.active {
+  background: #190079;
+  border-radius: 10px;
+  color: #fff !important;
+}
+.tabs-page .nav-pills .nav-item a {
+  padding: 10px;
+  color: #000;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.tabs-page .nav-pills .nav-item a:hover {
+  color:#190079;
+}
+
+.tabs-page {
+  margin-bottom: 30px;
+}
+.tabs-page .nav-item:first-child {
+  margin-top: 0;
+}
+.tabs-page .nav-item {
+  position: relative;
+  margin-bottom: 15px;
+
+}
+/* .tabs-page .nav-item:after {
+  position: absolute;
+  content: "";
+  border-left: 1px dashed;
+  bottom: -30px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  width: 0px;
+}
+.tabs-page .nav-item:last-child:after{
+  display:none;
+}
+.tabs-page {
+  margin-bottom: 30px;
+} */
+.tabs-page .accordion-item {
+  margin-bottom: 18px;
+  border-radius: 20px;
+  border: 1px solid rgb(217, 224, 232);
+}
+.my-auto.transac-text span {
+  color: #000 !important;
+  float: left;
+  width: 100%;
+  text-align: right;
+  font-size: 14px !important;
+  padding-bottom: 0px !important;
+}
+h2.accordion-header {
+  font-family: 'Montserrat' !important;
+}
+.trsnsfer-process h4 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px;
+  color: #6414E9;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.tabs-page .tab-content {
+  margin-left: 80px;
+}
+
+.tabs-page .card-text {
+  width: 100%;
+}
+.trsnsfer-process span {
+  width: 100%;
+  float: left;
+  font-size: 14px !important;
+}
+.my-auto.transac-text {
+  margin-right: 20px;
+}
+.tabs-page .accordion-body h4 {
+  font-size: 15px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+}
+.tabs-page h1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 25px;
+  text-align: center;
+  color: #6414E9;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+.transaction-progress {
+  margin: 0 auto;
+  border: 1px solid rgb(217, 224, 232);
+  border-radius: 12px;
+  padding: 38px 36px;
+}
+
+.user-sendmoney section.why-us.section-bgba.user_dashboard_banner {
+  margin-top: 0px;
+}
+
+.user-sendmoney .container , .tabs-recipent .container {
+  width: 100%;
+  max-width: inherit;
+}
+.tabs-recipent section.user_recipients_section {
+  margin: 0 auto;
+  border: none;
+}
+.user-sendmoney .progressBar {
+  DISPLAY: NONE;
+}
+.user-sendmoney section , .tabs-recipent section{
+  padding: 0;
+}
+.user-sendmoney .form_body {
+  box-shadow: none;
+}
+
+.user-sendmoney section.profile-page {
+  margin: 0;
+  border-radius: 12px;
+  padding: 38px 36px;
+}
+.transaction-progress .accordion {
+  margin-top: 30px;
+}
+.form-control:disabled {
+  background-color: #fbfbfb !important;
+  opacity: 1;
+}
+.tabs-page .nav-pills .nav-item a svg {
+  margin-right: 10px;
+}
+.user-sendmoney section.user_recipients_section {
+  border: none;
+  margin-top: 0;
+  margin: 0 auto;
+  padding: 38px 36px;
+}
+.user-sendmoney .row.custom-row {
+  margin: 0;
+}
+.add-recipent-section {
+  text-align: center;
+}
+.add-recipent-section img {
+  width: 50%;
+  margin-bottom: 30px;
+}
+.add-recipent-section {
+  text-align: center;
+  float: left;
+  width: 100%;
+  padding: 38px 36px;
+  display: block;
+}
+button.add-recepient.form-button {
+  width: 100%;
+  
+}
+.removerecepient ,.remove-add-recipent-section {
+  display: none;
+}
+.showrecepient {
+  display: block;
+  float: left;
+  width: 100%;
+}
+.tabs-recipent {
+  float: left;
+    width: 100%;
+  border-radius: 12px;
+  /* padding: 38px 36px; */
+  border: 1px solid rgb(217, 224, 232);
+}
+.add-recipent-section ul {
+  width: 70%;
+    margin: 30px auto;
+  padding: 0;
+}
+
+.add-recipent-section ul li {
+  border: 1px solid #ccc;
+  list-style: none;
+  margin: 16px 0px;
+  text-align: left;
+  display: block;
+}
+.add-recipent-section ul li a {
+  padding: 10px;
+  width: 100%;
+  color: midnightblue;
+  display: block;
+  font-weight: 500;
+}
+.add-recipent-section ul li a svg {
+  float: right;
+  background: #cfcfcf;
+  fill: #fff;
+  height: 24px;
+  width: 24px;
+  padding: 5px;
+  border-radius: 100%;
+}
+.add-rec {
+  width: 70%;
+  margin: 30px auto;
+}
+.add-rec button {
+  margin: 0;
+}
+button.start-form-button.full-width {
+  width: 100%;
+  margin: 0 !important;
+}
+.tabs-recipent ul li button {
+  margin: 0 0px 10px;
+  width: 100px;
+}
+.tabs-recipent ul li {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-bottom: 1px solid rgb(217, 224, 232);
+}
+.tabs-recipent ul li button {
+    margin: 0 0px 10px;
+    width: 100px;
+}
+.add-rec-new {
+  width: 70%;
+  margin: 0 auto;
+}
+.add-rec-new button {
+  width: 100%;
+  margin: 0 auto;
+  float: inherit;
+}
+.tabs-recipent section.showrecepient {
+  padding: 38px 36px;
+}
+/******************** userdahsboard css  end **************/

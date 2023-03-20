@@ -2300,15 +2300,14 @@ box-shadow: 0px 7px 15px rgba(100, 20, 233, 0.19);
 
 
     .profile_banner {
-      /* background-image: url(/assets/img/about/about_banner.png); */
-      min-height: 670px; 
-      height: 670px;
       width: 100%;
       background-repeat: no-repeat;
       background-size: cover;
-      background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
     position: relative;
     }
+
+
+
     .profile_banner:before {
       content: url(../img/home/login-light-bg.svg);
       left: 0;
@@ -3500,6 +3499,8 @@ p.get-text {
   position: relative;
   font-size: 13px;
   padding: 2px 10px;
+ 
+    font-weight: 600;
 }
 
 p.recived-text {
@@ -3928,7 +3929,43 @@ select.form-select.rate_input.form-control.mb-3.home-select-method {
 }
 h1.recipients_lists {
   text-align: center;
+  font-family: 'Montserrat' !important;
 }
 #footer ul li a.active {
   color: #fff !important;
+}
+div#digitalid-verify button:nth-child(1) {
+  display: none !important;
+}
+table.table_user_recipients th:last-child {
+  width: 360px;
+}
+.see-progress h4 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat' !important;
+  font-weight: 600;
+}
+section.user_recipients_section {
+  border: 1px solid rgb(217, 224, 232);
+  margin-top: 100px;
+  padding: 32px;
+  margin-bottom: 30px;
+}
+
+h2.accordion-header button .receipt-heading {
+  width: 100%;
+}
+h2.accordion-header button .receipt-heading ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+h2.accordion-header button .receipt-heading ul li , .transaction-progress ul li {
+  width: 16.666%;
+}
+.transaction-progress ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
 }

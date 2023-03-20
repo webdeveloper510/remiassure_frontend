@@ -17,13 +17,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter } from "react-router-dom";
 import Verification from '../component/verification/Verification';
 import Multiple from '../component/profile/Multiple';
-import SendMoney from '../component/userdashboard/SendMoney';
-import Transaction from '../component/userdashboard/Transaction';
+import SendMoney from '../component/Send/SendMoney';
+import Transfer from '../component/Userdashboard/Transfer';
+import UserSendMoney from '../component/Userdashboard/UserSendMoney';
+import UserDashboard from '../component/Userdashboard/UserDashboard';
+import AddNewRecipient from '../component/Userdashboard/AddNewRecipient';
 import ReferralData from '../component/referralData/ReferralData';
+
+
 import GoToTop from '../GoToTop';
 import { AuthProvider } from '../component/context/UserContext';
 
-import UserForm from '../component/userdashboard/UserForm';
+
 const Routerpage =()=>{
   return(
 
@@ -50,9 +55,11 @@ const Routerpage =()=>{
     <Route exact path='/user_recipients' element={< Recipients /> } />
     <Route exact path='/verification' element= {< Verification /> } />
     <Route exact path='/sendMoney' element= {< SendMoney /> } />
-    <Route exact path='/transaction' element={<Transaction /> } />
+    <Route exact path='/transfer' element={<Transfer /> } />
     <Route exact path='/referraldata' element={<ReferralData /> } />
-    <Route exact path='/userform' element={<UserForm /> } />
+    <Route exact path='/userdashboard' element={<UserDashboard /> } />
+    <Route exact path='/usersendmoney' element={<UserSendMoney /> } />
+    <Route exact path='/addnewrecipient' element={<AddNewRecipient /> } />
     </Routes>
     <ToastContainer />
      

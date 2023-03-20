@@ -106,7 +106,7 @@ const Verification = () => {
                         <div className="card card-verification">
                             <div className="card-body">
                                 <h5 className="Sign-heading">Verify your Account</h5>
-                                <p>Please Right Verification code send your Email</p>
+                                <p>Please Write Verification code send your Email</p>
                                 <div className="form_verification">
                                     <form>
                                         <Form.Group className="mb-3 verification_input" controlId="formBasicEmail">

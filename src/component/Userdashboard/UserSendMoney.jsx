@@ -7,14 +7,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UserContext from "../context/UserContext";
 import { HiSwitchHorizontal } from 'react-icons/hi';
-
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
 import ReactFlagsSelect from "react-flags-select";
+import { BsFillPersonPlusFill } from "react-icons/bs";
+import { BsChevronDoubleRight } from "react-icons/bs";
+import norecipients from '../../assets/img/userdashboard/hidden.avif';
+const UserSendMoney = () => {
 
-const SendMoney = () => {
+
 
    // Start page show hide condtion page 
    const token = localStorage.getItem("token");
@@ -382,6 +385,14 @@ const digitalIdAsyncInit =(event) =>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+
+    const [isActive, setActive] = useState("false");
+
+    const handleToggle = () => {
+      setActive(!isActive);
+    };
+    
+
     const step_form = step+1;
     
     const Form = ()=>{
@@ -402,10 +413,6 @@ const digitalIdAsyncInit =(event) =>{
       return (
       <Step3 /> );
       
-      }else if(step==3){
-      
-          return (
-          <Step4 /> );
       }
       }
 
@@ -419,13 +426,7 @@ const digitalIdAsyncInit =(event) =>{
     {  
           verification_otp || token != undefined || '' ? (
    <section>
-      <div class="progressBar">
-        <div class="progress">
-          <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-        </div>
-      </div>
-
-      
+    
       <form>
       <div className="form_body">
         <div className="header">
@@ -552,7 +553,7 @@ const digitalIdAsyncInit =(event) =>{
           <h5>Receive Method</h5>
           <div className="col-md-12">
             <div className="input_field">
-              <div className="form-cverification_heck method_type">
+              <div className="form-cverification_heck method_type form-check">
               <input 
                   className="form-check-input"
                   type="radio"
@@ -616,7 +617,7 @@ const digitalIdAsyncInit =(event) =>{
             </div>
           </div>
         </div>
-        <div class="row">
+        <div className="row">
           <div className="col-md-4">
             <button 
             className="start-form-button"
@@ -660,18 +661,36 @@ const digitalIdAsyncInit =(event) =>{
     return (
     <>
      {  
-          
-    <section>
-       <div class="progressBar">
-   <div class="progress">
-   <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-     <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+      <>
+ 
+     
+    <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
+    <div className="header">
+     <h1>Select a recipient to send money</h1>
    </div>
- </div>
+  <ul>
+  <li><a href="#" onClick={()=>{setStep(step+1)}}>William <BsChevronDoubleRight /></a></li>
+  <li><a href="#">Josh <BsChevronDoubleRight /></a></li>
+  <li><a href="#">Mike<BsChevronDoubleRight /> </a></li>
+  <li><a href="#">William <BsChevronDoubleRight /></a></li>
+  <li><a href="#">Josh <BsChevronDoubleRight /></a></li>
+  <li><a href="#">Mike<BsChevronDoubleRight /> </a></li>
+  </ul>
+  <div className="add-rec">
+      <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
+      <button className="form-button" onClick={handleToggle}><BsFillPersonPlusFill /> Add Recepients</button>
+      </div>
+      </div> 
+   
+    
+   
+
+    <section  className={isActive ? "removerecepient" : "showrecepient"} >   
  <div className="form_body">
    <div className="header">
      <h1>Recipient Bank Details</h1>
    </div>
+   <div className="row each-row">
     <div className="col-md-12">
         <div className="input_field">
           <p className="get-text">Bank Name</p>
@@ -684,6 +703,7 @@ const digitalIdAsyncInit =(event) =>{
             onChange={(e)=>handleStep2InputChange(e,'bankName')}
             />
         </div>
+    </div>
     </div>
    <div className="row each-row">
      <div className="col-md-12">
@@ -814,14 +834,14 @@ const digitalIdAsyncInit =(event) =>{
        </div>
      </div>
    </div>
-   <div class="row">
+   <div className="row">
      <div className="col-md-4">
-       <button className="start-form-button">Cancel</button>
+       <button className="start-form-button" onClick={handleToggle}>Cancel</button>
      </div>
      <div className="col-md-8">
        {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
        <button className="form-button" onClick={someFunc}>Continue</button>
-       <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+       {/* <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button> */}
      </div>
    </div>
  </div>
@@ -903,7 +923,7 @@ const digitalIdAsyncInit =(event) =>{
 
       </section>
 
-   
+      </>
   }
     </>
     );
@@ -917,13 +937,7 @@ const digitalIdAsyncInit =(event) =>{
      {  
           verification_otp || token != undefined || '' ? (
     <section>
-      <div class="progressBar">
-    <div class="progress">
-    <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-    </div>
-  </div>
+      
   <div className="form_body">
       <div className="header">
         <h1>Payment details</h1>
@@ -973,7 +987,7 @@ const digitalIdAsyncInit =(event) =>{
           </div>
         </div>
       </div>
-      <div class="row">
+      <div className="row">
         <div className="col-md-4">
           <button className="start-form-button">Cancel</button>
         </div>
@@ -994,197 +1008,23 @@ const digitalIdAsyncInit =(event) =>{
     </>
     );
     }
-
-    const Step4 = () =>{
-    
-      return (
-      <>
-
-{  
-          verification_otp || token != undefined || '' ? (
-      <section>
-        <div class="progressBar">
-      <div class="progress">
-      <span class="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span class="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span class="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-        <span class="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
-      </div>
-    </div>
-    <div className="form_body">
-      <div className="header">
-        <h1>Sender Details </h1>
-      </div>
- <div className="row each-row">
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">First Name</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Middle Name</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Last Name</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Customer ID</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Date of birth</p>
-       <input type="date" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Gender</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-   <div className="col-md-6">
-     <div className="input_field">
-       <p className="get-text">Country of Birth</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-6">
-     <div className="input_field">
-       <p className="get-text">ID Type</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-   <div className="col-md-6">
-     <div className="input_field">
-       <p className="get-text">Email</p>
-       <input type="email" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-6">
-     <div className="input_field">
-       <p className="get-text">Mobile</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-  <h5>Address</h5>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Flat/Unit No.</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Building No./Name</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Street</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Postcode</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">City/Town</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">State</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
- </div>
- <div className="row each-row">
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Country Code</p>
-       <input type="text" className='rate_input form-control' />
-     </div>
-   </div>
-   <div className="col-md-4">
-     <div className="input_field">
-       <p className="get-text">Country</p>
-       <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
-
-     </div>
-   </div>
- </div>
-      <div class="row each-row">
-        <div className="col-md-4">
-          <button className="start-form-button">Cancel</button>
-        </div>
-        <div className="col-md-8">
-          <button
-           className="form-button"
-         
-            >
-              Continue
-          
-              </button>
-          <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-        </div>
-      </div>
-    </div>
-    </section>
-
-) : (
-  <>
-  
-  </>
-)
-}
-          
-      </>
-      );
-      }
-    
     return (
     
     <>
 
 {  
          (
-    <section>
+ 
     
         <div class="form">
    <div className="card">
      <section className="why-us section-bgba user_dashboard_banner">
        <div className="container">
          <div className="row">
-           <div className="col-md-8">{
+           <div className="col-md-12">{
              <Form />}
            </div>
-           {shows &&
+           {/* {shows &&
            <div className="col-md-4">
              <div className="summary">
                <h5>Summary</h5>
@@ -1207,7 +1047,7 @@ const digitalIdAsyncInit =(event) =>{
              </div>
            </div>
 
-           }
+           } */}
          </div>
        </div>
      </section>
@@ -1215,7 +1055,7 @@ const digitalIdAsyncInit =(event) =>{
  </div>
 
 
- </section>
+
 
 ) 
 }
@@ -1225,4 +1065,4 @@ const digitalIdAsyncInit =(event) =>{
 
 
 
-export default SendMoney;
+export default UserSendMoney;

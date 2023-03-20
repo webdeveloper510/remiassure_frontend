@@ -1,11 +1,11 @@
 import React, { useState, useContext , useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
-
+import Accordion from 'react-bootstrap/Accordion';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
-
+//import MultiStepProgressBar from "./MultiStepProgressBar";
 
 const Recipients =() =>{
 
@@ -64,7 +64,7 @@ const Recipients =() =>{
     return(
         <>
        {/* <!-- ======= Recept RemitAssure-Section start ======= --> */}
-       {  
+       {/* {  
           verification_otp || token != undefined || '' ? (
             <section className="user_recipients_section">
                 <div class="container">
@@ -81,15 +81,16 @@ const Recipients =() =>{
                 
                 </>
             )
-            }
+            } */}
 
 
     {  
         verification_otp || token != undefined || '' ? (
 
-    <section className="user_recipients_section">
+    <section>
         <div class="container">
-            <div className="row">
+            <div className="row custom-row">
+            <section className="user_recipients_section">
             <h1 className="recipients_lists">Recipients Lists</h1>
               
 
@@ -137,7 +138,7 @@ const Recipients =() =>{
                                     <td>{res.destination}</td>
                                     <td>{res.detail_link}</td>
                                     <td>{res.transfer_now_link}</td>
-                                
+                                    
                               </tr>
                               
                                     
@@ -147,6 +148,7 @@ const Recipients =() =>{
                     </tbody>
                     </Table> 
                </div>
+               </section>
             </div>
         </div>
    </section>

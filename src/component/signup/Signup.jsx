@@ -229,7 +229,7 @@ const Signup = () => {
                                         <CountryDropdown
                                          id="UNIQUE_ID" 
                                          className='YOUR_CSS_CLASS rate_input form-control'
-                                          preferredCountries={['gb', 'us' ]} 
+                                         // preferredCountries={['gb', 'us' ]} 
                                           value={location}
                                           handleChange={handeleLocation}
                                         //   handleChange={e=> console.log(e.target.value)}

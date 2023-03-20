@@ -18,10 +18,12 @@ import { HashRouter } from "react-router-dom";
 import Verification from '../component/verification/Verification';
 import Multiple from '../component/profile/Multiple';
 import SendMoney from '../component/send/SendMoney';
-import Transfer from '../component/userdashboard/Transfer';
-import UserSendMoney from '../component/userdashboard/UserSendMoney';
-import UserDashboard from '../component/userdashboard/UserDashboard';
-import AddNewRecipient from '../component/userdashboard/AddNewRecipient';
+import Transfer from '../component/Userdashboard/Transfer';
+import UserSendMoney from '../component/Userdashboard/UserSendMoney';
+import UserDashboard from '../component/Userdashboard/UserDashboard';
+import AddNewRecipient from '../component/Userdashboard/AddNewRecipient';
+import UserProfile from '../component/Userdashboard/UserProfile';
+import UserRecipient from '../component/Userdashboard/UserRecipient';
 import ReferralData from '../component/referralData/ReferralData';
 
 
@@ -60,6 +62,8 @@ const Routerpage =()=>{
     <Route exact path='/userdashboard' element={<UserDashboard /> } />
     <Route exact path='/usersendmoney' element={<UserSendMoney /> } />
     <Route exact path='/addnewrecipient' element={<AddNewRecipient /> } />
+    <Route exact path='/userprofile' element={<UserProfile /> } />
+    <Route exact path='/userrecipients' element={<UserRecipient /> } />
     </Routes>
     <ToastContainer />
      

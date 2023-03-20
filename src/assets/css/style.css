@@ -2866,12 +2866,12 @@ margin-top: 15px;
   z-index: 1;
   font-weight: 600;
 }
-.row.each-row h5 {
-  margin-bottom: 34px;
+.row h5 {
+  margin-bottom: 15px;
   font-size: 18px;
   font-family: 'Montserrat' !important;
   font-weight: 600;
-}
+}.row h5
 .user_dashboard_banner .rate_input {
   border: 1px solid #ced4da;
 }
@@ -3476,7 +3476,7 @@ table.table_user_recipients th {
   font-weight: 600;
   font-size: 16px;
   text-align: center;
-  background: #6414E9;
+  background: #190079;
 }
 table.table_user_recipients td {
   color: #000;
@@ -3485,7 +3485,8 @@ table.table_user_recipients td {
   text-align: center;
 }
 
-table.table_user_recipients tr:nth-child(even) {background: #6414e91c;
+table.table_user_recipients tr:nth-child(even) {
+  background: rgb(172 170 175 / 11%);
 }
 table.table_user_recipients .accordion h4 {
   font-family: 'Montserrat' !important;
@@ -4123,7 +4124,7 @@ row.social_links_change p.share_content {
 /******************** userdahsboard css  start **************/
 
 .margin-set{
-  margin-top:180px;
+  margin-top:140px;
 }
 .nav-pills .nav-link.active {
   background: #190079;
@@ -4261,11 +4262,11 @@ h2.accordion-header {
   border-radius: 12px;
   padding: 38px 36px;
 }
-.transaction-progress .accordion {
+/* .transaction-progress .accordion {
   margin-top: 30px;
-}
+} */
 .form-control:disabled {
-  background-color: #fbfbfb !important;
+  background-color:grey !important;
   opacity: 1;
 }
 .tabs-page .nav-pills .nav-item a svg {
@@ -4353,10 +4354,7 @@ button.start-form-button.full-width {
   width: 100%;
   margin: 0 !important;
 }
-.tabs-recipent ul li button {
-  margin: 0 0px 10px;
-  width: 100px;
-}
+
 .tabs-recipent ul li {
   display: flex;
   align-items: center;
@@ -4364,8 +4362,9 @@ button.start-form-button.full-width {
   border-bottom: 1px solid rgb(217, 224, 232);
 }
 .tabs-recipent ul li button {
-    margin: 0 0px 10px;
-    width: 100px;
+  margin: 0 0px 10px;
+  width: 89px;
+  height: 35px;
 }
 .add-rec-new {
   width: 70%;
@@ -4378,5 +4377,51 @@ button.start-form-button.full-width {
 }
 .tabs-recipent section.showrecepient {
   padding: 38px 36px;
+}
+.tarnsfer-tabs {
+  margin-top: 30px;
+}
+.transaction-progress .tab-content {
+  margin-left: 0;
+}
+.transaction-progress .nav-link.active {
+  background-color: rgb(230, 243, 255) !important;
+  border: 1px solid rgb(230, 243, 255)!important;
+  font-weight: 600;
+}
+.transaction-progress .nav-link:hover {
+  border: 1px solid transparent !important;
+}
+.transaction-progress .nav-link{
+  color:#000 !important;
+  font-weight: 600;
+}
+.tabs-recipent-new table tr td:last-child {
+  width: 306px;
+}
+
+td.pending-status svg {
+  fill: #ffc107 !important;
+  font-size: 20px;
+}
+td.inprogress-status svg {
+  fill: #0069d9 !important;
+  font-size: 20px;
+}
+td.failed-status svg {
+  fill: #bd2130 !important;
+  font-size: 20px;
+}
+td.inprogress-status span {
+  background: #C98209;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: #fff;
+}
+.no-data {
+  text-align: center;
+}
+.no-data img {
+  width: 70%;
 }
 /******************** userdahsboard css  end **************/

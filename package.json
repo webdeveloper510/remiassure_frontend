@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^5.2.3",
     "country-dropdown-with-flags-for-react": "^1.1.4",
+    "mdb-react-ui-kit": "^5.1.0",
     "mini-css-extract-plugin": "^2.7.2",
     "otp-input-react": "^0.3.0",
     "pure-react-carousel": "^1.30.1",

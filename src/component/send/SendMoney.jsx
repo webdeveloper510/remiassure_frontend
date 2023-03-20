@@ -217,8 +217,6 @@ const courses = localStorage.getItem('courses');
 console.log(courses,"coursescourses");
 
 
-
-
   //Total Amount get data
   const Total_amount = localStorage.getItem("Total_amount");
   console.log("Amonut", Total_amount);

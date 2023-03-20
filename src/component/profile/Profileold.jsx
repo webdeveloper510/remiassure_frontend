@@ -47,7 +47,7 @@ const Profile = () => {
 
     }
     const handeleMobile =(e) => {
-        setMobile(e.target.value);
+        setMobile(e.target.value);www
     } 
 
     

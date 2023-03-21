@@ -31,6 +31,8 @@ const SendMoney = () => {
  * ***********************************************************************/
 const [summaryList, setSummaryList] = React.useState(false);
 
+const [amountSummary, setAmountSummary] = React.useState(false);
+
 // const [bank_data, setBank_data] = React.useState([]);
 
 // Start -Recipient Bank Details
@@ -206,11 +208,20 @@ function someFunc() {
   // handleDataStore();
 }
 
-function handleRecipientSummary() {
+const handleRecipientSummary = () => {
   setStep(step+1);
   setSummaryList(!summaryList);
 }
 
+
+const handleAmountSummary = () => {
+  setStep(step+1);
+  handleAmountDelivery();
+  setAmountSummary(!amountSummary);
+}
+
+
+console.log(amountSummary, "amountSummaryamountSummary")
 
 //Get item localstorage
 const courses = localStorage.getItem('courses');
@@ -280,8 +291,8 @@ console.log(courses,"coursescourses");
   // }
 
   useEffect(() => {
-    console.log(amount)
-  }, [amount])
+    console.log(amountValue.amountInput)
+  }, [amountValue.amountInput])
 
 
   const handleEntailmentRequest =(e) => {
@@ -289,6 +300,20 @@ console.log(courses,"coursescourses");
     window.location.reload(false);
 
     console.log("handle request ");
+}
+
+const handlRecipientBankDetails =(e) => {
+  e.preventDefault();
+  window.location.reload(false);
+
+  console.log("handle request ");
+}
+
+const handlSenderDetails =(e) => {
+  e.preventDefault();
+  window.location.reload(false);
+
+  console.log("handle request ");
 }
 
 
@@ -303,8 +328,8 @@ console.log(courses,"coursescourses");
  * ************** Start  All Amount & Delivery  ******************************
  * ***********************************************************************/
 
-    const handleAmountDelivery =(event) =>{
-      event.preventDefault();
+    const handleAmountDelivery =() =>{
+      // event.preventDefault();
       setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'exchange-rate/', {
           from: from,
@@ -318,6 +343,7 @@ console.log(courses,"coursescourses");
         })
         .then(function(response) {
             console.log(response);
+            localStorage.setItem("Total_amount", response.data.amount);
             if (response.status)
             setStep(step+1) //next step call
             setShows(!shows) //show hide summery function call
@@ -325,7 +351,7 @@ console.log(courses,"coursescourses");
 
         })
         .catch(function(error, message) {
-            console.log(error.response)
+            console.log(error.response);
             setLoading(false); // Stop loading in case of error
             if(error.response.data.status){
                 // toast.error(error.response.data.message);
@@ -357,7 +383,7 @@ console.log(courses,"coursescourses");
       .then(function(response) {
           console.log(response);
           if (response.status)
-          // localStorage.setItem("Total_amount", response.data.amount);
+          localStorage.setItem("Total_amount", response.data.amount);
           setTotal_amount(response.data.amount);
           setExchange_amount(response.data.amount);
           setTotal_rate( response.data.rate);
@@ -374,6 +400,46 @@ console.log(courses,"coursescourses");
 
    }
    // End Total Amount Api call 
+
+   /**************************************************************************
+ * ************** Start  Total Amount Api call  ******************************
+ * ***********************************************************************/
+   const myTotalAmountFromTo =(value)=> {   
+    // event.preventDefault();
+    console.log("====================>",amount)
+   setLoading(true); // Set loading before sending API request
+    axios.post(API.BASE_URL + 'exchange-rate/', {
+      from: from,
+      to: to,
+      amount: amountValue.amountInput
+   
+    }, {
+        headers: {
+            // 'Content-Type': 'application/json',
+        },
+      
+    })
+    .then(function(response) {
+        console.log(response);
+        if (response.status)
+         localStorage.setItem("Total_amount", response.data.amount);
+        console.log(total_amount, "total_amounttotal_amount")
+        setTotal_amount(response.data.amount);
+        setExchange_amount(response.data.amount);
+        setTotal_rate( response.data.rate);
+        setLoading(false); // Stop loading
+    })
+    .catch(function(error, message) {
+        console.log(error.response)
+        setLoading(false); // Stop loading in case of error
+        // if(error.response.data.status){
+        //     toast.error(error.response.data.message);
+        // } 
+        // console.log(error, "klnklnklnknnnnnnnnnnnn");   
+    })
+
+ }
+ // End Total Amount Api call 
 
 
 /**************************************************************************
@@ -446,7 +512,7 @@ console.log(courses,"coursescourses");
           console.log(error, "klnklnklnknnnnnnnnnnnn");   
       })
   }
-
+  
  
  // Start design state
     const {useState} = React;
@@ -490,6 +556,7 @@ console.log(courses,"coursescourses");
       }
 
 
+      console.log(step, "stepstepstepstepstepstepstep")
 
     const Step1 = () =>{
     
@@ -526,11 +593,12 @@ console.log(courses,"coursescourses");
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={from}
-                 onChange={handleFrom}
-                //  onChange={(e)=> {myTotalAmount(e.target.value);setFrom(e.target.value)}}
+                //  onChange={handleFrom}
+                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setFrom(e.target.value)}}
+                // onBlurCapture={myTotalAmount}
                  >
-                  <option value="">--- Select Currency ---</option>
-                  {/* <option value="USD" selected="selected">USD</option> */}
+                  {/* <option value="">--- Select Currency ---</option> */}
+                  <option value="USD" selected="selected">USD</option>
                   <option value="USD">USD</option> 
                   <option value="EUR">EUR</option>
                   <option value="INR">INR</option> 
@@ -563,12 +631,13 @@ console.log(courses,"coursescourses");
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={to}
-                 onChange={handleTo}
-                //  onChange={(e)=> {myTotalAmount(e.target.value);setTo(e.target.value)}}
+                //  onChange={handleTo}
+                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setTo(e.target.value)}}
                  >
                   <option value="">--- Select Currency ---</option>
+            
                   {/* <option value="INR" selected="selected">INR</option> */}
-                  <option value="INR">INR</option> 
+                  <option value="INR">INR</option>
                   <option value="EUR">EUR</option>
                   <option value="BRL">BRL</option>
                   <option value="USD">USD</option>
@@ -620,7 +689,7 @@ console.log(courses,"coursescourses");
                 </p>
               <input
                type="text"
-               defaultValue={exchange_amount && amount != 0 || "" ? exchange_amount : ""}
+               defaultValue={exchange_amount && amountValue.amountInput != 0 || "" ? exchange_amount : ""}
                 className='rate_input form-control'
                 
                  />
@@ -707,7 +776,7 @@ console.log(courses,"coursescourses");
           <button
            className="form-button"
           //  onChange={() => setShows(!shows)}
-            onClick={handleAmountDelivery}
+            onClick={handleAmountSummary}
             // onClick={()=>{setStep(step+1)}}
             >
               Continue
@@ -893,7 +962,7 @@ console.log(courses,"coursescourses");
    </div>
    <div class="row">
      <div className="col-md-4">
-       <button className="start-form-button">Cancel</button>
+       <button className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
      </div>
      <div className="col-md-8">
        {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
@@ -974,8 +1043,8 @@ console.log(courses,"coursescourses");
         <Button variant="secondary" onClick={handleClose}>
             Go back to Edit
           </Button>
-          <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
-          {/* <Button variant="primary" onClick={handleRecipientSummary()}>Continue</Button> */}
+          {/* <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button> */}
+          <Button variant="primary" onClick={handleRecipientSummary}>Continue</Button>
           {/* onClick={() => setShow(!show)} */}
            {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
         
@@ -1092,6 +1161,7 @@ console.log(courses,"coursescourses");
                       },
                       onComplete: function (res,msg,onComplete) {
                           console.log(2,"log2");
+                          setStep(step+1);
                           console.log(res, "codes")
 
                    
@@ -1252,18 +1322,18 @@ console.log(courses,"coursescourses");
  </div>
       <div class="row each-row">
         <div className="col-md-2 new_buttonss">
-          <button className="start-form-button">Cancel</button>
+          <button className="start-form-button" onClick={handlSenderDetails}>Cancel</button>
         </div>
         <div className="col-md-10 new_buttons">
          
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          { verificationValue == false ? (
-             <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>
+          {/* { verificationValue == false ? ( */}
+             {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button> */}
 
-          ):(
+          {/* ):( */}
             <div id="digitalid-verify"></div>
-          )
-          }
+          {/* )
+          } */}
          
           
          
@@ -1318,6 +1388,8 @@ console.log(courses,"coursescourses");
 
       
     
+
+
     return (
     
     <>
@@ -1335,7 +1407,8 @@ console.log(courses,"coursescourses");
            </div>
           
            <div className="col-md-4">
-           {shows &&
+           {  
+              step > 0 && Total_amount != ''  ? (
              <div className="summary">
                <h5>Summary</h5>
                <Table>
@@ -1355,18 +1428,20 @@ console.log(courses,"coursescourses");
                  </tbody>
                </Table>
              </div>
-            };
+            ):(
+              <>
+              </>
+            
+             )
+            
+            } 
 
 
         {  
-              show == true || firstName != undefined  ? (
+             step > 0 && summaryList == true && formValue.bankName != ''  ? (
        
-           <>
-           </>
-          
-            
-          ):(
-           <>
+           
+            <>
             <div className="summary">
                <h5>Recipient details Summary</h5>
                <Table>
@@ -1387,9 +1462,16 @@ console.log(courses,"coursescourses");
                </Table>
              </div>
            </>
-          )
+           
           
-          }
+            
+          ):(
+            <>
+            </>
+          
+           )
+          
+          } 
 
            </div>
 

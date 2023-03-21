@@ -25,19 +25,22 @@ const Transaction = () => {
 
 
       <Tabs
-      defaultActiveKey="InProgress"
+      defaultActiveKey="AllTransaction"
       id="uncontrolled-tab-example"
       className="mb-3 tarnsfer-tabs"
     >
+
+<Tab eventKey="AllTransaction" title="All Transactions">
+      <AllTransfer/>
+      </Tab>
+
       <Tab eventKey="InProgress" title="InProgress">
        <InprogressTransfer/>
       </Tab>
 
 
 
-      <Tab eventKey="AllTransaction" title="All Transaction">
-      <AllTransfer/>
-      </Tab>
+     
     </Tabs>
 
 

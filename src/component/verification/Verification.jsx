@@ -115,7 +115,7 @@ const Verification = () => {
                         <div className="card card-verification">
                             <div className="card-body">
                                 <h5 className="Sign-heading">Verify your Account</h5>
-                                <p>Please Right Verification code send your Email</p>
+                                <p>Please Write Verification code sent your Email</p>
                                 <div className="form_verification">
                                     <form>
                                         <Form.Group className="mb-3 verification_input" controlId="formBasicEmail">
@@ -123,7 +123,7 @@ const Verification = () => {
                                             value={firstnumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationFirst}
-                                            placeholder="0"
+                                            placeholder="x"
                                             autoFocus="autofocus"
                                              />
                                       
@@ -131,7 +131,7 @@ const Verification = () => {
                                             value={secondnumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationSecond}
-                                            placeholder="0"
+                                            placeholder="x"
                                             autoFocus="autofocus"
                                              />
                                    
@@ -139,28 +139,28 @@ const Verification = () => {
                                             value={thirednumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationThired}
-                                            placeholder="0"
+                                            placeholder="x"
                                              />
                                        
                                             <Form.Control type="text" 
                                             value={fournumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationFour}
-                                            placeholder="0"
+                                            placeholder="x"
                                              />
                                       
                                             <Form.Control type="text" 
                                             value={fivenumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationFive}
-                                            placeholder="0"
+                                            placeholder="x"
                                              />
                                     
                                             <Form.Control type="text" 
                                             value={sixnumber}
                                             maxlength="1" 
                                             onChange= {handleVerificationSix}
-                                            placeholder="0"
+                                            placeholder="x"
                                              />
                                         </Form.Group>
                                       <div class="col-md-12 align-center">

@@ -3578,9 +3578,9 @@ table.table_user_recipients .accordion h4 {
   margin-bottom: 0;
 }
 .RSPBprogressBar {
-  background-color: green !important;
+  background-color: #43C888 !important;
   width: 85% !important;
-  margin: 0 auto !important;
+  margin: 25px auto !important;
 }
 section.top_sections{
     z-index: 99999;
@@ -4209,7 +4209,8 @@ h2.accordion-header {
   font-size: 14px !important;
 }
 .my-auto.transac-text {
-  margin-right: 20px;
+  margin-right: 0;
+  margin-top: inherit !important;
 }
 .tabs-page .accordion-body h4 {
   font-size: 15px;
@@ -4266,7 +4267,7 @@ h2.accordion-header {
   margin-top: 30px;
 } */
 .form-control:disabled {
-  background-color:grey !important;
+  background-color:rgb(128 128 128 / 57%) !important;
   opacity: 1;
 }
 .tabs-page .nav-pills .nav-item a svg {
@@ -4396,9 +4397,9 @@ button.start-form-button.full-width {
   color:#000 !important;
   font-weight: 600;
 }
-.tabs-recipent-new table tr td:last-child {
+/* .tabs-recipent-new table tr td:last-child {
   width: 306px;
-}
+} */
 
 td.pending-status svg {
   fill: #ffc107 !important;
@@ -4417,11 +4418,84 @@ td.inprogress-status span {
   padding: 5px 10px;
   border-radius: 6px;
   color: #fff;
+  cursor: pointer;
 }
 .no-data {
   text-align: center;
 }
 .no-data img {
   width: 70%;
+}
+
+.completed {
+  background: green;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 5px;
+  color: #fff;
+  width: 90px;
+    display: block;
+    margin: 0 auto;
+}
+.failed{
+  background:  #bd2130;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  width: 90px;
+    display: block;
+    margin: 0 auto;
+}
+.statuspopup {
+  background: #F3F4F7;
+  border-radius: 10px;
+  margin: 20px 0px 0;
+  width: max-content;
+  padding: 10px;
+  line-height: 20px;
+  height: 28px;
+  display: block;
+  font-weight: 600;
+  font-size: 13px !important;
+}
+.m-top {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.trackicons h6 {
+  font-family: 'Montserrat' !important;
+  font-weight: 700 !important;
+}
+.trackicons img {
+  width: 26%;
+  margin-right: 10px;
+}
+.recipent-detailpopup h6 {
+  font-family: 'Montserrat' !important;
+  font-weight: 700 !important;
+}
+.recipent-detailpopup ul li {
+  width: 100%;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.recipent-detailpopup ul {
+  padding: 0;
+  list-style: none;
+}
+.recipent-detailpopup ul li label {
+  font-size: 13px;
+  font-weight: 700;
+}
+.recipent-detailpopup {
+  float: left;
+  width: 100%;
+  margin-bottom: 24px;
+}
+img.showsideimage {
+  width: 100%;
 }
 /******************** userdahsboard css  end **************/

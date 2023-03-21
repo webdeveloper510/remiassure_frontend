@@ -7,37 +7,40 @@ import { API } from "../../config/API";
 import axios from "axios";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import { BsFillPersonPlusFill } from "react-icons/bs";
-const UserRecipients =() =>{
-    const [isActive, setActive] = useState("false");
 
-    const handleToggle = () => {
-      setActive(!isActive);
-    };
-// Start page show hide condtion page 
+
+const UserRecipients =() =>{
+ 
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+    // Start page show hide condtion page 
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
 
     const verification_otp = localStorage.getItem("verification_otp");
     console.log("Verification Message", verification_otp)
 
-// Start page show hide condtion page
-    
+    // Start page show hide condtion page
 
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+
+    const [isActive, setActive] = useState("false");
+
+    const handleToggle = () => {
+    setActive(!isActive);
+    };
 
     const navigate = useNavigate();
 
     // const notify = () => toast.success("User Data Get Successfully!");
 
-
-    // const token = localStorage.getItem("token");
-    // console.log("TOKEN", token);
-    
-
+/**************************************************************************
+ * ************** Start  Recipient Api call  ******************************
+ * ***********************************************************************/
 
     useEffect(() => {
-        setLoading(true); // Set loading before sending API request
+        // setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'recipient-list/',{}, {
             headers: {
                 "Authorization" : `Bearer ${token}`,
@@ -46,7 +49,7 @@ const UserRecipients =() =>{
           .then(function(response) {
               console.log("Recipients APIIIII", response.data);
               setData(response.data);
-              setLoading(false); // Stop loading
+            //   setLoading(false); // Stop loading
          
          
             //   if (response.status)
@@ -55,10 +58,10 @@ const UserRecipients =() =>{
           .catch(function(error) {
               console.log(error);
               console.log(error.response);
-              setLoading(false); // Stop loading in case of error
-              if(error.response.status){
-                  toast.error(error.response.data.detail);
-              } 
+            //   setLoading(false); // Stop loading in case of error
+            //   if(error.response.status){
+            //       toast.error(error.response.data.detail);
+            //   } 
           })
     }, [])
 
@@ -129,26 +132,16 @@ const UserRecipients =() =>{
 
                            
                             return(
-
-                                
-                                <tr>
-                                
-                                <td>11</td>
-                                <td>neha</td>
-                                <td>Designer</td>
-                                <td>Link generated</td>
-                                <td><button type="button" class="btn btn-light">Transfer now</button></td>
-                          </tr>
                               
-                            //     <tr key={res.id}>
+                                <tr key={res.id}>
                                 
-                            //         <td>{index +1}</td>
-                            //         {/* <td>{res.user}</td> */}
-                            //         <td>{res.name}</td>
-                            //         <td>{res.destination}</td>
-                            //         <td>{res.detail_link}</td>
-                            //         <td>{res.transfer_now_link}</td>
-                            //   </tr>
+                                    <td>{index +1}</td>
+                                    {/* <td>{res.user}</td> */}
+                                    <td>{res.name}</td>
+                                    <td>{res.destination}</td>
+                                    <td>{res.detail_link}</td>
+                                    <td>{res.transfer_now_link}</td>
+                              </tr>
                               
                                     
                             )    

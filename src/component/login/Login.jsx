@@ -52,7 +52,7 @@ const Login = () => {
             console.log("Login Session", sessionID);
         },3000
     );
-    let keyword;
+
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -60,7 +60,6 @@ const Login = () => {
         axios.post(API.BASE_URL + 'login/', {
             email: email,
             password: password,
-            params: { keyword },
         }, {
             headers: {
                 'Content-Type': 'application/json',

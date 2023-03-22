@@ -582,26 +582,28 @@ const digitalIdAsyncInit =(event) =>{
         <div className="row each-row">
           <h5>Receive Method</h5>
           <div className="col-md-12">
-            <div className="input_field">
-              <div className="form-cverification_heck method_type form-check">
-              <input 
+
+          <label class="container-new">
+            <span className="radio-tick">BankTransfer</span>
+            <input 
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod"
                   value="bankTransfer" 
                   checked={moneyTransiction.recivedMethod== "bankTransfer"}
                   onChange={e => onInputChange(e)}
-                  // id="flexRadioDefault1" 
                
                 />
-                <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
-              </div>
-            </div>
+              <span className="checkmark"></span>
+            </label>
+
           </div>
           <div className="col-md-12">
-            <div className="input_field">
-              <div className="form-check method_type">
-              <input
+
+
+          <label class="container-new">
+            <span className="radio-tick">MobileWallet</span>
+            <input
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod" 
@@ -610,16 +612,17 @@ const digitalIdAsyncInit =(event) =>{
                   onChange={e => onInputChange(e)}
                   // id="flexRadioDefault2"
               />
-                <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
-              </div>
-            </div>
+            <span className="checkmark"></span>
+          </label>
           </div>
         </div>
         <div className="row">
           <h5>Payout Partners</h5>
           <div className="col-md-12">
-            <div className="form-check method_type">
-              <input 
+
+          <label class="container-new">
+            <span className="radio-tick">Bank</span>
+            <input 
                   className="form-check-input"
                   type="radio" 
                   name="payOutPartner"
@@ -629,12 +632,15 @@ const digitalIdAsyncInit =(event) =>{
                     onChange={e => onInputChange(e)}
                    
                 />
-              <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
-            </div>
+            <span className="checkmark"></span>
+          </label>
+
           </div>
           <div className="col-md-12">
-            <div className="form-check method_type">
-              <input 
+
+          <label class="container-new">
+            <span className="radio-tick">Services</span>
+            <input 
                   className="form-check-input" 
                   type="radio"              
                   name="payOutPartner"
@@ -643,8 +649,9 @@ const digitalIdAsyncInit =(event) =>{
                   value="services" 
                   onChange={e => onInputChange(e)}
                 />
-              <label className="form-check-label" for="flexRadioDefault4"> Services </label>
-            </div>
+            <span className="checkmark"></span>
+          </label>
+
           </div>
         </div>
         <div className="row">
@@ -834,7 +841,6 @@ const digitalIdAsyncInit =(event) =>{
           type="text" 
           className='rate_input form-control'
           name="address"
-          placeholder="Enter Flat/Unit No."
           defaultValue={formValue.address}
           onChange={(e)=> handleStep2InputChange(e,'address')}
            />
@@ -846,7 +852,6 @@ const digitalIdAsyncInit =(event) =>{
          <input
           type="text" 
           className='rate_input form-control'
-          placeholder="Building/Unit No."
           name="address"
           defaultValue={formValue.address}
           onChange={(e)=> handleStep2InputChange(e,'address')}
@@ -858,7 +863,6 @@ const digitalIdAsyncInit =(event) =>{
        <p className="get-text">Street</p>
          <input
           type="text" 
-          placeholder="Street"
           className='rate_input form-control'
           name="address"
           defaultValue={formValue.address}
@@ -876,7 +880,6 @@ const digitalIdAsyncInit =(event) =>{
           type="text" 
           className='rate_input form-control'
           name="address"
-          placeholder="Postcode"
           defaultValue={formValue.address}
           onChange={(e)=> handleStep2InputChange(e,'address')}
            />
@@ -888,7 +891,6 @@ const digitalIdAsyncInit =(event) =>{
          <input
           type="text" 
           className='rate_input form-control'
-          placeholder="City/Town"
           name="address"
           defaultValue={formValue.address}
           onChange={(e)=> handleStep2InputChange(e,'address')}
@@ -900,7 +902,6 @@ const digitalIdAsyncInit =(event) =>{
        <p className="get-text">State</p>
          <input
           type="text" 
-          placeholder="State"
           className='rate_input form-control'
           name="address"
           defaultValue={formValue.address}
@@ -918,7 +919,6 @@ const digitalIdAsyncInit =(event) =>{
           type="text" 
           className='rate_input form-control'
           name="address"
-          placeholder="Country Code"
           defaultValue={formValue.address}
           onChange={(e)=> handleStep2InputChange(e,'address')}
            />
@@ -991,8 +991,10 @@ const digitalIdAsyncInit =(event) =>{
       </div>
       <div className="row each-row">
         <h5>Payment type</h5>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">Osko</span>
             <input 
               className="form-check-input" 
               type="radio"
@@ -1002,11 +1004,13 @@ const digitalIdAsyncInit =(event) =>{
               value="Oslo" 
               onChange={e => onInputChange(e)}
             />
-            <label className="form-check-label" for="flexRadioDefault34"> Oslo </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">Debit/Credit Card</span>
             <input
              className="form-check-input" 
              type="radio"
@@ -1016,11 +1020,13 @@ const digitalIdAsyncInit =(event) =>{
              value="Debit/Credit Card" 
              onChange={e => onInputChange(e)}
               />
-            <label className="form-check-label" for="flexRadioDefault44"> Debit/Credit Card </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">PoLI Internet Banking</span>
             <input
             className="form-check-input" 
             type="radio" 
@@ -1030,9 +1036,10 @@ const digitalIdAsyncInit =(event) =>{
              value=" PoLI Internet Banking" 
              onChange={e => onInputChange(e)}
             />
-            <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
       </div>
       <div className="row">
         <div className="col-md-4">

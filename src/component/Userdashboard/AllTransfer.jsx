@@ -83,7 +83,7 @@ const AllTranfer = () => {
                                                 <hr></hr>
                                                 <p>Your transaction is complete and we hope to see your again.</p>
 
-                                                {/* <MultiStepProgressBar/> */}
+                                                <MultiStepProgressBar/>
                                                 </div>
   
                         
@@ -174,7 +174,7 @@ const AllTranfer = () => {
       <p><b>No transfers yet</b><br></br>Once you send money, we'll show you a detailed list of your transfers here.</p>  
       </div>  
       <div className="col-md-12">
-      <a href="#" className="send_money">Send Money</a>
+      <a href="#/userdashboard" className="send_money">Send Money</a>
       </div> 
   </div>
 </div>

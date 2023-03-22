@@ -1,29 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef,useMemo} from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import {useLocation} from "react-router-dom";
+import Select from "react-select";
+
+import countryList from 'react-select-country-list'
+
+
+
 
 import {API} from "../../config/API";
 import axios from 'axios';
 import { toast } from 'react-toastify';
+
+{/* start -- css*/}
+const myStyle= {
+    color: "red",
+ }
+ {/* End -- css*/}
 
 
 const Signup = () => {
 
     const [show, setShow] = React.useState(false);
     const [loading, setLoading] = useState(false);
+    const [error,setError]=useState(false);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [location, setLocation] = useState('');
-    const [referral_code, setrReferral_code] = useState();
-    const [referral_value, setrReferral_value] = useState();
+    const [referral_code, setrReferral_code] = useState('');
+    const [referral_value, setrReferral_value] = useState('');
     const [promo_marketing, setPromo_marketing] = useState(false);
     const [mobile, setMobile] = useState('');
+
+    const [sucessText, setSucessText] = useState('');
     const search = useLocation()
     const [checkBoxValue, setCheckBoxvalue] = useState(false);
+    
+    const [countryValue, setcountryValue] = useState('')
+    const options = useMemo(() => countryList().getData(), [])
+
+    const changeHandler = countryValue => {
+        setcountryValue(countryValue)
+    }
+
+
+    console.log("Show",show)
+
+    useEffect(() => {
+        if(show == false) {
+            setrReferral_code("")
+        }
+    })
+    console.log("REF", referral_code)
+
+   /* start-- useRef is used for focusing on inputbox */
+   const input_location = useRef(null);
+   const input_email = useRef(null);
+   const input_mobile = useRef(null);
+   const input_password = useRef(null);
+   const input_refferal_code = useRef(null);
+   
+  
 
 
 
@@ -51,16 +92,8 @@ const Signup = () => {
         setLocation(e.target.value);
     } 
 
-    // const handleCheckBox =(e) =>{
-    //     if(e.target.checked){
-    //         setCheckBoxvalue(true);
-    //     }
-    // else{
-    //     setCheckBoxvalue(false);
-    //     }
-    // }    
     const handleReferral_code = (e) =>{
-         setrReferral_code(e.target.value);
+        setrReferral_code(e.target.value);
        
     }
 
@@ -111,13 +144,34 @@ localStorage.setItem("Referral_code",(referral_code));
   
     const handleSignupApi = (event) => {
         event.preventDefault();
-        setLoading(true); // Set loading before sending API request
+        //useRef is used for focusing on inputbox
+        if(email.length==0){
+            input_email.current.focus();
+            setError(true);
+        }else if (mobile.length==0){
+            input_mobile.current.focus();
+            setError(true);
+        } else if (password.length==0){
+            input_password.current.focus();
+            setError(true);
+        } else if (countryValue.length==0){
+            countryValue.current.focus();
+            setError(true);
+        } 
+        // else if (referral_code.length==0){
+        //     referral_code.current.focus();
+        //     setError(true);
+        // } 
 
+        else{
+
+        setLoading(true); // Set loading before sending API request
         axios.post(API.BASE_URL + 'register/', {
             email: email,
             mobile: mobile,
             password: password,
-            location: location,
+            // location: location,
+            location: countryValue.label,
             referral_code: referral_code,
             promo_marketing: promo_marketing.Active,
         }, {
@@ -128,22 +182,30 @@ localStorage.setItem("Referral_code",(referral_code));
         })
         .then(function(response) {
             console.log(response);
-            // localStorage.setItem("signup_message", response.data.msg);
+            localStorage.setItem("signup_token", response.data.tokens.access);
+            localStorage.setItem("Signup_customer_id", response.data.data.customer_id);
+            localStorage.setItem("Signup_email", response.data.data.email);
+            localStorage.setItem("Signup_location", response.data.data.location);
+            localStorage.setItem("Signup_mobile", response.data.data.mobile);
+            localStorage.setItem("Signup_id", response.data.id);
+            setSucessText(response.data.data.message && response.data.data.msg)
             // setShow(!show)
             setLoading(false); // Stop loading
-                notify();
-                navigate('/verification');   
+                // notify();
+                // navigate('/verification');   
                 // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
         })
         .catch(function(error, message) {
             console.log(error.response)
             setLoading(false); // Stop loading in case of error
             if(error.response.data.status){
-                toast.error(error.response.data.message || error.response.data.password[0]);
+                // toast.error(error.response.data.message || error.response.data.msg);
             } 
+            setSucessText(error.response.data.message || error.response.data.msg)
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
     }
+}
     
 
 /**************************************************************************
@@ -155,12 +217,14 @@ localStorage.setItem("Referral_code",(referral_code));
         const term = new URLSearchParams(search1).get('ref');
         console.log(term, "termterm")
         if(term){
-            setrReferral_value(term)
+            setrReferral_code(term)
             setShow(true)
             console.log(referral_code, "referral_codereferral_codereferral_code");
         
 
         }
+
+        console.log(show)
        
       },[]);
 
@@ -174,6 +238,9 @@ localStorage.setItem("Referral_code",(referral_code));
 
   }
 
+ 
+
+  
 
 
     return(
@@ -194,20 +261,36 @@ localStorage.setItem("Referral_code",(referral_code));
                     <div className="col-lg-12">
                         <div className="card card-signup">
                             <div className="card-body">
+                               <span  style={myStyle}>{sucessText? sucessText: ""}</span> 
+
                                 <h5 className="Sign-heading">Sign Up</h5>
                                 <div className="form_signup">
 
                                     <form>
-                                        <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
+                                    <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
+                                    <Select
+                                     ref={input_location}
+                                     options={options} 
+                                     value={countryValue} 
+                                     onChange={changeHandler}
+                                      />
+                                       {error&&countryValue.length<=0?
+				                          <span style={myStyle}>Please select the Location </span>:""}
+    
+                                        {/* <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
                                         <CountryDropdown
-                                         id="UNIQUE_ID" 
+                                       
                                          className='YOUR_CSS_CLASS rate_input form-control'
                                           preferredCountries={['gb', 'us' ]} 
+                                          ref={input_location}
                                           value={location}
                                           handleChange={handeleLocation}
                                         //   handleChange={e=> console.log(e.target.value)}
                                           >
-                                        </CountryDropdown>
+                                             {error&&location.length<=0?
+				                          <span style={myStyle}>Please check the Location </span>:""}
+                                        </CountryDropdown> */}
+                                        
                                         {/* <Form.Select 
                                          value={location}
                                          onChange={handeleLocation}
@@ -221,33 +304,46 @@ localStorage.setItem("Referral_code",(referral_code));
                                             <Form.Label>Your Email<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="email"
+                                            ref={input_email}
                                             value={email}
                                             onChange={handleEmail}
-                                            placeholder="Enter email" />
+                                            placeholder="Enter email"
+                                             />
+                                            {error&&email.length<=0?
+				                          <span style={myStyle}>Please Enter the Email </span>:""}	
                                         </Form.Group>
+                                        
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>Your Phone<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="mobile"
+                                            ref={input_mobile}
                                             value={mobile}
                                             onChange={handleMobile}
-                                            placeholder="Enter Phone" />
+                                            placeholder="Enter Phone"
+                                             />
+                                               {error&&mobile.length<=0?
+				                          <span style={myStyle}>Please Enter the Mobile </span>:""}	
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
                                             <Form.Label> Your Password<span style={{color: 'red'}} >*</span> </Form.Label>
                                             <Form.Control 
                                             type="password"
+                                            ref={input_password}
                                             value={password}
                                             onChange={handlePassword}
-                                            placeholder="Password" />
+                                            placeholder="Password" 
+                                            />
+                                            {error&&password.length<=0?
+				                          <span style={myStyle}>Please Enter the Password </span>:""}	
                                         </Form.Group>
 
                                         <Form.Check  className="form_switch"
                                         type="switch" 
                                         onClick={() => setShow(!show)}
-                                        value={referral_code}
+                                        // value={referral_code}
                                         checked={show ? true : false}
                                         // onChange={(e)=> {myReferalCode(e.target.value);setrReferral_code(e.target.value)}}
                                         //   onChange={(e)=> {setrReferral_code(e.target.value)}}
@@ -260,9 +356,13 @@ localStorage.setItem("Referral_code",(referral_code));
                                             <Form.Label>Your Referral Code</Form.Label>
                                             <Form.Control 
                                             type="text"
-                                            value={referral_value}
+                                            // ref={input_refferal_code}
+                                            value={referral_code}
                                             onChange={handleReferral_code}
-                                            placeholder="Enter Referral Code" />
+                                            placeholder="Enter Referral Code" 
+                                            />
+                                              {/* {error&&referral_code.length<=0?
+				                          <span style={myStyle}>Please Enter the Referralcode </span>:""}	 */}
                                         </Form.Group>
                                         </div>}
 

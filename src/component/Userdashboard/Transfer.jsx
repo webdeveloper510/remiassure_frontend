@@ -20,7 +20,7 @@ const Transaction = () => {
         <>
         <div className="transaction-progress">
         <div className="header">
-        <h1>Transaction Listing</h1>
+        <h1>Transaction History</h1>
       </div>
 
 

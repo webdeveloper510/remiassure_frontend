@@ -84,7 +84,7 @@ const InprogressTransfer = () => {
                                                 <hr></hr>
                                                 <p>Your transaction is Inprogress and we hope to see your again.</p>
 
-                                                {/* <MultiStepProgressBar/> */}
+                                                <MultiStepProgressBar/>
                                                 </div>
   
                         

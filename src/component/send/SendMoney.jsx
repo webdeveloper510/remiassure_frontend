@@ -86,6 +86,24 @@ const [reason_money, setReason_money] = React.useState ("");
  // End ------    digital Api state 
 
 
+ /**************************************************************************
+ * ************** Start -Sender Details Data Get***************************
+ * ***********************************************************************/
+const signup_token = localStorage.getItem("signup_token")
+console.log("signup_token" ,signup_token)
+const Signup_customer_id= localStorage.getItem("Signup_customer_id");
+const Signup_email = localStorage.getItem("Signup_email");
+const Signup_location = localStorage.getItem("Signup_location");
+const Signup_mobile = localStorage.getItem("Signup_mobile");
+const Signup_id = localStorage.getItem("Signup_id");
+
+
+const navigate = useNavigate();
+
+const notify = () => toast.success("Sign Up Successfully!");
+const emptyData = () => toast.warn("Please fill out all the fields");
+const emailExits = () => toast.error("User with this Email already exists!");
+
 
 // Start -Recipient Bank Details 
 const handleStep2InputChange =(e,key) =>{
@@ -317,12 +335,12 @@ const handlSenderDetails =(e) => {
 }
 
 
-  const navigate = useNavigate();
-  // const notify = () => toast.success("Amount & Delivery Successfully!!");
+  // const navigate = useNavigate();
+  // // const notify = () => toast.success("Amount & Delivery Successfully!!");
 
-  //localstorage of get data 
-    // const Total_amount= localStorage.getItem(Total_amount);
-    // console.log(Total_amount, "Total_amount money")
+  // //localstorage of get data 
+  //   // const Total_amount= localStorage.getItem(Total_amount);
+  //   // console.log(Total_amount, "Total_amount money")
 
 /**************************************************************************
  * ************** Start  All Amount & Delivery  ******************************
@@ -451,7 +469,7 @@ const handlSenderDetails =(e) => {
         axios.post(API.BASE_URL + 'is-digitalid-verified/',{
         }, {
           headers: {
-              "Authorization" : `Bearer ${token}`,
+              "Authorization" : `Bearer ${signup_token}`,
           }
         })
         .then(function(response) {
@@ -491,7 +509,7 @@ const handlSenderDetails =(e) => {
        code: '3WU9IL',
       }, {
           headers: {
-            "Authorization" : `Bearer ${token}`,
+            "Authorization" : `Bearer ${signup_token}`,
           },
         
       })
@@ -700,9 +718,9 @@ const handlSenderDetails =(e) => {
         <div className="row each-row">
           <h5>Receive Method</h5>
           <div className="col-md-12">
-            <div className="input_field">
-              <div className="form-cverification_heck method_type form-check">
-              <input 
+          <label class="container-new">
+            <span className="radio-tick">BankTransfer</span>
+          <input 
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod"
@@ -712,14 +730,15 @@ const handlSenderDetails =(e) => {
                   // id="flexRadioDefault1" 
                
                 />
-                <label className="form-check-label" for="flexRadioDefault1"> Bank Transfer </label>
-              </div>
-            </div>
+              <span className="checkmark"></span>
+            </label>
+
           </div>
           <div className="col-md-12">
-            <div className="input_field">
-              <div className="form-check method_type">
-              <input
+
+          <label class="container-new">
+            <span className="radio-tick">MobileWallet</span>
+          <input
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod" 
@@ -728,16 +747,17 @@ const handlSenderDetails =(e) => {
                   onChange={e => onInputChange(e)}
                   // id="flexRadioDefault2"
               />
-                <label className="form-check-label" for="flexRadioDefault2"> Mobile Wallet </label>
-              </div>
-            </div>
+            <span className="checkmark"></span>
+          </label>
           </div>
         </div>
         <div className="row each-row">
           <h5>Payout Partners</h5>
           <div className="col-md-12">
-            <div className="form-check method_type">
-              <input 
+
+          <label class="container-new">
+            <span className="radio-tick">Bank</span>
+            <input 
                   className="form-check-input"
                   type="radio" 
                   name="payOutPartner"
@@ -747,12 +767,15 @@ const handlSenderDetails =(e) => {
                     onChange={e => onInputChange(e)}
                    
                 />
-              <label className="form-check-label" for="flexRadioDefault3"> Bank </label>
-            </div>
+            <span className="checkmark"></span>
+          </label>
+
           </div>
           <div className="col-md-12">
-            <div className="form-check method_type">
-              <input 
+
+          <label class="container-new">
+            <span className="radio-tick">Services</span>
+            <input 
                   className="form-check-input" 
                   type="radio"              
                   name="payOutPartner"
@@ -761,8 +784,8 @@ const handlSenderDetails =(e) => {
                   value="services" 
                   onChange={e => onInputChange(e)}
                 />
-              <label className="form-check-label" for="flexRadioDefault4"> Services </label>
-            </div>
+            <span className="checkmark"></span>
+          </label>
           </div>
         </div>
         <div class="row">
@@ -1024,6 +1047,10 @@ const handlSenderDetails =(e) => {
     <td>{emailData}</td>
   </tr>
   <tr>
+    <th>Mobile</th>
+    <td>{mobileData}</td>
+  </tr>
+  <tr>
     <th>Address</th>
     <td>{addressData}</td>
   </tr>
@@ -1040,11 +1067,11 @@ const handlSenderDetails =(e) => {
         </Modal.Body>
         <Modal.Footer>
           
-        <Button variant="secondary" onClick={handleClose}>
+        <button className="start-form-button" variant="secondary" onClick={handleClose}>
             Go back to Edit
-          </Button>
+          </button>
           {/* <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button> */}
-          <Button variant="primary" onClick={handleRecipientSummary}>Continue</Button>
+          <button className="form-button"  variant="primary" onClick={handleRecipientSummary}>Continue</button>
           {/* onClick={() => setShow(!show)} */}
            {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
         
@@ -1079,8 +1106,10 @@ const handlSenderDetails =(e) => {
       </div>
       <div className="row each-row">
         <h5>Payment type</h5>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">Osko</span>
             <input 
               className="form-check-input" 
               type="radio"
@@ -1090,11 +1119,13 @@ const handlSenderDetails =(e) => {
               value="Oslo" 
               onChange={e => onInputChange(e)}
             />
-            <label className="form-check-label" for="flexRadioDefault34"> Oslo </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">Debit/Credit Card</span>
             <input
              className="form-check-input" 
              type="radio"
@@ -1104,11 +1135,13 @@ const handlSenderDetails =(e) => {
              value="Debit/Credit Card" 
              onChange={e => onInputChange(e)}
               />
-            <label className="form-check-label" for="flexRadioDefault44"> Debit/Credit Card </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
         <div className="col-md-12">
-          <div className="form-check method_type">
+        <label class="container-new">
+            <span className="radio-tick">PoLI Internet Banking</span>
             <input
             className="form-check-input" 
             type="radio" 
@@ -1118,9 +1151,10 @@ const handlSenderDetails =(e) => {
              value=" PoLI Internet Banking" 
              onChange={e => onInputChange(e)}
             />
-            <label className="form-check-label" for="flexRadioDefault5"> PoLI Internet Banking </label>
-          </div>
+            <span className="checkmark"></span>
+          </label>
         </div>
+
       </div>
       <div class="row">
         <div className="col-md-4">
@@ -1159,16 +1193,24 @@ const handlSenderDetails =(e) => {
                       onLoadComplete: function () {
                           console.log(1,"log");
                       },
-                      onComplete: function (res,msg,onComplete) {
+                      onComplete: function (res,error,onComplete) {
                           console.log(2,"log2");
                           setStep(step+1);
                           console.log(res, "codes")
+                          console.log(error, "error")
+                          navigate("/sendMoney")
+                          if(error.response){
+                            toast.error(error.error_description || error.response.error )
+                            navigate("/sendMoney")
+                          }
 
                    
                       },
                       onClick: function (opts) {
+                        console.log(3, "log")
                       },
                       onKeepAlive: function () {
+                        console.log(4, "log")
                       }
                   });
       
@@ -1219,7 +1261,11 @@ const handlSenderDetails =(e) => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Customer ID</p>
-       <input type="text" className='rate_input form-control' />
+       <input
+        type="text"
+        className='rate_input form-control'
+        value={Signup_customer_id}
+          />
      </div>
    </div>
    <div className="col-md-4">
@@ -1231,7 +1277,28 @@ const handlSenderDetails =(e) => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Gender</p>
-       <input type="text" className='rate_input form-control' />
+       <div class="inline-flex">
+       <label className="container-new form-gender">
+            <span className="radio-tick">Male</span>
+            <input
+            className="form-check-input" 
+            type="radio" 
+            name="gender"
+             value=" Male"
+            />
+            <span className="checkmark"></span>
+          </label>
+          <label class="container-new form-gender">
+            <span className="radio-tick">Female</span>
+            <input
+            className="form-check-input" 
+            type="radio" 
+            name="gender"
+             value=" Female" 
+            />
+            <span className="checkmark"></span>
+          </label>
+          </div>
      </div>
    </div>
  </div>
@@ -1253,13 +1320,21 @@ const handlSenderDetails =(e) => {
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Email</p>
-       <input type="email" className='rate_input form-control' />
+       <input
+        type="email"
+        value={Signup_email}
+         className='rate_input form-control'
+         />
      </div>
    </div>
    <div className="col-md-6">
      <div className="input_field">
        <p className="get-text">Mobile</p>
-       <input type="text" className='rate_input form-control' /> 
+       <input 
+       type="text"
+        className='rate_input form-control'
+        value={Signup_mobile}
+         /> 
     
      </div>
    </div>
@@ -1315,7 +1390,14 @@ const handlSenderDetails =(e) => {
    <div className="col-md-4">
      <div className="input_field">
        <p className="get-text">Country</p>
-       <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
+       <CountryDropdown 
+       id="UNIQUE_ID"
+        className='YOUR_CSS_CLASS rate_input form-control' 
+        preferredCountries={['gb', 'us' ]}
+        value={Signup_location}
+        //  value="" handleChange={e=> console.log(e.target.value)}
+         >
+        </CountryDropdown>
 
      </div>
    </div>
@@ -1407,38 +1489,76 @@ const handlSenderDetails =(e) => {
            </div>
           
            <div className="col-md-4">
-           {  
-              step > 0 && Total_amount != ''  ? (
+          
              <div className="summary">
-               <h5>Summary</h5>
+              
                <Table>
+
+                {  
+                step > 0 && Total_amount != ''  ? (
+                  
+                  <div>
+                  <h5>Summary</h5>
+                    <tbody>
+                      <tr>
+                        <th>Amount</th>
+                        {/* <td>{amount+" "+from +" ⇒ "+total_amount + " " +to }</td> */}
+                        <td>{total_amount }</td>
+                      </tr>
+                      <tr>
+                        <th>Received Method</th>
+                        <td>{recivedMethod}</td>
+                      </tr>
+                      <tr>
+                        <th>Payout Partners</th>
+                        <td>{payOutPartner}</td>  
+                      </tr>
+                    </tbody>
+                  </div>
+                    ):(
+                    <>
+                    </>
+                  
+                  )
+                  
+                 } 
+
+             {  
+             step > 0 && formValue.bankName != ''  ? (
+              <div>
+               <h5>Recipient details Summary</h5>
                  <tbody>
                    <tr>
-                     <th>Amount</th>
-                     <td>{amount+" "+from +" ⇒ "+total_amount + " " +to }</td>
+                     <th>First Name</th>
+                     <td>{firstName}</td>
                    </tr>
                    <tr>
-                     <th>Received Method</th>
-                     <td>{recivedMethod}</td>
+                     <th>Mobile</th>
+                     <td>{mobileData}</td>
                    </tr>
                    <tr>
-                     <th>Payout Partners</th>
-                     <td>{payOutPartner}</td>  
+                     <th>Reason For Sending Money</th>
+                     <td>{reasonMoney}</td>  
                    </tr>
                  </tbody>
+
+             </div>
+
+              ):(
+                <>
+                </>
+              
+              )
+              
+              } 
+ 
                </Table>
              </div>
-            ):(
-              <>
-              </>
-            
-             )
-            
-            } 
+           
 
 
-        {  
-             step > 0 && summaryList == true && formValue.bankName != ''  ? (
+        {/* {  
+             step > 0 && formValue.bankName != ''  ? (
        
            
             <>
@@ -1447,16 +1567,16 @@ const handlSenderDetails =(e) => {
                <Table>
                  <tbody>
                    <tr>
-                     <th>Amount</th>
+                     <th>First Name</th>
                      <td>{firstName}</td>
                    </tr>
                    <tr>
-                     <th>Received Method</th>
-                     <td>{recivedMethod}</td>
+                     <th>Mobile</th>
+                     <td>{mobileData}</td>
                    </tr>
                    <tr>
-                     <th>Payout Partners</th>
-                     <td>{payOutPartner}</td>  
+                     <th>Reason For Sending Money</th>
+                     <td>{reasonMoney}</td>  
                    </tr>
                  </tbody>
                </Table>
@@ -1471,7 +1591,7 @@ const handlSenderDetails =(e) => {
           
            )
           
-          } 
+          }  */}
 
            </div>
 

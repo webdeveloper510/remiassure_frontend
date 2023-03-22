@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import OtpInput from "react18-input-otp";
+
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
@@ -12,6 +14,11 @@ import { NavLink } from "react-router-dom";
 
 
 const Verification = () => {
+
+    const [otp, setOtp] = useState("");
+    const handleChange = (enteredOtp) => {
+      setOtp(enteredOtp);
+    };
 
 // start input feilds function
     const [firstnumber, setFirstnumber] = useState('');
@@ -77,7 +84,8 @@ const Verification = () => {
             event.preventDefault();
             setLoading(true) // set loading before  sending API request
             axios.post(API.BASE_URL + 'verify-email/', {
-                email_otp: Allvalue
+                // email_otp: Allvalue
+                email_otp: otp
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,6 +109,17 @@ const Verification = () => {
             })
     }
 
+
+
+
+    
+
+
+
+
+
+
+
     return(
         <>
          {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
@@ -115,56 +134,27 @@ const Verification = () => {
                         <div className="card card-verification">
                             <div className="card-body">
                                 <h5 className="Sign-heading">Verify your Account</h5>
-                                <p>Please Write Verification code sent your Email</p>
+                                <p>A verification code sent to your email. Please enter the code to continue.</p>
                                 <div className="form_verification">
+      
+
                                     <form>
-                                        <Form.Group className="mb-3 verification_input" controlId="formBasicEmail">
-                                            <Form.Control type="text" 
-                                            value={firstnumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationFirst}
-                                            placeholder="x"
-                                            autoFocus="autofocus"
-                                             />
+
+                                        <OtpInput
+                                            value={otp}
+                                            onChange={handleChange}
+                                            numInputs={6}
+                                            isSuccessed={true}
+                                            successStyle="success"
+                                            separator={<span>-</span>}
+                                            separateAfter={3}
+                                            className="verification_input"
+                                            onSubmit={console.log(otp)}
+                                            
+                                        />
+
                                       
-                                            <Form.Control type="text" 
-                                            value={secondnumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationSecond}
-                                            placeholder="x"
-                                            autoFocus="autofocus"
-                                             />
-                                   
-                                            <Form.Control type="text" 
-                                            value={thirednumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationThired}
-                                            placeholder="x"
-                                             />
-                                       
-                                            <Form.Control type="text" 
-                                            value={fournumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationFour}
-                                            placeholder="x"
-                                             />
-                                      
-                                            <Form.Control type="text" 
-                                            value={fivenumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationFive}
-                                            placeholder="x"
-                                             />
-                                    
-                                            <Form.Control type="text" 
-                                            value={sixnumber}
-                                            maxlength="1" 
-                                            onChange= {handleVerificationSix}
-                                            placeholder="x"
-                                             />
-                                        </Form.Group>
                                       <div class="col-md-12 align-center">
-                                        <NavLink to="/sendMoney">
                                         <button variant="primary" 
                                         type="submit"
                                          className="continue_button"
@@ -180,7 +170,7 @@ const Verification = () => {
                                                 </>:<></>
                                             }
                                         </button>
-                                        </NavLink>
+                                      
 
                                         </div>
                                     </form>

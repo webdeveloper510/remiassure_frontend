@@ -94,19 +94,19 @@ const[countryName, setCountryName] = useState('');
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Your Name </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter First Name" />
+                          <Form.Control type="text" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Middle Name </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Middle Name" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Last Name </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Last Name" />
+                          <Form.Control type="text" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                     </div>
@@ -114,33 +114,50 @@ const[countryName, setCountryName] = useState('');
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Customer ID </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Customer ID" />
+                          <Form.Control type="text" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="mb-3 form_label">
                         <p className="get-text">Date </p>
-                          <Form.Control type="date" className='rate_input form-control' placeholder="Enter Date" />
+                          <Form.Control type="date" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Gender </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Gender" />
-                        </Form.Group>
+                      <div className="input_field">
+                        <p className="get-text">Gender</p>
+                        <div class="inline-flex">
+                        <label className="container-new form-gender">
+                              <span className="radio-tick">Male</span>
+                              <Form.Group className="form_label" controlId="Firstname">
+                                            <Form.Control type="radio" name="gender" className='rate_input form-control'/>
+                                            <span className="checkmark"></span>
+                                          </Form.Group>
+                              
+                            </label>
+                            <label class="container-new form-gender">
+                              <span className="radio-tick">Female</span>
+                              <Form.Group className="form_label" controlId="Firstname">
+                                            <Form.Control type="radio" name="gender" className='rate_input form-control' />
+                                            <span className="checkmark"></span>
+                                          </Form.Group>
+                             
+                            </label>
+                            </div>
                       </div>
+                    </div>
                     </div>
                     <div className="row each-row">
                       <div className="col-md-6">
                         <Form.Group className="form_label">
                         <p className="get-text">Country of Birth </p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Country of Birth" />
+                          <Form.Control type="text" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                       <div className="col-md-6">
                         <Form.Group className="form_label">
                         <p className="get-text">ID Type</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter ID Type" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                     </div>
@@ -151,8 +168,7 @@ const[countryName, setCountryName] = useState('');
                           <Form.Control 
                           type="email"
                            className='rate_input form-control' 
-                           value={email}
-                           placeholder="Enter Email" />
+                           value={email}/>
                         </Form.Group>
                       </div>
                       <div className="col-md-6">
@@ -161,29 +177,7 @@ const[countryName, setCountryName] = useState('');
                           <Form.Control
                            type="text" 
                            className='rate_input form-control'
-                           value={mobile}
-                            placeholder="Enter Mobile" />
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <h5>Change Password</h5>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Current Password</p>
-                          <Form.Control type="password" className='rate_input form-control' placeholder="Enter Current Password" />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">New Password</p>
-                          <Form.Control type="password" className='rate_input form-control' placeholder="Enter New Password" />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Confirm Password</p>
-                          <Form.Control type="password" className='rate_input form-control' placeholder="Enter Confirm Password" />
+                           value={mobile}/>
                         </Form.Group>
                       </div>
                     </div>
@@ -192,19 +186,19 @@ const[countryName, setCountryName] = useState('');
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Flat/Unit No.</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Flat/Unit No." />
+                          <Form.Control type="text" className='rate_input form-control'/>
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Building/Unit No.</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Building/Unit No." />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Street</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Street" />
+                          <Form.Control type="text" className='rate_input form-control'  />
                         </Form.Group>
                       </div>
                     </div>
@@ -212,27 +206,27 @@ const[countryName, setCountryName] = useState('');
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">Postcode</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Postcode" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">City/Town</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter City/Town" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                       <div className="col-md-4">
                         <Form.Group className="form_label">
                         <p className="get-text">State</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter State" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                     </div>
                     <div className="row each-row">
-                      <div className="col-md-4">
+                      <div className="col-md-4">placeholder="Enter Country Code"
                         <Form.Group className="form_label">
                         <p className="get-text">Country Code</p>
-                          <Form.Control type="text" className='rate_input form-control' placeholder="Enter Country Code" />
+                          <Form.Control type="text" className='rate_input form-control' />
                         </Form.Group>
                       </div>
                       <div className="col-md-4">

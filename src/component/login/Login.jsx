@@ -8,15 +8,27 @@ import {API} from "../../config/API";
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 
-
+{/* start -- css*/}
+const myStyle= {
+    color: "red",
+ }
+ {/* End -- css*/}
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [promo_marketing, setPromo_marketing] = useState(false);
-    // const {setAuth, userauth}= useContext(UserContext);
     const [loading, setLoading] = useState(false);
+
+     // start Error mesasge states
+    const [emailText, setEmailText] = useState('');
+    const [passwordText, setPasswordText] = useState('');
+    const [EmailpasswordText, setEmailpasswordText] = useState('');
+    const [UserexistText, setUserexistText] = useState('');
+
+
+    
 
 
     const navigate = useNavigate();
@@ -68,20 +80,32 @@ const Login = () => {
         .then(function(response) {
             console.log("Login API" ,response);
             localStorage.setItem("token", response.data.token.access);
+         
             setLoading(false); // Stop loading
-            if (response.status)
-                notify();
-            navigate('/userdashboard');   
+            if(response.data.is_digitalid_verified==false){
+                navigate('/sendMoney');    
+            }  else{
+                navigate('/userdashboard');   
+            }
+            
+            if (response.status){
+                // notify();
+            // navigate('/userdashboard');   
+            }
                 
         })
 
         .catch(function(error, message) {
             console.log(error.response)
             setLoading(false); // Stop loading in case of error
+            // if(error.response.status){
+            //     toast.error(error.response.data.message);
+            // }
+            setEmailText(error.response.data.Email);
+            setPasswordText(error.response.data.Password);
+            setEmailpasswordText(error.response.data.Emailpassword);
+            setUserexistText(error.response.data.User);
 
-            if(error.response.status){
-                toast.error(error.response.data.message);
-            }
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
 
@@ -107,6 +131,8 @@ const Login = () => {
                     <div className="col-lg-12">
                         <div className="card card-login">
                             <div className="card-body">
+                                <span style={myStyle}>{EmailpasswordText? EmailpasswordText: ''}</span>
+                                {/* <span style={myStyle}>{VerifydigtalidText? VerifydigtalidText: ''}</span> */}
                                 <h5 className="Sign-heading">Login</h5>
 
                                 <div className="form_login">
@@ -118,6 +144,8 @@ const Login = () => {
                                             onChange= {handleEmail}
                                             placeholder="Enter email"
                                              />
+                                             <span style={myStyle}>{emailText? emailText:""}</span>
+                                             <span style={myStyle}>{UserexistText? UserexistText: ""}</span>
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
@@ -127,6 +155,8 @@ const Login = () => {
                                              onChange= {handlePassword}
                                             placeholder="Password"
                                              />
+                                             <span style={myStyle}>{passwordText? passwordText: ""}</span>
+                                             
                                         </Form.Group>
                                       
                                         <div className="row">

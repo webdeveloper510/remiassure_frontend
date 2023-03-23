@@ -23,6 +23,7 @@ import UserSendMoney from '../component/Userdashboard/UserSendMoney';
 import UserDashboard from '../component/Userdashboard/UserDashboard';
 import AddNewRecipient from '../component/Userdashboard/AddNewRecipient';
 import UserProfile from '../component/Userdashboard/UserProfile';
+import ChangePassword from '../component/Userdashboard/ChangePassword';
 import UserRecipient from '../component/Userdashboard/UserRecipient';
 import ReferralData from '../component/referralData/ReferralData';
 
@@ -32,6 +33,7 @@ import { AuthProvider } from '../component/context/UserContext';
 
 
 const Routerpage =()=>{
+  
   return(
 
     
@@ -64,6 +66,7 @@ const Routerpage =()=>{
     <Route exact path='/addnewrecipient' element={<AddNewRecipient /> } />
     <Route exact path='/userprofile' element={<UserProfile /> } />
     <Route exact path='/userrecipients' element={<UserRecipient /> } />
+    <Route exact path='/changepassword' element={<ChangePassword /> } />
     </Routes>
     <ToastContainer />
      

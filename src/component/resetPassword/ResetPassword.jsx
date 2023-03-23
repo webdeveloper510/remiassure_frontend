@@ -8,15 +8,21 @@ import {API} from "../../config/API";
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 
-
+const myStyle = {
+    color: 'red',
+}
 
 const RecentPassword = () => {
 
     const [password, setPassword] = useState('');
     const [reset_password_otp, setReset_password_otp] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
     const [loading, setLoading] = useState(false);
+
+    // 
+    const [InvalidotpText, setInvalidotpText] = useState('');
+    const [EnterpasswordText, setEnterpasswordText] = useState('');
+
     // const {id} = useParams();
 
     const handlePassword =(e) =>{
@@ -47,7 +53,7 @@ const RecentPassword = () => {
         setLoading(true); // Set loading before sending API request
             axios.post(API.BASE_URL + `reset-password/`, {
                 password: password,
-                reset_password_otp: '653665',
+                reset_password_otp: '264363',
                 confirmPassword: confirmPassword,
             }, {
                 headers: {
@@ -57,16 +63,19 @@ const RecentPassword = () => {
             .then(function(response) {
                 console.log("Forget API" ,response);
                 setLoading(false); // Stop loading
-                navigate('/')
-                notify();
+                navigate('/login')
+                // notify();
             })
             .catch(function(error) {
                 console.log(error.response);
                 setLoading(false); // Stop loading in case of error
-                if(error.response.status){
-                    toast.error(error.response.data.message || error.response.data.non_field_errors);
-                }
-                // wrongData();
+                // if(error.response.status){
+                //     toast.error(error.response.data.message || error.response.data.non_field_errors);
+                // }
+                setInvalidotpText(error.response.data.Invalidotp);
+                setEnterpasswordText(error.response.data.Enterpassword);
+                
+             
             })
         }
     
@@ -92,13 +101,17 @@ const RecentPassword = () => {
 
                                 <div className="form_login">
                                     <form>
+                                        
                                       <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
                                             <Form.Label>New Password</Form.Label>
                                             <Form.Control 
                                             type="password"
                                             value={password}
                                             onChange={handlePassword}
-                                             placeholder="Enter New Password" />
+                                             placeholder="Enter New Password" 
+                                             />
+                                             <span style={myStyle}>{InvalidotpText? InvalidotpText: ''}</span>
+                                             <span style={myStyle}>{EnterpasswordText? EnterpasswordText: ''}</span>
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">

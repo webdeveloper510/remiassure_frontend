@@ -8,9 +8,17 @@ import {API} from "../../config/API";
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 
+const myStyle ={
+    color: "red",
+}
+
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
+
+    //
+    const [EnteremailText, setEnteremailText] = useState('');
+    const [ValidemailText, setValidemailText] = useState('');
 
     const notify = () =>toast.success("Check your email to Reset Password");
     const wrongData = () =>toast.warm("This E-mail is not our records, please try again");
@@ -51,15 +59,18 @@ const ForgotPassword = () => {
                 // navigate(`/resetpassword/${token_forgot}`);
                 // window.location.reload(false);
                navigate('/resetpasswords')
-                notify();
+                // notify();
             })
             .catch(function(error) {
                 console.log(error.response);
                 setLoading(false); // Stop loading in case of error
-                if(error.response.status){
-                    toast.error(error.response.data.message);
-                }
-                // wrongData();
+                // if(error.response.status){
+                //     toast.error(error.response.data.message);
+                // }
+                setEnteremailText(error.response.data.Enteremail);
+                setValidemailText(error.response.data.Validemail);
+              
+
             })
         }
         
@@ -92,7 +103,10 @@ const ForgotPassword = () => {
                                             type="email"
                                             value={email}
                                             onChange={handleEmail}
-                                             placeholder="Enter email" />
+                                             placeholder="Enter email"
+                                            />
+                                            <span style={myStyle}>{EnteremailText? EnteremailText: ''}</span>
+                                            <span style={myStyle}>{ValidemailText? ValidemailText: ''}</span>
                                         </Form.Group>
 
                               

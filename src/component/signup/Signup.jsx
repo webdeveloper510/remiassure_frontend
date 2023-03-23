@@ -6,6 +6,7 @@ import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import {useLocation} from "react-router-dom";
 import Select from "react-select";
 
+
 import countryList from 'react-select-country-list'
 
 
@@ -24,7 +25,7 @@ const myStyle= {
 
 const Signup = () => {
 
-    const [show, setShow] = React.useState(false);
+    const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error,setError]=useState(false);
 
@@ -37,6 +38,19 @@ const Signup = () => {
     const [mobile, setMobile] = useState('');
 
     const [sucessText, setSucessText] = useState('');
+
+    const [locationText, setLocationText] = useState('');
+    const [emailText, setEmailleText] = useState('');
+    const [emailExistText, setEmailExistText] = useState('');
+    const [mobileText, setMobileText] = useState('');
+    const [mobileValidText, setMobileValidText] = useState('');
+    const [passwordText, setPasswordText] = useState('');
+    const [referralText, setReferralText] = useState('');
+    const [referralInvalidText, setReferralInvalidText] = useState('');
+   
+ 
+    
+
     const search = useLocation()
     const [checkBoxValue, setCheckBoxvalue] = useState(false);
     
@@ -51,11 +65,16 @@ const Signup = () => {
     console.log("Show",show)
 
     useEffect(() => {
+        console.log('show=============>',show)
         if(show == false) {
             setrReferral_code("")
+            
         }
+        
     })
     console.log("REF", referral_code)
+
+
 
    /* start-- useRef is used for focusing on inputbox */
    const input_location = useRef(null);
@@ -64,8 +83,6 @@ const Signup = () => {
    const input_password = useRef(null);
    const input_refferal_code = useRef(null);
    
-  
-
 
 
    //Token get 
@@ -74,9 +91,9 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    const notify = () => toast.success("Sign Up Successfully!");
-    const emptyData = () => toast.warn("Please fill out all the fields");
-    const emailExits = () => toast.error("User with this Email already exists!");
+    // const notify = () => toast.success("Sign Up Successfully!");
+    // const emptyData = () => toast.warn("Please fill out all the fields");
+    // const emailExits = () => toast.error("User with this Email already exists!");
 
     const handleEmail =(e) => {
         setEmail(e.target.value);
@@ -108,33 +125,6 @@ const Signup = () => {
         }));
       };
 
-/**************************************************************************
- * ************** Store data in local Storage  **********************************
- * ***********************************************************************/
-
-//store localstorage
-// localStorage.setItem("bank_name", (bank_name));
-localStorage.setItem("Location",(location));
-localStorage.setItem("Password",(password));
-localStorage.setItem("Email",(email));
-localStorage.setItem("Mobile",(mobile));
-localStorage.setItem("Referral_code",(referral_code));
-
-//Sore in Array of data
-// function handleDataStore(){
-
-//   var courses =JSON.parse(localStorage.getItem('courses') || "[]")
-//   var course ={
-//     Location:location,
-//     Password:password,
-//     Email: email,
-//     Mobile: mobile,
-//     Referral_code:referral_code, 
-//   }
-//   courses.push(course)
-
-//   localStorage.setItem('courses', JSON.stringify(courses))
-// }
 
 
 
@@ -145,28 +135,25 @@ localStorage.setItem("Referral_code",(referral_code));
     const handleSignupApi = (event) => {
         event.preventDefault();
         //useRef is used for focusing on inputbox
-        if(email.length==0){
-            input_email.current.focus();
-            setError(true);
-        }else if (mobile.length==0){
-            input_mobile.current.focus();
-            setError(true);
-        } else if (password.length==0){
-            input_password.current.focus();
-            setError(true);
-        } else if (countryValue.length==0){
-            countryValue.current.focus();
-            setError(true);
-        } 
+    //    if (mobile.length==0){
+    //         input_mobile.current.focus();
+    //         setError(true);
+    //     } else if (password.length==0){
+    //         input_password.current.focus();
+    //         setError(true);
+    //     } else if (countryValue.length==0){
+    //         countryValue.current.focus();
+    //         setError(true);
+    //     } 
         // else if (referral_code.length==0){
         //     referral_code.current.focus();
         //     setError(true);
         // } 
 
-        else{
+        // else{
 
         setLoading(true); // Set loading before sending API request
-        axios.post(API.BASE_URL + 'register/', {
+        let data = {
             email: email,
             mobile: mobile,
             password: password,
@@ -174,7 +161,10 @@ localStorage.setItem("Referral_code",(referral_code));
             location: countryValue.label,
             referral_code: referral_code,
             promo_marketing: promo_marketing.Active,
-        }, {
+        }
+        if (!show)
+         delete data['referral_code'] 
+        axios.post(API.BASE_URL + 'register/', data, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -183,29 +173,41 @@ localStorage.setItem("Referral_code",(referral_code));
         .then(function(response) {
             console.log(response);
             localStorage.setItem("signup_token", response.data.tokens.access);
-            localStorage.setItem("Signup_customer_id", response.data.data.customer_id);
-            localStorage.setItem("Signup_email", response.data.data.email);
-            localStorage.setItem("Signup_location", response.data.data.location);
-            localStorage.setItem("Signup_mobile", response.data.data.mobile);
-            localStorage.setItem("Signup_id", response.data.id);
+            //validation
             setSucessText(response.data.data.message && response.data.data.msg)
-            // setShow(!show)
+            setMobileText(response.data.Mobile);
+            console.log(mobileText, "mobileTextmobileTextmobileText");
+         
+          
             setLoading(false); // Stop loading
                 // notify();
-                // navigate('/verification');   
+                navigate('/verification');   
                 // console.log(navigate, "jkfjkdkvnfkvnfkvnfkvnvknvknvkvnkvnvknknvknvknk")
         })
         .catch(function(error, message) {
-            console.log(error.response)
-            setLoading(false); // Stop loading in case of error
-            if(error.response.data.status){
-                // toast.error(error.response.data.message || error.response.data.msg);
-            } 
-            setSucessText(error.response.data.message || error.response.data.msg)
-            console.log(error, "klnklnklnknnnnnnnnnnnn");   
+            setLoading(false); // Stop loading
+            if(error.toJSON().message === 'Network Error'){
+                console.log('Please check your internet connection!!')
+            }
+            
+            else{
+                    if(error.response.data.status){
+                    
+                    } 
+                    setSucessText(error.response.data.message || error.response.data.msg)
+                    setLocationText(error.response.data.Location);
+                    setEmailleText(error.response.data.Enteremail);
+                    setEmailExistText(error.response.data.Emailexist);
+                    setPasswordText(error.response.data.Password);
+                    setReferralText(error.response.data.Enterreferralcode);
+                    setReferralInvalidText(error.response.data.Invalidreferralcode);
+                    setMobileText(error.response.data.Entermobile);
+                    setMobileValidText(error.response.data.Checkmobile);
+            }
+           
         })
     }
-}
+// }
     
 
 /**************************************************************************
@@ -261,7 +263,7 @@ localStorage.setItem("Referral_code",(referral_code));
                     <div className="col-lg-12">
                         <div className="card card-signup">
                             <div className="card-body">
-                               <span  style={myStyle}>{sucessText? sucessText: ""}</span> 
+                             
 
                                 <h5 className="Sign-heading">Sign Up</h5>
                                 <div className="form_signup">
@@ -274,8 +276,10 @@ localStorage.setItem("Referral_code",(referral_code));
                                      value={countryValue} 
                                      onChange={changeHandler}
                                       />
-                                       {error&&countryValue.length<=0?
-				                          <span style={myStyle}>Please select the Location </span>:""}
+                                       {/* {error&&countryValue.length<=0?
+				                          <span style={myStyle}>Please select the Location </span>:""} */}
+                                             <span  style={myStyle}>{locationText? locationText: ""}</span> 
+                                       
     
                                         {/* <Form.Label>Where are you sending money from?<span style={{color: 'red'}} >*</span></Form.Label>
                                         <CountryDropdown
@@ -309,8 +313,11 @@ localStorage.setItem("Referral_code",(referral_code));
                                             onChange={handleEmail}
                                             placeholder="Enter email"
                                              />
-                                            {error&&email.length<=0?
-				                          <span style={myStyle}>Please Enter the Email </span>:""}	
+                                            {/* {error&&email.length<=0?
+				                          <span style={myStyle}>Please Enter the Email </span>:""}	 */}
+                                           <span  style={myStyle}>{emailText? emailText: ""}</span> 
+                                           <span  style={myStyle}>{emailExistText? emailExistText: ""}</span> 
+                
                                         </Form.Group>
                                         
 
@@ -323,8 +330,10 @@ localStorage.setItem("Referral_code",(referral_code));
                                             onChange={handleMobile}
                                             placeholder="Enter Phone"
                                              />
-                                               {error&&mobile.length<=0?
-				                          <span style={myStyle}>Please Enter the Mobile </span>:""}	
+                                               {/* {error&&mobile.length<=0?
+				                          <span style={myStyle}>Please Enter the Mobile </span>:""}	 */}
+                                            <span  style={myStyle}>{mobileText? mobileText: ""}</span>  
+                                            <span  style={myStyle}>{mobileValidText? mobileValidText: ""}</span>  
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicPassword">
@@ -336,8 +345,10 @@ localStorage.setItem("Referral_code",(referral_code));
                                             onChange={handlePassword}
                                             placeholder="Password" 
                                             />
-                                            {error&&password.length<=0?
-				                          <span style={myStyle}>Please Enter the Password </span>:""}	
+                                            {/* {error&&password.length<=0?
+				                          <span style={myStyle}>Please Enter the Password </span>:""}	 */}
+                                          <span  style={myStyle}>{passwordText? passwordText: ""}</span>  
+                                           
                                         </Form.Group>
 
                                         <Form.Check  className="form_switch"
@@ -356,13 +367,15 @@ localStorage.setItem("Referral_code",(referral_code));
                                             <Form.Label>Your Referral Code</Form.Label>
                                             <Form.Control 
                                             type="text"
-                                            // ref={input_refferal_code}
+                                            ref={input_refferal_code}
                                             value={referral_code}
                                             onChange={handleReferral_code}
                                             placeholder="Enter Referral Code" 
                                             />
                                               {/* {error&&referral_code.length<=0?
 				                          <span style={myStyle}>Please Enter the Referralcode </span>:""}	 */}
+                                            <span  style={myStyle}>{referralText? referralText: ""}</span> 
+                                            <span  style={myStyle}>{referralInvalidText? referralInvalidText: ""}</span> 
                                         </Form.Group>
                                         </div>}
 

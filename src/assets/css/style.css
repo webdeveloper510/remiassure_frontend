@@ -75,7 +75,7 @@ h6,
   z-index: 9999999;
   transition: all 0.5s;
   background: #fff;
-  border: 1px solid rgb(217, 224, 232);
+  border-bottom: 1px solid rgb(217, 224, 232);
 }
 
 /* #header.header-transparent {
@@ -2449,17 +2449,26 @@ span.progress-step {
   /* background-image: url(/assets/img/about/about_banner.png); */
   /* min-height: 866px; */
   width: 100%;
-  height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
+  background: linear-gradient(182deg, #A374F2 1.68%, #6414E9 97.64%);
+    position: relative;
+    margin-top: 80px;
+    height: 100%;
+}
+.recent_banner:before {
+  content: url(../img/home/login-light-bg.svg);
+  left: 0;
+  top: 69px;
+  position: absolute;
+  opacity: .1;
 }
 .card-recent-password{
   width: 436px;
   height: 415px;
-  background: #dbc8f5;
+  background: #fff;
   box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
   border-radius: 12px;
-  top: 100px;
   margin-left: 337px;
   padding: 38px 36px;
   /* text-align: center; */
@@ -2942,9 +2951,19 @@ margin-top: 15px;
   padding: 10px;
   float: right;
 }
-.summary h5 {
+.summary1 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  width: 100%;
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 16%);
+  border-radius: 12px;
+  margin: 10px auto 0px;
+  padding: 10px;
+  float: right;
+}
+.summary h5 , .summary1 h5 {
   font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   text-align: center;
   padding: 18px;
   color: #000;
@@ -2952,10 +2971,20 @@ margin-top: 15px;
   font-style: normal;
   font-weight: 600;
 }
-.summary table tr th {
+.summary tr th  , .summary1  tr th{
   font-weight: 600;
   border-right: 1px solid #ced4da;
   color: #191970;
+}
+.summary tr td, .summary tr th , .summary1 tr td, .summary1 tr th {
+  padding: 6px;
+  width: 145px;
+  border-bottom: 1px solid #ced4da !important;
+  font-size: 14px;
+}
+
+.header.exchangemoney-header h1 {
+  margin-bottom: 0;
 }
 button.start-form-button {
   height: 48px;
@@ -4680,6 +4709,12 @@ section.change-password {
 .modal-card .accordion-item{
   border:none;
 }
+.modal-card ul {
+  padding: 0;
+  list-style: none;
+  float: left;
+  width: 100%;
+}
 .modal-card ul li p {
   font-size: 15px;
 }
@@ -4687,12 +4722,57 @@ section.change-password {
   font-weight: 700;
   font-size: 13px;
 }
+
+
+.modal-card ul li:first-child {
+  width: 100%;
+}
 .modal-card ul li {
   text-align: left;
   margin-bottom: 7px;
+  width: 50%;
+  float: left;
+}
+.modal-card ul li input {
+  width: 94px;
+}
+.card-delete{
+  text-align: right;
+    margin-top: -55px;
+    float: right;
+}
+.modal-card .modal-content table tr td:first-child input {
+  cursor: pointer;
 }
 
-.modal-card ul {
-  padding: 0;
-  list-style: none;
+.addnewcard .input_field img {
+  width: 63px !important;
+  float: right;
+  margin-top: -15px;
+}
+.addnewcard {
+  float: left;
+  width: 100%;
+}
+.addnewcard form {
+  border: 1px solid #ced4da;
+  padding: 10px;
+  margin-top: 20px;
+  float: left;
+  width: 100%;
+}
+.saved-label label {
+  margin-left: 8px;
+  font-size: 14px;
+}
+.saved-label {
+  float: left;
+  width: auto;
+  text-align: center;
+  margin-top: 18px;
+}
+.modal-card .accordion-body {
+  float: left;
+  width: 100%;
+  padding: 10px 0px 0px;
 }

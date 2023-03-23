@@ -1,5 +1,4 @@
 import React, { useState ,useEffect, useContext} from "react";
-import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import Table from 'react-bootstrap/Table';
@@ -15,11 +14,13 @@ import ReactFlagsSelect from "react-flags-select";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsChevronDoubleRight } from "react-icons/bs";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
+import Accordion from 'react-bootstrap/Accordion';
+import creditcards from '../../assets/img/userdashboard/mastercard.png';
+
+
 const UserSendMoney = () => {
 
-
-
-   // Start page show hide condtion page 
+   // Start page show hide condtion page  
    const token = localStorage.getItem("token");
    console.log("TOKEN", token);
 
@@ -59,6 +60,10 @@ const [email, setEmail] = React.useState ("");
 const [mobile, setMobile] = React.useState ("");
 const [address, setAddress] = React.useState ("");
 const [reason_money, setReason_money] = React.useState ("");
+const [showCards, setshowCards] = React.useState("");
+
+const handleCloseDetails = () => setshowCards(false);
+const ShowCardDetails = () => setshowCards(true);
 
  // start select value get data
  const {location} = useContext(UserContext);
@@ -712,7 +717,7 @@ const digitalIdAsyncInit =(event) =>{
   </ul>
   <div className="add-rec">
       <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
-      <button className="form-button" onClick={handleToggle}><BsFillPersonPlusFill /> Add Recepients</button>
+      <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
       </div>
       </div> 
    
@@ -725,6 +730,7 @@ const digitalIdAsyncInit =(event) =>{
      <h1>Recipient Bank Details</h1>
    </div>
    <div className="row each-row">
+   <h5>Bank Details</h5>
     <div className="col-md-12">
         <div className="input_field">
           <p className="get-text">Bank Name</p>
@@ -983,6 +989,7 @@ const digitalIdAsyncInit =(event) =>{
     <>
      {  
           verification_otp || token != undefined || '' ? (
+            <>
     <section>
       
   <div className="form_body">
@@ -991,8 +998,9 @@ const digitalIdAsyncInit =(event) =>{
       </div>
       <div className="row each-row">
         <h5>Payment type</h5>
-
         <div className="col-md-12">
+
+
         <label class="container-new">
             <span className="radio-tick">Osko</span>
             <input 
@@ -1006,8 +1014,8 @@ const digitalIdAsyncInit =(event) =>{
             />
             <span className="checkmark"></span>
           </label>
-        </div>
 
+        </div>
         <div className="col-md-12">
         <label class="container-new">
             <span className="radio-tick">Debit/Credit Card</span>
@@ -1023,7 +1031,6 @@ const digitalIdAsyncInit =(event) =>{
             <span className="checkmark"></span>
           </label>
         </div>
-
         <div className="col-md-12">
         <label class="container-new">
             <span className="radio-tick">PoLI Internet Banking</span>
@@ -1039,20 +1046,173 @@ const digitalIdAsyncInit =(event) =>{
             <span className="checkmark"></span>
           </label>
         </div>
-
       </div>
       <div className="row">
         <div className="col-md-4">
           <button className="start-form-button">Cancel</button>
         </div>
         <div className="col-md-8">
-          <button className="form-button">Continue</button>
+          <button className="form-button" onClick={ShowCardDetails}>Continue</button>
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
         </div>
       </div>
     </div>
   </section> 
+
+
+<Modal className="modal-card" show={showCards} onHide={handleCloseDetails}>
+<Modal.Header closeButton>
+  <Modal.Title>Your cards</Modal.Title>
+</Modal.Header>
+<Modal.Body>
   
+  <Table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cards Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>
+          <Accordion>
+      <Accordion.Item eventKey="0">
+     <Accordion.Header><img src={creditcards}  alt="credit cards" /><span>Visa card</span> </Accordion.Header>
+          <Accordion.Body>
+           <ul>
+  <li>
+    <label>Name on Card</label>
+    <p>John</p>
+  </li>
+  <li>
+    <label>Card Number</label>
+    <p>*********1345</p>
+  </li>
+  <li>
+    <label>Expiry on</label>
+    <p>12/5/2023</p>
+  </li>
+  <li>
+    <label>CVV</label>
+    <p><input type="password" /></p>
+  </li>
+</ul>
+          <div className="card-delete"><Button className="btn btn-danger">Delete</Button></div>
+          </Accordion.Body>
+      </Accordion.Item> 
+    </Accordion>
+    </td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>
+          <Accordion>
+      <Accordion.Item eventKey="0">
+     <Accordion.Header><img src={creditcards}  alt="credit cards" /><span>Master card</span> </Accordion.Header>
+          <Accordion.Body>
+           <ul>
+  <li>
+    <label>Name on Card</label>
+    <p>John</p>
+  </li>
+  <li>
+    <label>Card Number</label>
+    <p>*********1345</p>
+  </li>
+  <li>
+    <label>Expiry on</label>
+    <p>12/5/2023</p>
+  </li>
+  <li>
+    <label>CVV</label>
+    <p><input type="password" /></p>
+  </li>
+</ul>
+          <div className="card-delete"><Button className="btn btn-danger">Delete</Button></div>
+          </Accordion.Body>
+      </Accordion.Item> 
+    </Accordion>
+    </td>
+      </tr>
+    </tbody>
+  </Table>
+
+ 
+
+  <div className="addnewcard">
+    <p>Please add your card details</p>
+  <form>
+    <div className="row each-row">
+                <div className="col-md-12">
+                <div className="input_field">
+                <img src={creditcards}  alt="credit cards" />
+                          <p className="get-text">Card Number </p>
+                          <input
+                          type="text" 
+                          className='rate_input form-control'
+                          name="Card Number"
+                          />
+                        </div>
+                        </div>
+                        </div>
+
+                        <div className="row each-row">
+                        <div className="col-md-6">
+                        <div className="input_field">
+                          <p className="get-text">Expiration Date </p>
+                          <input
+                          type="text" 
+                          className='rate_input form-control'
+                          name="Expiration Date"
+                          />
+                        </div>
+                        </div>
+
+                        <div className="col-md-6">
+                        <div className="input_field">
+                          <p className="get-text">Security Code </p>
+                          <input
+                          type="text" 
+                          className='rate_input form-control'
+                          name="Security Code"
+                          />
+                        </div>
+                        </div>
+                        </div>
+                        <div className="row each-row">
+                   <div className="col-md-12">
+                   <div className="input_field">
+                          <p className="get-text">Your name as it appears on card </p>
+                          <input
+                          type="text" 
+                          className='rate_input form-control'
+                          name="Your name as it appears on card"
+                          />
+                        </div>
+                        </div>
+                        </div>
+
+                        <div className="col-md-12">
+                         <div className="saved-label"> <input type="checkbox"/><label>Save Card Details</label></div>
+                          </div>
+            </form>
+            </div>
+
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseDetails}>
+                      Close
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseDetails}>
+                      Save Changes
+                    </Button>
+                  </Modal.Footer>
+                  </Modal>
+  
+    
+   </>
   ) : (
     <>
     

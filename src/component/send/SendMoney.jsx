@@ -36,9 +36,9 @@ const [amountSummary, setAmountSummary] = React.useState(false);
 // const [bank_data, setBank_data] = React.useState([]);
 
 // Start -Recipient Bank Details
-  const [formValue, setFormValue] = React.useState ({
-    bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
-   lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
+const [formValue, setFormValue] = React.useState ({
+  bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
+ lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
 // End -Recipient Bank Details
 
 
@@ -84,6 +84,67 @@ const [reason_money, setReason_money] = React.useState ("");
   const [code, setConde] =React.useState('');
   const [data, setData] = React.useState([]);
  // End ------    digital Api state 
+ 
+  
+ // Start sender details state 
+ 
+//  const initialProfileValue = {
+//   firstName: '',
+//   middleName: '',
+//   lastName: '',
+//   customerID: '',
+//   date: '',
+//   gender: '',
+//   countryofBirth: '',
+//   IDType: '',
+//   email: '',
+//   mobile: '',
+//   currentPassword: '',
+//   newPassword: '',
+//   confirmPassword: '',
+//   flatNo: '',
+//   buildingNo: '',
+//   street: '',
+//   postCode: '',
+//   city: '',
+//   state: '',
+//   countryCode: '',
+//   countryName: '',
+// }
+
+// const [profileDetaills, setProfileDetaills] = useState(initialProfileValue);
+// const {
+//   firstName,
+//   middleName,
+//   lastName,
+//   customerID,
+//   date,
+//   gender,
+//   countryofBirth,
+//   IDType,
+//   email,
+//   mobile,
+//   currentPassword,
+//   newPassword,
+//   confirmPassword,
+//   flatNo,
+//   buildingNo,
+//   street,
+//   postCode,
+//   city,
+//   state,
+//   countryCode,
+//   countryName,
+
+// } = profileDetaills;
+
+// const handlePtrofileDetails = (e) => {
+//   console.log(e.target.name)
+//   console.log(e.target.defaultValue)
+
+//   setProfileDetaills(profileItem => ({...profileItem, [e.target.name]: e.target.defaultValue}));
+// }
+
 
 
  /**************************************************************************
@@ -477,7 +538,7 @@ const handlSenderDetails =(e) => {
             console.log("Recipients APIIIII", response.data);
             // setStep(step+1)
             setverificationValue(response.data.verification_status);
-            console.log(verificationValue)
+            console.log(verificationValue, "setverificationValue")
             setStep(step+1)
             setLoading(false); // Stop loading
             
@@ -531,6 +592,12 @@ const handlSenderDetails =(e) => {
       })
   }
   
+
+  /**************************************************************************
+ * ************** Start Sender details Api *********************************
+ * ***********************************************************************/
+
+
  
  // Start design state
     const {useState} = React;
@@ -591,7 +658,7 @@ const handlSenderDetails =(e) => {
       
       <form>
       <div className="form_body">
-        <div className="header">
+        <div className="header exchangemoney-header">
           <h1>Amount & delivery</h1>
         </div>
         <div className="row">
@@ -637,8 +704,6 @@ const handlSenderDetails =(e) => {
                   <option value="CHF">CHF</option>
                   <option value="GBP">GBP</option>
                 
-                 
-
               </select>
             </div>
           </div>
@@ -1410,12 +1475,12 @@ const handlSenderDetails =(e) => {
          
           <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
           {/* { verificationValue == false ? ( */}
-             {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button> */}
+              {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>  */}
 
-          {/* ):( */}
+          {/* ):(  */}
             <div id="digitalid-verify"></div>
-          {/* )
-          } */}
+           {/* )
+          }  */}
          
           
          
@@ -1490,14 +1555,14 @@ const handlSenderDetails =(e) => {
           
            <div className="col-md-4">
           
-             <div className="summary">
+  
               
                <Table>
 
                 {  
                 step > 0 && Total_amount != ''  ? (
                   
-                  <div>
+                  <div className="summary">
                   <h5>Summary</h5>
                     <tbody>
                       <tr>
@@ -1525,7 +1590,7 @@ const handlSenderDetails =(e) => {
 
              {  
              step > 0 && formValue.bankName != ''  ? (
-              <div>
+              <div className="summary1">
                <h5>Recipient details Summary</h5>
                  <tbody>
                    <tr>
@@ -1553,7 +1618,7 @@ const handlSenderDetails =(e) => {
               } 
  
                </Table>
-             </div>
+        
            
 
 

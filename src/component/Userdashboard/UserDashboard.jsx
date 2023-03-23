@@ -7,11 +7,13 @@ import Tab from 'react-bootstrap/Tab';
 import UserSendMoney from "./UserSendMoney";
 import UserProfile from "./UserProfile";
 import AddNewRecipient from "./AddNewRecipient";
+import ChangePassword from "./ChangePassword";
 import Transfer from "./Transfer";
 import { BsCurrencyExchange} from "react-icons/bs";
 import { BsFilePersonFill } from "react-icons/bs";
-import { BsCapslockFill } from "react-icons/bs";
+import { BiTransfer } from "react-icons/bi";
 import { BsFillPersonPlusFill } from "react-icons/bs";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 
 const UserDashboard = () => {
@@ -21,6 +23,7 @@ const UserDashboard = () => {
         <>
           {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
           <div className="margin-set">
+            
           <div className="container">
           <div className="row">
             <div class="tabs-page">
@@ -36,10 +39,13 @@ const UserDashboard = () => {
               <Nav.Link eventKey="second"><BsFilePersonFill />Profile Information</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="third"><BsCapslockFill />Transfer</Nav.Link>
+              <Nav.Link eventKey="third"><BiTransfer />Transfer</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="fourth"><BsFillPersonPlusFill />Recipients</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="fifth"><RiLockPasswordLine />Password</Nav.Link>
             </Nav.Item>
          
           </Nav>
@@ -59,7 +65,9 @@ const UserDashboard = () => {
             <Tab.Pane eventKey="fourth">
            <div className="tabs-recipent"> <AddNewRecipient /></div>
             </Tab.Pane>
-           
+            <Tab.Pane eventKey="fifth">
+           <div className="tabs-recipent"> <ChangePassword /></div>
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>

@@ -11,28 +11,10 @@ import axios from "axios";
 
 const Profile = () => {
     
-// Start page show hide condtion page
-const[firstName, setFirstName] = useState('');
-const[middleName, setMiddleName] = useState('');
-const[lastName, setLastName] = useState('');
-const[customerID, setCustomerID] = useState('');
-const[date, setDate] = useState('');
-const[gender, setGender] = useState('');
-const[countryofBirth, setCountryofBirth] = useState('');
-const[IDType, setIDType] = useState('');
-const[email, setEmail] = useState('');
-const[mobile, setMobile] = useState('');
-const[currentPassword, setCurrentPassword] = useState('');
-const[newPassword, setNewPassword] = useState('');
-const[confirmPassword, setConfirmPassword] = useState('');
-const[flatNo, setFlatNo] = useState('');
-const[buildingNo, setBuildingNo] = useState('');
-const[street, setStreet] = useState('');
-const[postCode, setPostCode] = useState('');
-const[city, setCity] = useState('');
-const[state, setState] = useState('');
-const[countryCode, setCountryCode] = useState('');
-const[countryName, setCountryName] = useState('');
+  const [loading, setLoading] = React.useState(false);
+ /****************************  sender details data *******************/
+ const [senderDetailData, setSenderDetailData] = React.useState('');
+
 
 
  // Start page show hide condtion page 
@@ -42,37 +24,42 @@ const[countryName, setCountryName] = useState('');
  const verification_otp = localStorage.getItem("verification_otp");
  console.log("Verification Message", verification_otp)
 
+ const signup_token = localStorage.getItem("signup_token")
+ console.log("signup_token" ,signup_token);
+
+
   
 
-  /**************************************************************************
- * ************** Start -Profile Api CAll ***********************************
- * *************************************************************************/
-    // const handleProfileDetaills =(event) =>{
-    //   event.preventDefault();
-    useEffect(() =>{
-      axios.post(API.BASE_URL + 'user-profile/', {
+ 
+/**************************************************************************
+ * ************** Start Sender details Api *********************************
+ * ***********************************************************************/
+      useEffect(() => {
+        setLoading(true); // Set loading before sending API request
+        axios.post(API.BASE_URL + 'user-profile/',{}, {
+            headers: {
+                "Authorization" : `Bearer ${token}`,
+              
+            }
+          })
+          .then(function(response) {
+              console.log("Recipients APIIIII", response.data);
+              setSenderDetailData(response.data.data);
+              console.log(senderDetailData, "senderDetailData")
+              setLoading(false); // Stop loading
+        
+        
+            //   if (response.status)
+            // // notify();
+          })
+          .catch(function(error) {
+              console.log(error);
+              console.log(error.response);
+              setLoading(false); // Stop loading in case of error
+            
+          })
+      }, [])
 
-      }, {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        }
-      })
-      .then(function(response){
-        console.log(response);
-        setEmail(response.data.email);
-        setMobile(response.data.mobile);
-
-        // console.log(email, "emailemailemailemailemail")
-       
-      })
-      .catch(function(error, response){
-        console.log(error.response);
-
-      })
-
-    }, [])
-    
-    // }
 
     return(
         <>
@@ -89,163 +76,184 @@ const[countryName, setCountryName] = useState('');
                   <h1>User Profile</h1>
                 </div>
                 <div className="update-profile">
-                  <form>
-                    <div className="row each-row">
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Your Name </p>
-                          <Form.Control type="text" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Middle Name </p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Last Name </p>
-                          <Form.Control type="text" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Customer ID </p>
-                          <Form.Control type="text" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="mb-3 form_label">
-                        <p className="get-text">Date </p>
-                          <Form.Control type="date" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                      <div className="input_field">
-                        <p className="get-text">Gender</p>
-                        <div class="inline-flex">
-                        <label className="container-new form-gender">
-                              <span className="radio-tick">Male</span>
-                              <Form.Group className="form_label" controlId="Firstname">
-                                            <Form.Control type="radio" name="gender" className='rate_input form-control'/>
-                                            <span className="checkmark"></span>
-                                          </Form.Group>
-                              
-                            </label>
-                            <label class="container-new form-gender">
-                              <span className="radio-tick">Female</span>
-                              <Form.Group className="form_label" controlId="Firstname">
-                                            <Form.Control type="radio" name="gender" className='rate_input form-control' />
-                                            <span className="checkmark"></span>
-                                          </Form.Group>
-                             
-                            </label>
-                            </div>
-                      </div>
-                    </div>
-                    </div>
-                    <div className="row each-row">
-                      <div className="col-md-6">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Country of Birth </p>
-                          <Form.Control type="text" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-6">
-                        <Form.Group className="form_label">
-                        <p className="get-text">ID Type</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <div className="col-md-6">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Email</p>
-                          <Form.Control 
-                          type="email"
-                           className='rate_input form-control' 
-                           value={email}/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-6">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Mobile</p>
-                          <Form.Control
-                           type="text" 
-                           className='rate_input form-control'
-                           value={mobile}/>
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <h5>Address</h5>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Flat/Unit No.</p>
-                          <Form.Control type="text" className='rate_input form-control'/>
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Building/Unit No.</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Street</p>
-                          <Form.Control type="text" className='rate_input form-control'  />
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Postcode</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">City/Town</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">State</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div className="row each-row">
-                      <div className="col-md-4">placeholder="Enter Country Code"
-                        <Form.Group className="form_label">
-                        <p className="get-text">Country Code</p>
-                          <Form.Control type="text" className='rate_input form-control' />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label">
-                        <p className="get-text">Country</p>
-                          <CountryDropdown className='YOUR_CSS_CLASS rate_input form-control' value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
-                        </Form.Group>
-                      </div>
-                    </div>
-                    <div class="row each-row">
-                      <div className="col-md-6">
-                        <button className="start-form-button">Cancel</button>
-                      </div>
-                      <div className="col-md-6">
-                        <button className="profile-form-button">Save</button>
-                        <button className="profile-form-button">Edit</button>
-                      </div>
-                    </div>
-                  </form>
+                    <form>
+        <div className="row each-row">
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="text"
+                className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Customer ID<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="text"
+                className='rate_input form-control'
+                value={senderDetailData.customer_id}
+                  />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Date of birth<span style={{color: 'red'}} >*</span></p>
+              <input type="date" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Gender<span style={{color: 'red'}} >*</span></p>
+              <div className="inline-flex">
+              <label className="container-new form-gender">
+                    <span className="radio-tick">Male</span>
+                    <input
+                    className="form-check-input" 
+                    type="radio" 
+                    name="gender"
+                    value=" Male"
+                    />
+                    <span className="checkmark"></span>
+                  </label>
+                  <label class="container-new form-gender">
+                    <span className="radio-tick">Female</span>
+                    <input
+                    className="form-check-input" 
+                    type="radio" 
+                    name="gender"
+                    value=" Female" 
+                    />
+                    <span className="checkmark"></span>
+                  </label>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Country of Birth<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">ID Type<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="email"
+                value={senderDetailData.email}
+                className='rate_input form-control'
+                />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
+              <input 
+              type="text"
+                className='rate_input form-control'
+                value={senderDetailData.mobile}
+                /> 
+            
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <h5>Address</h5>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Flat/Unit No.<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Building No./Name<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Street<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Postcode<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">City/Town<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">State<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Country Code<span style={{color: 'red'}} >*</span></p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Country Name<span style={{color: 'red'}} >*</span></p>
+              <CountryDropdown 
+              id="UNIQUE_ID"
+                className='YOUR_CSS_CLASS rate_input form-control' 
+                preferredCountries={['gb', 'us' ]}
+                value={senderDetailData.location}
+                //  value="" handleChange={e=> console.log(e.target.value)}
+                >
+                </CountryDropdown>
+
+            </div>
+          </div>
+        </div>
+            <div class="row each-row">
+              <div className="col-md-6">
+                  <button className="start-form-button">Cancel</button>
+                </div>
+                <div className="col-md-6">
+                  <button className="profile-form-button">Savess</button>
+                  <button className="profile-form-button">Edit</button>
+                </div>
+            </div>
+      </form>
                 </div>
               </div>
             </div>

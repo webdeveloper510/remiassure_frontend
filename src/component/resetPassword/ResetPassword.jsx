@@ -19,10 +19,11 @@ const RecentPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // 
+    /*********************Start Validation state Text************** */
+    const [EnterotpText, setEnterotpText] = useState('');
     const [InvalidotpText, setInvalidotpText] = useState('');
     const [EnterpasswordText, setEnterpasswordText] = useState('');
-
+    
     // const {id} = useParams();
 
     const handlePassword =(e) =>{
@@ -30,6 +31,9 @@ const RecentPassword = () => {
     }
     const handleConfirmPassword = (e) =>{
         setConfirmPassword(e.target.value);
+    }
+    const handleResetpasswordotp = (e) =>{
+        setReset_password_otp(e.target.value);
     }
 
 
@@ -53,7 +57,7 @@ const RecentPassword = () => {
         setLoading(true); // Set loading before sending API request
             axios.post(API.BASE_URL + `reset-password/`, {
                 password: password,
-                reset_password_otp: '264363',
+                reset_password_otp:  reset_password_otp,
                 confirmPassword: confirmPassword,
             }, {
                 headers: {
@@ -74,6 +78,7 @@ const RecentPassword = () => {
                 // }
                 setInvalidotpText(error.response.data.Invalidotp);
                 setEnterpasswordText(error.response.data.Enterpassword);
+                setEnterotpText(error.response.data.Enterotp)
                 
              
             })
@@ -101,21 +106,34 @@ const RecentPassword = () => {
 
                                 <div className="form_login">
                                     <form>
+
+                                    <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
+                                            <Form.Label>Reset Password Otp<span style={{color: 'red'}} >*</span></Form.Label>
+                                            <Form.Control 
+                                            type="number"
+                                            value={reset_password_otp}
+                                            onChange={handleResetpasswordotp}
+                                             placeholder="Enter Reset password otp" 
+                                             />
+                                              <span style={myStyle}>{EnterotpText? EnterotpText: ''}</span>
+                                             <span style={myStyle}>{InvalidotpText? InvalidotpText: ''}</span>
+                                         
+                                        </Form.Group>
                                         
                                       <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>New Password</Form.Label>
+                                            <Form.Label>New Password<span style={{color: 'red'}} >*</span></Form.Label>
                                             <Form.Control 
                                             type="password"
                                             value={password}
                                             onChange={handlePassword}
                                              placeholder="Enter New Password" 
                                              />
-                                             <span style={myStyle}>{InvalidotpText? InvalidotpText: ''}</span>
+                                            
                                              <span style={myStyle}>{EnterpasswordText? EnterpasswordText: ''}</span>
                                         </Form.Group>
 
                                         <Form.Group className="mb-3 form_label" controlId="formBasicEmail">
-                                            <Form.Label>Confirm Password</Form.Label>
+                                            <Form.Label>Confirm Password<span style={{color: 'red'}} >*</span></Form.Label>
                                             <Form.Control 
                                             type="password"
                                             value={confirmPassword}

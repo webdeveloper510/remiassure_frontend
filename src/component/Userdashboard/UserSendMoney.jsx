@@ -1,4 +1,4 @@
-import React, { useState ,useEffect, useContext} from "react";
+import React, { useState ,useEffect, useContext,useRef} from "react";
 import InputGroup from 'react-bootstrap/InputGroup';
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import Table from 'react-bootstrap/Table';
@@ -18,58 +18,25 @@ import Accordion from 'react-bootstrap/Accordion';
 import creditcards from '../../assets/img/userdashboard/mastercard.png';
 
 
+
+// start css
+const myStyle ={
+  color: "red",
+}
+
+
+
 const UserSendMoney = () => {
 
-   // Start page show hide condtion page  
+/************ Start page show hide condtion page ***************/
    const token = localStorage.getItem("token");
    console.log("TOKEN", token);
 
    const verification_otp = localStorage.getItem("verification_otp");
    console.log("Verification Message", verification_otp)
 
-// Start page show hide condtion page
 
-
-/**************************************************************************
- * ************** Start -Recipient Bank Details************************************
- * ***********************************************************************/
-
-// const [bank_data, setBank_data] = React.useState([]);
-
- const [formValue, setFormValue] = React.useState ({
-    bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
-   lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
-
-   // End -Recipient Bank Details
-
-
-   // start Amount value 
-  const [amountValue, setAmountValue] = React.useState({
-    amountInput: '',
-    // summaryList: false,
-  })
-
-
-
-const [account_name, setAccount_name] = React.useState ("");
-const [account_number, setAccount_number] = React.useState ("");
-const [first_name, setFirst_name] = React.useState ("");
-const [middle_name, setMiddle_name] = React.useState ("");
-const [last_name, setLast_name] = React.useState ("");
-const [email, setEmail] = React.useState ("");
-const [mobile, setMobile] = React.useState ("");
-const [address, setAddress] = React.useState ("");
-const [reason_money, setReason_money] = React.useState ("");
-const [showCards, setshowCards] = React.useState("");
-
-const handleCloseDetails = () => setshowCards(false);
-const ShowCardDetails = () => setshowCards(true);
-
- // start select value get data
- const {location} = useContext(UserContext);
-
-
- // Start Api call Amount & Delivery
+  /******************* Start Api call Amount & Delivery State  *******/
   const [from, setFrom] =React.useState('USD');
   const [shows, setShows] = React.useState(false);
   const [to, setTo] = React.useState('');
@@ -82,6 +49,41 @@ const ShowCardDetails = () => setshowCards(true);
   const [output, setOutput] = React.useState(0);
   const [info, setInfo] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+
+   /************** Start - Recipient Bank Details************ **********/
+ const [error, setError] = React.useState(false);
+ const [recipientBankName, setRecipientBankName] = React.useState('');
+ const [recipientAccountName, setRecipientAccountName] = React.useState('');
+ const [recipientAccountNumber, setRecipientAccountNumber] = React.useState('');
+ const [recipientMiddleName, setRecipientMiddleName] = React.useState('');
+ const [recipientLastName, setRecipientLastName] = React.useState('');
+ const [recipientMobile, setRecipientMobile] = React.useState('');
+ const [recipientReasoMoney, setrecipientReasoMoney] = React.useState('');
+ const [recipientAddress, setRecipientAddress] = React.useState('');
+ 
+
+  /************ Start -Recipient Bank Details***************/
+ const [formValue, setFormValue] = React.useState ({
+  bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
+ lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
+
+ // End -Recipient Bank Details
+
+
+/******************* start Amount value  state   *******/
+const [amountValue, setAmountValue] = React.useState({
+  amountInput: '',
+  // summaryList: false,
+})
+
+/******************* start card show  state   *******/
+const [showCards, setshowCards] = React.useState("");
+
+const handleCloseDetails = () => setshowCards(false);
+const ShowCardDetails = () => setshowCards(true);
+
+// start select value get data
+const {location} = useContext(UserContext);
 
 
 // Start -Recipient Bank Details 
@@ -105,35 +107,6 @@ const handleAmountCahngeValue =(e,key) =>{
   console.log(amountValue)
 }
 
-
-
-const handleAccountName =(e) =>{
-  setAccount_name(e.target.value)
-}
-const handleAccountNumber =(e) =>{
-  setAccount_number(e.target.value)
-}
-const handleFirstName =(e) =>{
-  setFirst_name(e.target.value)
-}
-const handleMiddleName =(e) =>{
-  setMiddle_name(e.target.value)
-}
-const handleLastName =(e) =>{
-  setLast_name(e.target.value)
-}
-const handleEmail =(e) =>{
-  setEmail(e.target.value)
-}
-const handleAddress =(e) =>{
-  setAddress(e.target.value)
-}
-const handleMobile =(e) =>{
-  setMobile(e.target.value)
-}
-const handleReasoMoney =(e) =>{
-  setReason_money(e.target.value)
-}
 
 //store localstorage
 // localStorage.setItem("bank_name", (bank_name));
@@ -200,11 +173,18 @@ console.log(reasonMoney, "reasonMoney");
 
 //multiple function call
 function someFunc() {
-  handleShow();
+  // handleShow();
   setStep(step+1);
 
   // handleDataStore();
 }
+
+const handleAmountSummary = () => {
+  // setStep(step+1);
+  handleAmountDelivery();
+
+}
+
 
 
 //Get item localstorage
@@ -292,6 +272,12 @@ console.log(courses,"coursescourses");
 
     console.log("handle request ");
 }
+const handlRecipientBankDetails =(e) => {
+  e.preventDefault();
+  window.location.reload(false);
+
+  console.log("handle request ");
+}
 
 
   const navigate = useNavigate();
@@ -305,13 +291,115 @@ console.log(courses,"coursescourses");
  * ************** Start  All Amount & Delivery  ******************************
  * ***********************************************************************/
 
-const handleAmountDelivery =(event) =>{
-  event.preventDefault();
-  setLoading(true); // Set loading before sending API request
+    /* start-- useRef is used for focusing on inputbox */
+    const input_From = useRef(null);
+    const input_To = useRef(null);
+    const input_AmountSend = useRef(null);
+
+
+    const handleAmountDelivery =() =>{
+      //  event.preventDefault();
+      //  alert("hii")
+         //useRef is used for focusing on inputbox
+       if (from.length==0){
+        input_From.current.focus();
+            setError(true);
+        } else if (to.length==0){
+          input_To.current.focus();
+            setError(true);
+        } else if (amountValue.amountInput.length==0){
+          input_AmountSend.current.focus();
+            setError(true);
+        } 
+         
+        else{
+     
+      setLoading(true); // Set loading before sending API request
+        axios.post(API.BASE_URL + 'exchange-rate/', {
+          from: from,
+          to: to,
+          amount: amountValue.amountInput
+        }, {
+            headers: {
+                // 'Content-Type': 'application/json',
+            },
+          
+        })
+        .then(function(response) {
+            console.log(response);
+            localStorage.setItem("Total_amount", response.data.amount);
+            if (response.status)
+            setStep(step+1) //next step call
+            setShows(!shows) //show hide summery function call
+            setLoading(false); // Stop loading 
+
+        })
+        .catch(function(error, message) {
+            console.log(error.response);
+            setLoading(false); // Stop loading in case of error
+            if(error.response.data.status){
+                toast.error(error.response.data.message);
+            } 
+            console.log(error, "klnklnklnknnnnnnnnnnnn");   
+        })
+    }
+  }
+
+  // End Api call Amount & Delivery
+
+
+
+/**************************************************************************
+ * ************** Start  Total Amount Api call  ******************************
+ * ***********************************************************************/
+    const myTotalAmount =(event)=> {   
+      event.preventDefault();
+      // console.log("====================>",amount)
+    setLoading(true); // Set loading before sending API request
+      axios.post(API.BASE_URL + 'exchange-rate/', {
+        from: from,
+        to: to,
+        amount: amountValue.amountInput
+    
+      }, {
+          headers: {
+              // 'Content-Type': 'application/json',
+          },
+        
+      })
+      .then(function(response) {
+          console.log(response);
+          if (response.status)
+          localStorage.setItem("Total_amount", response.data.amount);
+          setTotal_amount(response.data.amount);
+          setExchange_amount(response.data.amount);
+          setTotal_rate( response.data.rate);
+          setLoading(false); // Stop loading
+      })
+      .catch(function(error, message) {
+          console.log(error.response)
+          setLoading(false); // Stop loading in case of error
+          // if(error.response.data.status){
+          //     toast.error(error.response.data.message);
+          // } 
+          // console.log(error, "klnklnklnknnnnnnnnnnnn");   
+      })
+
+    }
+    // End Total Amount Api call 
+
+/**************************************************************************
+* ************** Start  Total Amount Api call  ******************************
+* ***********************************************************************/
+    const myTotalAmountFromTo =(value)=> {   
+    // event.preventDefault();
+    console.log("====================>",amount)
+    setLoading(true); // Set loading before sending API request
     axios.post(API.BASE_URL + 'exchange-rate/', {
       from: from,
       to: to,
       amount: amountValue.amountInput
+
     }, {
         headers: {
             // 'Content-Type': 'application/json',
@@ -321,93 +409,118 @@ const handleAmountDelivery =(event) =>{
     .then(function(response) {
         console.log(response);
         if (response.status)
-        setStep(step+1) //next step call
-        setShows(!shows) //show hide summery function call
-        setLoading(false); // Stop loading 
-
+        localStorage.setItem("Total_amount", response.data.amount);
+        console.log(total_amount, "total_amounttotal_amount")
+        setTotal_amount(response.data.amount);
+        setExchange_amount(response.data.amount);
+        setTotal_rate( response.data.rate);
+        setLoading(false); // Stop loading
     })
     .catch(function(error, message) {
         console.log(error.response)
         setLoading(false); // Stop loading in case of error
-        if(error.response.data.status){
-            // toast.error(error.response.data.message);
-        } 
-        console.log(error, "klnklnklnknnnnnnnnnnnn");   
+        // if(error.response.data.status){
+        //     toast.error(error.response.data.message);
+        // } 
+        // console.log(error, "klnklnklnknnnnnnnnnnnn");   
     })
-}
 
-// End Api call Amount & Delivery
-
-
-/**************************************************************************
- * ************** Start  Total Amount Api call  ******************************
- * ***********************************************************************/
-const myTotalAmount =(event)=> {   
-  event.preventDefault();
-  // console.log("====================>",amount)
- setLoading(true); // Set loading before sending API request
-  axios.post(API.BASE_URL + 'exchange-rate/', {
-    from: from,
-    to: to,
-    amount: amountValue.amountInput
- 
-  }, {
-      headers: {
-          // 'Content-Type': 'application/json',
-      },
-    
-  })
-  .then(function(response) {
-      console.log(response);
-      if (response.status)
-      // localStorage.setItem("Total_amount", response.data.amount);
-      setTotal_amount(response.data.amount);
-      setExchange_amount(response.data.amount);
-      setTotal_rate( response.data.rate);
-      setLoading(false); // Stop loading
-  })
-  .catch(function(error, message) {
-      console.log(error.response)
-      setLoading(false); // Stop loading in case of error
-      // if(error.response.data.status){
-      //     toast.error(error.response.data.message);
-      // } 
-      // console.log(error, "klnklnklnknnnnnnnnnnnn");   
-  })
-
-}
-// End Total Amount Api call 
+    }
+    // End Total Amount Api call 
 
 
-/**************************************************************************
- * ************** Start -Digital ID call Api************************************
- * ***********************************************************************/
-
-const digitalIdAsyncInit =(event) =>{
-  event.preventDefault();
-    axios.post('https://digitalid-sandbox.com/sdk/app.js', {
-
-      clientId: 'ctid2poVwlVfjH2PAnWEAB2l4v',
-      uxMode: 'popup',
-      
-    }, {
-        headers: {
-            // 'Content-Type': 'application/json',
-        },
-      
-    })
-    .then(function onComplete (response) {
-        console.log("Check",response);
-        // onComplete: function (response) { console.log(response)
-          console.log(response)
         
+ /**************************************************************************
+ * ************** Start  Recipient Bank Details ****************************
+ * ***********************************************************************/
 
-    })
-    .catch(function(error, message) {
-      console.log(error.response)
-      
-    })
+   /* start-- useRef is used for focusing on inputbox */
+   const input_recipientBankName = useRef(null);
+   const input_recipientAccountName = useRef(null);
+   const input_recipientAccountNumber = useRef(null);
+   const input_recipientFirstName = useRef(null);
+   const input_recipientMiddleName = useRef(null);
+   const input_recipientLastName = useRef(null);
+   const input_recipientEmail = useRef(null);
+   const input_recipientMobile = useRef(null);
+   const input_recipientReasoMoney = useRef(null);
+   const input_recipientAddress = useRef(null);
+
+
+   const handleRecipientBankDetails =(event) =>{
+      event.preventDefault();
+    //  alert("hii")
+       //useRef is used for focusing on inputbox
+     if (formValue.bankName.length==0){
+      input_recipientBankName.current.focus();
+          setError(true);
+      } else if (formValue.accountName.length==0){
+        input_recipientAccountName.current.focus();
+          setError(true);
+      } else if (formValue.accountNumber.length==0){
+        input_recipientAccountNumber.current.focus();
+          setError(true);
+      } else if (formValue.firstName.length==0){
+        input_recipientMiddleName.current.focus();
+          setError(true);
+      } else if (formValue.middleName.length==0){
+        input_recipientLastName.current.focus();
+          setError(true);
+      } else if (formValue.lastName.length==0){
+        input_recipientMobile.current.focus();
+          setError(true);
+      } else if (formValue.email.length==0){
+        input_recipientReasoMoney.current.focus();
+          setError(true);
+      } else if (formValue.mobile.length==0){
+        input_recipientAddress.current.focus();
+          setError(true);
+      } else if (formValue.address.length==0){
+        input_recipientAddress.current.focus();
+          setError(true);
+      } else if (formValue.reasonMoney.length==0){
+        input_recipientAddress.current.focus();
+          setError(true);
+      } 
+       
+      else{
+   
+    setLoading(true); // Set loading before sending API request
+      axios.post(API.BASE_URL + 'recipient-create/', {
+        // first_name: first_name,
+        // middle_name: middle_name,
+        // last_name: last_name,
+        // email: email,
+        // mobile: mobile,
+       
+      }, {
+          headers: {
+              // 'Content-Type': 'application/json',
+          },
+        
+      })
+      .then(function(response) {
+          console.log(response);
+          localStorage.setItem("Total_amount", response.data.amount);
+          if (response.status)
+          setStep(step+1); //next step call
+          setShows(!shows) //show hide summery function call
+          setLoading(false); // Stop loading 
+
+      })
+      .catch(function(error, message) {
+          console.log(error.response);
+          setLoading(false); // Stop loading in case of error
+          if(error.response.data.status){
+              toast.error(error.response.data.message);
+          } 
+          console.log(error, "klnklnklnknnnnnnnnnnnn");   
+      })
+  }
 }
+
+
+
 
 
 
@@ -462,9 +575,9 @@ const digitalIdAsyncInit =(event) =>{
           verification_otp || token != undefined || '' ? (
    <section>
     
-      <form>
+    <form>
       <div className="form_body">
-        <div className="header">
+        <div className="header exchangemoney-header">
           <h1>Amount & delivery</h1>
         </div>
         <div className="row">
@@ -479,16 +592,18 @@ const digitalIdAsyncInit =(event) =>{
         <div className="row">
         <div className="col-md-6">
             <div className="input_field">
-              <p className="get-text">From</p>
+              <p className="get-text">From<span style={{color: 'red'}} >*</span></p>
                 <select 
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={from}
-                 onChange={handleFrom}
-                //  onChange={(e)=> {myTotalAmount(e.target.value);setFrom(e.target.value)}}
+                 ref={input_From}
+                //  onChange={handleFrom}
+                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setFrom(e.target.value)}}
+                // onBlurCapture={myTotalAmount}
                  >
-                  <option value="">--- Select Currency ---</option>
-                  {/* <option value="USD" selected="selected">USD</option> */}
+                  {/* <option value="">--- Select Currency ---</option> */}
+                  <option value="USD" selected="selected">USD</option>
                   <option value="USD">USD</option> 
                   <option value="EUR">EUR</option>
                   <option value="INR">INR</option> 
@@ -509,24 +624,28 @@ const digitalIdAsyncInit =(event) =>{
                   <option value="CHF">CHF</option>
                   <option value="GBP">GBP</option>
                 
-                 
-
               </select>
+              {error&&from.length<=0?
+				            <span style={myStyle}>Please Select the Location </span>:""}
             </div>
           </div>
           <div className="col-md-6">
             <div className="input_field">
-              <p className="get-text">To</p>
+              <p className="get-text">To<span style={{color: 'red'}} >*</span></p>
                 <select 
                 className="form-select rate_input form-control"
                  aria-label="Select a reason"
                  value={to}
-                 onChange={handleTo}
-                //  onChange={(e)=> {myTotalAmount(e.target.value);setTo(e.target.value)}}
+                 ref={input_To}
+                //  onChange={handleTo}
+                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setTo(e.target.value)}}
                  >
+                  
+
                   <option value="">--- Select Currency ---</option>
+            
                   {/* <option value="INR" selected="selected">INR</option> */}
-                  <option value="INR">INR</option> 
+                  <option value="INR">INR</option>
                   <option value="EUR">EUR</option>
                   <option value="BRL">BRL</option>
                   <option value="USD">USD</option>
@@ -546,6 +665,8 @@ const digitalIdAsyncInit =(event) =>{
                   <option value="CHF">CHF</option>
                   <option value="GBP">GBP</option>
               </select>
+              {error&&to.length<=0?
+				            <span style={myStyle}>Please Select the Location </span>:""}
             </div>
           </div>
           
@@ -553,11 +674,14 @@ const digitalIdAsyncInit =(event) =>{
         <div className="row each-row">
         <div className="col-md-6">
             <div className="input_field">
-              <p className="get-text">Amount Send</p>
+              <p className="get-text">Amount Send<span style={{color: 'red'}} >*</span></p>
 
               <input 
               type="text"
+              // autoFocus="autofocus"
+              ref={input_AmountSend}
               className='rate_input form-control'
+              // onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
               name="amountInput"
               defaultValue={amountValue.amountInput}
               onChange={(e)=>handleAmountCahngeValue(e,'amountInput')}
@@ -565,6 +689,8 @@ const digitalIdAsyncInit =(event) =>{
               // onkeyup={(text)=> myTotalAmount(text)}
               // onChange={e => onInputChangeDealType(e)}
                />
+                 {error&&amountValue.amountInput.length<=0?
+				            <span style={myStyle}>Please Enter the Amount </span>:""}
 
             </div>
           </div>
@@ -576,7 +702,7 @@ const digitalIdAsyncInit =(event) =>{
                 </p>
               <input
                type="text"
-               defaultValue={exchange_amount && amount != 0 || "" ? exchange_amount : ""}
+               defaultValue={exchange_amount && amountValue.amountInput != 0 || "" ? exchange_amount : ""}
                 className='rate_input form-control'
                 
                  />
@@ -587,16 +713,16 @@ const digitalIdAsyncInit =(event) =>{
         <div className="row each-row">
           <h5>Receive Method</h5>
           <div className="col-md-12">
-
-          <label class="container-new">
+          <label className="container-new">
             <span className="radio-tick">BankTransfer</span>
-            <input 
+          <input 
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod"
                   value="bankTransfer" 
                   checked={moneyTransiction.recivedMethod== "bankTransfer"}
                   onChange={e => onInputChange(e)}
+                  // id="flexRadioDefault1" 
                
                 />
               <span className="checkmark"></span>
@@ -605,10 +731,9 @@ const digitalIdAsyncInit =(event) =>{
           </div>
           <div className="col-md-12">
 
-
-          <label class="container-new">
+          <label className="container-new">
             <span className="radio-tick">MobileWallet</span>
-            <input
+          <input
                   className="form-check-input"
                   type="radio"
                   name="recivedMethod" 
@@ -621,11 +746,11 @@ const digitalIdAsyncInit =(event) =>{
           </label>
           </div>
         </div>
-        <div className="row">
+        <div className="row each-row">
           <h5>Payout Partners</h5>
           <div className="col-md-12">
 
-          <label class="container-new">
+          <label className="container-new">
             <span className="radio-tick">Bank</span>
             <input 
                   className="form-check-input"
@@ -643,7 +768,7 @@ const digitalIdAsyncInit =(event) =>{
           </div>
           <div className="col-md-12">
 
-          <label class="container-new">
+          <label className="container-new">
             <span className="radio-tick">Services</span>
             <input 
                   className="form-check-input" 
@@ -656,7 +781,6 @@ const digitalIdAsyncInit =(event) =>{
                 />
             <span className="checkmark"></span>
           </label>
-
           </div>
         </div>
         <div className="row">
@@ -668,9 +792,12 @@ const digitalIdAsyncInit =(event) =>{
           </div>
           <div className="col-md-8">
           <button
+          type="submit"
            className="form-button"
           //  onChange={() => setShows(!shows)}
-            onClick={handleAmountDelivery}>
+            onClick={handleAmountSummary}
+            // onClick={()=>{setStep(step+1)}}
+            >
               Continue
               {/* {loading ? <>
                 <div class="loader-overly"> 
@@ -685,6 +812,8 @@ const digitalIdAsyncInit =(event) =>{
         </div>
       </div>
       </form>
+
+      
       </section>
    ) : (
     <>
@@ -707,274 +836,218 @@ const digitalIdAsyncInit =(event) =>{
  
      
     <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
-    <div className="header">
-     <h1>Select a recipient to send money</h1>
-   </div>
-  <ul>
-  <li><a>William <BsChevronDoubleRight /></a></li>
-  <li><a>Josh <BsChevronDoubleRight /></a></li>
-  <li><a>Mike<BsChevronDoubleRight /> </a></li>
-  </ul>
-  <div className="add-rec">
-      <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
-      <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
-      </div>
-      </div> 
+        <div className="header">
+          <h1>Select a recipient to send money</h1>
+        </div>
+        <ul>
+          <li><a>William <BsChevronDoubleRight /></a></li>
+          <li><a>Josh <BsChevronDoubleRight /></a></li>
+          <li><a>Mike<BsChevronDoubleRight /> </a></li>
+        </ul>
+        <div className="add-rec">
+          <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
+          <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
+        </div>
+    </div> 
    
     
-   
 
     <section  className={isActive ? "removerecepient" : "showrecepient"} >   
- <div className="form_body">
-   <div className="header">
-     <h1>Recipient Bank Details</h1>
-   </div>
-   <div className="row each-row">
-   <h5>Bank Details</h5>
-    <div className="col-md-12">
-        <div className="input_field">
-          <p className="get-text">Bank Name</p>
-            <input
-              // autoFocus="autofocus"
-            type="text" 
-            className="rate_input form-control"
-            name="bankName"
-            defaultValue={formValue.bankName}
-            onChange={(e)=>handleStep2InputChange(e,'bankName')}
-            />
+    <form>
+      <div className="form_body">
+        <div className="header">
+          <h1>Recipient Bank Details</h1>
         </div>
-    </div>
-    </div>
-   <div className="row each-row">
-     <div className="col-md-12">
-       <div className="input_field">
-         <p className="get-text">Account Name</p>
-         <input 
-         type="text"
-         defaultValue={formValue.accountName}
-         onChange={(e)=>handleStep2InputChange(e,'accountName')}
-          className='rate_input form-control'
-          // autoFocus="autofocus"
-           />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <div className="col-md-12">
-       <div className="input_field">
-         <p className="get-text">Account number</p>
-         <input 
-         type="text"
-         name="accountNumber"
-         className='rate_input form-control'
-         defaultValue={formValue.accountNumber}
-         onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
-          />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <h5>Recipient Details</h5>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">First Name</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="firstName"
-         defaultValue={formValue.firstName}
-         onChange={(e)=> handleStep2InputChange(e,'firstName')}
-           />
-       </div>
-     </div>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Middle Name</p>
-         <input
-          type="text"
-           className='rate_input form-control' 
-           name="middleName"
-         defaultValue={formValue.middleName}
-         onChange={(e)=> handleStep2InputChange(e,'middleName')}
-           />
-       </div>
-     </div>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Last Name</p>
-         <input 
-         type="text" 
-         className='rate_input form-control'
-         name="lastName"
-         defaultValue={formValue.lastName}
-         onChange={(e)=> handleStep2InputChange(e,'lastName')}
-          />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-     <div className="col-md-6">
-       <div className="input_field">
-         <p className="get-text">Email</p>
-         <input
-          type="email" 
-          className='rate_input form-control'
-          name="email"
-         defaultValue={formValue.email}
-         onChange={(e)=> handleStep2InputChange(e,'email')}
-           />
-       </div>
-     </div>
-     <div className="col-md-6">
-       <div className="input_field">
-         <p className="get-text">Mobile</p>
-         <input 
-         type="text" 
-         className='rate_input form-control'
-         name="mobile"
-         defaultValue={formValue.mobile}
-         onChange={(e)=> handleStep2InputChange(e,'mobile')}
-          />
-       </div>
-     </div>
-   </div>
-   <div className="row each-row">
-   <h5>Address</h5>
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Flat/Unit No.</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>
-       <div className="col-md-4">
-       <div className="input_field">
-        <p className="get-text">Building/Unit No.</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>
-       <div className="col-md-4">
-       <div className="input_field">
-       <p className="get-text">Street</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>  
-   </div>
-
-   <div className="row each-row">
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Postcode</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>
-       <div className="col-md-4">
-       <div className="input_field">
-        <p className="get-text">City/Town</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>
-       <div className="col-md-4">
-       <div className="input_field">
-       <p className="get-text">State</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>  
-   </div>
-
-   <div className="row each-row">
-     <div className="col-md-4">
-       <div className="input_field">
-         <p className="get-text">Country Code</p>
-         <input
-          type="text" 
-          className='rate_input form-control'
-          name="address"
-          defaultValue={formValue.address}
-          onChange={(e)=> handleStep2InputChange(e,'address')}
-           />
-       </div>
-       </div>
-       <div className="col-md-4">
-       <div className="input_field">
-        <p className="get-text">Country</p>
-        <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS rate_input form-control' preferredCountries={['gb', 'us' ]} value="" handleChange={e=> console.log(e.target.value)}></CountryDropdown>
-       </div>
-       </div> 
-   </div>
-   <div className="row each-row">
-     <div className="col-md-12">
-       <div className="input_field">
-         <p className="get-text">Reason For Sending Money</p>
-         <select
-          className="form-select rate_input form-control"
-           aria-label="Select a reason"
-           name="reasonMoney"
-           defaultValue={formValue.reasonMoney}
-           onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
-           >
-           <option selected>Select a reason</option>
-           <option value="Family Support">Family Support</option>
-           <option value="Education">Education</option>
-           <option value="Tax Payment">Tax Payment</option>
-           <option value="Loan Payment">Loan Payment</option>
-           <option value="Travel Payment">Travel Payment</option>
-           <option value="Utility Payment">Utility Payment</option>
-         </select>
-       </div>
-     </div>
-   </div>
-   <div className="row">
-     <div className="col-md-4">
-       <button className="start-form-button" onClick={handleToggle}>Cancel</button>
-     </div>
-     <div className="col-md-8">
-       {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
-       <button className="form-button" onClick={someFunc}>Continue</button>
-       <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-     </div>
-   </div>
- </div>
+          <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
+                  <input
+                    // autoFocus="autofocus"
+                  ref={input_recipientBankName}
+                  type="text" 
+                  className="rate_input form-control"
+                  name="bankName"
+                  defaultValue={formValue.bankName}
+                  onChange={(e)=>handleStep2InputChange(e,'bankName')}
+                  />
+                  {error&&formValue.bankName.length<=0?
+                          <span style={myStyle}>Please Enter the Bank Name* </span>:""}
+              </div>
+          </div>
+        <div className="row each-row">
+          <div className="col-md-12">
+            <div className="input_field">
+              <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
+              <input 
+              type="text"
+              ref={input_recipientAccountName}
+              defaultValue={formValue.accountName}
+              onChange={(e)=>handleStep2InputChange(e,'accountName')}
+                className='rate_input form-control'
+                // autoFocus="autofocus"
+                />
+                  {error&&formValue.accountName.length<=0?
+                    <span style={myStyle}>Please Enter the Account Name </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-12">
+            <div className="input_field">
+              <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
+              <input 
+              type="text"
+              name="accountNumber"
+              ref={input_recipientAccountNumber}
+              className='rate_input form-control'
+              defaultValue={formValue.accountNumber}
+              onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
+                />
+                {error&&formValue.accountNumber.length<=0?
+                    <span style={myStyle}>Please Enter the Account number </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <h5>Recipient Details</h5>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="text" 
+                ref={input_recipientFirstName}
+                className='rate_input form-control'
+                name="firstName"
+              defaultValue={formValue.firstName}
+              onChange={(e)=> handleStep2InputChange(e,'firstName')}
+                />
+                  {error&&formValue.firstName.length<=0?
+                    <span style={myStyle}>Please Enter the First Name </span>:""}
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="text"
+                ref={input_recipientMiddleName}
+                className='rate_input form-control' 
+                name="middleName"
+              defaultValue={formValue.middleName}
+              onChange={(e)=> handleStep2InputChange(e,'middleName')}
+                />
+                  {error&&formValue.middleName.length<=0?
+                    <span style={myStyle}>Please Enter the Middle Name </span>:""}
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
+              <input 
+              type="text" 
+              ref={input_recipientLastName}
+              className='rate_input form-control'
+              name="lastName"
+              defaultValue={formValue.lastName}
+              onChange={(e)=> handleStep2InputChange(e,'lastName')}
+                />
+                {error&&formValue.lastName.length<=0?
+                    <span style={myStyle}>Please Enter the Last Name </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="email" 
+                ref={input_recipientEmail}
+                className='rate_input form-control'
+                name="email"
+              defaultValue={formValue.email}
+              onChange={(e)=> handleStep2InputChange(e,'email')}
+                />
+                  {error&&formValue.email.length<=0?
+                    <span style={myStyle}>Please Enter the Email </span>:""}
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="input_field">
+              <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
+              <input 
+              type="text" 
+              ref={input_recipientMobile}
+              className='rate_input form-control'
+              name="mobile"
+              defaultValue={formValue.mobile}
+              onChange={(e)=> handleStep2InputChange(e,'mobile')}
+                />
+                {error&&formValue.mobile.length<=0?
+                    <span style={myStyle}>Please Enter the Mobile </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-12">
+            <div className="input_field">
+              <p className="get-text">Address<span style={{color: 'red'}} >*</span></p>
+              <input
+                type="text" 
+                ref={input_recipientAddress}
+                className='rate_input form-control'
+                name="address"
+                defaultValue={formValue.address}
+                onChange={(e)=> handleStep2InputChange(e,'address')}
+                />
+                  {error&&formValue.address.length<=0?
+                    <span style={myStyle}>Please Enter the Address </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-12">
+            <div className="input_field">
+              <p className="get-text">Reason For Sending Money<span style={{color: 'red'}} >*</span></p>
+              <select
+                className="form-select rate_input form-control"
+                aria-label="Select a reason"
+                ref={input_recipientReasoMoney}
+                name="reasonMoney"
+                defaultValue={formValue.reasonMoney}
+                onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
+                > 
+                <option selected>Select a reason</option>
+                <option value="Family Support">Family Support</option>
+                <option value="Education">Education</option>
+                <option value="Tax Payment">Tax Payment</option>
+                <option value="Loan Payment">Loan Payment</option>
+                <option value="Travel Payment">Travel Payment</option>
+                <option value="Utility Payment">Utility Payment</option>
+              </select>
+              {error&&formValue.reasonMoney.length<=0?
+                    <span style={myStyle}>Please Select the Reason For Sending Money </span>:""}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <button className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
+          </div>
+          <div className="col-md-8">
+            {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
+            {/* <button className="form-button" onClick={someFunc}>Continue</button> */}
+            <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
+            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+          </div>
+        </div>
+      </div>
+      </form>
 
 
 
 
-      </section>
+    </section>
 
       </>
   }

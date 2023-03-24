@@ -30,7 +30,7 @@ h4,
 h5,
 h6,
 .font-primary {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat' !important;
 }
 
 /*--------------------------------------------------------------
@@ -75,7 +75,7 @@ h6,
   z-index: 9999999;
   transition: all 0.5s;
   background: #fff;
-  border-bottom: 1px solid rgb(217, 224, 232);
+  /* border-bottom: 1px solid rgb(217, 224, 232); */
 }
 
 /* #header.header-transparent {
@@ -141,7 +141,7 @@ h6,
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px 10px 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Montserrat' !important;
   font-size: 14px;
   color: #191970;
   white-space: nowrap;
@@ -4118,11 +4118,13 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right, but
   left: inherit;
 }
 input.mb-3.new_input {
-  color: #000;
-  width: 200px !important;
-  border-right: none;
-  border: 1px solid #EAEAEA;
+  border: 1px solid #eaeaea;
   border-radius: 13px;
+  color: #000;
+  width: 200px!important;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  border-top-right-radius: 0;
 }
 select.form-select.rate_input.form-control.mb-3.home-select-method {
   width: 100% !important;
@@ -4141,9 +4143,9 @@ h1.recipients_lists {
 #footer ul li a.active {
   color: #fff !important;
 }
-div#digitalid-verify button:nth-child(1) {
+/* div#digitalid-verify button:nth-child(1) {
   display: none !important;
-}
+} */
 table.table_user_recipients .accordion button {
   padding: 8px;
   font-family: 'Montserrat' !important;
@@ -4176,27 +4178,44 @@ row.social_links_change p.share_content {
 /******************** userdahsboard css  start **************/
 
 .margin-set{
-  margin-top:140px;
+  margin-top:80px;
   height:100%;
   min-height:600px;
 }
 .nav-pills .nav-link.active {
   background: #190079;
-  border-radius: 10px;
-  color: #fff !important;
+    color: #191970 !important;
+    background-color: rgba(114, 62, 235, 0.07);
+    border-radius: 30px 0 0 30px !important;
+    font-weight:600;
+}
+
+.nav-pills .nav-link.active:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 55px;
+  background-color: #6414E9;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .tabs-page .nav-pills .nav-item a {
-  padding: 10px;
+  padding: 15px 25px;
   color: #000;
   border-radius: 20px;
   margin: 0 auto;
+  transition: all 0.3s;
 }
 .tabs-page .nav-pills .nav-item a:hover {
   color:#190079;
 }
 
 .tabs-page {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  display: flex;
 }
 .tabs-page .nav-item:first-child {
   margin-top: 0;
@@ -4251,7 +4270,7 @@ h2.accordion-header {
 }
 
 .tabs-page .tab-content {
-  margin-left: 80px;
+  padding: 0px 30px 30px;
 }
 
 .tabs-page .card-text {
@@ -4326,6 +4345,7 @@ h2.accordion-header {
 }
 .tabs-page .nav-pills .nav-item a svg {
   margin-right: 10px;
+  font-size:20px;
 }
 .user-sendmoney section.user_recipients_section {
   border: none;
@@ -4775,4 +4795,105 @@ section.change-password {
   float: left;
   width: 100%;
   padding: 10px 0px 0px;
+}
+
+/********************* alerts css start **************************/
+
+.danger-text {
+  background: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 6px;
+  margin: 0 auto;
+  width: 100% !important;
+  display: block;
+  text-align: center;
+  margin-bottom: 13px;
+}
+
+/**************** sidebar css ***********************/
+.sidebar{
+  width: 300px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 5px 40px rgba(30, 32, 37, 0.12);
+  box-shadow: 0 5px 40px rgba(30, 32, 37, 0.12);
+  height: 100%;
+  z-index: 999;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  height: 100vh;
+  padding-top: 30px;
+}
+.content-body {
+  width: 100%;
+  background: #F9F9F9;
+}
+.padding0 {
+  padding: 0;
+}
+.dashbord-user.dCard-1 {
+  background:#2F007E ;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  position: relative;
+  border-radius: 15px;
+  padding: 25px;
+  z-index: 2;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color:#fff;
+  background-image:linear-gradient( rgb(47 0 126 / 49%) 100%, rgb(47 0 126 / 50%)100%),url("../img/userdashboard/card.png")
+}
+.dashbord-user.dCard-1 h3 {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+}
+.icon svg {
+  font-size: 32px;
+}
+.icon {
+  background: #fff;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 100%;
+}
+a.icon-bottom p {
+  background: #fff;
+  color: #000;
+  width: fit-content;
+  padding: 2px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.card {
+  margin-bottom: 1.875rem;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  position: relative;
+  border: 0rem solid transparent;
+  border-radius: 0.625rem;
+  box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgba(82, 63, 105, 0.05);
+  height: calc(100% - 30px);
+  margin-top: 1.875rem;
+}
+
+.card-header {
+  border-color: #f0f1f5;
+  position: relative;
+  background: transparent;
+  padding: 1.5rem 1.875rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.previous-transactions tr td , .previous-transactions tr th {
+  padding: 10px 30px;
+}
+.previous-transactions tr td svg {
+  float: left;
+  width: 30px;
+  height: 30px;
 }

@@ -25,6 +25,7 @@ import AddNewRecipient from '../component/Userdashboard/AddNewRecipient';
 import UserProfile from '../component/Userdashboard/UserProfile';
 import ChangePassword from '../component/Userdashboard/ChangePassword';
 import UserRecipient from '../component/Userdashboard/UserRecipient';
+import Dashboard from '../component/Userdashboard/Dashboard';
 import ReferralData from '../component/referralData/ReferralData';
 
 
@@ -67,6 +68,7 @@ const Routerpage =()=>{
     <Route exact path='/userprofile' element={<UserProfile /> } />
     <Route exact path='/userrecipients' element={<UserRecipient /> } />
     <Route exact path='/changepassword' element={<ChangePassword /> } />
+    <Route exact path='/dashboard' element={<Dashboard /> } />
     </Routes>
     <ToastContainer />
      

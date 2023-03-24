@@ -42,6 +42,7 @@ const Signup = () => {
     const [locationText, setLocationText] = useState('');
     const [emailText, setEmailleText] = useState('');
     const [emailExistText, setEmailExistText] = useState('');
+    const [emailvalidAddress,setEmailvalidAddress ] = useState('');
     const [mobileText, setMobileText] = useState('');
     const [mobileValidText, setMobileValidText] = useState('');
     const [passwordText, setPasswordText] = useState('');
@@ -203,6 +204,7 @@ const Signup = () => {
                     setReferralInvalidText(error.response.data.Invalidreferralcode);
                     setMobileText(error.response.data.Entermobile);
                     setMobileValidText(error.response.data.Checkmobile);
+                    setEmailvalidAddress(error.response.data.email)
             }
            
         })
@@ -317,6 +319,7 @@ const Signup = () => {
 				                          <span style={myStyle}>Please Enter the Email </span>:""}	 */}
                                            <span  style={myStyle}>{emailText? emailText: ""}</span> 
                                            <span  style={myStyle}>{emailExistText? emailExistText: ""}</span> 
+                                           <span  style={myStyle}>{emailvalidAddress? emailvalidAddress: ""}</span> 
                 
                                         </Form.Group>
                                         

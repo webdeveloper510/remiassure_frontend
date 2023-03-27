@@ -176,11 +176,8 @@ const Addnewrecipient = () => {
             </h2>
             </div>
             <form className="single-recipient">
-            <div className="card">
-            <div className="card-body">
-              <div className="row">
-              <h5>Bank Information</h5>
-                  <div className="col-md-4">
+              <div className="row each-row">
+                  <div className="col-md-12">
                       <div className="input_field">
                         <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
                           <input
@@ -194,7 +191,8 @@ const Addnewrecipient = () => {
 
                       </div>
                   </div>
-                  <div className="col-md-4">
+                <div className="row each-row">
+                  <div className="col-md-12">
                     <div className="input_field">
                       <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
                       <input 
@@ -211,7 +209,9 @@ const Addnewrecipient = () => {
 
                     </div>
                   </div>
-                  <div className="col-md-4">
+                </div>
+                <div className="row each-row">
+                  <div className="col-md-12">
                     <div className="input_field">
                       <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
                       <input 
@@ -227,7 +227,7 @@ const Addnewrecipient = () => {
                             <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
                     </div>
                   </div>
-                  </div>
+                </div>
                 <div className="row each-row">
                   <h5>Recipient Details</h5>
                   <div className="col-md-4">
@@ -419,8 +419,7 @@ const Addnewrecipient = () => {
                     </button>
                   </div>
                 </div>
-                </div>
-                </div>
+              </div>
             </form>
 
 

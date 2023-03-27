@@ -602,9 +602,6 @@ const handlSenderDetails =(e) => {
             console.log(response);
             handleShow(); //show view page
             setLoading(false); // Stop loading 
-            navigate('/');   
-           
-  
         })
         .catch(function(error, message) {
             console.log(error.response);
@@ -942,6 +939,7 @@ const handlSenderDetails =(e) => {
           </div>
         </div>
        <form>
+       <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
       <div className="form_body">
         <div className="header">
           <h1>Recipient Bank Details</h1>
@@ -950,7 +948,7 @@ const handlSenderDetails =(e) => {
               <div className="input_field">
                 <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
                 <input
-                          type="text" 
+                  type="text" 
                           className="rate_input form-control"
                           name="bankName"
                           defaultValue={formValue.bankName}
@@ -1087,7 +1085,7 @@ const handlSenderDetails =(e) => {
         <div className="row each-row">
           <div className="col-md-12">
             <div className="input_field">
-              <p className="get-text">Address<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Address</p>
               <input
                 type="text" 
              
@@ -1103,7 +1101,7 @@ const handlSenderDetails =(e) => {
         <div className="row each-row">
           <div className="col-md-12">
             <div className="input_field">
-              <p className="get-text">Reason For Sending Money<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Reason For Sending Money</p>
               <select
                 className="form-select rate_input form-control"
                 aria-label="Select a reason"
@@ -1126,11 +1124,11 @@ const handlSenderDetails =(e) => {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <button className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
+            <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
           </div>
           <div className="col-md-8">
             {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
-            <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
+            <button type="submit" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
             {/* <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button> */}
             <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
           </div>

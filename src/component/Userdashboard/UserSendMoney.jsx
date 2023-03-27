@@ -573,13 +573,17 @@ const handlRecipientBankDetails =(e) => {
     
     {  
           verification_otp || token != undefined || '' ? (
-   <section>
-    
+
+            <>
+     <div class="form-head mb-4">
+      <h2 class="text-black font-w600 mb-0"><b>Amount & Delivery</b>
+      </h2>
+      </div>
+            
+
     <form>
-      <div className="form_body">
-        <div className="header exchangemoney-header">
-          <h1>Amount & delivery</h1>
-        </div>
+      <div className="card">
+        <div className="card-body">
         <div className="row">
         <div className="col-md-12">
             <div className="input_field rate-value">
@@ -589,7 +593,7 @@ const handlRecipientBankDetails =(e) => {
             </div>
           </div>
           </div>
-        <div className="row">
+        <div className="row each-row">
         <div className="col-md-6">
             <div className="input_field">
               <p className="get-text">From<span style={{color: 'red'}} >*</span></p>
@@ -711,6 +715,7 @@ const handlRecipientBankDetails =(e) => {
           </div>
         </div>
         <div className="row each-row">
+          <div className="col-md-6">
           <h5>Receive Method</h5>
           <div className="col-md-12">
           <label className="container-new">
@@ -745,8 +750,9 @@ const handlRecipientBankDetails =(e) => {
             <span className="checkmark"></span>
           </label>
           </div>
-        </div>
-        <div className="row each-row">
+          </div>
+
+          <div className="col-md-6">
           <h5>Payout Partners</h5>
           <div className="col-md-12">
 
@@ -782,7 +788,9 @@ const handlRecipientBankDetails =(e) => {
             <span className="checkmark"></span>
           </label>
           </div>
+          </div>
         </div>
+       
         <div className="row">
           <div className="col-md-4">
             <button 
@@ -810,11 +818,12 @@ const handlRecipientBankDetails =(e) => {
           </button>
           </div>
         </div>
+        </div>
       </div>
       </form>
 
-      
-      </section>
+  
+      </>
    ) : (
     <>
     
@@ -834,11 +843,16 @@ const handlRecipientBankDetails =(e) => {
      {  
       <>
  
-     
-    <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
-        <div className="header">
-          <h1>Select a recipient to send money</h1>
-        </div>
+ 
+      
+      <div className={isActive ? "col-md-6 add-recipent-section" : "col-md-6 remove-add-recipent-section"}>
+      <div class="form-head mb-4">
+      <h2 class="text-black font-w600 mb-0"><b>Select a recipient to send money</b>
+      </h2>
+      </div>
+      <div className="card">
+        <div className="card-body">
+    <div>
         <ul>
           <li><a>William <BsChevronDoubleRight /></a></li>
           <li><a>Josh <BsChevronDoubleRight /></a></li>
@@ -849,16 +863,21 @@ const handlRecipientBankDetails =(e) => {
           <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
         </div>
     </div> 
-   
+   </div>
+   </div>
+   </div>
     
 
-    <section  className={isActive ? "removerecepient" : "showrecepient"} >   
+    <div  className={isActive ? "removerecepient" : "showrecepient"} >   
+    <div class="form-head mb-4">
+      <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
+      </h2>
+      </div>
     <form>
-      <div className="form_body">
-        <div className="header">
-          <h1>Recipient Bank Details</h1>
-        </div>
+    <div className="card">
+    <div className="card-body">
           <div className="col-md-12">
+          <h5>Bank Information</h5>
               <div className="input_field">
                 <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
                   <input
@@ -1041,14 +1060,15 @@ const handlRecipientBankDetails =(e) => {
             <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
           </div>
         </div>
-      </div>
+     </div>
+     </div>
       </form>
 
 
 
 
-    </section>
-
+    </div>
+   
       </>
   }
     </>
@@ -1302,9 +1322,7 @@ const handlRecipientBankDetails =(e) => {
 {  
          (
  
-    
-        <div class="form">
-   <div className="card">
+
      <section className="why-us section-bgba user_dashboard_banner">
        <div className="container">
          <div className="row">
@@ -1338,9 +1356,7 @@ const handlRecipientBankDetails =(e) => {
          </div>
        </div>
      </section>
-   </div>
- </div>
-
+ 
 
 
 

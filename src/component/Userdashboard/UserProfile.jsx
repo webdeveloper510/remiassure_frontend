@@ -68,16 +68,22 @@ const Profile = () => {
 
           {  
           verification_otp || token != undefined || '' ? (
-
+            <>
+           
             <section className="profile-page">
+            
             <div className="container">
               <div className="row">
-                <div className="header">
-                  <h1>User Profile</h1>
-                </div>
+              <div class="form-head mb-4">
+            <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
+            </h2>
+            </div>
                 <div className="update-profile">
                     <form>
-        <div className="row each-row">
+                    <div className="card">
+                    <div className="card-body">
+                      <h5>Basic Information</h5>
+        <div className="row">
           <div className="col-md-4">
             <div className="input_field">
               <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
@@ -180,44 +186,26 @@ const Profile = () => {
             
             </div>
           </div>
+      
+
         </div>
         <div className="row each-row">
           <h5>Address</h5>
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Flat/Unit No.<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Flat/Unit No.</p>
               <input type="text" className='rate_input form-control' />
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Building No./Name<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Building No./Name</p>
               <input type="text" className='rate_input form-control' />
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Street<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Postcode<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">City/Town<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">State<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Street</p>
               <input type="text" className='rate_input form-control' />
             </div>
           </div>
@@ -225,13 +213,33 @@ const Profile = () => {
         <div className="row each-row">
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Country Code<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">Postcode</p>
               <input type="text" className='rate_input form-control' />
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
-              <p className="get-text">Country Name<span style={{color: 'red'}} >*</span></p>
+              <p className="get-text">City/Town</p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">State</p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+        </div>
+        <div className="row each-row">
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Country Code</p>
+              <input type="text" className='rate_input form-control' />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="input_field">
+              <p className="get-text">Country Name</p>
               <CountryDropdown 
               id="UNIQUE_ID"
                 className='YOUR_CSS_CLASS rate_input form-control' 
@@ -249,16 +257,20 @@ const Profile = () => {
                   <button className="start-form-button">Cancel</button>
                 </div>
                 <div className="col-md-6">
-                  <button className="profile-form-button">Savess</button>
+                  <button className="profile-form-button">Save</button>
                   <button className="profile-form-button">Edit</button>
                 </div>
             </div>
+            </div>
+      </div>
       </form>
+
+      
                 </div>
               </div>
             </div>
           </section>
-
+          </>
 
          ) : (
             <>

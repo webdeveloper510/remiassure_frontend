@@ -15,8 +15,16 @@ const AllTranfer = () => {
   const handleShow = () => setShow(true);
     return(
         <>
+        <div className="card">
+        <div className="card-header d-block d-sm-flex border-0">
+                            <div className="me-3">
+                                <h4 className="fs-20 text-black">All Transaction</h4>
+                                <p className="mb-0 fs-13">Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                        </div>
+           <div className="card-body">
 <div className="tabs-recipent-new">
-  <Table bordered className="table_user_recipients">
+  <Table className="table table-responsive-md card-table previous-transactions">
     <thead>
       <tr>
         <th>Date</th>
@@ -27,22 +35,28 @@ const AllTranfer = () => {
     </thead>
     <tbody>
        <tr>
-        <td>12-02-2023</td>
+        <td>June 4, 2020</td>
         <td>200 AUD</td>
         <td>neha</td>
-        <td><span className="completed" onClick={handleShow}>Delivered</span></td>
+        <td><span className="btn btn-outline-success btn-rounded" onClick={handleShow}>Delivered</span></td>
       </tr>
       <tr>
-      <td>12-02-2023</td>
+      <td>June 4, 2020</td>
         <td>200 AUD</td>
         <td>neha</td>
-        <td><span className="failed" onClick={handleShow}>Cancelled</span></td>
+        <td><span className="btn btn-outline-warning btn-rounded" onClick={handleShow}>InProgress</span></td>
       </tr>
       <tr>
-      <td>12-02-2023</td>
+      <td>June 4, 2020</td>
         <td>200 AUD</td>
         <td>neha</td>
-        <td><span className="completed" onClick={handleShow}>Delivered</span></td>
+        <td><span className="btn btn-outline-danger btn-rounded" onClick={handleShow}>Cancelled</span></td>
+      </tr>
+      <tr>
+      <td>June 4, 2020</td>
+        <td>200 AUD</td>
+        <td>neha</td>
+        <td><span className="btn btn-outline-success btn-rounded" onClick={handleShow}>Delivered</span></td>
       </tr>
     </tbody>
   </Table>
@@ -178,7 +192,8 @@ const AllTranfer = () => {
       </div> 
   </div>
 </div>
-
+</div>
+</div>
 </>
 )
 }

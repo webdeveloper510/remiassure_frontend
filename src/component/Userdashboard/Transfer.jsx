@@ -18,12 +18,12 @@ const Transaction = () => {
   
     return(
         <>
+<section>
+<div class="form-head mb-4">
+            <h2 class="text-black font-w600 mb-0"><b>Transaction History</b>
+            </h2>
+            </div>
         <div className="transaction-progress">
-        <div className="header">
-        <h1>Transaction History</h1>
-      </div>
-
-
       <Tabs
       defaultActiveKey="AllTransaction"
       id="uncontrolled-tab-example"
@@ -48,7 +48,9 @@ const Transaction = () => {
 
            
 
+         
           </div>
+          </section>
         </>
     )
 }

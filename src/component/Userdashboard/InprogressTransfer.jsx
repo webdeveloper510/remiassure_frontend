@@ -17,33 +17,51 @@ const InprogressTransfer = () => {
   const handleShow = () => setShow(true);
     return(
         <>
+        
+        <div className="card">
+        <div className="card-header d-block d-sm-flex border-0">
+                            <div className="me-3">
+                                <h4 className="fs-20 text-black">InProgress Transaction</h4>
+                                <p className="mb-0 fs-13">Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                        </div>
+           <div className="card-body">
 <div className="tabs-recipent-new">
-  <Table bordered className="table_user_recipients">
+<Table className="table table-responsive-md card-table previous-transactions">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Date</th>
         <th>Amount</th>
-        <th>Status</th>
+        <th>Recipient</th>
+         <th>Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>neha</td>
+       <tr>
+        <td>June 4, 2020</td>
         <td>200 AUD</td>
-        <td className="inprogress-status"><span onClick={handleShow}>Inprogress</span></td>
+        <td>neha</td>
+        <td><span className="btn btn-outline-warning btn-rounded" onClick={handleShow}>InProgress</span></td>
       </tr>
       <tr>
-        <td>neha</td>
+      <td>June 4, 2020</td>
         <td>200 AUD</td>
-        <td className="inprogress-status"><span onClick={handleShow}>Inprogress</span></td>
+        <td>neha</td>
+        <td><span className="btn btn-outline-warning btn-rounded" onClick={handleShow}>InProgress</span></td>
       </tr>
       <tr>
-        <td>neha</td>
+      <td>June 4, 2020</td>
         <td>200 AUD</td>
-        <td className="inprogress-status"><span onClick={handleShow}>Inprogress</span></td>
+        <td>neha</td>
+        <td><span className="btn btn-outline-warning btn-rounded" onClick={handleShow}>InProgress</span></td>
+      </tr>
+      <tr>
+      <td>June 4, 2020</td>
+        <td>200 AUD</td>
+        <td>neha</td>
+        <td><span className="btn btn-outline-warning btn-rounded" onClick={handleShow}>InProgress</span></td>
       </tr>
     </tbody>
-
   </Table>
 
 
@@ -171,6 +189,9 @@ const InprogressTransfer = () => {
 <div className="col-md-12">
       <p><b>No transfers in progress</b></p>  
       </div>  
+  </div>
+
+  </div>
   </div>
 </div>
 

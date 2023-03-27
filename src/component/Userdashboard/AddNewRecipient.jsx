@@ -68,6 +68,10 @@ const Addnewrecipient = () => {
   
       const verification_otp = localStorage.getItem("verification_otp");
       console.log("Verification Message", verification_otp)
+
+      const RecipientUserName = localStorage.getItem("RecipientUserName");
+      console.log("RecipientUserName", RecipientUserName);
+
   
   // Start page show hide condtion page
    
@@ -142,6 +146,7 @@ const Addnewrecipient = () => {
         .then(function(response) {
             console.log(response);
             setLoading(false); // Stop loading 
+            localStorage.setItem("RecipientUserName", response.data.recipint_data.first_name);
             navigate('/');   
            
   
@@ -160,18 +165,20 @@ const Addnewrecipient = () => {
         <>
         {/* <Recipients /> */}
 
+   
         <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
-    
-   <UserRecipient />
-<div className="col-md-12 align-center">
-      <button className="form-button addsingle_recepient" onClick={handleToggle}><BsFillPersonPlusFill /> Add New Recepients</button>
-      </div>
-      </div> 
+         <UserRecipient />
+        
+          <div className="col-md-12 align-center">
+            <button className="form-button addsingle_recepient" onClick={handleToggle}><BsFillPersonPlusFill /> Add New Recepients</button>
+          </div>
+        </div> 
+        
 
 
     <section  className={isActive ? "removerecepient" : "showrecepient"} >   
     <div class="form-head mb-4">
-    <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
+   
             <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
             </h2>
             </div>
@@ -225,6 +232,7 @@ const Addnewrecipient = () => {
                         {/* {error&&formValue.accountNumber.length<=0?
                             <span style={myStyle}>Please Enter the Account number </span>:""} */}
                             <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
+                            <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
                     </div>
                   </div>
                   </div>

@@ -67,7 +67,8 @@ const UserSendMoney = () => {
   bankName:'',accountName:'', accountNumber:'',firstName:'', middleName:'',
  lastName:'',email:'',mobile:'',address:'',reasonMoney:''});
 
- // End -Recipient Bank Details
+  /************ Start -messageText state***************/
+  const [BankNameText, setBankNameText] = React.useState('');
 
 
 /******************* start Amount value  state   *******/
@@ -355,6 +356,20 @@ const handlRecipientBankDetails =(e) => {
     const myTotalAmount =(event)=> {   
       event.preventDefault();
       // console.log("====================>",amount)
+          //useRef is used for focusing on inputbox
+          if (from.length==0){
+            input_From.current.focus();
+                setError(true);
+            } else if (to.length==0){
+              input_To.current.focus();
+                setError(true);
+            } else if (amountValue.amountInput.length==0){
+              input_AmountSend.current.focus();
+                setError(true);
+            } 
+             
+            else{
+         
     setLoading(true); // Set loading before sending API request
       axios.post(API.BASE_URL + 'exchange-rate/', {
         from: from,
@@ -386,6 +401,7 @@ const handlRecipientBankDetails =(e) => {
       })
 
     }
+  }
     // End Total Amount Api call 
 
 /**************************************************************************
@@ -431,95 +447,72 @@ const handlRecipientBankDetails =(e) => {
 
         
  /**************************************************************************
- * ************** Start  Recipient Bank Details ****************************
- * ***********************************************************************/
+   * ************** Start  Recipient Bank Details ****************************
+   * ***********************************************************************/
+  
+     /* start-- useRef is used for focusing on inputbox */
+     const input_grant_type = useRef(null);
+     const input_recipientAccountName = useRef(null);
+     const input_recipientAccountNumber = useRef(null);
+     const input_recipientFirstName = useRef(null);
+     const input_recipientMiddleName = useRef(null);
+     const input_recipientLastName = useRef(null);
+     const input_recipientEmail = useRef(null);
+     const input_recipientMobile = useRef(null);
+     const input_recipientReasoMoney = useRef(null);
+     const input_recipientAddress = useRef(null);
+  
+  
+     const handleRecipientBankDetails =(event) =>{
+        event.preventDefault();
 
-   /* start-- useRef is used for focusing on inputbox */
-   const input_recipientBankName = useRef(null);
-   const input_recipientAccountName = useRef(null);
-   const input_recipientAccountNumber = useRef(null);
-   const input_recipientFirstName = useRef(null);
-   const input_recipientMiddleName = useRef(null);
-   const input_recipientLastName = useRef(null);
-   const input_recipientEmail = useRef(null);
-   const input_recipientMobile = useRef(null);
-   const input_recipientReasoMoney = useRef(null);
-   const input_recipientAddress = useRef(null);
+          //useRef is used for focusing on inputbox
+      //     if(errorBankName.length==0){
+	    //   		input_grant_type.current.focus();
+	    //   		setError(true);
+      //       console.log(error, "error")
+	    //   	} 
 
-
-   const handleRecipientBankDetails =(event) =>{
-      event.preventDefault();
-    //  alert("hii")
-       //useRef is used for focusing on inputbox
-     if (formValue.bankName.length==0){
-      input_recipientBankName.current.focus();
-          setError(true);
-      } else if (formValue.accountName.length==0){
-        input_recipientAccountName.current.focus();
-          setError(true);
-      } else if (formValue.accountNumber.length==0){
-        input_recipientAccountNumber.current.focus();
-          setError(true);
-      } else if (formValue.firstName.length==0){
-        input_recipientMiddleName.current.focus();
-          setError(true);
-      } else if (formValue.middleName.length==0){
-        input_recipientLastName.current.focus();
-          setError(true);
-      } else if (formValue.lastName.length==0){
-        input_recipientMobile.current.focus();
-          setError(true);
-      } else if (formValue.email.length==0){
-        input_recipientReasoMoney.current.focus();
-          setError(true);
-      } else if (formValue.mobile.length==0){
-        input_recipientAddress.current.focus();
-          setError(true);
-      } else if (formValue.address.length==0){
-        input_recipientAddress.current.focus();
-          setError(true);
-      } else if (formValue.reasonMoney.length==0){
-        input_recipientAddress.current.focus();
-          setError(true);
-      } 
-       
-      else{
-   
-    setLoading(true); // Set loading before sending API request
-      axios.post(API.BASE_URL + 'recipient-create/', {
-        // first_name: first_name,
-        // middle_name: middle_name,
-        // last_name: last_name,
-        // email: email,
-        // mobile: mobile,
-       
-      }, {
-          headers: {
-              // 'Content-Type': 'application/json',
-          },
-        
-      })
-      .then(function(response) {
-          console.log(response);
-          localStorage.setItem("Total_amount", response.data.amount);
-          if (response.status)
-          setStep(step+1); //next step call
-          setShows(!shows) //show hide summery function call
-          setLoading(false); // Stop loading 
-
-      })
-      .catch(function(error, message) {
-          console.log(error.response);
-          setLoading(false); // Stop loading in case of error
-          if(error.response.data.status){
-              toast.error(error.response.data.message);
-          } 
-          console.log(error, "klnklnklnknnnnnnnnnnnn");   
-      })
-  }
-}
-
-
+      //  else{
+      
+        setLoading(true); // Set loading before sending API request
+        axios.post(API.BASE_URL + 'payment/recipient-create/', {
+          bank_name: formValue.bankName,
+          account_name: formValue.accountName,
+          account_number: formValue.accountNumber,
+          first_name: formValue.firstName,
+          middle_name: formValue.middleName,
+          last_name: formValue.lastName,
+          email: formValue.email,
+          mobile:formValue.mobile,
+          flat: formValue.firstName,
+          building: formValue.firstName,
+          sreet: formValue.firstName,
+          postcode: formValue.firstName,
+          city: formValue.firstName,  
+          state: formValue.firstName,  
+          country_code: formValue.firstName,
+          country: formValue.firstName,
+         
+        }, {
+            headers: {
+              "Authorization" : `Bearer ${token}`,
+            },
+          
+        })
+        .then(function(response) {
+            console.log(response);
+            handleShow(); //show view page
+            setLoading(false); // Stop loading 
+        })
+        .catch(function(error, message) {
+            console.log(error.response);
+            setLoading(false); // Stop loading in case of error
+            setBankNameText(error.response.data); 
+             
+        })
+    }
+  // }
 
 
 
@@ -881,47 +874,44 @@ const handlRecipientBankDetails =(e) => {
           <div className="col-md-4">
               <div className="input_field">
                 <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
-                  <input
-                    // autoFocus="autofocus"
-                  ref={input_recipientBankName}
+                <input
                   type="text" 
                   className="rate_input form-control"
                   name="bankName"
                   defaultValue={formValue.bankName}
                   onChange={(e)=>handleStep2InputChange(e,'bankName')}
-                  />
-                  {error&&formValue.bankName.length<=0?
-                          <span style={myStyle}>Please Enter the Bank Name* </span>:""}
+                />   
+                  <span style={myStyle}>{BankNameText.Enterbankname? BankNameText.Enterbankname: ''}</span>
               </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
               <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
               <input 
-              type="text"
-              ref={input_recipientAccountName}
-              defaultValue={formValue.accountName}
-              onChange={(e)=>handleStep2InputChange(e,'accountName')}
+                type="text"
+                // ref={input_recipientAccountName}
+                defaultValue={formValue.accountName}
+                onChange={(e)=>handleStep2InputChange(e,'accountName')}
                 className='rate_input form-control'
                 // autoFocus="autofocus"
-                />
-                  {error&&formValue.accountName.length<=0?
-                    <span style={myStyle}>Please Enter the Account Name </span>:""}
+              />
+                       
+               <span style={myStyle}>{BankNameText.Enteraccountname? BankNameText.Enteraccountname: ''}</span>
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
               <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
               <input 
-              type="text"
-              name="accountNumber"
-              ref={input_recipientAccountNumber}
-              className='rate_input form-control'
-              defaultValue={formValue.accountNumber}
-              onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
-                />
-                {error&&formValue.accountNumber.length<=0?
-                    <span style={myStyle}>Please Enter the Account number </span>:""}
+                type="text"
+                name="accountNumber"
+                // ref={input_recipientAccountNumber}
+                className='rate_input form-control'
+                defaultValue={formValue.accountNumber}
+                onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
+              />          
+               <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
+               <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
             </div>
           </div>
           </div>
@@ -932,15 +922,14 @@ const handlRecipientBankDetails =(e) => {
             <div className="input_field">
               <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
               <input
-                type="text" 
-                ref={input_recipientFirstName}
-                className='rate_input form-control'
+               type="text" 
+               // ref={input_recipientFirstName}
+               className='rate_input form-control'
                 name="firstName"
-              defaultValue={formValue.firstName}
-              onChange={(e)=> handleStep2InputChange(e,'firstName')}
-                />
-                  {error&&formValue.firstName.length<=0?
-                    <span style={myStyle}>Please Enter the First Name </span>:""}
+                defaultValue={formValue.firstName}
+                onChange={(e)=> handleStep2InputChange(e,'firstName')}
+              />     
+              <span style={myStyle}>{BankNameText.first_name? BankNameText.first_name: ''}</span>   
             </div>
           </div>
           <div className="col-md-4">
@@ -948,29 +937,27 @@ const handlRecipientBankDetails =(e) => {
               <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
               <input
                 type="text"
-                ref={input_recipientMiddleName}
+                // ref={input_recipientMiddleName}
                 className='rate_input form-control' 
                 name="middleName"
-              defaultValue={formValue.middleName}
-              onChange={(e)=> handleStep2InputChange(e,'middleName')}
-                />
-                  {error&&formValue.middleName.length<=0?
-                    <span style={myStyle}>Please Enter the Middle Name </span>:""}
+                defaultValue={formValue.middleName}
+                onChange={(e)=> handleStep2InputChange(e,'middleName')}
+              />
+              <span style={myStyle}>{BankNameText.middle_name? BankNameText.middle_name: ''}</span>
             </div>
           </div>
           <div className="col-md-4">
             <div className="input_field">
               <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
               <input 
-              type="text" 
-              ref={input_recipientLastName}
-              className='rate_input form-control'
-              name="lastName"
-              defaultValue={formValue.lastName}
-              onChange={(e)=> handleStep2InputChange(e,'lastName')}
-                />
-                {error&&formValue.lastName.length<=0?
-                    <span style={myStyle}>Please Enter the Last Name </span>:""}
+                type="text" 
+                // ref={input_recipientLastName}
+                className='rate_input form-control'
+                name="lastName"
+                defaultValue={formValue.lastName}
+                onChange={(e)=> handleStep2InputChange(e,'lastName')}
+              />
+              <span style={myStyle}>{BankNameText.last_name? BankNameText.last_name: ''}</span>
             </div>
           </div>
         </div>
@@ -980,29 +967,30 @@ const handlRecipientBankDetails =(e) => {
               <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
               <input
                 type="email" 
-                ref={input_recipientEmail}
+                // ref={input_recipientEmail}
                 className='rate_input form-control'
                 name="email"
-              defaultValue={formValue.email}
-              onChange={(e)=> handleStep2InputChange(e,'email')}
-                />
-                  {error&&formValue.email.length<=0?
-                    <span style={myStyle}>Please Enter the Email </span>:""}
+                defaultValue={formValue.email}
+                onChange={(e)=> handleStep2InputChange(e,'email')}
+             />
+             <span style={myStyle}>{BankNameText.email? BankNameText.email: ''}</span>
             </div>
           </div>
           <div className="col-md-6">
             <div className="input_field">
               <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
               <input 
-              type="text" 
-              ref={input_recipientMobile}
-              className='rate_input form-control'
-              name="mobile"
-              defaultValue={formValue.mobile}
-              onChange={(e)=> handleStep2InputChange(e,'mobile')}
-                />
-                {error&&formValue.mobile.length<=0?
-                    <span style={myStyle}>Please Enter the Mobile </span>:""}
+                type="text" 
+               // ref={input_recipientMobile}
+                className='rate_input form-control'
+                name="mobile"
+                defaultValue={formValue.mobile}
+                onChange={(e)=> handleStep2InputChange(e,'mobile')}
+              />
+                <span style={myStyle}>{BankNameText.mobile? BankNameText.mobile: ''}</span>
+                <span style={myStyle}>{BankNameText.Entervalidmobile? BankNameText.Entervalidmobile: ''}</span>
+                <span style={myStyle}>{BankNameText.Mobileexist? BankNameText.Mobileexist: ''}</span>
+                <span style={myStyle}>{BankNameText.Invalidmobile? BankNameText.Invalidmobile: ''}</span>
             </div>
           </div>
         </div>
@@ -1012,14 +1000,13 @@ const handlRecipientBankDetails =(e) => {
               <p className="get-text">Address<span style={{color: 'red'}} >*</span></p>
               <input
                 type="text" 
-                ref={input_recipientAddress}
+             
                 className='rate_input form-control'
                 name="address"
                 defaultValue={formValue.address}
                 onChange={(e)=> handleStep2InputChange(e,'address')}
                 />
-                  {error&&formValue.address.length<=0?
-                    <span style={myStyle}>Please Enter the Address </span>:""}
+                 
             </div>
           </div>
         </div>
@@ -1030,7 +1017,7 @@ const handlRecipientBankDetails =(e) => {
               <select
                 className="form-select rate_input form-control"
                 aria-label="Select a reason"
-                ref={input_recipientReasoMoney}
+               
                 name="reasonMoney"
                 defaultValue={formValue.reasonMoney}
                 onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
@@ -1043,20 +1030,19 @@ const handlRecipientBankDetails =(e) => {
                 <option value="Travel Payment">Travel Payment</option>
                 <option value="Utility Payment">Utility Payment</option>
               </select>
-              {error&&formValue.reasonMoney.length<=0?
-                    <span style={myStyle}>Please Select the Reason For Sending Money </span>:""}
+           
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-4">
-            <button className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
+            <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
           </div>
           <div className="col-md-8">
             {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
             {/* <button className="form-button" onClick={someFunc}>Continue</button> */}
-            <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
-            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+            <button type="submit" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
+            <button type="submit" className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
           </div>
         </div>
      </div>

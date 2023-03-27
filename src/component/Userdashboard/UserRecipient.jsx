@@ -22,6 +22,9 @@ console.log("TOKEN", token);
 const verification_otp = localStorage.getItem("verification_otp");
 console.log("Verification Message", verification_otp)
 
+const RecipientUserName = localStorage.getItem("RecipientUserName");
+console.log("RecipientUserName", RecipientUserName);
+
 // Start page show hide condtion page
 
 
@@ -74,11 +77,12 @@ console.log(data," nnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
 
 let id;
 {/* start- delete function */}
-const handleRemoveRecipientBankDetails =(event) =>{
-    event.preventDefault();
+const handleRemoveRecipientBankDetails =(value) =>{
+   
     // if (window.confirm('Do you wnat to remove?')) {
-    setLoading(true); // Set loading before sending API request
-    axios.delete(API.BASE_URL + 'payment/recipient-update/:id', {}, {
+    // setLoading(true); // Set loading before sending API request
+    axios.delete(API.BASE_URL + `payment/recipient-update/${value}`, {
+      
         headers: {
           "Authorization" : `Bearer ${token}`,
         },
@@ -87,19 +91,19 @@ const handleRemoveRecipientBankDetails =(event) =>{
     .then(function(response) {
         console.log(response);
         alert('Remove Successfully.')
-        setLoading(false); // Stop loading 
+        // setLoading(false); // Stop loading 
         navigate('/');   
        
 
     })
     .catch(function(error, message) {
         console.log(error.response);
-        setLoading(false); // Stop loading in case of error
+        // setLoading(false); // Stop loading in case of error
        
          
     })
 }
-// }
+
 
     return(
         <>
@@ -125,7 +129,7 @@ const handleRemoveRecipientBankDetails =(event) =>{
 
 
     {  
-        verification_otp || token != undefined || '' ? (
+        RecipientUserName || token != undefined || '' ? (
 
         <div class="container">
             <div className="row">
@@ -178,7 +182,8 @@ const handleRemoveRecipientBankDetails =(event) =>{
                                     <td>{res.transfer_now_link}</td>
                                     <td> </td>
                                     <td>
-                                     <span onClick={handleRemoveRecipientBankDetails}>Delete</span> 
+                                     <span className="btn btn primary" onClick={() => {handleRemoveRecipientBankDetails(res.id)}}>Delete</span> 
+                                     <span className="btn btn primary">Update</span>
                                     </td>
                               </tr>
                               
@@ -196,25 +201,25 @@ const handleRemoveRecipientBankDetails =(event) =>{
 
                </section>
 
-               <section>
-               <div class="form-head mb-4">
-            <h2 class="text-black font-w600 mb-0"><b>Add Recipient</b>
-            </h2>
-            </div>
-               <div className="card">
-            <div className="card-body">
-               <div className="add-rec-new">
-                        {/* <div class="header"><h1>Recipients</h1></div>
-                            <br></br> */}
-                        <img src={norecipients} alt="empty" />
-                        </div>
-                        </div></div>
-                        </section>
+            
+
             </div>
         </div>
 
     ) : (
         <>
+           <section>
+                    <div class="form-head mb-4">
+                        <h2 class="text-black font-w600 mb-0"><b>Add Recipient</b></h2>
+                    </div>
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="add-rec-new">
+                                <img src="{norecipients}" alt="empty" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
         
         </>
     )

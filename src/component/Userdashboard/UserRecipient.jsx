@@ -1,5 +1,8 @@
 import React, { useState, useContext , useEffect} from "react";
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import {Links, NavLink, useNavigate} from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import { toast } from "react-toastify";
@@ -7,7 +10,16 @@ import { API } from "../../config/API";
 import axios from "axios";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import { BsFillPersonPlusFill } from "react-icons/bs";
+
+
+
 const UserRecipients =() =>{
+
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+    
 
     const [isActive, setActive] = useState("false");
 
@@ -15,7 +27,7 @@ const UserRecipients =() =>{
       setActive(!isActive);
     };
 
-// Start page show hide condtion page 
+// Start page show hide condtion page s
 const token = localStorage.getItem("token");
 console.log("TOKEN", token);
 
@@ -31,13 +43,24 @@ console.log("RecipientUserName", RecipientUserName);
 const [data, setData] = useState([]);
 const [loading, setLoading] = useState(false);
 
+//let { id } = useParams();
+// console.log(id, "idvalue")
+
+const LoadEdit = (id) => {
+    navigate(`/Editrecipientuser/${id}`);
+}
+
+const LoadSinglProfile = (id) => {
+    navigate(`/profilesingledata/${id}`);
+}
+
+
 const navigate = useNavigate();
 
 // const notify = () => toast.success("User Data Get Successfully!");
 
 
-// const token = localStorage.getItem("token");
-// console.log("TOKEN", token);
+
 
     /**************************************************************************
    * ************** Start  Recipient List ************************************
@@ -160,7 +183,7 @@ const handleRemoveRecipientBankDetails =(value) =>{
                             {/* <th>User</th> */}
                             <th>Name</th>
                             <th>Destination</th>
-                            <th>Detail Link</th>
+                            <th>Update Detail Link</th>
                             <th>Transfer Now Link</th>
                             <th>Transfer Progress</th>
                             <th>Action</th>
@@ -183,7 +206,8 @@ const handleRemoveRecipientBankDetails =(value) =>{
                                     <td> </td>
                                     <td>
                                      <span className="btn btn primary" onClick={() => {handleRemoveRecipientBankDetails(res.id)}}>Delete</span> 
-                                     <span className="btn btn primary">Update</span>
+                                     <span className="btn btn primary" onClick={() =>{LoadEdit(res.id)}}>Edit</span>
+                                     <span className="btn btn primary" onClick={() =>{LoadSinglProfile(res.id)}} >SingleData</span>
                                     </td>
                               </tr>
                               
@@ -193,7 +217,21 @@ const handleRemoveRecipientBankDetails =(value) =>{
                       
                     </tbody>
                     </Table> 
-
+                        
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Save Changes
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
                    
                     </div>
                     </div>

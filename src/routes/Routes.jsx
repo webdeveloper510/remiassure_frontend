@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route, Routes} from 'react-router-dom';
+import {HashRouter as Router, Route, Routes, useParams} from 'react-router-dom';
 import Home from '../component/home/Home';
 import Header from '../component/header/Header';
 import Footer from '../component/footer/Footer';
@@ -27,6 +27,8 @@ import ChangePassword from '../component/Userdashboard/ChangePassword';
 import UserRecipient from '../component/Userdashboard/UserRecipient';
 import Dashboard from '../component/Userdashboard/Dashboard';
 import ReferralData from '../component/referralData/ReferralData';
+import Editrecipientuser from '../component/Userdashboard/EditUserRecipient';
+import SingleRecipientProfile from '../component/Userdashboard/SingleRecipientProfile';
 
 
 import GoToTop from '../GoToTop';
@@ -34,6 +36,7 @@ import { AuthProvider } from '../component/context/UserContext';
 
 
 const Routerpage =()=>{
+  let { id } = useParams();
   
   return(
 
@@ -69,6 +72,9 @@ const Routerpage =()=>{
     <Route exact path='/userrecipients' element={<UserRecipient /> } />
     <Route exact path='/changepassword' element={<ChangePassword /> } />
     <Route exact path='/dashboard' element={<Dashboard /> } />
+    <Route exact path='/Editrecipientuser/:id' element={<Editrecipientuser /> } />
+    <Route exact path='/profilesingledata/:id' element={<SingleRecipientProfile /> } />
+    
     </Routes>
     <ToastContainer />
      

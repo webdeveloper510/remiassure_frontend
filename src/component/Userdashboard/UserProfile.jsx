@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
 
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
@@ -14,6 +15,12 @@ const Profile = () => {
   const [loading, setLoading] = React.useState(false);
  /****************************  sender details data *******************/
  const [senderDetailData, setSenderDetailData] = React.useState('');
+
+/****************************  Model Update page  *******************/
+ const [show, setShow] = useState(false);
+
+ const handleClose = () => setShow(false);
+ const handleShow = () => setShow(true);
 
 
 
@@ -59,6 +66,39 @@ const Profile = () => {
             
           })
       }, [])
+
+
+       /**************************************************************************
+       * ************** Start User Profile Update Api ****************************
+       * ***********************************************************************/
+      
+         /* start-- useRef is used for focusing on inputbox */
+         const handleUserProfileUpdate =(value) =>{
+          console.log(value, "valueeeeeeeeeeee")
+          // alert("hii")
+            // event.preventDefault();
+            setLoading(true); // Set loading before sending API request
+            axios.patch(API.BASE_URL + `payment/recipient-update/${value}`, {
+                headers: {
+                  "Authorization" : `Bearer ${token}`,
+                }, 
+            })
+            .then(function(response) {
+                console.log(response);
+                setLoading(false); // Stop loading 
+                handleClose()
+                // localStorage.setItem("RecipientUserName", response.data.recipint_data.first_name);
+                // navigate('/');   
+      
+            })
+            .catch(function(error, message) {
+                console.log(error.response);
+                setLoading(false); // Stop loading in case of error
+              //   setBankNameText(error.response.data); 
+                 
+            })
+        }
+      // }
 
 
     return(
@@ -258,18 +298,51 @@ const Profile = () => {
                 </div>
                 <div className="col-md-6">
                   <button className="profile-form-button">Save</button>
-                  <button className="profile-form-button">Edit</button>
+                  <button 
+                  type="submit"
+                  variant="primary" 
+                  className="profile-form-button" 
+                  onClick={handleShow}>Edit
+                  </button>
                 </div>
             </div>
             </div>
       </div>
       </form>
 
+
+
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleUserProfileUpdate}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
+
       
                 </div>
               </div>
             </div>
           </section>
+
+
+
+
+
+
+
+
+
+
+
           </>
 
          ) : (

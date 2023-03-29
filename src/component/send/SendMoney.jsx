@@ -13,7 +13,7 @@ import { API } from "../../config/API";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router";
 import ReactFlagsSelect from "react-flags-select";
-import verified from '../../assets/img/userdashboard/verified.avif';
+import verified from '../../assets/img/userdashboard/3.png';
 
 // start css
 const myStyle ={
@@ -176,6 +176,8 @@ console.log(reasonMoney, "reasonMoney");
 
 //   localStorage.setItem('courses', JSON.stringify(courses))
 // }
+
+
 
 //multiple function call
 function someFunc() {
@@ -351,9 +353,9 @@ const handlSenderDetails =(e) => {
         .catch(function(error, message) {
             console.log(error.response);
             setLoading(false); // Stop loading in case of error
-            if(error.response.data.status){
-                toast.error(error.response.data.message);
-            } 
+            // if(error.response.data.status){
+            //     toast.error(error.response.data.message);
+            // } 
             console.log(error, "klnklnklnknnnnnnnnnnnn");   
         })
     }
@@ -671,11 +673,15 @@ const handlSenderDetails =(e) => {
       
         return (
         <Step5 /> );
-    }
+    }else if(step==5){
+      
+      return (
+      <Step6 /> );
+  }
       }
 
 
-      // console.log(step, "stepstepstepstepstepstepstep")
+     console.log(step, "stepstepstepstepstepstepstep")
 
     const Step1 = () =>{
     
@@ -708,7 +714,7 @@ const handlSenderDetails =(e) => {
                 </div>
               </div>
               </div>
-            <div className="row">
+            <div className="row  each-row">
             <div className="col-md-6">
                 <div className="input_field">
                   <p className="get-text">From<span style={{color: 'red'}} >*</span></p>
@@ -1371,7 +1377,7 @@ const handlSenderDetails =(e) => {
                       },
                       onComplete: function (res,error,onComplete) {
                           console.log(2,"log2");
-                          setStep(step+1);
+                          // setStep(step+1);
                           console.log(res, "codes")
                           // console.log(error, "error")
                           // navigate("/sendMoney")
@@ -1587,7 +1593,8 @@ const handlSenderDetails =(e) => {
           </div>
           <div className="col-md-10 new_buttons">
           
-            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+            <button className="form-button" onClick={()=>{setStep(step+1)}}>Previous</button>
+           
             {/* { verificationValue == false ? ( */}
                 {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>  */}
 
@@ -1641,7 +1648,55 @@ const handlSenderDetails =(e) => {
               <h1>Verifiyed Payment</h1>
             </div>
             <div className="row">
-            <img className="verifies-img" src={verified} alt="verified"/>
+            <Table className="final-summary">
+                               <thead>
+                                  <tr>
+                                    <th colSpan={2} className="popup-heading">Transaction Details </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Amount to Send</td>
+                                    <td>500 USD</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Fees</td>
+                                    <td>50 USD</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Total Cost</td>
+                                    <td>550 USD</td>
+                                  </tr>
+                                </tbody>
+                                <thead>
+                                  <tr>
+                                    <th colSpan={2} className="popup-heading">Transfer to </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Account No.</td>
+                                    <td>*********1882</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Account Name</td>
+                                    <td>Rohit kumar</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Bank Name</td>
+                                    <td>Punjab National Bank</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Total Recipient Received</td>
+                                    <td>20000 INR</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Received Method</td>
+                                    <td>Bank Transfer</td>
+                                  </tr>
+                                </tbody>
+                                
+                               </Table>
             </div>
           
         
@@ -1652,7 +1707,7 @@ const handlSenderDetails =(e) => {
               <div className="col-md-12 verified-section">
             
                 <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-                <button className="form-button" onClick={handleVerifiedPaymentDigitalId}>Continue</button>
+                <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
               </div>
             </div>
           </div>
@@ -1669,7 +1724,39 @@ const handlSenderDetails =(e) => {
         );
         }
 
+        const Step6 = () =>{
+    
+          return (
+          <>
+          
+          <section>
+            <div className="progressBar">
+          <div className="progress">
+          <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+          <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step5">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step6">{step_form}</span>
+          </div>
+        </div>
+        <div className="form_body">
+            <div className="header">
+              <h1>Thank you</h1>
+            </div>
+            <div className="col-md-12 align-center">
+            <img className="verifies-img" src={verified} alt="verified"/>
+            <p>Thanks for choosing RemitAssure</p>
+            <button type="submit" class="form-button" style={{"width":'100%'}}>Go back to Dashboard</button>
+            </div>
+
+          </div>
+        </section> 
+        
       
+          </>
+          );
+          }
     
 
 

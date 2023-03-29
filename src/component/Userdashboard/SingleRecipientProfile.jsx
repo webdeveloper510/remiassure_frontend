@@ -127,250 +127,79 @@ const SingleRecipientProfile = () => {
                     <div className="content-body">
                     <section className="edit_recipient_section">
 
-                    <div class="form-head mb-4">
-            <h2 class="text-black font-w600 mb-0"><b>Profile</b>
-            </h2>
-            <NavLink to="/userrecipients">
-                <button className="form-button addsingle_recepient" ><BsFillPersonPlusFill /> Recipients Lists</button>
-            </NavLink>
+            <div className="form-head mb-4">
+              <h2 className="text-black font-w600 mb-0"><b>Profile</b>
+              </h2>
             </div>
-       
+         <div className="row">
+         <NavLink to="/userrecipients">
+                  <button className="form-button addsingle_recepient" ><BsFillPersonPlusFill /> Recipients Lists</button>
+              </NavLink>
+         </div>
 
             <div className="row">
             <div className="col-lg-8">
                 <div className="profile card card-body px-3 pt-3 pb-0">
                     <div className="profile-head">
                         <div className="photo-content">
-                          <h1>Rohit</h1>
+                          {/* <h1>{senderDetailData.first_name}</h1> */}
+                        </div>
+                        <div className="profile-info">
+                            <div className="profile-photo">
+                            <BsFillPersonPlusFill />
+                            </div>
+                            <div className="profile-details">
+                                <div className="profile-name">
+                                    <h4 className="text-primary mb-0">{senderDetailData.first_name}</h4>
+                                </div>
+                            </div>
                         </div>
 
                  <form className="single-recipient">
-              <div className="row">
-              <h5>Single Profile Data </h5>
-                  <div className="col-md-4">
-                      <div className="input_field">
-                        <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
-                          <input
-                          type="text" 
-                          className="rate_input form-control"
-                          name="bankName"
-                          Value={senderDetailData.bank_name}
-                          />  
-                      </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="input_field">
-                      <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
-                      <input 
-                      type="text"
-                        className='rate_input form-control'
-                        Value={senderDetailData.account_name}
-                        />
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="input_field">
-                      <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
-                      <input 
-                      type="text"
-                      name="accountNumber"
-                      className='rate_input form-control'
-                      Value={senderDetailData.account_number}
-                      />
-                    </div>
-                  </div>
-                  </div>
-                <div className="row each-row">
-                  <h5>Recipient Details</h5>
-                  <div className="col-md-4">
-                    <div className="input_field">
-                      <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
-                      <input
-                        type="text" 
-                        className='rate_input form-control'
-                        name="firstName"
-                        Value={senderDetailData.first_name}
-                        />
-                 
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="input_field">
-                      <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
-                      <input
-                        type="text"
-                        className='rate_input form-control' 
-                        name="middleName"
-                        Value={senderDetailData.middle_name}
-                        />
-
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="input_field">
-                      <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
-                      <input 
-                      type="text"
-                      className='rate_input form-control'
-                      name="lastName"
-                      Value={senderDetailData.last_name}
-                        />
-
-                    </div>
-                  </div>
-                </div>
-                <div className="row each-row">
-                  <div className="col-md-6">
-                    <div className="input_field">
-                      <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
-                      <input
-                        type="email" 
-                        className='rate_input form-control'
-                        name="email"
-                        Value={senderDetailData.email}
-                        />
-                  
-                        
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="input_field">
-                      <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
-                      <input 
-                      type="text" 
-                      className='rate_input form-control'
-                      name="mobile"
-                      Value={senderDetailData.mobile}
-                        />
-                     
-                    </div>
-                  </div>
-                </div>
+                 <div className="view-profile-section">
+                 <ul>
+                    <li><b>Bank Name: </b>{senderDetailData.bank_name}</li>
+                    <li><b>Account Name: </b>{senderDetailData.account_name}</li>
+                    <li><b>Account Number: </b>{senderDetailData.account_number}</li>
+                    <li><b>First Name : </b>{senderDetailData.first_name}</li>
+                    <li><b>Middle Name : </b>{senderDetailData.middle_name}</li>
+                    <li><b>Last Name : </b>{senderDetailData.last_name}</li>
+                    <li><b>Email: </b>{senderDetailData.email}</li>
+                    <li><b>Mobile Number : </b>{senderDetailData.mobile}</li>
+                    <li><b>Flat : </b>{senderDetailData.flast}</li>
+                    <li><b>Building : </b>{senderDetailData.building}</li>
+                    <li><b>Street : </b>{senderDetailData.street}</li>
+                    <li><b>Postcode: </b>{senderDetailData.postcode}</li>
+                    <li><b>City : </b>{senderDetailData.city}</li>
+                    <li><b>State: </b>{senderDetailData.state}</li>
+                    <li><b>Country code : </b>{senderDetailData.country_code}</li>
+                    <li><b>Country : </b>{senderDetailData.country}</li>
+                    <li><b>Country code : </b>{senderDetailData.reasonMoney}</li>
+                    </ul>
+                       </div>
+             
+            
+           
                 
-                <div className="row each-row">
-                    <h5>Address</h5>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label" controlId="Firstname">
-                          <p className="get-text">Flat/Unit No.</p>
-                          <Form.Control 
-                          type="text" 
-                          className='rate_input form-control'
-                          Value={senderDetailData.flast}
-                            />
-                        </Form.Group>
-                      </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label" controlId="Firstname">
-                            <p className="get-text">Building/Unit No.</p>              
-                            <Form.Control 
-                            type="text" 
-                            className='rate_input form-control'
-                            Value={senderDetailData.building}
-                              />
-                        </Form.Group>
-                    </div>
-                      <div className="col-md-4">
-                        <Form.Group className="form_label" controlId="Firstname">
-                          <p className="get-text">Street</p>
-                            <Form.Control 
-                            type="text"
-                             className='rate_input form-control' 
-                             Value={senderDetailData.street}
-                             />
-                        </Form.Group>
-                      </div>
-                </div>
-                <div className="row each-row">
-                      <div className="col-md-4">
-                        <Form.Group className="form_label" controlId="Firstname">
-                          <p className="get-text">Postcode</p>
-                          <Form.Control 
-                          type="text"
-                           className='rate_input form-control'
-                           Value={senderDetailData.postcode}
-                            />
-                        </Form.Group>
-                    </div>
-                    <div className="col-md-4">
-                      <Form.Group className="form_label" controlId="Firstname">
-                        <p className="get-text">City/Town</p>
-                      <Form.Control 
-                      type="text" 
-                      className='rate_input form-control'
-                      Value={senderDetailData.city}
-                       />
-                      </Form.Group>
-                    </div>
-                    <div className="col-md-4">
-                        <Form.Group className="form_label" controlId="Firstname">
-                          <p className="get-text">State</p>
-                          <Form.Control
-                           type="text"
-                            className='rate_input form-control' 
-                            Value={senderDetailData.state}
-                            />
-                          </Form.Group>
-                      </div>
-                </div>
-                <div className="row each-row">
-                    <div className="col-md-4">
-                      <Form.Group className="form_label" controlId="Firstname">
-                          <p className="get-text">Country Code</p>
-                      <Form.Control 
-                      type="text"
-                       className='rate_input form-control'
-                       Value={senderDetailData.country_code}
-                        />
-                      </Form.Group>
-                    </div>
-                  <div className="col-md-4">
-                    <Form.Group className="form_label" controlId="Firstname">
-                    <p className="get-text">Country</p>
-                      <CountryDropdown 
-                      id="UNIQUE_ID" 
-                      className='YOUR_CSS_CLASS rate_input form-control'
-                       preferredCountries={['gb', 'us' ]}
-                       Value={senderDetailData.country}
-                        ></CountryDropdown>
-                    </Form.Group>
-                  </div>
-              </div>
-                <div className="row each-row">
-                  <div className="col-md-12">
-                    <div className="input_field">
-                      <p className="get-text">Reason For Sending Money</p>
-                      <select
-                        className="form-select rate_input form-control"
-                        aria-label="Select a reason"
-                        name="reasonMoney"
-                        > 
-                        <option selected>Select a reason</option>
-                        <option value="Family Support">Family Support</option>
-                        <option value="Education">Education</option>
-                        <option value="Tax Payment">Tax Payment</option>
-                        <option value="Loan Payment">Loan Payment</option>
-                        <option value="Travel Payment">Travel Payment</option>
-                        <option value="Utility Payment">Utility Payment</option>
-                      </select>
-
-                    </div>
-                  </div>
-                </div>
+               
+              
+              
+       
                 <div className="row">
                   <div className="col-md-4">
-                    <button 
+                    {/* <button 
                     type="submit" 
                     className="start-form-button"
                     onClick={handlRecipientBankDetails}
                     >
-                      Cancel
-                    </button>
+                      Clear
+                    </button> */}
                   </div>
                   <div className="col-md-8">
                     <button
                     type="button" 
-                    className="form-button"
-                
+                    className="form-button single_button"
+                    disabled
                     >
                     Save
                       

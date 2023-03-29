@@ -41,6 +41,7 @@ console.log("RecipientUserName", RecipientUserName);
 
 
 const [data, setData] = useState([]);
+const [RecepientsData, setRecepientsData] = useState('');
 const [loading, setLoading] = useState(false);
 
 //let { id } = useParams();
@@ -56,6 +57,21 @@ const LoadSinglProfile = (id) => {
 
 
 const navigate = useNavigate();
+
+
+
+// function handleDataStore(){
+
+//   var courses =JSON.parse(localStorage.getItem('courses') || "[]")
+//   var course ={
+//     // bank_name:bank_name,
+//     // account_name:account_name
+//   }
+//   courses.push(course)
+
+//   localStorage.setItem('courses', JSON.stringify(courses))
+// }
+
 
 // const notify = () => toast.success("User Data Get Successfully!");
 
@@ -76,6 +92,7 @@ useEffect(() => {
       .then(function(response) {
           console.log("Recipients APIIIII", response.data);
           setData(response.data);
+          localStorage.setItem("RecepientsData", JSON.stringify(response.data.data))
           setLoading(false); // Stop loading
      
      

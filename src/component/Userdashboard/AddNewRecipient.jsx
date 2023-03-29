@@ -48,7 +48,7 @@ const Addnewrecipient = () => {
   
     /************ Start -Recipient Bank Details function***************/
       const handleStep2InputChange =(e,key) =>{
-        console.log(e.target.value)
+        console.log(e)
         console.log(key)
         let valueForm = formValue
         valueForm[key] = e.target.value

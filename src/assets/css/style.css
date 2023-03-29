@@ -2682,10 +2682,10 @@ section.why-us.section-bgba.user_dashboard_banner {
   width: 100% !important;
 }
 
-.user_dashboard_banner form {
+/* .user_dashboard_banner form {
   float: left;
   width: 100%;
-}
+} */
 .exchange-rate{
   margin-top: 10px;
   font-family: 'Montserrat' !important;
@@ -4943,7 +4943,12 @@ label.container-new.form-gender {
   width: 100%;
   padding: 10px 0px 0px;
 }
-
+.no-recipt img {
+  margin-top: 50px;
+}
+.no-recipt {
+  text-align: center;
+}
 /********************* alerts css start **************************/
 
 .danger-text {
@@ -5102,6 +5107,7 @@ button.form-button.addsingle_recepient {
   margin-right: 10px;
   font-size: 20px;
 }
+
 /**************** vertical progress bar *********************/
 
 .wrapper {
@@ -5194,7 +5200,7 @@ button.form-button.addsingle_recepient {
 }
 .profile-info {
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 .profile-info {
   padding: 15px 20px;
@@ -5205,12 +5211,12 @@ button.form-button.addsingle_recepient {
   margin-top: -40px;
   margin-right: 10px;
   background: #fff;
-  padding: 30px;
+  padding: 23px;
   border-radius: 100%;
   box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgba(82, 63, 105, 0.05);
 }
 .profile-photo svg {
-  font-size: 27px;
+  font-size: 35px;
   fill: #6414E9;
 }
 .profile.card {
@@ -5227,6 +5233,55 @@ form.single-recipient {
   color: #fff;
   line-height: 130px;
 }
+.view-profile-section {
+  float: left;
+  width: 100%;
+}
+.view-profile-section ul {
+  list-style: none;
+  padding: 0;
+}
+.view-profile-section ul li {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px 18px;
+  border-radius: 7px;
+  display: inline-flex;
+}
+.view-profile-section ul li:nth-child(even) {
+  background: #F9F9F9;
+}
+.view-profile-section ul li b {
+  width: 200px;
+}
+.recipent-summary ul {
+  padding: 0;
+  list-style: none;
+}
+.recipent-summary ul li {
+  font-size: 14px;
+  float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.recipent-summary ul li label {
+  float: left;
+  width: 50%;
+  font-weight: 600;
+}
+.recipent-summary ul li p {
+  float: left;
+  width: 50%;
+}
+.final-summary tr td:last-child {
+  border-right: none;
+}
+
+.final-summary tr td {
+  font-weight: 500;
+  border-right: 1px solid #dee2e6;
+}
+
 .hide {
   display: none;
 }
@@ -5234,4 +5289,7 @@ form.single-recipient {
 .not_match {
   display: block;
   color: red;
+}
+.single_button{
+  background-color: gray !important;
 }

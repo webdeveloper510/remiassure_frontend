@@ -880,7 +880,7 @@ const handlRecipientBankDetails =(e) => {
   
   
         
-        <div className={isActive ? "col-md-6 add-recipent-section" : "col-md-6 remove-add-recipent-section"}>
+        <div className={isActive ? "col-md-12 add-recipent-section" : "col-md-12 remove-add-recipent-section"}>
         <div class="form-head mb-4">
         <h2 class="text-black font-w600 mb-0"><b>Select a recipient to send money</b>
         </h2>
@@ -901,6 +901,11 @@ const handlRecipientBankDetails =(e) => {
 
                     )    
                     })}
+
+<div class="no-recipt">
+                <h5>No Recipient</h5>
+                <img src={norecipients} alt="no-recipeint"/>
+               </div>
                     
                 <div className="add-rec">
                   <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>

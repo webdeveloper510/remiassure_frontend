@@ -7,6 +7,7 @@ import Sidebar from './Sidebar';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
 
 {/* start -- css*/}
 const myStyle= {
@@ -36,7 +37,7 @@ const Profile = () => {
     /*********************Start Validation state Text************** */
     const [old_passwordText, setold_passwordText] = useState('');
     const [new_passwordText, setnew_passwordText] = useState('');
-    const [EnterpasswordText, setEnterpasswordText] = useState('');
+    const [successText, setsuccessText] = useState('');
     
     // const {id} = useParams();
   
@@ -108,6 +109,7 @@ const Profile = () => {
             .then(function(response) {
                 console.log("Forget API" ,response);
                 setLoading(false); // Stop loadingss
+                setsuccessText(response.data.Passwordupdated)
                 navigate('/dashboard')
                 
                 // notify();
@@ -147,6 +149,7 @@ const Profile = () => {
               <div class="form-head mb-4">
             <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
             </h2>
+            <span style={myStyle}>{successText}</span>
             </div>
             <div className="card">
             <div className="card-body">
@@ -203,7 +206,7 @@ const Profile = () => {
                         type="submit"
                          className="start-form-button"
                         onClick={handleEntailmentRequest}
-                         >Cancel</button>
+                         >Clear</button>
                       </div>
                       <div className="col-md-8">
                         <button
@@ -211,7 +214,7 @@ const Profile = () => {
                          onClick={handleChangePassword}
                          className="profile-form-button"
                          >
-                          Password Change
+                           Change Password
                           {loading ? <>
                           <div class="loader-overly"> 
                             <div class="loader" > 
@@ -221,7 +224,7 @@ const Profile = () => {
                         </div>
                       </> : <></>}
                           </button>
-                        <button  type="submit"  className="profile-form-button">Edit</button>
+                        {/* <button  type="submit"  className="profile-form-button">Edit</button> */}
                       </div>
                     </div>
                   </form>

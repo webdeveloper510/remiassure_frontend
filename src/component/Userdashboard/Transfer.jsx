@@ -13,44 +13,56 @@ import Tabs from 'react-bootstrap/Tabs';
 import AddNewRecipient from "./AddNewRecipient";
 import InprogressTransfer from "./InprogressTransfer";
 import AllTransfer from "./AllTransfer";
+import Sidebar from './Sidebar';
+
+
 const Transaction = () => {
+/**************************token ************************ */
+   const token = localStorage.getItem("token");
+   console.log("TOKEN", token);
+
+   const verification_otp = localStorage.getItem("verification_otp")
+   console.log("verification_otp" ,verification_otp);
+
+
+/**************************Feild of state ************************ */
 
   
     return(
         <>
-<section>
-<div class="form-head mb-4">
-            <h2 class="text-black font-w600 mb-0"><b>Transaction History</b>
-            </h2>
-            </div>
-        <div className="transaction-progress">
-      <Tabs
-      defaultActiveKey="AllTransaction"
-      id="uncontrolled-tab-example"
-      className="mb-3 tarnsfer-tabs"
-    >
+         {  
+           token || verification_otp != undefined || '' ? (
 
-<Tab eventKey="AllTransaction" title="All Transactions">
-      <AllTransfer/>
-      </Tab>
+          <div className="margin-set">
+              <div className="tabs-page">
+                  <Sidebar />
 
-      <Tab eventKey="InProgress" title="InProgress">
-       <InprogressTransfer/>
-      </Tab>
+                  <div className="content-body">
+                      <section className="transfer-history-section">
+                          <div class="form-head mb-4">
+                              <h2 class="text-black font-w600 mb-0"><b>Transaction History</b></h2>
+                          </div>
+                          <div className="transaction-progress">
+                              <Tabs defaultActiveKey="AllTransaction" id="uncontrolled-tab-example" className="mb-3 tarnsfer-tabs">
+                                  <Tab eventKey="AllTransaction" title="All Transactions">
+                                      <AllTransfer />
+                                  </Tab>
 
-
-
-     
-    </Tabs>
-
-
-
-
-           
-
-         
+                                  <Tab eventKey="InProgress" title="InProgress">
+                                      <InprogressTransfer />
+                                  </Tab>
+                              </Tabs>
+                          </div>
+                      </section>
+                  </div>
+              </div>
           </div>
-          </section>
+           ):(
+            <></>
+
+           )
+        }
+
         </>
     )
 }

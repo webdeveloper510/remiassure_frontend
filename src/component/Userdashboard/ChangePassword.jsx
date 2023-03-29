@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import {Links, NavLink, useNavigate} from 'react-router-dom';
-
+import Sidebar from './Sidebar';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
@@ -20,10 +20,15 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     console.log("TOKEN", token);
 
+    const verification_otp = localStorage.getItem("verification_otp");
+    console.log("Verification Message", verification_otp)
+      
+
 /**************************Feild of state ************************ */
     const [old_password, setOld_password] = useState('');
     const [new_password, setNew_password] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [active, setActive] = useState(false);
 
     const [loading, setLoading] = useState(false);
     const [error,setError]=useState(false);
@@ -85,6 +90,11 @@ const Profile = () => {
       //       setError(true);
       //   } 
         // else{
+          if (new_password !== confirmPassword) {
+            // alert("Passwords don't match");
+            setActive(true)
+        } else {
+          setActive(false)
         setLoading(true); // Set loading before sending API request
             axios.post(API.BASE_URL + `change-password/`, {
               old_password: old_password,
@@ -98,8 +108,8 @@ const Profile = () => {
             .then(function(response) {
                 console.log("Forget API" ,response);
                 setLoading(false); // Stop loadingss
-                navigate('/userdashboard')
-                window.location.reload(false);
+                navigate('/dashboard')
+                
                 // notify();
             })
             .catch(function(error) {
@@ -115,6 +125,7 @@ const Profile = () => {
              
             })
         }
+      }
       // }
  
     return(
@@ -123,10 +134,16 @@ const Profile = () => {
           {/* <!-- ======= help Remitassure Change password -Section  start======= --> */}
 
           {  
-           token != undefined || '' ? (
+           token ||verification_otp != undefined || '' ? (
 
+            <div  className="margin-set">
+    <div  className="tabs-page">
+            <Sidebar/>
+
+            <div className="content-body">
+            <div className="col-md-8">
             <section className="change-password">
-           
+          
               <div class="form-head mb-4">
             <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
             </h2>
@@ -174,20 +191,21 @@ const Profile = () => {
                           onChange={handleConfirmPassword}
                           className='rate_input form-control'
                           />
+                           <span className={active ==true ? 'not_match' : 'hide'}>Passwords do not match</span>
                           {/* {error&&confirmPassword.length<=0?
 				                      <span style={myStyle}>Please Enter the Confirm Password </span>:""}  */}
                         </Form.Group>
                       </div>
                     </div>
                     <div class="row each-row">
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <button
                         type="submit"
                          className="start-form-button"
                         onClick={handleEntailmentRequest}
                          >Cancel</button>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-8">
                         <button
                          type="submit" 
                          onClick={handleChangePassword}
@@ -212,7 +230,10 @@ const Profile = () => {
                 </div>
               
           </section>
-
+          </div>
+</div>
+</div>
+</div>
 
          ) : (
             <>

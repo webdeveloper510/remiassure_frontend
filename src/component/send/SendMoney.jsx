@@ -675,259 +675,270 @@ const handlSenderDetails =(e) => {
       }
 
 
-      console.log(step, "stepstepstepstepstepstepstep")
+      // console.log(step, "stepstepstepstepstepstepstep")
 
     const Step1 = () =>{
     
     return (
     <>
-    
-   <section>
-      <div className="progressBar">
-        <div className="progress">
-          <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-        </div>
-      </div>
 
-      
-      <form>
-      <div className="form_body">
-        <div className="header exchangemoney-header">
-          <h1>Amount & delivery</h1>
-        </div>
-        <div className="row">
-        <div className="col-md-12">
-            <div className="input_field rate-value">
-              <p className="get-text Exchange_rate">Exchange Rate</p>
-              <p className="exchange-rate exchange_value" >1 <span>{from}</span> = {total_rate} <span>{to}</span> </p>
-              {/* <input type="text" className='rate_input form-control' /> */}
-            </div>
-          </div>
-          </div>
-        <div className="row">
-        <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">From<span style={{color: 'red'}} >*</span></p>
-                <select 
-                className="form-select rate_input form-control"
-                 aria-label="Select a reason"
-                 value={from}
-                 ref={input_From}
-                //  onChange={handleFrom}
-                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setFrom(e.target.value)}}
-                // onBlurCapture={myTotalAmount}
-                 >
-                  {/* <option value="">--- Select Currency ---</option> */}
-                  <option value="USD" selected="selected">USD</option>
-                  <option value="USD">USD</option> 
-                  <option value="EUR">EUR</option>
-                  <option value="INR">INR</option> 
-                  <option value="BRL">BRL</option>
-                  <option value="BGN">BGN</option>
-                  <option value="XAF">XAF</option>
-                  <option value="CAD">CAD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="CZK">CZK</option>
-                  <option value="DKK">DKK</option>
-                  <option value="GHS">GHS</option>
-                  <option value="ISK">ISK</option>
-                  <option value="JOD">JPD</option>
-                  <option value="KWD">KWD</option>
-                  <option value="NZD">NZD</option>
-                  <option value="PHP">PHP</option>
-                  <option value="ZAR">ZAR</option> 
-                  <option value="CHF">CHF</option>
-                  <option value="GBP">GBP</option>
-                
-              </select>
-              {error&&from.length<=0?
-				            <span style={myStyle}>Please Select the Location </span>:""}
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">To<span style={{color: 'red'}} >*</span></p>
-                <select 
-                className="form-select rate_input form-control"
-                 aria-label="Select a reason"
-                 value={to}
-                 ref={input_To}
-                //  onChange={handleTo}
-                 onChange={(e)=> {myTotalAmountFromTo(e.target.value);setTo(e.target.value)}}
-                 >
-                  
+    <div>
+        {  
+          token || verification_otp != undefined || '' ? (
 
-                  <option value="">--- Select Currency ---</option>
-            
-                  {/* <option value="INR" selected="selected">INR</option> */}
-                  <option value="INR">INR</option>
-                  <option value="EUR">EUR</option>
-                  <option value="BRL">BRL</option>
-                  <option value="USD">USD</option>
-                  <option value="BGN">BGN</option>
-                  <option value="XAF">XAF</option>
-                  <option value="CAD">CAD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="CZK">CZK</option>
-                  <option value="DKK">DKK</option>
-                  <option value="GHS">GHS</option>
-                  <option value="ISK">ISK</option>
-                  <option value="JOD">JPD</option>
-                  <option value="KWD">KWD</option>
-                  <option value="NZD">NZD</option>
-                  <option value="PHP">PHP</option>
-                  <option value="ZAR">ZAR</option> 
-                  <option value="CHF">CHF</option>
-                  <option value="GBP">GBP</option>
-              </select>
-              {error&&to.length<=0?
-				            <span style={myStyle}>Please Select the Location </span>:""}
+      <section>
+          <div className="progressBar">
+            <div className="progress">
+              <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
             </div>
           </div>
+
           
-        </div>
-        <div className="row each-row">
-        <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Amount Send<span style={{color: 'red'}} >*</span></p>
-
-              <input 
-              type="text"
-              // autoFocus="autofocus"
-              ref={input_AmountSend}
-              className='rate_input form-control'
-              // onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
-              name="amountInput"
-              defaultValue={amountValue.amountInput}
-              onChange={(e)=>handleAmountCahngeValue(e,'amountInput')}
-              onBlurCapture={myTotalAmount}
-              // onkeyup={(text)=> myTotalAmount(text)}
-              // onChange={e => onInputChangeDealType(e)}
-               />
-                 {error&&amountValue.amountInput.length<=0?
-				            <span style={myStyle}>Please Enter the Amount </span>:""}
-
+          <form>
+          <div className="form_body">
+            <div className="header exchangemoney-header">
+              <h1>Amount & delivery</h1>
             </div>
-          </div>
+            <div className="row">
+            <div className="col-md-12">
+                <div className="input_field rate-value">
+                  <p className="get-text Exchange_rate">Exchange Rate</p>
+                  <p className="exchange-rate exchange_value" >1 <span>{from}</span> = {total_rate} <span>{to}</span> </p>
+                  {/* <input type="text" className='rate_input form-control' /> */}
+                </div>
+              </div>
+              </div>
+            <div className="row">
+            <div className="col-md-6">
+                <div className="input_field">
+                  <p className="get-text">From<span style={{color: 'red'}} >*</span></p>
+                    <select 
+                    className="form-select rate_input form-control"
+                    aria-label="Select a reason"
+                    value={from}
+                    ref={input_From}
+                    //  onChange={handleFrom}
+                    onChange={(e)=> {myTotalAmountFromTo(e.target.value);setFrom(e.target.value)}}
+                    // onBlurCapture={myTotalAmount}
+                    >
+                      {/* <option value="">--- Select Currency ---</option> */}
+                      <option value="USD" selected="selected">USD</option>
+                      <option value="USD">USD</option> 
+                      <option value="EUR">EUR</option>
+                      <option value="INR">INR</option> 
+                      <option value="BRL">BRL</option>
+                      <option value="BGN">BGN</option>
+                      <option value="XAF">XAF</option>
+                      <option value="CAD">CAD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CZK">CZK</option>
+                      <option value="DKK">DKK</option>
+                      <option value="GHS">GHS</option>
+                      <option value="ISK">ISK</option>
+                      <option value="JOD">JPD</option>
+                      <option value="KWD">KWD</option>
+                      <option value="NZD">NZD</option>
+                      <option value="PHP">PHP</option>
+                      <option value="ZAR">ZAR</option> 
+                      <option value="CHF">CHF</option>
+                      <option value="GBP">GBP</option>
+                    
+                  </select>
+                  {error&&from.length<=0?
+                        <span style={myStyle}>Please Select the Location </span>:""}
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="input_field">
+                  <p className="get-text">To<span style={{color: 'red'}} >*</span></p>
+                    <select 
+                    className="form-select rate_input form-control"
+                    aria-label="Select a reason"
+                    value={to}
+                    ref={input_To}
+                    //  onChange={handleTo}
+                    onChange={(e)=> {myTotalAmountFromTo(e.target.value);setTo(e.target.value)}}
+                    >
+                      
 
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">
-                Exchange Amount
-                </p>
-              <input
-               type="text"
-               defaultValue={exchange_amount && amountValue.amountInput != 0 || "" ? exchange_amount : ""}
-                className='rate_input form-control'
+                      <option value="">--- Select Currency ---</option>
                 
-                 />
+                      {/* <option value="INR" selected="selected">INR</option> */}
+                      <option value="INR">INR</option>
+                      <option value="EUR">EUR</option>
+                      <option value="BRL">BRL</option>
+                      <option value="USD">USD</option>
+                      <option value="BGN">BGN</option>
+                      <option value="XAF">XAF</option>
+                      <option value="CAD">CAD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CZK">CZK</option>
+                      <option value="DKK">DKK</option>
+                      <option value="GHS">GHS</option>
+                      <option value="ISK">ISK</option>
+                      <option value="JOD">JPD</option>
+                      <option value="KWD">KWD</option>
+                      <option value="NZD">NZD</option>
+                      <option value="PHP">PHP</option>
+                      <option value="ZAR">ZAR</option> 
+                      <option value="CHF">CHF</option>
+                      <option value="GBP">GBP</option>
+                  </select>
+                  {error&&to.length<=0?
+                        <span style={myStyle}>Please Select the Location </span>:""}
+                </div>
+              </div>
+              
+            </div>
+            <div className="row each-row">
+            <div className="col-md-6">
+                <div className="input_field">
+                  <p className="get-text">Amount Send<span style={{color: 'red'}} >*</span></p>
 
+                  <input 
+                  type="text"
+                  // autoFocus="autofocus"
+                  ref={input_AmountSend}
+                  className='rate_input form-control'
+                  // onChange={(e)=> {myTotalAmount(e.target.value); setAmount(e.target.value)}}
+                  name="amountInput"
+                  defaultValue={amountValue.amountInput}
+                  onChange={(e)=>handleAmountCahngeValue(e,'amountInput')}
+                  onBlurCapture={myTotalAmount}
+                  // onkeyup={(text)=> myTotalAmount(text)}
+                  // onChange={e => onInputChangeDealType(e)}
+                  />
+                    {error&&amountValue.amountInput.length<=0?
+                        <span style={myStyle}>Please Enter the Amount </span>:""}
+
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <div className="input_field">
+                  <p className="get-text">
+                    Exchange Amount
+                    </p>
+                  <input
+                  type="text"
+                  defaultValue={exchange_amount && amountValue.amountInput != 0 || "" ? exchange_amount : ""}
+                    className='rate_input form-control'
+                    
+                    />
+
+                </div>
+              </div>
+            </div>
+            <div className="row each-row">
+              <h5>Receive Method</h5>
+              <div className="col-md-12">
+              <label className="container-new">
+                <span className="radio-tick">BankTransfer</span>
+              <input 
+                      className="form-check-input"
+                      type="radio"
+                      name="recivedMethod"
+                      value="bankTransfer" 
+                      checked={moneyTransiction.recivedMethod== "bankTransfer"}
+                      onChange={e => onInputChange(e)}
+                      // id="flexRadioDefault1" 
+                  
+                    />
+                  <span className="checkmark"></span>
+                </label>
+
+              </div>
+              <div className="col-md-12">
+
+              <label className="container-new">
+                <span className="radio-tick">MobileWallet</span>
+              <input
+                      className="form-check-input"
+                      type="radio"
+                      name="recivedMethod" 
+                      value="mobileWallet" 
+                      checked={moneyTransiction.recivedMethod== "mobileWallet"}
+                      onChange={e => onInputChange(e)}
+                      // id="flexRadioDefault2"
+                  />
+                <span className="checkmark"></span>
+              </label>
+              </div>
+            </div>
+            <div className="row each-row">
+              <h5>Payout Partners</h5>
+              <div className="col-md-12">
+
+              <label className="container-new">
+                <span className="radio-tick">Bank</span>
+                <input 
+                      className="form-check-input"
+                      type="radio" 
+                      name="payOutPartner"
+                      // id="flexRadioDefault3" 
+                      checked={moneyTransiction.payOutPartner== "bank"}
+                      value="bank" 
+                        onChange={e => onInputChange(e)}
+                      
+                    />
+                <span className="checkmark"></span>
+              </label>
+
+              </div>
+              <div className="col-md-12">
+
+              <label className="container-new">
+                <span className="radio-tick">Services</span>
+                <input 
+                      className="form-check-input" 
+                      type="radio"              
+                      name="payOutPartner"
+                      // id="flexRadioDefault4"
+                      checked={moneyTransiction.payOutPartner== "services"}
+                      value="services" 
+                      onChange={e => onInputChange(e)}
+                    />
+                <span className="checkmark"></span>
+              </label>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4">
+                <button 
+                className="start-form-button"
+                onClick={handleEntailmentRequest}
+                >Cancel</button>
+              </div>
+              <div className="col-md-8">
+              <button
+              type="submit"
+              className="form-button"
+              //  onChange={() => setShows(!shows)}
+                onClick={handleAmountSummary}
+                // onClick={()=>{setStep(step+1)}}
+                >
+                  Continue
+                  {/* {loading ? <>
+                    <div class="loader-overly"> 
+                        <div class="loader" > 
+                                                      
+                          </div>
+                                                      
+                    </div>
+              </> : <></>} */}
+              </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row each-row">
-          <h5>Receive Method</h5>
-          <div className="col-md-12">
-          <label className="container-new">
-            <span className="radio-tick">BankTransfer</span>
-          <input 
-                  className="form-check-input"
-                  type="radio"
-                  name="recivedMethod"
-                  value="bankTransfer" 
-                  checked={moneyTransiction.recivedMethod== "bankTransfer"}
-                  onChange={e => onInputChange(e)}
-                  // id="flexRadioDefault1" 
-               
-                />
-              <span className="checkmark"></span>
-            </label>
-
-          </div>
-          <div className="col-md-12">
-
-          <label className="container-new">
-            <span className="radio-tick">MobileWallet</span>
-          <input
-                  className="form-check-input"
-                  type="radio"
-                  name="recivedMethod" 
-                  value="mobileWallet" 
-                  checked={moneyTransiction.recivedMethod== "mobileWallet"}
-                  onChange={e => onInputChange(e)}
-                  // id="flexRadioDefault2"
-              />
-            <span className="checkmark"></span>
-          </label>
-          </div>
-        </div>
-        <div className="row each-row">
-          <h5>Payout Partners</h5>
-          <div className="col-md-12">
-
-          <label className="container-new">
-            <span className="radio-tick">Bank</span>
-            <input 
-                  className="form-check-input"
-                  type="radio" 
-                  name="payOutPartner"
-                  // id="flexRadioDefault3" 
-                  checked={moneyTransiction.payOutPartner== "bank"}
-                  value="bank" 
-                    onChange={e => onInputChange(e)}
-                   
-                />
-            <span className="checkmark"></span>
-          </label>
-
-          </div>
-          <div className="col-md-12">
-
-          <label className="container-new">
-            <span className="radio-tick">Services</span>
-            <input 
-                  className="form-check-input" 
-                  type="radio"              
-                  name="payOutPartner"
-                  // id="flexRadioDefault4"
-                  checked={moneyTransiction.payOutPartner== "services"}
-                  value="services" 
-                  onChange={e => onInputChange(e)}
-                />
-            <span className="checkmark"></span>
-          </label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <button 
-            className="start-form-button"
-            onClick={handleEntailmentRequest}
-            >Cancel</button>
-          </div>
-          <div className="col-md-8">
-          <button
-          type="submit"
-           className="form-button"
-          //  onChange={() => setShows(!shows)}
-            onClick={handleAmountSummary}
-            // onClick={()=>{setStep(step+1)}}
-            >
-              Continue
-              {/* {loading ? <>
-                <div class="loader-overly"> 
-                    <div class="loader" > 
-                                                  
-                      </div>
-                                                  
-                 </div>
-           </> : <></>} */}
-          </button>
-          </div>
-        </div>
-      </div>
-      </form>
+          </form>
       </section>
+      ):(
+        <></>
+      
+      )
+      }
+      
+   </div>
    
 
 
@@ -944,291 +955,298 @@ const handlSenderDetails =(e) => {
 
     return (
     <>
-         
-    <section>
-       <div className="progressBar">
-          <div className="progress">
-          <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-            <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+    <div>
+    {  
+      token || verification_otp != undefined || '' ? (
+      <section>
+        <div className="progressBar">
+            <div className="progress">
+            <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+              <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+            </div>
           </div>
-        </div>
-       <form>
-  
-      <div className="form_body">
-        <div className="header">
-          <h1>Recipient Bank Details</h1>
-        </div>
-          <div className="col-md-12">
+        <form>
+    
+        <div className="form_body">
+          <div className="header">
+            <h1>Recipient Bank Details</h1>
+          </div>
+            <div className="col-md-12">
+                <div className="input_field">
+                  <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
+                  <input
+                    type="text" 
+                    className="rate_input form-control"
+                    name="bankName"
+                    defaultValue={formValue.bankName}
+                    onChange={(e)=>handleStep2InputChange(e,'bankName')}
+                  />   
+                    <span style={myStyle}>{BankNameText.Enterbankname? BankNameText.Enterbankname: ''}</span>
+                    
+                </div>
+            </div>
+          <div className="row each-row">
+            <div className="col-md-12">
               <div className="input_field">
-                <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
+                <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text"
+                  // ref={input_recipientAccountName}
+                  defaultValue={formValue.accountName}
+                  onChange={(e)=>handleStep2InputChange(e,'accountName')}
+                  className='rate_input form-control'
+                  // autoFocus="autofocus"
+                />
+                        
+                <span style={myStyle}>{BankNameText.Enteraccountname? BankNameText.Enteraccountname: ''}</span>
+                    
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text"
+                  name="accountNumber"
+                  // ref={input_recipientAccountNumber}
+                  className='rate_input form-control'
+                  defaultValue={formValue.accountNumber}
+                  onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
+                />          
+                <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
+                <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
+                
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <h5>Recipient Details</h5>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
+                <input
+                type="text" 
+                // ref={input_recipientFirstName}
+                className='rate_input form-control'
+                  name="firstName"
+                  defaultValue={formValue.firstName}
+                  onChange={(e)=> handleStep2InputChange(e,'firstName')}
+                />     
+                <span style={myStyle}>{BankNameText.first_name? BankNameText.first_name: ''}</span>       
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="text"
+                  // ref={input_recipientMiddleName}
+                  className='rate_input form-control' 
+                  name="middleName"
+                  defaultValue={formValue.middleName}
+                  onChange={(e)=> handleStep2InputChange(e,'middleName')}
+                />
+                <span style={myStyle}>{BankNameText.middle_name? BankNameText.middle_name: ''}</span>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text" 
+                  // ref={input_recipientLastName}
+                  className='rate_input form-control'
+                  name="lastName"
+                  defaultValue={formValue.lastName}
+                  onChange={(e)=> handleStep2InputChange(e,'lastName')}
+                />
+                <span style={myStyle}>{BankNameText.last_name? BankNameText.last_name: ''}</span>
+            
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="email" 
+                  // ref={input_recipientEmail}
+                  className='rate_input form-control'
+                  name="email"
+                  defaultValue={formValue.email}
+                  onChange={(e)=> handleStep2InputChange(e,'email')}
+              />
+              <span style={myStyle}>{BankNameText.email? BankNameText.email: ''}</span>
+                
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text" 
+                // ref={input_recipientMobile}
+                  className='rate_input form-control'
+                  name="mobile"
+                  defaultValue={formValue.mobile}
+                  onChange={(e)=> handleStep2InputChange(e,'mobile')}
+                />
+                  <span style={myStyle}>{BankNameText.mobile? BankNameText.mobile: ''}</span>
+                  <span style={myStyle}>{BankNameText.Entervalidmobile? BankNameText.Entervalidmobile: ''}</span>
+                  <span style={myStyle}>{BankNameText.Mobileexist? BankNameText.Mobileexist: ''}</span>
+                  <span style={myStyle}>{BankNameText.Invalidmobile? BankNameText.Invalidmobile: ''}</span>
+                
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Address</p>
                 <input
                   type="text" 
-                  className="rate_input form-control"
-                  name="bankName"
-                  defaultValue={formValue.bankName}
-                  onChange={(e)=>handleStep2InputChange(e,'bankName')}
-                />   
-                  <span style={myStyle}>{BankNameText.Enterbankname? BankNameText.Enterbankname: ''}</span>
+              
+                  className='rate_input form-control'
+                  name="address"
+                  defaultValue={formValue.address}
+                  onChange={(e)=> handleStep2InputChange(e,'address')}
+                  />
                   
               </div>
-          </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text"
-                // ref={input_recipientAccountName}
-                defaultValue={formValue.accountName}
-                onChange={(e)=>handleStep2InputChange(e,'accountName')}
-                className='rate_input form-control'
-                // autoFocus="autofocus"
-              />
-                       
-               <span style={myStyle}>{BankNameText.Enteraccountname? BankNameText.Enteraccountname: ''}</span>
-                  
             </div>
           </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text"
-                name="accountNumber"
-                // ref={input_recipientAccountNumber}
-                className='rate_input form-control'
-                defaultValue={formValue.accountNumber}
-                onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
-              />          
-               <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
-               <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
+          <div className="row each-row">
+            <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Reason For Sending Money</p>
+                <select
+                  className="form-select rate_input form-control"
+                  aria-label="Select a reason"
+                
+                  name="reasonMoney"
+                  defaultValue={formValue.reasonMoney}
+                  onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
+                  > 
+                  <option selected>Select a reason</option>
+                  <option value="Family Support">Family Support</option>
+                  <option value="Education">Education</option>
+                  <option value="Tax Payment">Tax Payment</option>
+                  <option value="Loan Payment">Loan Payment</option>
+                  <option value="Travel Payment">Travel Payment</option>
+                  <option value="Utility Payment">Utility Payment</option>
+                </select>
               
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-4">
+              <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
+            </div>
+            <div className="col-md-8">
+              {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
+              <button type="submit" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
+              {/* <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button> */}
+              <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
             </div>
           </div>
         </div>
-        <div className="row each-row">
-          <h5>Recipient Details</h5>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
-              <input
-               type="text" 
-               // ref={input_recipientFirstName}
-               className='rate_input form-control'
-                name="firstName"
-                defaultValue={formValue.firstName}
-                onChange={(e)=> handleStep2InputChange(e,'firstName')}
-              />     
-              <span style={myStyle}>{BankNameText.first_name? BankNameText.first_name: ''}</span>       
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="text"
-                // ref={input_recipientMiddleName}
-                className='rate_input form-control' 
-                name="middleName"
-                defaultValue={formValue.middleName}
-                onChange={(e)=> handleStep2InputChange(e,'middleName')}
-              />
-              <span style={myStyle}>{BankNameText.middle_name? BankNameText.middle_name: ''}</span>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text" 
-                // ref={input_recipientLastName}
-                className='rate_input form-control'
-                name="lastName"
-                defaultValue={formValue.lastName}
-                onChange={(e)=> handleStep2InputChange(e,'lastName')}
-              />
-              <span style={myStyle}>{BankNameText.last_name? BankNameText.last_name: ''}</span>
-           
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="email" 
-                // ref={input_recipientEmail}
-                className='rate_input form-control'
-                name="email"
-                defaultValue={formValue.email}
-                onChange={(e)=> handleStep2InputChange(e,'email')}
-             />
-             <span style={myStyle}>{BankNameText.email? BankNameText.email: ''}</span>
-              
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text" 
-               // ref={input_recipientMobile}
-                className='rate_input form-control'
-                name="mobile"
-                defaultValue={formValue.mobile}
-                onChange={(e)=> handleStep2InputChange(e,'mobile')}
-              />
-                <span style={myStyle}>{BankNameText.mobile? BankNameText.mobile: ''}</span>
-                <span style={myStyle}>{BankNameText.Entervalidmobile? BankNameText.Entervalidmobile: ''}</span>
-                <span style={myStyle}>{BankNameText.Mobileexist? BankNameText.Mobileexist: ''}</span>
-                <span style={myStyle}>{BankNameText.Invalidmobile? BankNameText.Invalidmobile: ''}</span>
-               
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Address</p>
-              <input
-                type="text" 
-             
-                className='rate_input form-control'
-                name="address"
-                defaultValue={formValue.address}
-                onChange={(e)=> handleStep2InputChange(e,'address')}
-                />
-                 
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Reason For Sending Money</p>
-              <select
-                className="form-select rate_input form-control"
-                aria-label="Select a reason"
-              
-                name="reasonMoney"
-                defaultValue={formValue.reasonMoney}
-                onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
-                > 
-                <option selected>Select a reason</option>
-                <option value="Family Support">Family Support</option>
-                <option value="Education">Education</option>
-                <option value="Tax Payment">Tax Payment</option>
-                <option value="Loan Payment">Loan Payment</option>
-                <option value="Travel Payment">Travel Payment</option>
-                <option value="Utility Payment">Utility Payment</option>
-              </select>
-            
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
-          </div>
-          <div className="col-md-8">
-            {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
-            <button type="submit" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
-            {/* <button className="form-button" onClick={handleRecipientBankDetails}>Continue</button> */}
-            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          </div>
-        </div>
-      </div>
-      </form>
+        </form>
 
 
-      <Modal show={show} onHide={handleClose}
-      centereds
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Recipient details Summary</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+        <Modal show={show} onHide={handleClose}
+        centereds
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Recipient details Summary</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
 
-        <Table>
-        <thead>
-  <tr>
-    <th colSpan={2} className="popup-heading">Bank Details</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th>Bank Name</th>
-    <td>{bankName}</td>
-  </tr>
-  <tr>
-    <th>Account Name</th>
-    <td>{accountName}</td>
-  </tr>
-  <tr>
-    <th>Account number</th>
-    <td>{accountNumber}</td>
-  </tr>
-</tbody>
-<thead>
-  <tr>
-    <th colSpan={2} className="popup-heading">Recipient Details</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th>First Name</th>
-    <td>{firstName}</td>
-  </tr>
-  <tr>
-    <th>Middle Name</th>
-    <td>{middleName}</td>
-  </tr>
-  <tr>
-    <th>Last Name</th>
-    <td>{lastName}</td>
-  </tr>
-  <tr>
-    <th>Email</th>
-    <td>{emailData}</td>
-  </tr>
-  <tr>
-    <th>Mobile</th>
-    <td>{mobileData}</td>
-  </tr>
-  <tr>
-    <th>Address</th>
-    <td>{addressData}</td>
-  </tr>
-  <tr> 
-      <>
-      
-      </>
-  
-    <th>Reason For Sending Money</th>
-    <td>{reasonMoney}</td>
-  </tr>
-</tbody>
-               </Table>
-        </Modal.Body>
-        <Modal.Footer>
-          
-        <button className="start-form-button" variant="secondary" onClick={handleClose}>
-            Go back to Edit
-          </button>
-          {/* <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button> */}
-          <button className="form-button"  variant="primary" onClick={handleRecipientSummary}>Continue</button>
-          
-          {/* onClick={() => setShow(!show)} */}
-           {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
+          <Table>
+          <thead>
+    <tr>
+      <th colSpan={2} className="popup-heading">Bank Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bank Name</th>
+      <td>{bankName}</td>
+    </tr>
+    <tr>
+      <th>Account Name</th>
+      <td>{accountName}</td>
+    </tr>
+    <tr>
+      <th>Account number</th>
+      <td>{accountNumber}</td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th colSpan={2} className="popup-heading">Recipient Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>First Name</th>
+      <td>{firstName}</td>
+    </tr>
+    <tr>
+      <th>Middle Name</th>
+      <td>{middleName}</td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td>{lastName}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{emailData}</td>
+    </tr>
+    <tr>
+      <th>Mobile</th>
+      <td>{mobileData}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{addressData}</td>
+    </tr>
+    <tr> 
+        <>
         
-        </Modal.Footer>
-      </Modal>
+        </>
+    
+      <th>Reason For Sending Money</th>
+      <td>{reasonMoney}</td>
+    </tr>
+  </tbody>
+                </Table>
+          </Modal.Body>
+          <Modal.Footer>
+            
+          <button className="start-form-button" variant="secondary" onClick={handleClose}>
+              Go back to Edit
+            </button>
+            {/* <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button> */}
+            <button className="form-button"  variant="primary" onClick={handleRecipientSummary}>Continue</button>
+            
+            {/* onClick={() => setShow(!show)} */}
+            {/* <Button variant="primary" onClick={handleDigitalValue}>Continue</Button>  */}
+          
+          </Modal.Footer>
+        </Modal>
 
       </section>
-
+         ):(
+          <></>
+        
+        )
+        }
+    </div>
    
   
     </>
@@ -1240,82 +1258,91 @@ const handlSenderDetails =(e) => {
     
     return (
     <>
-    
-    <section>
-      <div className="progressBar">
-    <div className="progress">
-    <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-    </div>
-  </div>
-  <div className="form_body">
-      <div className="header">
-        <h1>Payment details</h1>
+    <div>
+    {  
+      token || verification_otp != undefined || '' ? (
+      <section>
+        <div className="progressBar">
+      <div className="progress">
+      <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+      <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+        <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
       </div>
-      <div className="row each-row">
-        <h5>Payment type</h5>
+    </div>
+    <div className="form_body">
+        <div className="header">
+          <h1>Payment details</h1>
+        </div>
+        <div className="row each-row">
+          <h5>Payment type</h5>
 
-        <div className="col-md-12">
-        <label className="container-new">
-            <span className="radio-tick">Osko</span>
-            <input 
+          <div className="col-md-12">
+          <label className="container-new">
+              <span className="radio-tick">Osko</span>
+              <input 
+                className="form-check-input" 
+                type="radio"
+                name="paymentType"
+                // id="flexRadioDefault3" 
+                checked={moneyTransiction.paymentType== "Oslo"}
+                value="Oslo" 
+                onChange={e => onInputChange(e)}
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+
+          <div className="col-md-12">
+          <label className="container-new">
+              <span className="radio-tick">Debit/Credit Card</span>
+              <input
               className="form-check-input" 
               type="radio"
               name="paymentType"
               // id="flexRadioDefault3" 
-              checked={moneyTransiction.paymentType== "Oslo"}
-              value="Oslo" 
+              checked={moneyTransiction.paymentType== "Debit/Credit Card"}
+              value="Debit/Credit Card" 
               onChange={e => onInputChange(e)}
-            />
-            <span className="checkmark"></span>
-          </label>
-        </div>
+                />
+              <span className="checkmark"></span>
+            </label>
+          </div>
 
-        <div className="col-md-12">
-        <label className="container-new">
-            <span className="radio-tick">Debit/Credit Card</span>
-            <input
-             className="form-check-input" 
-             type="radio"
-             name="paymentType"
-             // id="flexRadioDefault3" 
-             checked={moneyTransiction.paymentType== "Debit/Credit Card"}
-             value="Debit/Credit Card" 
-             onChange={e => onInputChange(e)}
+          <div className="col-md-12">
+          <label className="container-new">
+              <span className="radio-tick">PoLI Internet Banking</span>
+              <input
+              className="form-check-input" 
+              type="radio" 
+              name="paymentType"
+              // id="flexRadioDefault3" 
+              checked={moneyTransiction.paymentType== " PoLI Internet Banking"}
+              value=" PoLI Internet Banking" 
+              onChange={e => onInputChange(e)}
               />
-            <span className="checkmark"></span>
-          </label>
-        </div>
+              <span className="checkmark"></span>
+            </label>
+          </div>
 
-        <div className="col-md-12">
-        <label className="container-new">
-            <span className="radio-tick">PoLI Internet Banking</span>
-            <input
-            className="form-check-input" 
-            type="radio" 
-            name="paymentType"
-             // id="flexRadioDefault3" 
-             checked={moneyTransiction.paymentType== " PoLI Internet Banking"}
-             value=" PoLI Internet Banking" 
-             onChange={e => onInputChange(e)}
-            />
-            <span className="checkmark"></span>
-          </label>
         </div>
-
-      </div>
-      <div className="row">
-        <div className="col-md-4">
-          <button className="start-form-button">Cancel</button>
-        </div>
-        <div className="col-md-8">
-          <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
-          <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+        <div className="row">
+          <div className="col-md-4">
+            <button className="start-form-button">Cancel</button>
+          </div>
+          <div className="col-md-8">
+            <button className="form-button" onClick={()=>{setStep(step+1)}}>Continue</button>
+            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+          </div>
         </div>
       </div>
+      </section> 
+
+        ):(
+          <></>
+        
+        )
+        }
     </div>
-  </section> 
   
  
 
@@ -1370,212 +1397,221 @@ const handlSenderDetails =(e) => {
       return (
       <>
 
-
-      <section>
-        <div className="progressBar">
-      <div className="progress">
-      <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-    <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-      <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-        <span className="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
-      </div>
-    </div>
-    <div className="form_body">
-      <div className="header">
-        <h1>Sender Details </h1>
-      </div>
-      <form>
-        <div className="row each-row">
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="text"
-                className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
+     <div>
+     {  
+      token || verification_otp != undefined || '' ? (
+        <section>
+          <div className="progressBar">
+        <div className="progress">
+        <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+      <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+        <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+          <span className="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
         </div>
-        <div className="row each-row">
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Customer ID<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="text"
-                className='rate_input form-control'
-                value={senderDetailData.customer_id}
+      </div>
+      <div className="form_body">
+        <div className="header">
+          <h1>Sender Details </h1>
+        </div>
+        <form>
+          <div className="row each-row">
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="text"
+                  className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Customer ID<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="text"
+                  className='rate_input form-control'
+                  value={senderDetailData.customer_id}
+                    />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Date of birth<span style={{color: 'red'}} >*</span></p>
+                <input type="date" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Gender<span style={{color: 'red'}} >*</span></p>
+                <div className="inline-flex">
+                <label className="container-new form-gender">
+                      <span className="radio-tick">Male</span>
+                      <input
+                      className="form-check-input" 
+                      type="radio" 
+                      name="gender"
+                      value=" Male"
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label class="container-new form-gender">
+                      <span className="radio-tick">Female</span>
+                      <input
+                      className="form-check-input" 
+                      type="radio" 
+                      name="gender"
+                      value=" Female" 
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    </div>
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Country of Birth<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">ID Type<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="email"
+                  value={senderDetailData.email}
+                  className='rate_input form-control'
                   />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
+                <input 
+                type="text"
+                  className='rate_input form-control'
+                  value={senderDetailData.mobile}
+                  /> 
+              
+              </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Date of birth<span style={{color: 'red'}} >*</span></p>
-              <input type="date" className='rate_input form-control' />
+          <div className="row each-row">
+            <h5>Address</h5>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Flat/Unit No.<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Building No./Name<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Street<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Gender<span style={{color: 'red'}} >*</span></p>
-              <div className="inline-flex">
-              <label className="container-new form-gender">
-                    <span className="radio-tick">Male</span>
-                    <input
-                    className="form-check-input" 
-                    type="radio" 
-                    name="gender"
-                    value=" Male"
-                    />
-                    <span className="checkmark"></span>
-                  </label>
-                  <label class="container-new form-gender">
-                    <span className="radio-tick">Female</span>
-                    <input
-                    className="form-check-input" 
-                    type="radio" 
-                    name="gender"
-                    value=" Female" 
-                    />
-                    <span className="checkmark"></span>
-                  </label>
-                  </div>
+          <div className="row each-row">
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Postcode<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">City/Town<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">State<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Country of Birth<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
+          <div className="row each-row">
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Country Code<span style={{color: 'red'}} >*</span></p>
+                <input type="text" className='rate_input form-control' />
+              </div>
             </div>
-          </div>
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">ID Type<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="email"
-                value={senderDetailData.email}
-                className='rate_input form-control'
-                />
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
-              <input 
-              type="text"
-                className='rate_input form-control'
-                value={senderDetailData.mobile}
-                /> 
-            
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <h5>Address</h5>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Flat/Unit No.<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Building No./Name<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Street<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Postcode<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">City/Town<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">State<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Country Code<span style={{color: 'red'}} >*</span></p>
-              <input type="text" className='rate_input form-control' />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Country Name<span style={{color: 'red'}} >*</span></p>
-              <CountryDropdown 
-              id="UNIQUE_ID"
-                className='YOUR_CSS_CLASS rate_input form-control' 
-                preferredCountries={['gb', 'us' ]}
-                value={senderDetailData.location}
-                //  value="" handleChange={e=> console.log(e.target.value)}
-                >
-                </CountryDropdown>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Country Name<span style={{color: 'red'}} >*</span></p>
+                <CountryDropdown 
+                id="UNIQUE_ID"
+                  className='YOUR_CSS_CLASS rate_input form-control' 
+                  preferredCountries={['gb', 'us' ]}
+                  value={senderDetailData.location}
+                  //  value="" handleChange={e=> console.log(e.target.value)}
+                  >
+                  </CountryDropdown>
 
+              </div>
             </div>
           </div>
-        </div>
-      <div className="row each-row">
-        <div className="col-md-2 new_buttonss">
-          <button className="start-form-button" onClick={handlSenderDetails}>Cancel</button>
-        </div>
-        <div className="col-md-10 new_buttons">
-         
-          <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          {/* { verificationValue == false ? ( */}
-              {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>  */}
-
-          {/* ):(  */}
-            <div id="digitalid-verify"></div>
-           {/* )
-          }  */}
-         
+        <div className="row each-row">
+          <div className="col-md-2 new_buttonss">
+            <button className="start-form-button" onClick={handlSenderDetails}>Cancel</button>
+          </div>
+          <div className="col-md-10 new_buttons">
           
-         
+            <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+            {/* { verificationValue == false ? ( */}
+                {/* <button className="form-button" onClick={handleISDigitalVerified}> Continue</button>  */}
 
+            {/* ):(  */}
+              <div id="digitalid-verify"></div>
+            {/* )
+            }  */}
+          
+            
+          
+
+          </div>
         </div>
+        </form>
       </div>
-      </form>
+      
+        </section>
+        
+        ):(
+          <></>
+        
+        )
+        }
     </div>
-    
-    </section>
 
 
           
@@ -1587,38 +1623,46 @@ const handlSenderDetails =(e) => {
     
         return (
         <>
-        
-        <section>
-          <div className="progressBar">
-        <div className="progress">
-        <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
-        <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
-          <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
-          <span className="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
-          <span className="progress-bar bg-success progress-bar-striped step5">{step_form}</span>
+        <div>
+        {  
+         token || verification_otp != undefined || '' ? (
+          <section>
+            <div className="progressBar">
+          <div className="progress">
+          <span className="progress-bar bg-success progress-bar-striped step1">{step_form}</span>
+          <span className="progress-bar bg-success progress-bar-striped step2">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step3">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step4">{step_form}</span>
+            <span className="progress-bar bg-success progress-bar-striped step5">{step_form}</span>
+          </div>
         </div>
-      </div>
-      <div className="form_body">
-          <div className="header">
-            <h1>Verifiyed Payment</h1>
-          </div>
-          <div className="row">
-          <img className="verifies-img" src={verified} alt="verified"/>
-          </div>
-        
-      
-          <div class="row">
-            {/* <div className="col-md-4">
-              <button className="start-form-button">Cancel</button>
-            </div> */}
-            <div className="col-md-12 verified-section">
+        <div className="form_body">
+            <div className="header">
+              <h1>Verifiyed Payment</h1>
+            </div>
+            <div className="row">
+            <img className="verifies-img" src={verified} alt="verified"/>
+            </div>
           
-              <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-              <button className="form-button" onClick={handleVerifiedPaymentDigitalId}>Continue</button>
+        
+            <div class="row">
+              {/* <div className="col-md-4">
+                <button className="start-form-button">Cancel</button>
+              </div> */}
+              <div className="col-md-12 verified-section">
+            
+                <button className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
+                <button className="form-button" onClick={handleVerifiedPaymentDigitalId}>Continue</button>
+              </div>
             </div>
           </div>
-        </div>
-      </section> 
+          </section> 
+            ):(
+              <></>
+            
+            )
+            }
+       </div>
       
     
         </>
@@ -1632,132 +1676,137 @@ const handlSenderDetails =(e) => {
     return (
     
     <>
-
-
-  
-    
-        <div class="form">
-   <div className="card">
-     <section className="why-us section-bgba user_dashboard_banner">
-       <div className="container">
-         <div className="row">
-           <div className="col-md-8">{
-             <Form />}
-           </div>
-          
-           <div className="col-md-4">
-          
-  
+  <div>
+  {  
+         token || verification_otp != undefined || '' ? (
+    <div class="form">
+      <div className="card">
+        <section className="why-us section-bgba user_dashboard_banner">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8">{
+                <Form />}
+              </div>
               
-               <Table>
+              <div className="col-md-4">
+              
+      
+                  
+                  <Table>
+
+                    {  
+                    step > 0 && Total_amount != ''  ? (
+                      
+                      <div className="summary">
+                      <h5>Summary</h5>
+                        <tbody>
+                          <tr>
+                            <th>Amount</th>
+                            {/* <td>{amount+" "+from +" ⇒ "+total_amount + " " +to }</td> */}
+                            <td>{total_amount }</td>
+                          </tr>
+                          <tr>
+                            <th>Received Method</th>
+                            <td>{recivedMethod}</td>
+                          </tr>
+                          <tr>
+                            <th>Payout Partners</th>
+                            <td>{payOutPartner}</td>  
+                          </tr>
+                        </tbody>
+                      </div>
+                        ):(
+                        <>
+                        </>
+                      
+                      )
+                      
+                    } 
 
                 {  
-                step > 0 && Total_amount != ''  ? (
-                  
-                  <div className="summary">
-                  <h5>Summary</h5>
+                step > 0 && formValue.bankName != ''  ? (
+                  <div className="summary1">
+                  <h5>Recipient details Summary</h5>
                     <tbody>
                       <tr>
-                        <th>Amount</th>
-                        {/* <td>{amount+" "+from +" ⇒ "+total_amount + " " +to }</td> */}
-                        <td>{total_amount }</td>
+                        <th>First Name</th>
+                        <td>{firstName}</td>
                       </tr>
                       <tr>
-                        <th>Received Method</th>
-                        <td>{recivedMethod}</td>
+                        <th>Mobile</th>
+                        <td>{mobileData}</td>
                       </tr>
                       <tr>
-                        <th>Payout Partners</th>
-                        <td>{payOutPartner}</td>  
+                        <th>Reason For Sending Money</th>
+                        <td>{reasonMoney}</td>  
                       </tr>
                     </tbody>
-                  </div>
-                    ):(
+
+                </div>
+
+                  ):(
                     <>
                     </>
                   
                   )
                   
-                 } 
+                  } 
+    
+                  </Table>
+            
+              
 
-             {  
-             step > 0 && formValue.bankName != ''  ? (
-              <div className="summary1">
-               <h5>Recipient details Summary</h5>
-                 <tbody>
-                   <tr>
-                     <th>First Name</th>
-                     <td>{firstName}</td>
-                   </tr>
-                   <tr>
-                     <th>Mobile</th>
-                     <td>{mobileData}</td>
-                   </tr>
-                   <tr>
-                     <th>Reason For Sending Money</th>
-                     <td>{reasonMoney}</td>  
-                   </tr>
-                 </tbody>
 
-             </div>
-
+            {/* {  
+                step > 0 && formValue.bankName != ''  ? (
+          
+              
+                <>
+                <div className="summary">
+                  <h5>Recipient details Summary</h5>
+                  <Table>
+                    <tbody>
+                      <tr>
+                        <th>First Name</th>
+                        <td>{firstName}</td>
+                      </tr>
+                      <tr>
+                        <th>Mobile</th>
+                        <td>{mobileData}</td>
+                      </tr>
+                      <tr>
+                        <th>Reason For Sending Money</th>
+                        <td>{reasonMoney}</td>  
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+              </>
+              
+              
+                
               ):(
                 <>
                 </>
               
               )
               
-              } 
- 
-               </Table>
-        
-           
+              }  */}
 
+              </div>
 
-        {/* {  
-             step > 0 && formValue.bankName != ''  ? (
-       
-           
-            <>
-            <div className="summary">
-               <h5>Recipient details Summary</h5>
-               <Table>
-                 <tbody>
-                   <tr>
-                     <th>First Name</th>
-                     <td>{firstName}</td>
-                   </tr>
-                   <tr>
-                     <th>Mobile</th>
-                     <td>{mobileData}</td>
-                   </tr>
-                   <tr>
-                     <th>Reason For Sending Money</th>
-                     <td>{reasonMoney}</td>  
-                   </tr>
-                 </tbody>
-               </Table>
-             </div>
-           </>
-           
-          
-            
-          ):(
-            <>
-            </>
-          
-           )
-          
-          }  */}
-
-           </div>
-
-          
-         </div>
-       </div>
-     </section>
-   </div>
- </div>
+              
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+      ):(
+        <></>
+      
+      )
+      }
+  </div>
 
 
 

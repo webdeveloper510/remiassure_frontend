@@ -19,11 +19,24 @@ import { RxDashboard } from "react-icons/rx";
 
 
 const UserDashboard = () => {
+
+  /**************************token ************************ */
+  const token = localStorage.getItem("token");
+  console.log("TOKEN", token);
+
+
+  const verification_otp = localStorage.getItem("verification_otp");
+  console.log("Verification Message", verification_otp)
+
+/**************************Feild of state ************************ */
  
 
     return(
         <>
           {/* <!-- ======= help Remitassure Support-Section  start======= --> */}
+          {  
+           token || verification_otp != undefined || '' ? (
+
           <div className="margin-set">
          
             <div class="tabs-page">
@@ -83,7 +96,15 @@ const UserDashboard = () => {
     </div>
    
    
-    </div>
+         </div>
+          ):(
+            <></>
+
+           )
+        }
+
+
+
         {/* <!-- ======= Help Better-Way-Section End-Section ======= --> */}
           
         </>

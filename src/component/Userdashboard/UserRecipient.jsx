@@ -10,7 +10,7 @@ import { API } from "../../config/API";
 import axios from "axios";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import { BsFillPersonPlusFill } from "react-icons/bs";
-
+import Sidebar from './Sidebar';
 
 
 const UserRecipients =() =>{
@@ -86,9 +86,7 @@ useEffect(() => {
           console.log(error);
           console.log(error.response);
           setLoading(false); // Stop loading in case of error
-          if(error.response.status){
-              toast.error(error.response.data.detail);
-          } 
+        
       })
 }, [])
 
@@ -113,9 +111,10 @@ const handleRemoveRecipientBankDetails =(value) =>{
     })
     .then(function(response) {
         console.log(response);
+        window.location.reload(false);
         alert('Remove Successfully.')
         // setLoading(false); // Stop loading 
-        navigate('/');   
+        navigate('/userrecipients');   
        
 
     })
@@ -152,10 +151,12 @@ const handleRemoveRecipientBankDetails =(value) =>{
 
 
     {  
-        RecipientUserName || token != undefined || '' ? (
+        RecipientUserName || token || verification_otp != undefined || '' ? (
 
-        <div class="container">
-            <div className="row">
+            <div  className="margin-set">
+            <div  className="tabs-page">
+                    <Sidebar/>
+                    <div className="content-body">
             <section className="user_recipients_section">
             <div class="form-head mb-4">
             <h2 class="text-black font-w600 mb-0"><b>Recipients Lists</b>
@@ -176,17 +177,24 @@ const handleRemoveRecipientBankDetails =(value) =>{
              {/* <h1 className="recipients_lists">Recipients Lists</h1> */}
              <div className="card">
             <div className="card-body">
+            <div className="col-md-12 align-center">
+                <NavLink to="/addnewrecipient">
+                            <button className="form-button addsingle_recepient" ><BsFillPersonPlusFill /> Add New Recepients</button>
+                            </NavLink>
+                        </div>
                 <Table  className="table table-responsive-md card-table previous-transaction">
                  <thead>
                         <tr>
                             <th>Sr.No </th>
                             {/* <th>User</th> */}
                             <th>Name</th>
+                            {/* <th>bank_name</th>
+                            <th>account_name</th>
+                            <th>account_number</th> */}
                             <th>Destination</th>
-                            <th>Update Detail Link</th>
                             <th>Transfer Now Link</th>
                             <th>Transfer Progress</th>
-                            <th>Action</th>
+                            <th>Update Detail Link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -200,14 +208,17 @@ const handleRemoveRecipientBankDetails =(value) =>{
                                     <td>{index +1}</td>
                                     {/* <td>{res.user}</td> */}
                                     <td>{res.name}</td>
+                                    {/* <td>{res.bank_name}</td>
+                                    <td>{res.account_name}</td>
+                                    <td>{res.account_number}</td> */}
                                     <td>{res.destination}</td>
-                                    <td>{res.detail_link}</td>
-                                    <td>{res.transfer_now_link}</td>
+                                    {/* <td>{res.update_profile}</td> */}
+                                    <td>{res.transfer_now}</td>
                                     <td> </td>
                                     <td>
                                      <span className="btn btn primary" onClick={() => {handleRemoveRecipientBankDetails(res.id)}}>Delete</span> 
                                      <span className="btn btn primary" onClick={() =>{LoadEdit(res.id)}}>Edit</span>
-                                     <span className="btn btn primary" onClick={() =>{LoadSinglProfile(res.id)}} >SingleData</span>
+                                     <span className="btn btn primary" onClick={() =>{LoadSinglProfile(res.id)}} >ViewProfile</span>
                                     </td>
                               </tr>
                               
@@ -240,13 +251,13 @@ const handleRemoveRecipientBankDetails =(value) =>{
                </section>
 
             
-
+               </div>
             </div>
         </div>
 
     ) : (
         <>
-           <section>
+            <section>
                     <div class="form-head mb-4">
                         <h2 class="text-black font-w600 mb-0"><b>Add Recipient</b></h2>
                     </div>
@@ -257,6 +268,12 @@ const handleRemoveRecipientBankDetails =(value) =>{
                             </div>
                         </div>
                     </div>
+                    <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
+        
+                        <div className="col-md-12 align-center">
+                            <button className="form-button addsingle_recepient" ><BsFillPersonPlusFill /> Add New Recepients</button>
+                        </div>
+                        </div> 
                 </section>
         
         </>

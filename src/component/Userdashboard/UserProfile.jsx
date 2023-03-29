@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from "react-toastify";
 import { API } from "../../config/API";
 import axios from "axios";
-
+import Sidebar from './Sidebar';
 
 const Profile = () => {
     
@@ -110,10 +110,14 @@ const Profile = () => {
           verification_otp || token != undefined || '' ? (
             <>
            
+           <div  className="margin-set">
+    <div  className="tabs-page">
+            <Sidebar/>
+
+            <div className="content-body">
+            <div className="col-md-12">
             <section className="profile-page">
             
-            <div className="container">
-              <div className="row">
               <div class="form-head mb-4">
             <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
             </h2>
@@ -329,9 +333,12 @@ const Profile = () => {
 
       
                 </div>
-              </div>
-            </div>
+             
           </section>
+          </div>
+          </div>
+          </div>
+          </div>
 
 
 

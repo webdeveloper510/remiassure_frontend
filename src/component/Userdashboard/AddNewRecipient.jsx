@@ -12,7 +12,7 @@ import UserRecipient from "../Userdashboard/UserRecipient";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsFillPencilFill } from "react-icons/bs";
-
+import Sidebar from './Sidebar';
 // start css
 const myStyle ={
   color: "red",
@@ -157,7 +157,7 @@ const Addnewrecipient = () => {
             localStorage.setItem("userRecipientDatamobile", response.data.data.mobile)
             localStorage.setItem("userRecipientDatatransfer_now", response.data.data.transfer_now)
             localStorage.setItem("userRecipientDataupdate_profile", response.data.data.update_profile)
-            navigate('/');   
+            navigate('/userrecipients');   
            
   
         })
@@ -176,22 +176,21 @@ const Addnewrecipient = () => {
     return(
         <>
         {/* <Recipients /> */}
+      
+        {  
+           token || verification_otp != undefined || '' ? (
 
-   
-        <div className={isActive ? "add-recipent-section" : "remove-add-recipent-section"}>
-         <UserRecipient />
-        
-          <div className="col-md-12 align-center">
-            <button className="form-button addsingle_recepient" onClick={handleToggle}><BsFillPersonPlusFill /> Add New Recepients</button>
-          </div>
-        </div> 
-        
-
-
-    <section  className={isActive ? "removerecepient" : "showrecepient"} >   
+        <div  className="margin-set">
+            <div  className="tabs-page">
+                    <Sidebar/>
+                    <div className="content-body">
+    <section  className="showrecepient">   
     <div class="form-head mb-4">
    
             <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
+            <NavLink to="/userrecipients">
+                            <button className="form-button addsingle_recepient" ><BsFillPersonPlusFill /> Recipients Lists</button>
+                            </NavLink>
             </h2>
             </div>
             <form className="single-recipient">
@@ -498,6 +497,16 @@ const Addnewrecipient = () => {
 
 
       </section>
+      </div>
+      </div>
+      </div>
+
+      ):(
+        <></>
+
+      )
+      }
+
         </>
     )
 }

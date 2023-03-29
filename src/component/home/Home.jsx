@@ -156,7 +156,7 @@ function FlagHomeArrayofoObjects() {
     return(
 
       <li key={flagvalue.id}>
-      <div className="col-lg-6">
+      <div className="col-lg-12">
         <div className="card card-flag01">
           <div className="row">
             <div className="col-4">
@@ -456,7 +456,7 @@ const Home = () => {
                         <p className="calculation">1 {from} = {total_rates} {to}</p>
                         <div className="row">
                             <div className="col-3-1">
-                                <p className="send-text">You Send</p>
+                                <p className="send-text">You Send<span style={{color: 'red'}} >*</span></p>
                                 <div className="inline select-currency">
                                 <InputGroup 
                                 className="mb-3"
@@ -505,14 +505,22 @@ const Home = () => {
                                </div>
                             </div>
                             <div className="col-3-1">
-                                <p className="get-text">They get</p>
+                                <p className="get-text">They get<span style={{color: 'red'}} >*</span></p>
                                 <div className="inline select-currency">
-                                <input
+                                  
+                                {/* <InputGroup 
+                                className="mb-3"
+                                value={total_amounts && amount != 0 || "" ? total_amounts : ""}
+                                >
+                                    <Form.Control aria-label="Text input with dropdown button" />
+                                </InputGroup> */}
+
+                                 <input
                                 className="mb-3 new_input"
                                 value={total_amounts && amount != 0 || "" ? total_amounts : ""}
 
                                 />
-                                   
+                                    
                                
                                 <select 
                                 className="form-select form-control mb-3 home-select-method"

@@ -16,7 +16,7 @@ import { BsChevronDoubleRight } from "react-icons/bs";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import Accordion from 'react-bootstrap/Accordion';
 import creditcards from '../../assets/img/userdashboard/mastercard.png';
-
+import Sidebar from './Sidebar';
 
 
 // start css
@@ -31,6 +31,8 @@ const UserSendMoney = () => {
 /************ Start page show hide condtion page ***************/
    const token = localStorage.getItem("token");
    console.log("TOKEN", token);
+
+
 
    const verification_otp = localStorage.getItem("verification_otp");
    console.log("Verification Message", verification_otp)
@@ -79,6 +81,14 @@ const [amountValue, setAmountValue] = React.useState({
 
 /******************* start card show  state   *******/
 const [showCards, setshowCards] = React.useState("");
+
+  /************ Start -Recipient List Bank Details***************/
+  const [data, setData] = React.useState([]);
+
+
+
+
+
 
 const handleCloseDetails = () => setshowCards(false);
 const ShowCardDetails = () => setshowCards(true);
@@ -503,6 +513,8 @@ const handlRecipientBankDetails =(e) => {
         .then(function(response) {
             console.log(response);
             handleShow(); //show view page
+            setStep(step+1)
+
             setLoading(false); // Stop loading 
         })
         .catch(function(error, message) {
@@ -514,6 +526,35 @@ const handlRecipientBankDetails =(e) => {
     }
   // }
 
+
+   /**************************************************************************
+   * ************** Start  Recipient List ************************************
+   * ***********************************************************************/
+
+      useEffect(() => {
+        setLoading(true); // Set loading before sending API request
+        axios.post(API.BASE_URL + 'payment/recipient-list/',{}, {
+            headers: {
+                "Authorization" : `Bearer ${token}`,
+            }
+          })
+          .then(function(response) {
+              console.log("Recipients APIIIII", response.data);
+              setData(response.data);
+              setLoading(false); // Stop loading
+        
+        
+            //   if (response.status)
+            // // notify();
+          })
+          .catch(function(error) {
+              console.log(error);
+              console.log(error.response);
+              setLoading(false); // Stop loading in case of error 
+          })
+      }, [])
+
+      console.log(data," nnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
 
 
 
@@ -816,7 +857,7 @@ const handlRecipientBankDetails =(e) => {
       </form>
 
   
-      </>
+          </>
    ) : (
     <>
     
@@ -834,228 +875,246 @@ const handlRecipientBankDetails =(e) => {
     return (
     <>
      {  
-      <>
- 
- 
-      
-      <div className={isActive ? "col-md-6 add-recipent-section" : "col-md-6 remove-add-recipent-section"}>
-      <div class="form-head mb-4">
-      <h2 class="text-black font-w600 mb-0"><b>Select a recipient to send money</b>
-      </h2>
-      </div>
-      <div className="card">
-        <div className="card-body">
-    <div>
-        <ul>
-          <li><a>William <BsChevronDoubleRight /></a></li>
-          <li><a>Josh <BsChevronDoubleRight /></a></li>
-          <li><a>Mike<BsChevronDoubleRight /> </a></li>
-        </ul>
-        <div className="add-rec">
-          <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
-          <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
+          verification_otp || token != undefined || '' ? (
+        <>
+  
+  
+        
+        <div className={isActive ? "col-md-6 add-recipent-section" : "col-md-6 remove-add-recipent-section"}>
+        <div class="form-head mb-4">
+        <h2 class="text-black font-w600 mb-0"><b>Select a recipient to send money</b>
+        </h2>
         </div>
-    </div> 
-   </div>
-   </div>
-   </div>
-    
 
-    <div  className={isActive ? "removerecepient" : "showrecepient"} >   
-    <div class="form-head mb-4">
-      <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
-      </h2>
-      </div>
-    <form>
-    <div className="card">
-    <div className="card-body">
-      <div className="row">
-      <h5>Bank Information</h5>
-          <div className="col-md-4">
+        
+        <div className="card">
+      
+          <div className="card-body">
+                {
+                  data.data?.map((res, index) => {           
+                  return(
+
+                  <ul key={res.id}>
+                    <li><a>{res.name} <BsChevronDoubleRight /></a></li>
+                  
+                  </ul>
+
+                    )    
+                    })}
+                    
+                <div className="add-rec">
+                  <button className="form-button" onClick={()=>{setStep(step-1)}} style={{"float": "left"}}>Previous</button>
+                  <button className="form-button" onClick={handleToggle} style={{"float": "right"}}><BsFillPersonPlusFill /> Add Recepients</button>
+                </div>
+          </div>
+        
+          </div>             
+      
+    </div>
+      
+
+      <div  className={isActive ? "removerecepient" : "showrecepient"} >   
+      <div class="form-head mb-4">
+        <h2 class="text-black font-w600 mb-0"><b>Recipient Bank Details</b>
+        </h2>
+        </div>
+      <form>
+      <div className="card">
+      <div className="card-body">
+        <div className="row">
+        <h5>Bank Information</h5>
+            <div className="col-md-4">
+                <div className="input_field">
+                  <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
+                  <input
+                    type="text" 
+                    className="rate_input form-control"
+                    name="bankName"
+                    defaultValue={formValue.bankName}
+                    onChange={(e)=>handleStep2InputChange(e,'bankName')}
+                  />   
+                    <span style={myStyle}>{BankNameText.Enterbankname? BankNameText.Enterbankname: ''}</span>
+                </div>
+            </div>
+            <div className="col-md-4">
               <div className="input_field">
-                <p className="get-text">Bank Name<span style={{color: 'red'}} >*</span></p>
+                <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text"
+                  // ref={input_recipientAccountName}
+                  defaultValue={formValue.accountName}
+                  onChange={(e)=>handleStep2InputChange(e,'accountName')}
+                  className='rate_input form-control'
+                  // autoFocus="autofocus"
+                />
+                        
+                <span style={myStyle}>{BankNameText.Enteraccountname? BankNameText.Enteraccountname: ''}</span>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text"
+                  name="accountNumber"
+                  // ref={input_recipientAccountNumber}
+                  className='rate_input form-control'
+                  defaultValue={formValue.accountNumber}
+                  onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
+                />          
+                <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
+                <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
+              </div>
+            </div>
+            </div>
+        
+          <div className="row each-row">
+            <h5>Recipient Details</h5>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
+                <input
+                type="text" 
+                // ref={input_recipientFirstName}
+                className='rate_input form-control'
+                  name="firstName"
+                  defaultValue={formValue.firstName}
+                  onChange={(e)=> handleStep2InputChange(e,'firstName')}
+                />     
+                <span style={myStyle}>{BankNameText.first_name? BankNameText.first_name: ''}</span>   
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="text"
+                  // ref={input_recipientMiddleName}
+                  className='rate_input form-control' 
+                  name="middleName"
+                  defaultValue={formValue.middleName}
+                  onChange={(e)=> handleStep2InputChange(e,'middleName')}
+                />
+                <span style={myStyle}>{BankNameText.middle_name? BankNameText.middle_name: ''}</span>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="input_field">
+                <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text" 
+                  // ref={input_recipientLastName}
+                  className='rate_input form-control'
+                  name="lastName"
+                  defaultValue={formValue.lastName}
+                  onChange={(e)=> handleStep2InputChange(e,'lastName')}
+                />
+                <span style={myStyle}>{BankNameText.last_name? BankNameText.last_name: ''}</span>
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
+                <input
+                  type="email" 
+                  // ref={input_recipientEmail}
+                  className='rate_input form-control'
+                  name="email"
+                  defaultValue={formValue.email}
+                  onChange={(e)=> handleStep2InputChange(e,'email')}
+              />
+              <span style={myStyle}>{BankNameText.email? BankNameText.email: ''}</span>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="input_field">
+                <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
+                <input 
+                  type="text" 
+                // ref={input_recipientMobile}
+                  className='rate_input form-control'
+                  name="mobile"
+                  defaultValue={formValue.mobile}
+                  onChange={(e)=> handleStep2InputChange(e,'mobile')}
+                />
+                  <span style={myStyle}>{BankNameText.mobile? BankNameText.mobile: ''}</span>
+                  <span style={myStyle}>{BankNameText.Entervalidmobile? BankNameText.Entervalidmobile: ''}</span>
+                  <span style={myStyle}>{BankNameText.Mobileexist? BankNameText.Mobileexist: ''}</span>
+                  <span style={myStyle}>{BankNameText.Invalidmobile? BankNameText.Invalidmobile: ''}</span>
+              </div>
+            </div>
+          </div>
+          <div className="row each-row">
+            <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Address<span style={{color: 'red'}} >*</span></p>
                 <input
                   type="text" 
-                  className="rate_input form-control"
-                  name="bankName"
-                  defaultValue={formValue.bankName}
-                  onChange={(e)=>handleStep2InputChange(e,'bankName')}
-                />   
-                  <span style={myStyle}>{BankNameText.Enterbankname? BankNameText.Enterbankname: ''}</span>
+              
+                  className='rate_input form-control'
+                  name="address"
+                  defaultValue={formValue.address}
+                  onChange={(e)=> handleStep2InputChange(e,'address')}
+                  />
+                  
               </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Account Name<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text"
-                // ref={input_recipientAccountName}
-                defaultValue={formValue.accountName}
-                onChange={(e)=>handleStep2InputChange(e,'accountName')}
-                className='rate_input form-control'
-                // autoFocus="autofocus"
-              />
-                       
-               <span style={myStyle}>{BankNameText.Enteraccountname? BankNameText.Enteraccountname: ''}</span>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Account number<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text"
-                name="accountNumber"
-                // ref={input_recipientAccountNumber}
-                className='rate_input form-control'
-                defaultValue={formValue.accountNumber}
-                onChange={(e)=> handleStep2InputChange(e,'accountNumber')}
-              />          
-               <span style={myStyle}>{BankNameText.Enteraccountnumber? BankNameText.Enteraccountnumber: ''}</span>
-               <span style={myStyle}>{BankNameText.Accountnumberexist? BankNameText.Accountnumberexist: ''}</span>
+          <div className="row each-row">
+            <div className="col-md-12">
+              <div className="input_field">
+                <p className="get-text">Reason For Sending Money<span style={{color: 'red'}} >*</span></p>
+                <select
+                  className="form-select rate_input form-control"
+                  aria-label="Select a reason"
+                
+                  name="reasonMoney"
+                  defaultValue={formValue.reasonMoney}
+                  onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
+                  > 
+                  <option selected>Select a reason</option>
+                  <option value="Family Support">Family Support</option>
+                  <option value="Education">Education</option>
+                  <option value="Tax Payment">Tax Payment</option>
+                  <option value="Loan Payment">Loan Payment</option>
+                  <option value="Travel Payment">Travel Payment</option>
+                  <option value="Utility Payment">Utility Payment</option>
+                </select>
+            
+              </div>
             </div>
           </div>
-          </div>
-      
-        <div className="row each-row">
-          <h5>Recipient Details</h5>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">First Name<span style={{color: 'red'}} >*</span></p>
-              <input
-               type="text" 
-               // ref={input_recipientFirstName}
-               className='rate_input form-control'
-                name="firstName"
-                defaultValue={formValue.firstName}
-                onChange={(e)=> handleStep2InputChange(e,'firstName')}
-              />     
-              <span style={myStyle}>{BankNameText.first_name? BankNameText.first_name: ''}</span>   
+          <div className="row">
+            <div className="col-md-4">
+              <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
+            </div>
+            <div className="col-md-8">
+              {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
+              {/* <button className="form-button" onClick={someFunc}>Continue</button> */}
+              <button type="" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
+              <button type="submit" className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Middle Name<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="text"
-                // ref={input_recipientMiddleName}
-                className='rate_input form-control' 
-                name="middleName"
-                defaultValue={formValue.middleName}
-                onChange={(e)=> handleStep2InputChange(e,'middleName')}
-              />
-              <span style={myStyle}>{BankNameText.middle_name? BankNameText.middle_name: ''}</span>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="input_field">
-              <p className="get-text">Last Name<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text" 
-                // ref={input_recipientLastName}
-                className='rate_input form-control'
-                name="lastName"
-                defaultValue={formValue.lastName}
-                onChange={(e)=> handleStep2InputChange(e,'lastName')}
-              />
-              <span style={myStyle}>{BankNameText.last_name? BankNameText.last_name: ''}</span>
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Email<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="email" 
-                // ref={input_recipientEmail}
-                className='rate_input form-control'
-                name="email"
-                defaultValue={formValue.email}
-                onChange={(e)=> handleStep2InputChange(e,'email')}
-             />
-             <span style={myStyle}>{BankNameText.email? BankNameText.email: ''}</span>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="input_field">
-              <p className="get-text">Mobile<span style={{color: 'red'}} >*</span></p>
-              <input 
-                type="text" 
-               // ref={input_recipientMobile}
-                className='rate_input form-control'
-                name="mobile"
-                defaultValue={formValue.mobile}
-                onChange={(e)=> handleStep2InputChange(e,'mobile')}
-              />
-                <span style={myStyle}>{BankNameText.mobile? BankNameText.mobile: ''}</span>
-                <span style={myStyle}>{BankNameText.Entervalidmobile? BankNameText.Entervalidmobile: ''}</span>
-                <span style={myStyle}>{BankNameText.Mobileexist? BankNameText.Mobileexist: ''}</span>
-                <span style={myStyle}>{BankNameText.Invalidmobile? BankNameText.Invalidmobile: ''}</span>
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Address<span style={{color: 'red'}} >*</span></p>
-              <input
-                type="text" 
-             
-                className='rate_input form-control'
-                name="address"
-                defaultValue={formValue.address}
-                onChange={(e)=> handleStep2InputChange(e,'address')}
-                />
-                 
-            </div>
-          </div>
-        </div>
-        <div className="row each-row">
-          <div className="col-md-12">
-            <div className="input_field">
-              <p className="get-text">Reason For Sending Money<span style={{color: 'red'}} >*</span></p>
-              <select
-                className="form-select rate_input form-control"
-                aria-label="Select a reason"
-               
-                name="reasonMoney"
-                defaultValue={formValue.reasonMoney}
-                onChange={(e)=> handleStep2InputChange(e,'reasonMoney')}
-                > 
-                <option selected>Select a reason</option>
-                <option value="Family Support">Family Support</option>
-                <option value="Education">Education</option>
-                <option value="Tax Payment">Tax Payment</option>
-                <option value="Loan Payment">Loan Payment</option>
-                <option value="Travel Payment">Travel Payment</option>
-                <option value="Utility Payment">Utility Payment</option>
-              </select>
-           
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <button type="submit" className="start-form-button" onClick={handlRecipientBankDetails}>Cancel</button>
-          </div>
-          <div className="col-md-8">
-            {/* <button className="form-button" onClick={handleShow}>Continue</button> */}
-            {/* <button className="form-button" onClick={someFunc}>Continue</button> */}
-            <button type="submit" className="form-button" onClick={handleRecipientBankDetails}>Continue</button>
-            <button type="submit" className="form-button" onClick={()=>{setStep(step-1)}}>Previous</button>
-          </div>
-        </div>
-     </div>
-     </div>
-      </form>
+      </div>
+      </div>
+        </form>
 
 
 
 
-    </div>
-   
-      </>
-  }
+      </div>
+    
+        </>
+        ) : (
+          <>
+          
+          </>
+      )
+      }
+
+  
     </>
     );
     }
@@ -1304,14 +1363,18 @@ const handlRecipientBankDetails =(e) => {
     
     <>
 
-{  
-         (
- 
 
+
+          {  
+            verification_otp || token != undefined || '' ? (
+          <>
+          <div  className="margin-set">
+             <div  className="tabs-page">
+          <Sidebar/>
+
+          <div className="content-body">
      <section className="why-us section-bgba user_dashboard_banner">
-       <div className="container">
-         <div className="row">
-           <div className="col-md-12">{
+           <div className="col-md-8">{
              <Form />}
            </div>
            {/* {shows &&
@@ -1338,15 +1401,22 @@ const handlRecipientBankDetails =(e) => {
            </div>
 
            } */}
-         </div>
-       </div>
+      
      </section>
- 
+     </div>
+ </div>
+ </div>
+
+</>
+
+) : (
+  <>
+  
+  </>
+)
+} 
 
 
-
-) 
-}
     </>
     );
 }

@@ -12,7 +12,7 @@ import UserRecipient from "../Userdashboard/UserRecipient";
 import norecipients from '../../assets/img/userdashboard/hidden.avif';
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsFillPencilFill } from "react-icons/bs";
-
+import Sidebar from './Sidebar';
 
 // start css
 const myStyle ={
@@ -60,6 +60,9 @@ const Editrecipientuser = () => {
           // Start page show hide condtion page 
           const token = localStorage.getItem("token");
           console.log("TOKEN", token);
+
+          const signup_token = localStorage.getItem("signup_token")
+          console.log("signup_token" ,signup_token);
       
           const verification_otp = localStorage.getItem("verification_otp");
           console.log("Verification Message", verification_otp)
@@ -170,13 +173,17 @@ const Editrecipientuser = () => {
         }
       // }
 
-
-          
-    
-
     return(
         <>
+          {  
+           token || verification_otp != undefined || '' ? (
   
+
+           <div  className="margin-set">
+            <div  className="tabs-page">
+                    <Sidebar/>
+                    <div className="content-body">
+                    <section className="edit_recipient_section">
         <form className="single-recipient">
             <div className="card">
             <div className="card-body">
@@ -433,6 +440,16 @@ const Editrecipientuser = () => {
                 </div>
                 </div>
             </form>
+            </section>
+            </div>
+            </div>
+            </div>
+
+          ):(
+            <></>
+
+          )
+          }
         </>
     )
 }
